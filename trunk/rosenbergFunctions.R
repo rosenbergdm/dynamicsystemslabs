@@ -1,0 +1,24 @@
+normExpArg <- function (argname, callMatch) {
+  mc <- callMatch
+  if (class(trySilent(
+          expString <- as.character(as.expression(mc[[argname]])))) != 
+                                  "try-error" && 
+          length(grep(mc[[argname]], pattern = "[\\+|-|\\*|\\/|\\^]")) 
+                                          > 0
+     ) { }
+  else if (class(trySilent(g <- match.fun(mc[[argname]]))) != 
+    "try-error") {
+    tmpString <- deparse(body(g))
+    expString <- tmpString[grep(tmpString, pattern = "\\{|\\}", 
+        invert = TRUE)]
+    expString <- gsub("^return\\((.*)\\)(;)?$", "\\1", gsub(" ", 
+        "", paste(expString, collapse = "")))
+  }
+  else if (is.character(mc[[argname]])) {
+    expString <- mc[[argname]]
+  }
+  else {
+    stop("Error: coercion impossible.")
+  }
+  return(expString)
+}

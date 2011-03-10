@@ -1,0 +1,7 @@
+debug-package                        How to use the debug package
+bp                                   Breakpoints for debugging
+fun.locator                          Get environment(s) where an object exists
+get.retval                           Show current return value when debugging
+go-skip-qqq                          Flow control for debugger
+is.mtraced                           Check if a function has been mtraced.
+mtrace                               Interactive debugging

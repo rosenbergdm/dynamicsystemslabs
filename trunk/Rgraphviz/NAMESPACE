@@ -1,0 +1,143 @@
+useDynLib(Rgraphviz)
+
+importClassesFrom(graph, graph)
+
+importClassesFrom(methods, character, externalptr, integer, list,
+                  logical, missing, numeric, vector)
+
+importMethodsFrom(graph, connComp, edgeData, "edgeData<-",
+                  edgeDataDefaults, "edgeDataDefaults<-", edgeL,
+                  edgeMatrix, edgemode, edgeNames, nodeData,
+                  "nodeData<-", nodeDataDefaults, "nodeDataDefaults<-",
+                  nodes, numNodes)
+
+importMethodsFrom(methods, show)
+
+importFrom(graph, edgeRenderInfo, "edgeRenderInfo<-", graph.par,
+           graph.par.get, graphRenderInfo, "graphRenderInfo<-",
+           nodeRenderInfo, "nodeRenderInfo<-", parRenderInfo,
+           validGraph)
+
+importFrom(graphics, arrows, lines, par, plot, plot.new, plot.window,
+           plot.xy, polygon, rect, strheight, strwidth, symbols, text,
+           title)
+
+importFrom(grDevices, xy.coords)
+
+importFrom(grid, convertHeight, convertWidth, current.viewport,
+           current.vpTree, popViewport, pushViewport, unit)
+
+importFrom(methods, "@<-", is, slot)
+
+importFrom(utils, head, tail)
+
+                                                                                
+export(
+        agopen,			# Rgraphviz
+        agread,			# Rgraphviz
+        agwrite,		# Rgraphviz
+        buildEdgeList,		# Rgraphviz
+        buildNodeList,		# Rgraphviz
+        checkAttrs,		# defaultAttrs
+        drawAgNode,		# graph
+        drawTxtLabel,		# graph
+        getDefaultAttrs,	# defaultAttrs
+        getNodeLabels,		# Rgraphviz
+        getNodeNames,		# Rgraphviz
+        graphvizVersion,	# Rgraphviz
+        graphLayout,		# Rgraphviz
+        makeNodeAttrs,		# own
+        pieGlyph,		# own
+        removedEdges,		# Rgraphviz
+        toFile,
+        agopenSimple,
+        layoutGraph
+	)
+
+exportClasses(			# Ragraph
+                "AgEdge",
+                "AgNode",
+                "AgTextLabel",
+                "BezierCurve",
+                "boundingBox",
+                "pEdge",	# plot, related to buildEdgeList only
+                "pNode",	# plot, related to buildNodeList only
+                "Ragraph",
+                "xyPoint"
+	)
+
+exportMethods(	
+		graphDataDefaults,
+		"graphDataDefaults<-", 
+		graphData,
+		"graphData<-", 
+
+		clusterData,
+		"clusterData<-", 
+
+		nodeDataDefaults, 
+		"nodeDataDefaults<-", 
+		nodeData,
+		"nodeData<-",
+
+		edgeDataDefaults, 
+		"edgeDataDefaults<-",
+		edgeData, 
+		"edgeData<-", 
+
+		# Ragraph +
+                "AgEdge<-",
+                "AgEdge",
+                "AgNode<-",
+                "AgNode",
+                "agraph",
+                "arrowhead",
+                "arrowsize",
+                "arrowtail",
+                "bezierPoints",
+                "bLines",
+                "botLeft",
+                "boundBox",
+                "color",
+                "cPoints",
+                "edgemode",
+                "edgeNames",
+                "ep",
+                "fillcolor",
+                "from",			# plot only
+                "getNodeCenter",
+                "getNodeHeight",
+                "getNodeLW",
+                "getNodeRW",
+                "getNodeXY",
+                "getNodeXY",
+                "getPoints",
+                "getSpline",
+                "getX",
+                "getY",
+                "head",
+                "labelColor",
+                "labelFontsize",
+                "labelJust",
+                "labelLoc",
+                "labelText",
+                "labelWidth",
+                "laidout",
+                "layoutType",
+                "lines",
+                "name",			# plot
+                "numSplines",
+                "plot",			# graph only
+                "pointList",
+                "shape",
+                "show",
+                "sp",
+                "splines",
+                "style",
+                "tail",
+                "to",			# plot only
+                "toDot",		# graph only
+                "txtLabel",
+                "upRight",
+                "renderGraph"
+	)

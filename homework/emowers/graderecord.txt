@@ -1,0 +1,10 @@
+assignment	submitted	graded	returned	files
+chapter0	Y	Y:7	N	mowers.ch0.R
+chapter1	Y	Y:8	N	"Lab Exercise Ch1_Mowers_ver4.R"
+chapter2	Y	Y:11.5	N	"Mowers_Ch_2_ Excercise.R"
+chapter3	Y	N	N	"Mowers_Ch3_Exercise.R"
+chapter4
+chapter5
+chapter6
+chapter7
+

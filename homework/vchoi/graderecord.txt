@@ -1,0 +1,10 @@
+assignment	submitted	graded	returned	files
+chapter0	N	N	N
+chapter1	Y	N	N	lab2.R
+chapter2
+chapter3
+chapter4
+chapter5
+chapter6
+chapter7
+

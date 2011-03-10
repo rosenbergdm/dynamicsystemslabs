@@ -1,0 +1,10 @@
+assignment	submitted	graded	returned	files
+chapter0	Y	Y:8	N	Assignment0_ElizabethAllen.R
+chapter1
+chapter2
+chapter3
+chapter4
+chapter5
+chapter6
+chapter7
+

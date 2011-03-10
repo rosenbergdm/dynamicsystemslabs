@@ -1,0 +1,188 @@
+%PDF-1.4
+%Å‚Å„ÅœÅ”\r
+1 0 obj
+<<
+/CreationDate (D:20091006131531)
+/ModDate (D:20091006131531)
+/Title (R Graphics Output)
+/Producer (R 2.9.2)
+/Creator (R)
+>>
+endobj
+2 0 obj
+<<
+/Type /Catalog
+/Pages 3 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Page
+/Parent 3 0 R
+/Contents 6 0 R
+/Resources 4 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 7 0 R
+>>
+stream
+q
+Q q 59.04 73.44 270.72 227.52 re W n
+0.000 0.000 0.000 RG
+0.75 w
+[] 0 d
+1 J
+1 j
+10.00 M
+69.07 81.87 m
+96.92 187.20 l
+124.77 266.20 l
+152.62 290.89 l
+180.47 292.53 l
+208.33 292.53 l
+236.18 292.53 l
+264.03 292.53 l
+291.88 292.53 l
+319.73 292.53 l
+S
+Q q
+0.000 0.000 0.000 RG
+0.75 w
+[] 0 d
+1 J
+1 j
+10.00 M
+96.92 73.44 m 319.73 73.44 l S
+96.92 73.44 m 96.92 66.24 l S
+152.62 73.44 m 152.62 66.24 l S
+208.33 73.44 m 208.33 66.24 l S
+264.03 73.44 m 264.03 66.24 l S
+319.73 73.44 m 319.73 66.24 l S
+BT
+0.000 0.000 0.000 rg
+/F2 1 Tf 12.00 0.00 -0.00 12.00 93.58 47.52 Tm (2) Tj
+ET
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 149.29 47.52 Tm (4) Tj
+ET
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 204.99 47.52 Tm (6) Tj
+ET
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 260.69 47.52 Tm (8) Tj
+ET
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 313.06 47.52 Tm (10) Tj
+ET
+59.04 81.87 m 59.04 292.53 l S
+59.04 81.87 m 51.84 81.87 l S
+59.04 124.00 m 51.84 124.00 l S
+59.04 166.13 m 51.84 166.13 l S
+59.04 208.27 m 51.84 208.27 l S
+59.04 250.40 m 51.84 250.40 l S
+59.04 292.53 m 51.84 292.53 l S
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 73.53 Tm (1.0) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 115.66 Tm (1.2) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 157.79 Tm (1.4) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 199.93 Tm (1.6) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 242.06 Tm (1.8) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 284.19 Tm (2.0) Tj
+ET
+59.04 73.44 m
+329.76 73.44 l
+329.76 300.96 l
+59.04 300.96 l
+59.04 73.44 l
+S
+Q q
+BT
+0.000 0.000 0.000 rg
+/F3 1 Tf 14.00 0.00 -0.00 14.00 90.53 325.45 Tm (Iterated map of f\(x\)=x * \(2 - x/2\)) Tj
+ET
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 166.39 18.72 Tm (1:max_iter) Tj
+ET
+BT
+/F2 1 Tf 0.00 12.00 -12.00 0.00 12.96 167.44 Tm [(x_arr) 10 (a) 30 (y)] TJ
+ET
+Q
+endstream
+endobj
+7 0 obj
+1769
+endobj
+3 0 obj
+<<
+/Type /Pages
+/Kids [
+5 0 R
+]
+/Count 1
+/MediaBox [0 0 360 360]
+>>
+endobj
+4 0 obj
+<<
+/ProcSet [/PDF /Text]
+/Font <</F2 9 0 R /F3 10 0 R >>
+/ExtGState << >>
+>>
+endobj
+8 0 obj
+<<
+/Type /Encoding
+/BaseEncoding /WinAnsiEncoding
+/Differences [ 45/minus 96/quoteleft
+144/dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent
+/dieresis /.notdef /ring /cedilla /.notdef /hungarumlaut /ogonek /caron /space]
+>>
+endobj
+9 0 obj <<
+/Type /Font
+/Subtype /Type1
+/Name /F2
+/BaseFont /Helvetica
+/Encoding 8 0 R
+>> endobj
+10 0 obj <<
+/Type /Font
+/Subtype /Type1
+/Name /F3
+/BaseFont /Helvetica-Bold
+/Encoding 8 0 R
+>> endobj
+xref
+0 11
+0000000000 65535 f 
+0000000021 00000 n 
+0000000163 00000 n 
+0000002134 00000 n 
+0000002217 00000 n 
+0000000212 00000 n 
+0000000292 00000 n 
+0000002114 00000 n 
+0000002309 00000 n 
+0000002566 00000 n 
+0000002662 00000 n 
+trailer
+<<
+/Size 11
+/Info 1 0 R
+/Root 2 0 R
+>>
+startxref
+2764
+%%EOF

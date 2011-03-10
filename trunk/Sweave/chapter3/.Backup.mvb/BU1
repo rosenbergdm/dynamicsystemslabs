@@ -1,0 +1,48 @@
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256073684.05323
+function(maxima_command, ...) {
+  opt_string <- paste(.RMaximaEnv$maxima_opts, collapse=" ");
+  maxima_cmd <- paste(opt_string, maxima_command, sep=" ");
+  
+  if (.RMaximaEnv$is_local) {
+    maxima_bin <- .RMaximaEnv$localMaxima;
+    sys_cmd <- sprintf("echo '%s' | %s", maxima_cmd, maxima_bin);
+    res <- system(sys_cmd, intern=TRUE);
+  } else {
+    con <- .RMaximaEnv$RServeConnection;
+    maxima_bin <- .RMaximaEnv$maxima_bin;
+    sys_cmd <- shQuote(sprintf("echo '%s' | %s", maxima_command, maxima_bin));
+    cmd_name <- paste(sys_cmd, .RMaximaEnv$mID, sep="_");
+    RSassign(con, obj=sys_cmd, name=cmd_name);
+    res <- RSeval(quote(eval(sprintf("system(%s, intern=TRUE)", cmd_name))));
+  }
+  res <- res[1:length(res) > 5];
+  res.out <- paste( res[grep("^[(\\(%)|(rat)]", res, invert=TRUE,
+                   perl=TRUE)], collapse=' ');
+  return(res.out);
+}
+
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256073684.05323
+function(maxima_command, ...) {
+  opt_string <- paste(.RMaximaEnv$maxima_opts, collapse=" ");
+  maxima_cmd <- paste(opt_string, maxima_command, sep=" ");
+  
+  if (.RMaximaEnv$is_local) {
+    maxima_bin <- .RMaximaEnv$localMaxima;
+    sys_cmd <- sprintf("echo '%s' | %s", maxima_cmd, maxima_bin);
+    res <- system(sys_cmd, intern=TRUE);
+  } else {
+    con <- .RMaximaEnv$RServeConnection;
+    maxima_bin <- .RMaximaEnv$maxima_bin;
+    sys_cmd <- shQuote(sprintf("echo '%s' | %s", maxima_command, maxima_bin));
+    cmd_name <- paste(sys_cmd, .RMaximaEnv$mID, sep="_");
+    RSassign(con, obj=sys_cmd, name=cmd_name);
+    res <- RSeval(quote(eval(sprintf("system(%s, intern=TRUE)", cmd_name))));
+  }
+  res <- res[1:length(res) > 5];
+  res.out <- paste( res[grep("^(\\(%)", res, invert=TRUE,
+                   perl=TRUE)], collapse=' ');
+  return(res.out);
+}
+

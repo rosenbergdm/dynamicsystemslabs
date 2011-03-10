@@ -1,0 +1,26 @@
+\relax 
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}One variable in discrete time}{1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Models of population growth}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Static population}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Exponential growth}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Example with birth and death}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}Units of birth and death rates}{5}}
+\newlabel{linear_pop}{{1.1}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Solutions and fixed points}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Solutions of difference equations}{6}}
+\newlabel{eq:lin_discrete_sol}{{1.2}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Population growth and decay : a) with constant growth rate of 1 per unit time; b) with constant death rate of 0.5 per unit time}}{8}}
+\newlabel{fig:exp_growth}{{1.1}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Equilibrium solutions or fixed points}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Numerical solutions of difference equations}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}Numerical solution of a discrete model}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}Cobweb plots}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Logistic model}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Logistic growth}{14}}
+\newlabel{discrete_logistic}{{1.3}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Graphical analysis of the logistic model}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Examples of two cobweb plots: a) solution converges to the stable fixed point at the intersection of the graphs of the function and the identity line; b) solution bounces around the unstable fixed point, producing a cobweb-like plot}}{19}}
+\newlabel{fig:logistic_cobweb}{{1.2}{19}}

@@ -1,0 +1,150 @@
+%Usage: R CMD Sweave template.Rnw
+% Runs model.Rnw to produce template.tex and graphics files in graphics/
+% latex or pdflatex template; bibtex template; latex or pdflatex template
+% (leave out last two steps if there are no bibliographic citations,
+% or automate with rubber -d template)
+% To get .R file: Stangle template
+\documentclass{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{url}               % used in bibliography
+\usepackage[superscript,nomove]{cite} % use if \cite is used and superscripts wanted
+% Remove nomove if you want superscripts after punctuation in citations
+\usepackage{lscape}            % for landscape mode tables
+\textwidth 6.75in              % set dimensions before fancyhdr
+\textheight 9.25in
+\topmargin -.875in
+\oddsidemargin -.125in
+\evensidemargin -.125in
+\usepackage{fancyhdr}          % this and next line are for fancy headers/footers
+\pagestyle{fancy}
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+
+% The next 10 lines are used if you are beautifying R code and output with SweaveListingUtils
+\usepackage{listings}
+\usepackage[nogin]{Sweave}
+% Use nogin to respect height and width as specified below, otherwise all widths will be changed to 80% of the text width
+\SweaveOpts{keep.source=TRUE}
+<<<SweaveListingspreparations, results=tex, echo=FALSE>>=
+require(SweaveListingUtils)
+SweaveListingPreparations()
+spar <- function(mar=c(3.25+bot-.45*multi,3.5+left,.5+top+.25*multi,.5+rt),
+                 lwd = if(multi)1 else 1.75,
+                 mgp = if(multi) c(1.5, .365, 0) else c(2, 0.475, 0),
+                 tcl = if(multi)-0.25 else -0.4,
+                 bot=0, left=0, top=0, rt=0, ps=14,
+                 mfrow=NULL, ...)
+  {
+    multi <- length(mfrow) > 0
+    par(mar=mar, lwd=lwd, mgp=mgp, tcl=tcl, ps=ps, ...)
+    if(multi) par(mfrow=mfrow)
+  }
+options(SweaveHooks=list(fig=spar)) # run spar() before every plot
+options(prompt='  ',continue='  ')  # remove prompt characters at start of lines
+@
+
+% To control colors, use something like the following:
+% r <- function(x) col2rgb(x)/255
+% SweaveListingPreparations(Rcolor=r('green'), Rcomment=r('red'), Rout=r('blue'))
+% For b+w documents use Rcolor=r('black'),Rcomment=r(gray(.3)),Rout=r('black')
+
+\title{An Analysis}
+\author{Jane Doe\\\smaller Department of Biostatistics\\\smaller Vanderbilt University School of Medicine}
+
+\begin{document}
+% To produce both postscript and pdf graphics, remove the eps and pdf
+% parameters in the next line.  Set default plot size to 6x4 in.
+\SweaveOpts{prefix.string=graphics/plot, eps = FALSE, pdf = TRUE}
+\SweaveOpts{width=6, height=4}
+
+%\setkeys{Gin}{width=0.85\textwidth}  will undo width=6, height=4
+\maketitle
+% Use the following 3 lines for long reports needing navigation
+\tableofcontents
+%\listoftables
+%\listoffigures     % not used unless figure environments used
+% results=tex below makes SweaveListingUtils highlight function names in
+% Hmisc and Design
+<<echo=F,results=tex>>=
+options(Hverbose=FALSE) # Silently load Hmisc and Design
+require(Design)
+# The following line is only needed if the prselect function is needed.
+# prselect will be added to the next version of Hmisc.  It allows for
+# selective deletion of R output in the report.
+source('http://biostat.mc.vanderbilt.edu/cgi-bin/viewvc.cgi/*checkout*/Hmisc/trunk/R/Misc.s')
+@
+
+\section{Descriptive Statistics}
+<<results=tex>>=
+getHdata(support)   # Use Hmisc/getHdata to get dataset from VU DataSets wiki
+d <- subset(support, select=c(age,sex,race,edu,income,hospdead,slos,dzgroup,
+                       meanbp,hrt))
+latex(describe(d), file='')
+@
+Race is reduced to three levels (white, black, OTHER) because of low
+frequencies in other levels (minimum relative frequency set to 0.05).
+<<>>=
+d <- upData(d,
+            race = combine.levels(race, minlev = 0.05))
+@
+
+\section{Redundancy Analysis and Variable Interrelationships}
+\bc
+% Note: giving a chunk name to each code chunk that produces a figure
+% makes it easy to know which plots to send to a collaborator, and
+% will not allow numbered orphan plots to be left when code chunks are
+% inserted into the file.  The default in Sweave is for plots to be
+% numbered by the chunks producing them.
+<<vc,fig=T>>=
+v <- varclus(~., data=d)
+plot(v)
+redun(~age+sex+race+edu+income+dzgroup+meanbp+hrt, data=d)
+# Alternative: redun(~., data=subset(d, select=-c(hospdead,slos)))
+@
+\ec
+Note that the clustering of black with white is not interesting; this just means that these are mutually exclusive higher frequency categories, causing them to be negatively correlated.
+\section{Logistic Regression Model}
+Here we fit a tentative binary logistic regression model.  The
+coefficients are not very useful so they are not printed.
+<<z,eval=FALSE,echo=T>>=
+dd <- datadist(d); options(datadist='dd')
+f <- lrm(hospdead ~ rcs(age,4) + sex + race + dzgroup + rcs(meanbp,5),
+         data=d)
+f
+<<echo=F>>=
+z <- capture.output( {
+<<z>>
+   } )
+prselect(z, 'S.E.') # keep only summary stats; or:
+# prselect(z, stop='S.E.', j=-1)  # keep only coefficients
+@
+<<results=tex>>=
+latex(anova(f), where='h', file='')   # can also try where='htbp'
+@
+
+\section{Test Calculations}
+\bc
+<<testp,fig=T>>=
+x <- 3; y <- 2
+if(x <= y) 'this' else 'that'
+if(y >= x) 'that' else 'this'
+x^y
+plot(runif(20),runif(20))
+@
+\ec
+
+\section{Computing Environment}
+These analyses were done using the following versions of R\cite{Rsystem}, the
+operating system, and add-on packages \code{Hmisc}\cite{Hmisc},
+\code{Design}\cite{Design}, and others:
+<<echo=F,results=tex>>=
+s <- toLatex(sessionInfo())
+cat(s[-grep('Locale',s)], sep='\n')
+@
+
+% Note: Rsystem reference is defined inside feh.bib.  It is a slightly
+% edited version of the output of citation().
+\bibliography{/home/harrelfe/bib/feh.bib}
+\bibliographystyle{unsrt}
+% Use \bibliographystyle{abbrv} if want references alphabetized
+\end{document}

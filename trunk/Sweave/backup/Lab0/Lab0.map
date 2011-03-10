@@ -1,0 +1,318 @@
+chunk: SweaveListingsPreparations
+chunkprefix: Lab0-SweaveListingsPreparations
+fig:
+cacheDB:
+time: 2009-09-15 20:09:53
+
+chunk: input_ex
+chunkprefix: Lab0-input_ex
+fig:
+cacheDB: cache/input_ex_5e855d81c2c3259ecae45fec2794a34f
+time: 2009-09-15 20:09:53
+
+chunk: output_ex
+chunkprefix: Lab0-output_ex
+fig:
+cacheDB:
+time: 2009-09-15 20:09:53
+
+chunk: hide_prompt
+chunkprefix: Lab0-hide_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:53
+
+chunk: exam00
+chunkprefix: Lab0-exam00
+fig:
+cacheDB:
+time: 2009-09-15 20:09:53
+
+chunk: unhide_prompt
+chunkprefix: Lab0-unhide_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: startupmessage
+chunkprefix: Lab0-startupmessage
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_0
+chunkprefix: Lab0-firstsession_0
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1
+chunkprefix: Lab0-firstsession_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_1
+chunkprefix: Lab0-firstsession_1_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_2
+chunkprefix: Lab0-firstsession_1_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_3
+chunkprefix: Lab0-firstsession_1_3
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_4
+chunkprefix: Lab0-firstsession_1_4
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_4_1
+chunkprefix: Lab0-firstsession_1_4_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_1_5
+chunkprefix: Lab0-firstsession_1_5
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsession
+chunkprefix: Lab0-firstsession
+fig:
+cacheDB: cache/firstsession_0ed3695f8bc202649879ce47eadb8557
+time: 2009-09-15 20:09:54
+
+chunk: firstsession_plot_2
+chunkprefix: Lab0-firstsession_plot_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: firstsessionplot
+chunkprefix: Lab0-firstsessionplot
+fig: Lab0-firstsessionplot.pdf
+cacheDB:
+time: 2009-09-15 20:09:54
+
+chunk: tabcompletion_1
+chunkprefix: Lab0-tabcompletion_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: tabcompletion_2
+chunkprefix: Lab0-tabcompletion_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: tabcompletion_3
+chunkprefix: Lab0-tabcompletion_3
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: tabcompletion_4
+chunkprefix: Lab0-tabcompletion_4
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: comment_ex
+chunkprefix: Lab0-comment_ex
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: continuation_prompt
+chunkprefix: Lab0-continuation_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: example_prompt
+chunkprefix: Lab0-example_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: ls_example
+chunkprefix: Lab0-ls_example
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: help_ex_1
+chunkprefix: Lab0-help_ex_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: help_ex1_1
+chunkprefix: Lab0-help_ex1_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: help_ex_2
+chunkprefix: Lab0-help_ex_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: help_ex3
+chunkprefix: Lab0-help_ex3
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: ex_ex1
+chunkprefix: Lab0-ex_ex1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: example_2_calculator
+chunkprefix: Lab0-example_2_calculator
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: vector_ex
+chunkprefix: Lab0-vector_ex
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: vector_ex_2
+chunkprefix: Lab0-vector_ex_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: vector_ex_3
+chunkprefix: Lab0-vector_ex_3
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: matrix_ex
+chunkprefix: Lab0-matrix_ex
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: bool_index_0
+chunkprefix: Lab0-bool_index_0
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: bool_index_1
+chunkprefix: Lab0-bool_index_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: if_usage
+chunkprefix: Lab0-if_usage
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: if_example
+chunkprefix: Lab0-if_example
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: if_example_1
+chunkprefix: Lab0-if_example_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: while_syntax
+chunkprefix: Lab0-while_syntax
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: while_ex1
+chunkprefix: Lab0-while_ex1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:58
+
+chunk: for_syntax
+chunkprefix: Lab0-for_syntax
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: for_ex1
+chunkprefix: Lab0-for_ex1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: func_syntax
+chunkprefix: Lab0-func_syntax
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: fun_ex_1
+chunkprefix: Lab0-fun_ex_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: hide_prompt_2
+chunkprefix: Lab0-hide_prompt_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: style_example_1
+chunkprefix: Lab0-style_example_1
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: unhide_prompt_2
+chunkprefix: Lab0-unhide_prompt_2
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: hide_prompt
+chunkprefix: Lab0-hide_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: exam00
+chunkprefix: Lab0-exam00
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+
+chunk: unhide_prompt
+chunkprefix: Lab0-unhide_prompt
+fig:
+cacheDB:
+time: 2009-09-15 20:09:59
+

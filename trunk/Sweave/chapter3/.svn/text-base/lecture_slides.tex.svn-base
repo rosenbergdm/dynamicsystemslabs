@@ -1,0 +1,691 @@
+
+
+\documentclass[9pt]{beamer}
+
+\usepackage[Rbeamer]{Rosenberg}
+
+%\usepackage{Sweave}
+
+
+
+\definecolor{ricolor}{rgb}{0.101, 0.043, 0.432}
+\newcommand{\ri}[1]{\textcolor{blue}{\tt\smaller #1}}
+
+
+\title{Intermediate level plotting in \R }
+\author{David M. Rosenberg}
+\institute[University of Chicago] % (optional, but mostly needed)
+{
+  Committee on Neurobiology\\
+  University of Chicago
+}
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+ 
+\section{Admin issues}
+\subsection{Chalk}
+
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{itemize}[<+->]
+  \item<1-> Previous homework
+  \item<2-> \R source code and packages
+  \item<3-> Text editor tools
+\end{itemize}
+\end{frame}
+
+\section{Plotting issues} % (fold)
+\subsection{Determining plot range} % (fold)
+\label{sub:determining_plot_range}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{onlyenv}<1>
+  \begin{block}<+->{How do I know what to plot?}
+    Plotting ranges can \emph{usually be inferred} from the equation(s) and the nature of the problem.
+  \end{block}
+\end{onlyenv}
+  
+  \begin{itemize}[<+->]
+    \item<2> Is there a unique solution?  Are there a family of solutions?  Are there \emph{any} solutions.
+    \item<3> Do any solutions cross the $x$ axis?
+    \item<4> Is \( \frac{d\ f}{d\ t} = 0 \) or \( \frac{d^2\ f}{d^2 t} = 0 \) anywhere?
+    \item<5> Is the $x,y$ behavior linear scale?  log-scale?
+    \item<6> Are there any discontinuities?  Asymptotes?
+  \end{itemize}
+  
+  \begin{onlyenv}<2>
+    \begin{columns}[c]
+      \column{0.5\textwidth}
+        \begin{minipage}{\textwidth}
+          \centering
+          $-\frac{1}{5} \, t - \frac{1}{5} \, x + 2$
+          \includegraphics[width=0.75\textwidth]{2varfield}
+        \end{minipage}
+      
+      \column{0.5\textwidth}
+        \begin{minipage}{\textwidth}
+          \centering
+          $-\frac{1}{90} \, {(x - 90)} x$
+          \includegraphics[width=0.75\textwidth]{1varfield}
+        \end{minipage}
+      \end{columns}
+    \end{onlyenv}
+  
+    \begin{onlyenv}<3>
+      \bc
+      Found when $ f(x,t) = 0 $ 
+      \ec
+      \begin{columns}[c]
+        \column{0.5\textwidth}
+          \begin{minipage}{\textwidth}
+            \centering
+            \includegraphics[width=0.75\textwidth]{crossplot}
+          \end{minipage}
+
+        \column{0.5\textwidth}
+          \begin{minipage}{\textwidth}
+            \centering
+            \includegraphics[width=0.75\textwidth]{nocrossplot}
+          \end{minipage}
+        \end{columns}
+      \end{onlyenv}
+      
+      \begin{onlyenv}<4>
+        \bc
+        
+        \ec
+        \begin{columns}[c]
+          \column{0.5\textwidth}
+            \begin{minipage}{\textwidth}
+              \centering
+              \includegraphics[width=0.75\textwidth]{der1}
+            \end{minipage}
+
+          \column{0.5\textwidth}
+            \begin{minipage}{\textwidth}
+              \centering
+              \includegraphics[width=0.75\textwidth]{der2}
+            \end{minipage}
+          \end{columns}
+        \end{onlyenv}
+    
+    
+    \begin{onlyenv}<5>
+      \bc
+      Both plots show $3 * (1 - e^x)$.
+      \ec
+      \begin{columns}[c]
+        \column{0.5\textwidth}
+          \begin{minipage}{\textwidth}
+            \centering
+            Linear scale
+            \includegraphics[width=0.75\textwidth]{logscale1}
+          \end{minipage}
+
+        \column{0.5\textwidth}
+          \begin{minipage}{\textwidth}
+            \centering
+            Log-scale ($f(x)$ only)
+            \includegraphics[width=0.75\textwidth]{logscale2}
+          \end{minipage}
+        \end{columns}
+      \end{onlyenv}
+
+      \begin{onlyenv}<6>
+        \bc
+        Both plots show $f(x) = \tan{x}$
+        \ec
+        \begin{columns}[c]
+          \column{0.5\textwidth}
+            \begin{minipage}{\textwidth}
+              \centering
+              \includegraphics[width=0.75\textwidth]{asymptotes}
+            \end{minipage}
+
+          \column{0.5\textwidth}
+            \begin{minipage}{\textwidth}
+              \centering
+              \includegraphics[width=0.75\textwidth]{noasymptotes}
+            \end{minipage}
+          \end{columns}
+        \end{onlyenv}
+\end{frame}
+% subsection determining_plot_range (end)
+
+\subsection{Facilities in R} % (fold)
+\label{sub:determining_plot_range_r}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}[<+->]
+      \item<1> \cc{range()}, \cc{diff()}, \c{min(), max()}
+        Useful commands for computing data limits.
+      \item<2-> My functions for symbolic computation
+        \begin{enumerate}[<2->]
+          \item<3> \textbf{\cc{mDeriv()}} - Calculate symbolic derivatives.
+          \item<4> \textbf{\cc{mInt()}} - Calculate symbolic integrals.
+          \item<5> \textbf{\cc{mSolve()}} - Solve (non-differential) equations and systems either symbolically or with delayed numerical evaluation.
+        \end{enumerate}
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \begin{onlyenv}<1>
+      \begin{minipage}{\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+>x <- rnorm(n=10);
+>## range() gives you the min and max of a vector
+>range(x)
+\end{Sinput}
+\begin{Soutput}
+[1] -1.406504  3.299565
+\end{Soutput}
+\begin{Sinput}
+>c(min(x), max(x))
+\end{Sinput}
+\begin{Soutput}
+[1] -1.406504  3.299565
+\end{Soutput}
+\begin{Sinput}
+>## diff() calculates concsective differences.
+>diff(x)
+\end{Sinput}
+\begin{Soutput}
+[1]  4.7060693 -1.9000007 -2.0538428
+[4]  2.1436909 -0.2108227 -1.1553035
+[7] -0.4187770  0.5860834  2.3422793
+\end{Soutput}
+\begin{Sinput}
+>## often used with sort()
+>diff(sort(x))
+\end{Sinput}
+\begin{Soutput}
+[1] 0.75222567 0.35878774 0.41877703
+[4] 0.16730636 0.98799710 0.12097461
+[7] 0.08984805 1.14345956 0.66669314
+\end{Soutput}
+\end{Schunk}
+      \end{minipage}
+    \end{onlyenv}
+%    
+    \begin{onlyenv}<2>
+      \begin{minipage}{\textwidth}
+        \begin{enumerate}
+          \item Provides functions for solving equations and systems and calculating integrals/derivatives symbolically.
+          \item Now should work under windows.
+          \item Still a work in progress (taylor series, etc.)
+        \end{enumerate}
+
+\begin{Schunk}
+\begin{Sinput}
+>## Should work under windows now.
+>
+>## To run remotely:
+>source('http://rosenbergdm.uchicago.edu/maxima_utilities.R')
+>## to download file
+>download.file('http://rosenbergdm.uchicago.edu/maxima_utilities.R')
+>## Then you should be able to do
+>source('maxima_utilities.R')
+\end{Sinput}
+\end{Schunk}
+      \end{minipage}
+    \end{onlyenv}
+%    
+    \begin{onlyenv}<3>
+      \begin{minipage}{\textwidth}
+        
+\begin{Schunk}
+\begin{Sinput}
+># You can use 'plain' entries
+>mDeriv(x^2 + x + 1)
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+2 * x + 1
+<environment: 0x1009ef830>
+\end{Soutput}
+\begin{Sinput}
+># strings
+>mDeriv('x^2 + x + 1')
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+2 * x + 1
+<environment: 0x10210d978>
+\end{Soutput}
+\begin{Sinput}
+># Even functions!
+>myFun <- function(x) {
+   return(x ^ 2 + x + 1)
+ }
+>mDeriv(myFun)
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+2 * x + 1
+<environment: 0x10278f668>
+\end{Soutput}
+\begin{Sinput}
+>g <- mDeriv(myFun)
+># Results can be used like any other function
+>g(3);
+\end{Sinput}
+\begin{Soutput}
+[1] 7
+\end{Soutput}
+\begin{Sinput}
+># Default is to do df/dx... but any variable can be used
+># It is the second argument
+>mDeriv(x ^ 2 * y + x * y^2 + x * y, 'y');
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL, y = NULL) 
+2 * x * y + x^2 + x
+<environment: 0x1009ea1f8>
+\end{Soutput}
+\begin{Sinput}
+># Numerical evaluation may be included
+>mDeriv(cos(x) + sin(x/2))(x=pi/2)
+\end{Sinput}
+\begin{Soutput}
+[1] -0.6464466
+\end{Soutput}
+\end{Schunk}
+      \end{minipage}
+    \end{onlyenv}
+%    
+%    
+    \begin{onlyenv}<4>
+      \begin{minipage}{\textwidth}
+        
+\begin{Schunk}
+\begin{Sinput}
+># syntax is identical to mDeriv
+>mInt(x^2 + x + 1)
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+x^3/3 + x^2/2 + x
+<environment: 0x10223be98>
+\end{Soutput}
+\begin{Sinput}
+>mInt('x^2 + x + 1')
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+x^3/3 + x^2/2 + x
+<environment: 0x102137780>
+\end{Soutput}
+\begin{Sinput}
+>myFun <- function(x) {
+   return(x ^ 2 + x + 1)
+ }
+>mInt(myFun)
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+x^3/3 + x^2/2 + x
+<environment: 0x100c42b50>
+\end{Soutput}
+\begin{Sinput}
+>g <- mInt(myFun)
+>g(3);
+\end{Sinput}
+\begin{Soutput}
+[1] 16.5
+\end{Soutput}
+\begin{Sinput}
+># Also, both mDeriv and mInt can take a third parameter
+># for degree.
+>mDeriv(x^5, 'x', 1);
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+5 * x^4
+<environment: 0x1027571c0>
+\end{Soutput}
+\begin{Sinput}
+>mDeriv(x^5, 'x', 3);
+\end{Sinput}
+\begin{Soutput}
+function (x = NULL) 
+60 * x^2
+<environment: 0x1020e2b08>
+\end{Soutput}
+\end{Schunk}
+      \end{minipage}
+    \end{onlyenv}
+%    
+%    
+    \begin{onlyenv}<5>
+      \begin{minipage}{\textwidth}
+        
+\begin{Schunk}
+\begin{Sinput}
+># mSolve hasn't yet ben fully updated
+>
+># Solve a standard polynomial
+>mSolve('x^2 = 1');
+\end{Sinput}
+\begin{Soutput}
+[1] -1  1
+\end{Soutput}
+\begin{Sinput}
+># Solve a complex relation 
+>#    with numeric substitution
+>mSolve('x^2 + y = 2', 'y', x=3)
+\end{Sinput}
+\begin{Soutput}
+[1] -7
+\end{Soutput}
+\begin{Sinput}
+>rm('x');
+># Some functions not yet implemented
+>mSolve("x^2 = y", 'y', symbolic = TRUE)
+\end{Sinput}
+\begin{Soutput}
+NULL
+\end{Soutput}
+\end{Schunk}
+      \end{minipage}
+    \end{onlyenv}
+%    
+
+  \end{columns}
+\end{frame}
+
+\section{Advanced plotting methods} % (fold)
+\label{sub:advanced_plotting}
+
+% subsection plotting_caveats (end)
+
+\subsection{Multiple plots per page}
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \begin{description}
+    \item<1-4>[Layered plots] - Plots built up of many layers
+    \item<5-8>[Gridded plots] - Separate plots on a single page
+  \end{description}
+
+  \begin{onlyenv}<1-4>
+  \begin{minipage}{\textwidth}
+    \begin{enumerate}
+      \item<1-4> Begin by determining plot ranges.
+      \item<2-4> Call \cc{plot()} (clears display); use \cc{type='n'} to prevent any drawing to the canvas.
+      \item<3-4> Use \cc{lines()}, \cc{arrows()}, etc. to add plot layers.
+      \item<4> Use \cc{col=\emph{colorname}} to set color.
+    \end{enumerate}
+  \end{minipage}
+  \end{onlyenv}
+  
+  \begin{onlyenv}<5-8>
+    \begin{enumerate}
+      \item<5-8> Determine number of subplots.
+      \item<6-8> Use \cc{layout()} to define numbered subplots.
+      \item<7-8> Call \cc{plot()} as needed.  Each additional call to \cc{plot()} will be drawn on the next subplot.
+      \item<8> \cc{dev.off()} resets the plotting system.
+    \end{enumerate}
+  \end{onlyenv}
+
+  
+  \column{0.5\textwidth}
+  
+  \begin{onlyenv}<1-2>
+    \begin{minipage}{\textwidth}
+
+  \begin{center}
+\begin{Schunk}
+\begin{Sinput}
+>curve(sin(2 * x), 0, 2 * pi);
+\end{Sinput}
+\end{Schunk}
+\medskip
+\includegraphics[width=0.44\textwidth]{layers2}
+
+\end{center}
+\end{minipage}
+\end{onlyenv}
+\begin{onlyenv}<3-4>
+\begin{minipage}{\textwidth}
+\begin{center}
+
+\begin{Schunk}
+\begin{Sinput}
+>curve(sin(2 * x), 0, 2 * pi);
+>x <- 1:100 / (pi / 50)
+>y1 <- sin ( 2 * x)
+>y2 <- - cos( x )
+>lines(x, y1);
+>lines(x, y2);
+\end{Sinput}
+\end{Schunk}
+\medskip
+    \includegraphics[width=0.4\textwidth]{layers3} 
+
+  \end{center}
+  \end{minipage}
+  \end{onlyenv}
+  \begin{onlyenv}<5-6>
+  \begin{minipage}{\textwidth}
+  \begin{center}
+    
+    \end{center}
+    \end{minipage}
+    \end{onlyenv}
+    \begin{onlyenv}<7-8>
+    \begin{minipage}{\textwidth}
+    \begin{center}
+    
+    
+\begin{Schunk}
+\begin{Sinput}
+>lf <- layout(matrix(1:4, nrow=2), c(4:1), c(4,1));
+>layout.show(lf);
+\end{Sinput}
+\end{Schunk}
+\vspace{0.2cm}
+  \includegraphics[width=0.3\textwidth]{grid2}
+
+  \end{center}
+  \end{minipage}
+  \end{onlyenv}
+  \begin{onlyenv}<8>
+  \begin{minipage}{\textwidth}
+  \begin{center}
+\begin{Schunk}
+\begin{Sinput}
+>lf <- layout(matrix(1:2, nrow=2), 1, c(4,1));
+>layout.show(lf);
+>x <- rnorm(1000); y <- rnorm(1000);
+>plot(x, y, pch=19, cex=0.3);
+>hist(x);
+\end{Sinput}
+\end{Schunk}
+\vspace{0.2cm}
+    \includegraphics[width=0.3\textwidth]{grid3}
+  
+  \end{center}
+      \end{minipage}
+    \end{onlyenv}
+%  
+\end{columns}
+    
+\end{frame}
+
+\subsection{Adding text to plots}
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{columns}
+  \column{0.5\textwidth}
+  \begin{itemize}[<+->]
+    \item<1-> \cc{paste()}
+    \begin{onlyenv}<1>
+      \begin{enumerate}
+        \item<1> Joins text strings together
+        \item<1> Default (argument \cc{sep=} is to separate with a space
+        \item<1> Takes as many \cc{character} arguments as needed.
+      \end{enumerate}
+    \end{onlyenv}
+    \item<2-> \cc{'x'} vs. \cc{x}
+    \begin{onlyenv}<2>
+      \begin{enumerate}
+        \item<2> Beware of type mixing
+        \item<2> \cc{'x'} and \cc{x} are \emph{not} the same
+      \end{enumerate}
+    \end{onlyenv}
+    \item<3-> \cc{legend()}, \cc{text()}, \cc{title()}
+    \begin{onlyenv}<3>
+      \begin{enumerate}
+        \item<3> \cc{text()} Is used to add text anywhere on a plot.  It takes 3 required arguments (x and y coordinates and the text itself.)
+        \item<3> \cc{title()} can be used to add titles (\cc{main=}) and axis labels (\cc{xlab=}, \cc{ylab=}) to plots.
+        \item \cc{legend()} can be used to add a ``legend'' to a plot.
+      \end{enumerate}
+    \end{onlyenv}
+    \item<4-> Typesetting mathematical formulae
+  \end{itemize}
+  \column{0.5\textwidth}
+  \begin{onlyenv}<1>
+    \begin{minipage}{\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+>first="David";
+>last="Rosenberg";
+># Default is to separate by spaces.
+>paste(first, last);
+\end{Sinput}
+\begin{Soutput}
+[1] "David Rosenberg"
+\end{Soutput}
+\begin{Sinput}
+># Can be overridden by sep=
+>paste(first, last, sep='');
+\end{Sinput}
+\begin{Soutput}
+[1] "DavidRosenberg"
+\end{Soutput}
+\begin{Sinput}
+># A backslash-n creates a newline
+>cat(paste(first, '\n', last));
+\end{Sinput}
+\begin{Soutput}
+David 
+ Rosenberg
+\end{Soutput}
+\begin{Sinput}
+># Vectors pasted along vector length.
+>greetings <- c('hello', 'good morning', 'howdy');
+>people <- c('Fred', 'Jon', 'Sam');
+>paste(greetings, people);
+\end{Sinput}
+\begin{Soutput}
+[1] "hello Fred"      
+[2] "good morning Jon"
+[3] "howdy Sam"       
+\end{Soutput}
+\end{Schunk}
+    \end{minipage}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2>
+    \begin{minipage}{0.4\textwidth}
+\begin{small}
+\begin{tabular}{l l l}
+  \toprule
+  command & option & description \\
+  \midrule
+  \cc{title} & \cc{main=} & Plot heading \\
+   & \cc{sub=} & subtitle (below the $x$ axis) \\
+   & \cc{xlab=}, \cc{ylab=} & $x,y$ axis labels \\
+  \cc{text} & \cc{x=}, \cc{y=} & position of text \\
+   & \cc{labels=} & text to draw \\
+  \cc{legend} &  \cc{x=}, \cc{y=} & position of legend \\
+   & \cc{legend=} & text of legend \\
+   & \cc{col=} & color \\
+   & \cc{pch=} & symbol to use for legend \\
+   & \cc{title=} & title for legend \\  
+  \bottomrule
+\end{tabular}
+\end{small}
+    \end{minipage}
+  \end{onlyenv}
+
+  \begin{onlyenv}<3>
+    \begin{minipage}{\textwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+>plot(c(0,4), c(0,4), type='n')
+>text(x=1:4, y=rep(1:4, each=4),  as.character(1:16))
+\end{Sinput}
+\end{Schunk}
+
+\bc
+  \includegraphics[width=0.8\textwidth]{textonplot}
+\ec
+    \end{minipage}
+  \end{onlyenv}
+
+  \begin{onlyenv}<4>
+    \begin{block}<4>{Warning}
+      Do not worry about `pretty-printing' mathematical formulae on plots.  Its not worth it.  Just use \cc{paste} as needed to get your idea across.
+    \end{block}
+  \end{onlyenv}
+  \end{columns}
+\end{frame}
+
+\section{Functions revisited}
+
+\subsection{Argument matching}
+
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{columns}
+    \column{0.75\textwidth}
+    
+  \begin{itemize}[<+->]
+    \item Formal
+      \begin{onlyenv}<1>
+        \begin{enumerate}[<1>]
+          \item Arguments are first \emph{matched} by name
+          \item Matching is from left to right
+        \end{enumerate}
+      \end{onlyenv}
+    \item Positional
+      \begin{onlyenv}<2>
+        \begin{enumerate}[<2>]
+          \item Next, unnamed arguments are matched from left to right.
+          \item The special argument \cc{...} matches \emph{everything}
+        \end{enumerate}
+      \end{onlyenv}
+    \item Default
+    \begin{onlyenv}<3>
+      \begin{enumerate}[<3>]
+        \item Unmatched arguments with a \cc{arg=value} appearance have defaults
+        \item If not otherwise matched at this point, arguments are matched with defaults.
+      \end{enumerate}
+    \end{onlyenv}
+  \end{itemize}
+\end{columns}
+\end{frame}
+
+\subsection{Scope}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+  \begin{itemize}[<+->]
+    \item Global scope
+    \item Lexical scope
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
+
+

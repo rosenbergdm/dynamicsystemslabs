@@ -1,0 +1,19 @@
+% SVN Keyword cache
+
+% Global values:
+\def \svnrev {105}
+\def \svndate {2009-10-12 17:39:24 -0500 (Mon, 12 Oct 2009)}
+\def \svnauthor {root}
+\def \svnyear {2009}
+\def \svnmonth {10}
+\def \svnday {12}
+\def \svnhour {17}
+\def \svnminute {39}
+\def \svnsecond {24}
+\def \svntimezonehour {-05}
+\def \svntimezoneminute {00}
+\svn@gdefverb \svnurl {}
+\svn@gdefverb \svnfname {}
+
+
+

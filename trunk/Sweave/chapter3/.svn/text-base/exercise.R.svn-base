@@ -1,0 +1,103 @@
+###################################################
+### chunk number 1: aa_SweaveListingsPreparations
+###################################################
+source('listingPreps.R');
+
+
+###################################################
+### chunk number 2: dirfieldex1text eval=FALSE
+###################################################
+## ## Define f(x,t)
+## f <- exampleFun1 <- function(x, t) {
+##   return(1 / 90 * (90 - x) * x)
+## }
+## 
+## ## Set plotting parameters
+## tRange <- c(0, 10)
+## dt <- 0.5
+## xRange <- c(0, 100)
+## dx <- 5
+## h <- 0.7        ## delta t
+## k <- 0.5        ## aspect correction
+## 
+## tSteps <- diff(range(tRange)) / dt
+## xSteps <- diff(range(xRange)) / dx
+## 
+## ## Initialize the plot.  Note
+## ##   don't copy these labels!'
+## plot(c(0, 9), c(0, 90), type='n',
+##   main=paste("{\\large\\bf $f(x,t)",
+##   " = \\frac{x}{90} (90 - x)$ }"),
+##   xlab='{\\larger $t$}', xaxs='i',
+##   ylab='{\\larger $x$}', fg=gray(0.6),
+##   yaxs='i')
+## 
+## 
+## ## Main loop
+## for (ii in 0:(tSteps-1)) {
+##   for (jj in 0:(xSteps-1)) {
+##     t <- ii * dt
+##     x <- jj * dx
+##     m <- f(x, t);
+##     u <- t + (h * dt)
+##     v <- x + (k * h * dt) * m
+##     arrows(t, x, u, v, code=2,
+##       length=0.05)
+##   }
+## }
+
+
+###################################################
+### chunk number 3: dirfieldex1field
+###################################################
+## Define f(x,t)
+f <- exampleFun1 <- function(x, t) {
+  return(1 / 90 * (90 - x) * x)
+}
+
+## Set plotting parameters
+tRange <- c(0, 10)
+dt <- 0.5
+xRange <- c(0, 100)
+dx <- 5
+h <- 0.7        ## delta t
+k <- 0.5        ## aspect correction
+
+tSteps <- diff(range(tRange)) / dt
+xSteps <- diff(range(xRange)) / dx
+
+## Initialize the plot.  Note
+##   don't copy these labels!'
+plot(c(0, 9), c(0, 90), type='n',
+  main=paste("{\\large\\bf $f(x,t)",
+  " = \\frac{x}{90} (90 - x)$ }"),
+  xlab='{\\larger $t$}', xaxs='i',
+  ylab='{\\larger $x$}', fg=gray(0.6),
+  yaxs='i')
+
+## Main loop
+for (ii in 0:(tSteps-1)) {
+  for (jj in 0:(xSteps-1)) {
+    t <- ii * dt
+    x <- jj * dx
+    m <- f(x, t);
+    u <- t + (h * dt)
+    v <- x + (k * h * dt) * m
+    arrows(t, x, u, v, code=2,
+      length=0.05)
+  }
+}
+
+
+###################################################
+### chunk number 4: dirfieldex2
+###################################################
+curve(exampleFun1, from=-10, to=100, col='blue', main="{\\textbf{Flow lines}}",
+xlab='{\\larger $t$ }', fg=gray(0.6),
+ylab=paste("{\\larger\\bf $f(x,t)", 
+" = \\frac{x}{90} (90 - x)$ }"),bty='n');
+arrows(c(2.5, -2.5, 100), c(1, -1, -1), c(87.5, -12.5, 92.5),c(1, -1, -1), col='red', type=2, lwd=2, length=0.05)
+abline(h=0, col='black', lwd=1.5);
+abline(v=0, col='black', lwd=1.5);
+
+

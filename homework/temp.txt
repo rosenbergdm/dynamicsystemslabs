@@ -1,0 +1,22 @@
+student	lab_section	chapter0	chapter1	chapter2	chapter3	chapter4	chapter5	chapter6	chapter7	midterm	final	total
+#####################################################################################################################################################################################################
+bcolson	Thursday	7.5	7	6	?	X	?	?	X
+**bsheu	Thursday	8	5	?	?	X	15	?	X
+bumans	Friday	7.5	7	9.5	17	X	?	?	X
+cbaer	Thursday	8	?	10.5	?	X	?	?	X
+cbiwer	???	8	8	10	17	X	?	?	X
+eallen	Thursday	8	?	9.5	?	X	?	?	X
+emowers	Friday	7	8	10.5	16.5	X	?	?	X
+jcrnich	Thursday	?	6	11	?	X	17	?	X
+jmckee	DROP	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+jrojas	Thursday	8	8	11	?	X	?	?	X	
+ksirianna	Thursday	7.25	7	10	?	X	?	?	X
+mliszewski	Friday	8	7	9.75	17	X	?	?	X
+mrunfeldt	Thursday	8	7.5	8.5	?	X	?	?	X
+**ngupta	Thursday	?	?	?	?	X	?	?	X	
+pmann	Friday	8	6.5	10	17	X	?	?	?
+**rbecker	Friday	?	?	9.5	17	X	16.66	?	?
+**sitang	Friday	7.75	?	?	17	X	19	?	?
+**vchoi	Thursday	?	?	?	?	X	?	?	?
+#####################################################################################################################################################################################################
+POSSIBLE	-	8	7	10	18	X	17	12	X

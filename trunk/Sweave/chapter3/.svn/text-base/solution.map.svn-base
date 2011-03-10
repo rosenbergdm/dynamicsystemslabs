@@ -1,0 +1,84 @@
+chunk: aa_SweaveListingsPreparations
+chunkprefix: solution-aa_SweaveListingsPreparations
+fig:
+cacheDB:
+time: 2009-11-04 17:51:42
+
+chunk: ex3q1p1sol
+chunkprefix: solution-ex3q1p1sol
+fig:
+cacheDB:
+time: 2009-11-04 17:51:43
+
+chunk: ex3q1p2sol
+chunkprefix: solution-ex3q1p2sol
+fig:
+cacheDB:
+time: 2009-11-04 17:51:43
+
+chunk: ex3q1p2sol11
+chunkprefix: solution-ex3q1p2sol11
+fig: solution-ex3q1p2sol11.pgf
+cacheDB: cache2/ex3q1p2sol11_4255bc40fb89d6ae0ed3a0e0e893a6c0
+time: 2009-11-04 17:51:43
+
+chunk: ex3q1p2sol12
+chunkprefix: solution-ex3q1p2sol12
+fig: solution-ex3q1p2sol12.pgf
+cacheDB: cache2/ex3q1p2sol12_337dd86f110f18b5ebde57fb515b259e
+time: 2009-11-04 17:51:45
+
+chunk: ex3q2p1sol1
+chunkprefix: solution-ex3q2p1sol1
+fig:
+cacheDB: cache2/ex3q2p1sol1_b19306075b7476cb5fdc758f7f372b4a
+time: 2009-11-04 17:51:47
+
+chunk: ex3q2p1sol
+chunkprefix: solution-ex3q2p1sol
+fig: solution-ex3q2p1sol.pgf
+cacheDB: cache2/ex3q2p1sol_b9143a5647ee8e99f94395058696447b
+time: 2009-11-04 17:51:47
+
+chunk: ex3q2p2sol2
+chunkprefix: solution-ex3q2p2sol2
+fig:
+cacheDB: cache2/ex3q2p2sol2_187d75821d552bfdeac86e3d57076d3f
+time: 2009-11-04 17:51:49
+
+chunk: ex3q2p2sol22
+chunkprefix: solution-ex3q2p2sol22
+fig: solution-ex3q2p2sol22.pgf
+cacheDB: cache2/ex3q2p2sol22_3539f2900309dbe65df07c104c5102cb
+time: 2009-11-04 17:51:49
+
+chunk: ex3q3p0sol
+chunkprefix: solution-ex3q3p0sol
+fig:
+cacheDB:
+time: 2009-11-04 17:51:50
+
+chunk: ex3q3p1sol
+chunkprefix: solution-ex3q3p1sol
+fig: solution-ex3q3p1sol.pgf
+cacheDB: cache2/ex3q3p1sol_01a733002daec8af9dbf40448644bbc9
+time: 2009-11-04 17:51:50
+
+chunk: ex3q3p2sol2
+chunkprefix: solution-ex3q3p2sol2
+fig: solution-ex3q3p2sol2.pgf
+cacheDB: cache2/ex3q3p2sol2_7a0c35047a03470bd34dd20f8211c064
+time: 2009-11-04 17:51:52
+
+chunk: dirfieldex2
+chunkprefix: solution-dirfieldex2
+fig: solution-dirfieldex2.pgf
+cacheDB: cache2/dirfieldex2_056aca75517a2d390100330c2744c3ce
+time: 2009-11-04 17:51:54
+
+chunk: ex3q4p2sol
+chunkprefix: solution-ex3q4p2sol
+fig: solution-ex3q4p2sol.pgf
+cacheDB: cache2/ex3q4p2sol_977e8853fa02fa32dd93766afabb6604
+time: 2009-11-04 17:51:55
+

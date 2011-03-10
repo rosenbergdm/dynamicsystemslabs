@@ -1,0 +1,59 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{hyperref,url}               % used in bibliography
+\usepackage[superscript,nomove]{cite}
+\usepackage{geometry}
+\usepackage{svn-multi}
+\usepackage{pgf}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{fontspec}
+%\setmainfont{Hoefler Text}
+%\setromanfont{Latin Modern Roman}
+
+\svnidlong
+{$LastChangedDate: 2009-09-16 10:06:12 -0500 (Wed, 16 Sep 2009) $}
+{$LastChangedRevision: 34 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\emph{R} }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+\usepackage{ae}
+
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\textwidth 6.5in
+\pagestyle{fancy}
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\usepackage{ifpdf}
+
+
+% ----------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+% \usepackage{Sweave}
+%
+%----------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------

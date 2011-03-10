@@ -1,0 +1,3 @@
+PKG_CPPFLAGS=-I/usr/include/graphviz    -DHAVE_STDBOOL_H=1 -DHAVE_BOOL=1 -DGRAPHVIZ_MAJOR=2 -DGRAPHVIZ_MINOR=20 
+PKG_LIBS=-lgvc -lgraph -lcdt  
+

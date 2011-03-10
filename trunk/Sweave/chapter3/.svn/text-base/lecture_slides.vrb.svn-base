@@ -1,0 +1,5 @@
+\frametitle {\insertsection }\framesubtitle {\insertsubsection }
+  \begin{itemize}[<+->]
+    \item Global scope
+    \item Lexical scope
+  \end{itemize}

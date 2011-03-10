@@ -1,0 +1,109 @@
+<<example_3_vars,eval=t,echo=t>>=
+x <- 1:20
+y <-  x + (x/4 - 2)^3 + rnorm(20, sd=3)
+names(y) <- paste("O",x,sep=".")
+ww <- rep(1,20); ww[13] <- 0
+summary(lmxy <- lm(y ~ x + I(x^2)+I(x^3) + I((x-10)^2), weights = ww), cor = TRUE)
+variable.names(lmxy)
+variable.names(lmxy, full= TRUE)# includes the last
+case.names(lmxy)
+case.names(lmxy, full = TRUE)# includes the 0-weight case
+@
+
+\subsubsection{Types} % (fold)
+\label{ssub:types}
+\begin{tabular}{r l l l}
+    type & is a  & description  &  notes \\
+    \hline
+    integer & numeric & whole number  &       \\
+    double  & numeric & floating point number       &       \\
+    numeric &       &   any number    & base type       \\
+    logical &        & TRUE or FALSE   & base type \\
+    complex &       & complex number &       \\
+    raw     &       & unparsed input string  &       \\
+    character &       & letters and other characters &       \\
+    list &       & collection of other objects &       \\
+    expression &       & parsed but unevaluated input &       \\
+    name     &       & character string referencing an object &       \\
+    symbol &       & character string referencing an object  &       \\
+    function (closure) &   & a function  &       \\
+    pairlist &       & deprecated linked-list structure &       \\
+    promise &       & reference to an expression whose evaluation & \\
+    & & is delayed by \emph{lazy evaluation} but which is treated as being a value &       \\
+\end{tabular}
+<<vectors,eval=t,echo=t>>=
+x <- 200
+half.x <- x/2
+threshold <- 95.0
+age <- c(15, 19, 30)
+age[2]      ## [] for accessing element.
+length(age) ## () for calling function.
+y <- c(10, 20, 40)
+y[2]
+length(y)
+x <- 5
+length(x)
+y <- c(20, 49, 16, 60, 100)
+min(y)
+range(y)
+sqrt(y)
+log(y)
+x <- seq(from=1, to=9, by=2)
+y <- seq(from=2, by=7, length=3)
+z <- 4:8
+a <- seq.int(5)                ## fast for integers
+b <- c(3, 9, 2)
+d <- c(a, 10, b)
+e <- rep( c(1,2), 3)
+f <- integer(7)
+@
+
+<<matrices,eval=t,echo=t>>=
+x <- 1:6
+is.matrix(x)
+dim(x) <- c(2,3)
+is.matrix(x)
+x
+dim(x)
+x[2,2]
+x[1,]                           ## extracting values.
+x[1:2, 2:3]
+x[,2]                           ## not column vector!
+x[,2,drop=F]                    ## gotcha!
+m <- matrix( floor(runif(6, max=50)), nrow=3) ##ncol=2
+x <- rbind( c(1,4,9), c(2,6,8), c(3,2,1))
+y <- cbind( c(1,2,3), 5, c(4,5,6))  # recycling again
+x <- matrix(1:4, 2,2)
+i <- diag(2) ## 2x2 identity matrix
+x %*% i      ## should be x
+x  *  i      ## not x!
+@
+% subsubsection vectors (end)
+
+
+
+\section{Plotting} % (fold)
+\label{sec:plotting}
+
+\begin{center}
+<<plotting_1,eval=t,echo=t,fig=t>>=
+x <- seq(from=0, to=2*pi, len=1000)
+y <- cos(2*x)
+## just provide data; sensible labelling
+plot(x,y)
+@
+\end{center}
+
+\begin{center}
+<<plotting_2,eval=t,echo=t,fig=t>>=
+## Expand on previous plot ...
+plot(x,y, main='cos(2x)', type='l', lty=1, bty='n')
+y2 <- sin(2*x)
+lines(x,y2, main='sin(2x)', type='l', lty=2)
+same <- which( abs(y - y2) < 0.01)
+points(x[same], y[same], pch=19, col='red', cex=3)
+legend('bottomright', c("cos(2x)", "sin(2x)"),
+       lty=c(1,2))
+@
+\end{center}
+% section plotting (end)

@@ -1,0 +1,38 @@
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256073684.05323
+function(expr, var='x', degree=1) {
+  mc <- as.list(match.call(expand.dots=TRUE));
+  p1 <- normExpArg('expr', mc);
+
+  maxima_cmd <- sprintf('print(integrate(%s,%s,%d));', p1, var, degree)
+  res <- .performMaximaCall(maxima_cmd);
+  f <- function() {};
+  chars <- strsplit(res, "")[[1]];
+  argnames <- chars[ chars %in% letters ]
+  
+  args <- vector(mode='list', length=length(argnames));
+  names(args) <- argnames;
+  formals(f) <- args;
+  body(f) <- parse(text=res);
+  return(f);
+}
+
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256073684.05323
+function(expr, var='x', degree=1) {
+  mc <- as.list(match.call(expand.dots=TRUE));
+  p1 <- normExpArg('expr', mc);
+
+  maxima_cmd <- sprintf('print(integrate(%s,%s,%d));', p1, var, degree)
+  res <- .performMaximaCall(maxima_cmd);
+  f <- function() {};
+  chars <- strsplit(res, "")[[1]];
+  argnames <- unique(chars[ chars %in% letters ])
+  
+  args <- vector(mode='list', length=length(argnames));
+  names(args) <- argnames;
+  formals(f) <- args;
+  body(f) <- parse(text=res);
+  return(f);
+}
+

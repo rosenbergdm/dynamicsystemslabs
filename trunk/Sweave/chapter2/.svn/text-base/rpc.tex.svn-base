@@ -1,0 +1,2783 @@
+%% R programming course notes --- Stephen Eglen
+%% $Id: rpc.tex,v 1.30 2009/08/31 22:42:53 stephen Exp $
+%% http://www.damtp.cam.ac.uk/user/sje30/
+
+%% Copyright (C)  2009 Stephen Eglen
+%% Permission is granted to copy, distribute and/or modify this document
+%% under the terms of the GNU Free Documentation License, Version 1.3
+%% or any later version published by the Free Software Foundation;
+%% http://www.gnu.org/copyleft/fdl.html
+%% 
+%% If you reuse these notes, please consider citing the
+%% PloS Computational Biology article describing these lecture notes:
+%% http://www.ploscompbiol.org/doi/pcbi.1000482
+
+\documentclass[]{beamer}
+%%\documentclass[notes]{beamer} %% include notes.
+
+%% Lecture notes have been made using the Beamer class for LaTeX.
+%% http://latex-beamer.sourceforge.net/ 
+%%
+%% You will also need textpos.sty, which comes via:
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/textpos/
+%%
+%% There is an extra makefile that will help with creating versions of
+%% the lecture notes either for the lecturer:
+%%
+%% make rpc.pdf
+%% 
+%% or the student (4-up, A4 paper):
+%%
+%% make h.pdf
+
+%% If the 'Outline' slides are empty, try 'pdflatex rpc' after 'make
+%% rpc.pdf' and they should appear.  (Any hints on how to fix this in
+%% the Makefile?)
+
+%% This file also includes some notes, which are included in the
+%% output if you pass the [notes] option to the beamer documentclass,
+%% see above.  (Look for \note{...} in slides below.}
+
+%% Default will be false for this ifhandouts.  Set handouts to true
+%% and then you will get 4up handouts suitable for a4paper.
+\usepackage{ifthen}
+\providecommand*{\handouts}{false}
+
+%% lecs: 
+%%\includeonlylecture{sat}
+
+
+%% Following is useful for getting 4-up output directly to A4 pdf.
+\ifthenelse{\equal{\handouts}{true}}
+{\usepackage{pgfpages}
+  \pgfpagesuselayout{4 on 1}[a4paper,landscape]}
+{}
+
+\usepackage{bm}                 %Bold math allows Greeksymbols in bold.
+
+
+%% Listings package is used for including R commands etc.
+\usepackage{listings}
+
+\lstset{commentstyle=\color{red},keywordstyle=\color{black},
+showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{language=R}}{}
+%%\newenvironment{rc} {\begin{alltt}\small} {\end{alltt}}
+
+\newcommand{\adv}{{\tiny (Advanced)}}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstnewenvironment{rc.out}[1][]{\lstset{language=R,%%
+morecomment=[is]{/*}{*/},%
+moredelim=[is][\itshape]{(-}{-)},frame=single}}{}
+
+%%\usepackage{emaxima}
+\usepackage[overlay]{textpos}   %For using textblock
+
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\newcommand{\ds}{\vspace*{5mm}}
+\newcommand{\xstar}{\ensuremath{x^\ast}}
+
+\newcommand{\vmu}{{\bm{\mu}}\xspace}
+
+%%\usepackage{theapa}
+\usepackage{amsmath,graphicx}
+%%\usepackage{multimedia}         %%Need for movies.
+
+\newcommand{\smallref}[1]{{\small #1}}
+%% \newcommand{\mybox}[1]{\fbox{#1}}x
+
+%% \graphicspath{{../talk_figs/}{/home/anotherpath/}}
+\graphicspath{{figs/}}
+
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{10mm}
+
+\newcommand{\colhalf}{\column{0.5\textwidth}}
+
+\author{Stephen Eglen}
+\date{\today}
+
+
+\mode<presentation>
+{
+  \setbeamersize{text margin left=0.25cm}
+  \setbeamersize{text margin right=0.25cm}
+
+  \beamertemplatedotitem
+
+  \beamertemplateheadempty %% Remove headline (at top of frame)
+  %% \beamertemplatefootempty %% Remove headline (at top of frame)
+  \beamertemplatefootpagenumber %% pagenumber only in footer.
+  %% Remove navigation icons.
+  \beamertemplatenavigationsymbolsempty
+  %% Show start of every lecture. Not available in article.
+  %% \AtBeginLecture{\begin{frame}{\Large Lecture \insertlecture}\end{frame}}
+}
+
+\mode<article>
+{
+  \usepackage{fullpage}
+  \usepackage{pgf}
+  \usepackage{hyperref}
+  %%\setjobnamebeamerversion{aa}
+}
+
+%% This is run at the start of every section.
+\AtBeginSection[] % Do nothing for \section*
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+    %%\frametitle{currentsection}
+  \end{frame}
+}
+
+\title{R Programming}
+
+\author{Stephen Eglen}
+
+\begin{document}
+
+\lstset{language=R}
+%% Switch off title page.
+%% \begin{frame}
+
+\mode<article>
+{
+\date{\today}
+\maketitle
+
+These are the lecture notes for the programming course.
+}
+
+
+\mode<presentation>
+{
+\date{\today}
+\maketitle
+}
+
+
+\lecture{1: Introduction to R}{intro}
+
+\begin{frame}
+  \frametitle{Books and online help}
+  \begin{itemize}
+    
+  \item Introductory Statistics with R  (Springer, Dalgaard).
+  \item A first course in statistical programming with R (CUP, Braun
+    and Murdoch).
+  \item  Computational Genome Analysis: An Introduction (Springer,
+    Deonier, Tavar{\'e} and Waterman).
+  \item S programming  (Springer, Venables and Ripley).
+  \item R programming for Bioinformatics (CRC Press,Gentleman).
+  \item Writing Scientific Software (WSS) (CUP, Oliveira and Stewart).
+  \item \url{www.r-project.org}, \url{www.rseek.org}
+  \item R-help mailing list.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Aims of course} 
+  This course aims to teach R as a
+  general-purpose programming language.  Issues specific to
+  Computational Biology (e.g. Bioconductor packages) are covered in
+  other course modules.
+
+  Topics to be mastered in this course include:
+
+  \begin{itemize}
+  \item Interactive use of R.
+  \item Basic data types: vector, matrix, list, data.frame, factor,
+    character.
+  \item Writing scripts.
+  \item Graphical facilities.
+  \item Writing your own functions.
+  \item File input/output.
+  \item Control-flow statements, looping.
+  \item Vectorization.
+  \item Numerics issues.
+  \item Debugging.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is R?}
+  \begin{itemize}
+  \item Computing environment, similar to matlab.  
+  \item Very popular in many areas of statistics, computational
+    biology.
+  \item ``Programming with data'' (Chambers)
+  \item Approach: command-line for one-liners; write
+    scripts/functions for larger work  (edit/run cycle).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{History}
+  \begin{itemize}
+  \item S language came from Bell Labs (Becker, Chambers and Wilks).
+    Commercial version S-plus (1988).
+  \item R emerged as a combination of S and Scheme:  Ross Ihaka and
+    Robert Gentleman (NZ).
+  \item 1993: first announcement.
+  \item 1995: 0.60 release, now under GPL.
+  \item Oct 2008: release 2.7.2.  Stable, multi-platform.  Major
+    release typically Apr/Oct with fixes between.  (2.8.0 due 2008-10-20).
+  \item R-core now 20 people, key academics in field, including
+    John Chambers.
+  \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Strengths of R}
+  \begin{itemize}
+  \item GPL'd, available on many platforms.
+  \item Excellent development team with Apr/Oct release cycle.
+  \item Source always available to examine/edit.
+  \item Fast for vectorized calculations.
+  \item Foreign-language interface (C/Fortran) when speed crucial, or
+    for interfacing with existing code..
+  \item Good collection of numerical/statistical routines.
+  \item Comprehensive R Archive Network (CRAN) $\sim$ 1550 packages.
+    %% Count packages by doing:
+    %% lynx -dump http://cran.r-project.org/src/contrib/PACKAGES.html > /tmp/oo
+    %% from where you can easily check number of links.
+  \item On-line doc, with examples.
+  \item High-quality graphics (pdf, postscript, quartz, x11, bitmaps).
+    Often used just for plotting \ldots
+  %%\item Passing arguments to functions is nice \ldots
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Graphics example}
+  \centerline{\includegraphics[width=11cm]{gpQuality_jean}}
+  
+  {\small Jean YH Yang; gpQuality \url{http://bioinf.wehi.edu.au/marray/ibc2004/lect1b-quality.pdf}}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Weaknesses of R}
+  \begin{itemize}
+  \item Loops are slow.  Learn how to vectorize solutions or use apply
+    family of functions.
+  \item No compiler yet, and unlikely to happen due to nature of
+    language.
+  \item No decent GUI built-in to R.  Tk is available within base R, and
+    packages for other graphical tooklits (e.g. Gtk2, Qt) are also
+    available.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Brief comparison to matlab}  
+
+  \begin{itemize}
+
+  \item Flexible language, similar to matlab, but definitely not
+    ``everything is a matrix''.  Frames, lists, vectors \ldots
+
+  \item From matlab to R: 
+    \url{http://cran.r-project.org/doc/contrib/R-and-octave.txt}
+
+    \item Comprehensive matlab and R guide:
+      \url{http://www.math.umaine.edu/faculty/hiebeler/comp/matlabR.html}
+  \item Use \lstinline{x[i]} not \lstinline{x(i)} for indexing vectors.
+    
+  \item Making vectors: \lstinline{x <- c(10, 9, 5, 1)}
+  \item Assignment: best to use \lstinline{<-} rather than \lstinline{=}.
+    Stay away from underscore!
+  \end{itemize}
+
+  \lstset{language=R}
+  \begin{lstlisting}
+    x <- 10
+    x = 10   ## equivalent, more readable?
+    lo.val <- 100  ## not lo_val <- 100
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Using R}
+  \begin{itemize}
+  \item Start-up: type `R' at command line.
+  \item Type commands interactively, and get results.
+  \item Type commands into a file; \lstinline{source('myfile.R')}; edit
+    file \ldots
+  \item Mac/Win has a GUI for interactive use, with internal editors.
+  \item All platforms have a command-line interface
+  \item Many external editors have support for R, including Emacs
+    (\url{http://ess.r-project.org}) and Eclipse IDE
+    (\url{http://www.walware.de/goto/statet}).
+  \end{itemize}
+\end{frame}
+
+
+
+%% TODO
+%% \lecture{Basic data types}
+%% Start the lectures with a simple example of how to work with R.
+
+\begin{frame}[fragile]
+  \frametitle{My very first R session}
+
+\note{when viewing x for the first time, explain how the indices of
+  the vector are labelled, [1], [8] etc.}
+\begin{rc}
+x <- rnorm(50, mean=4)
+x
+mean(x)
+range(x)
+hist(x)
+## check help -- how to change title?
+?hist
+hist(x, main="my first plot")
+q()
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Interacting with R}
+
+  \begin{itemize}
+  \item Can use up/down arrow keys to go through command history.
+    Within a command, use left/right arrow keys to edit.
+
+  \item History can be saved over sessions (?history).
+
+  \item Multiple commands can be put onto one line, using ``;'' as
+    separator between lines, e.g. \ri{x<-10; y<-3; a <- 5}.
+
+  \item TAB can do object/file completion.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Objects and Functions}
+  R manipulates objects.  Each object has a name and a type (vector,
+  matrix, list, ...)
+
+  Name of an object: letters (upper/lower case are distinct), digits,
+  period.  Start with a letter.
+
+  Objects set by way of assignement.  Use the assignment operator
+  rather than = wherever possible.  (Does ``i = i+1'' make sense?)
+
+\begin{rc}
+x <- 200
+half.x <- x/2
+threshold <- 95.0
+age <- c(15, 19, 30)
+age[2]      ## [] for accessing element.
+length(age) ## () for calling function.
+\end{rc}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What's up with the assignment and underscore? \adv}
+
+Historically, underscore was used in S for assignment (because an old
+system keyboard had a key equivalent to the ASCII underscore that
+generated a back arrow).  Hence underscore was not
+used within variables.
+
+More recently, \ri{=} is now available as an assignment operator
+(similar to languages like C), but is frowned upon as it can be
+confusing.  
+
+What does \ri{i = i+1} imply mathematically?
+
+Better to stick to \ri{i <-  i + 1} and use equals just within calls to
+functions, e.g. \ri{runif(max=3)}.
+
+Note also that assignments return values:
+
+\begin{rc}
+y <- 1 + (x<-9)
+a <- b <- 0
+\end{rc}
+
+\url{http://developer.r-project.org/equalAssign.html}
+\end{frame}
+
+
+\section{Vectors}
+
+\begin{frame}[fragile]
+  \frametitle{Vectors}
+
+Vectors are a fundamental object for R.  Scalars are treated as vector of length 1.
+
+\begin{rc}
+y <- c(10, 20, 40)
+y[2]
+length(y)
+x <- 5
+length(x)
+\end{rc}
+Some operations work element by element, others on the whole vector,
+compare:
+
+\begin{rc}
+y <- c(20, 49, 16, 60, 100)
+min(y)
+range(y)
+sqrt(y)
+log(y)
+\end{rc}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Generating vectors}
+
+Many short hand methods for regular sequences; c() for irregular.  
+\begin{rc}
+x <- seq(from=1, to=9, by=2)
+y <- seq(from=2, by=7, length=3)
+z <- 4:8
+a <- seq.int(5)                ## fast for integers
+b <- c(3, 9, 2)
+d <- c(a, 10, b)
+e <- rep( c(1,2), 3)
+f <- integer(7)
+\end{rc}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Accessing and setting elements}
+
+
+\begin{rc}
+x <- seq(from=100, by=1, length=20)
+x[3]        ## just element 3.                    
+x[c(12,14)] ## element 12 and 14
+x[1:5]
+bad <- 1:4
+x[-bad]     ## exclude elements
+\end{rc}
+
+Can also provide a logical vector of same length as vector (logical
+values explained later).
+\begin{rc}
+x <- c(5, 2, 9, 4)
+v <- c(T, F, F, T)
+x[v]  
+\end{rc}
+
+\note{accessing by logical was seen as a little confusing}
+
+Elements can be set in several ways
+\begin{rc}
+x <- rep(0,10)
+x[1:3] <- 2
+x[5:6] <- c(-5, NA)
+x[7:10] <- c(1,9)               ## recycling.
+\end{rc}
+\end{frame}
+  
+
+\begin{frame}[fragile]
+  \frametitle{Recycling rule \adv}
+
+Recycling is convenient, but dangerous; when vectors are of different
+lengths, the shorter one is often recycled to make a vector of the
+same length.
+
+\begin{rc}
+a <- c(1,5) + 2
+x <- c(1,2); y <- c(5,3,9,2)
+x + y
+x + c(y,1)  ## odd recycling, warning.
+\end{rc}
+\end{frame}
+
+%% Note also that R does not discriminate usually between a row vector
+%% and a column vector.
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Naming indexes of a vector}
+
+\begin{rc}
+joe <- c(24, 1.70)
+joe
+names(joe)
+names(joe) <- c('age', 'height')
+joe
+joe["height"] == joe[2]
+  \end{rc}
+
+Refering to index by name rather than by position can make code more
+readable, and flexible.  Cannot do things like \ri{x[1:4]} easily
+though, since you need to name all four elements you want. \ds
+
+Note: in second use of names() above, we are actually using 
+the \textit{replacement function} \ri{names<-}, see later.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Common functions for vectors}
+
+  \begin{itemize}
+  \item length()
+  \item rev()
+  \item sum(), cumsum(), prod(), cumprod()
+  \item mean(), sd(), var(), median()
+  \item min(), max(), range(), summary()
+  \item exp(), log(), sin(), cos(), tan() [radians, not degrees]
+  \item round(), ceil(), floor(), signif()
+  \item sort(), order(), rank()
+  \item which(), which.max()
+  \item any(), all()
+  \end{itemize}
+
+Functions can be called within function calls; the following are
+equivalent:
+\begin{rc}
+x <- c(3, 2, 9, 4)
+
+y <- exp(x); z1 <- which(y > 20) ## case 1
+z2 <- which ( exp(x) > 20)       ## case 2
+
+all.equal(z1, z2)
+\end{rc}
+\end{frame}
+
+\section{Calling functions}
+
+
+\begin{frame}[fragile]
+  \frametitle{Default values for function arguments}
+
+A function will error if not all required arguments are provided.
+Some functions have both required and optional arguments.  If the
+optional arguments are not provided, they are either ignored, or they
+take a default value.
+
+\begin{verbatim}
+Usage:
+     round(x, digits = 0)
+\end{verbatim}
+\begin{rc}
+x <- c(2.091, 4.126, 7.925)
+round()       ## required arg is missing
+round(x)
+round(x, digits = 2)
+\end{rc}
+
+Let's see how this works in mode detail.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Argument matching}
+
+R has a flexible method for specifying arguments to function.  We can
+either provide an actual value for a formal argument, or give
+arguments as key=value (or formal=actual).  
+As an example, let's look at help for seq:
+\begin{verbatim}
+seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
+    length.out = NULL, along.with = NULL, ...)
+\end{verbatim}
+Typical calls are as follows:
+\begin{rc}
+seq(1, 3, 0.5)         ## positional matching
+seq(1, 5,length.out=3) ## can skip args (e.g. by) 
+seq(to=5)              ## order not important.
+seq(f=5,t=1)           ## abbrev tags.
+seq(len=5, 1,2)        ## tags removed before positional matching
+\end{rc}
+
+The ... notation will allows for other arguments to be passed, which
+are not used by this function.
+
+(NB: in seq(from=x), from is the \textbf{formal argument} of the
+function, and here x is the actual value.)
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{ \ldots in function calls \adv}
+
+Why do some functions, like sqrt, require only one argument, yet others
+take many arguments?
+
+Functions like \ri{c}, \ri{cbind}, have ... in the arguments:
+\begin{verbatim}
+Usage:
+
+     c(..., recursive=FALSE)
+
+Arguments:
+
+     ...: objects to be concatenated.
+\end{verbatim}
+
+The ... indicate any number of objects may be passed, not just (say)
+one or two.
+
+The result of \ri{c()} is to combine them all into one long vector,
+taking into account if the keyword ``recursive'' is provided [when
+args are first flattened].
+
+The ... can also indicate that other arguments can be provided which
+are not processed directly by this function, but may be useful for
+other functions (e.g. popular when plotting).
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Replacement functions \adv}
+
+\begin{rc}
+x <- 1:5
+x
+length(x)
+length(x) <- 2
+x
+\end{rc}
+
+normally length(x) would return a value, rather than you assigning a
+value to the function!.  These are \textbf{replacement functions}, see
+help page:
+
+\begin{verbatim}
+Usage:
+
+     length(x)
+     length(x) <- value
+\end{verbatim}
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Getting help: key commands}
+  \begin{itemize}
+  \item \ri{help(hist)} to see help file (or \ri{?hist}).
+  \item \ri{args(hist)} to see arguments of a function.
+
+
+  \item \ri{example(boxplot)} run examples in help page.
+
+  \item \ri{help.start()} starts web-browser for help/ on-line docs.
+  \item \ri{help.search("histogram")}
+
+  \item \ri{demo()} to list all demos, e.g. \ri{demo(graphics)}
+  \end{itemize}
+
+\ds
+NB: \ri{?command} works as shorthand for \ri{help("command")} except
+for a small number of commands, e.g. if, while.  Use the longhand for these.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Help pages}
+
+  \begin{itemize}
+  \item What you can expect to find:
+
+    \begin{itemize}
+    \item Description -- one line summary
+    \item Usage -- formal arguments
+    \item Arguments -- interpretation of arguments
+    \item Details -- what the function does
+    \item Value -- return value.
+    \item References -- documentation
+    \item See also -- helps you find related pages
+    \item Examples -- guaranteed to run: \ri{example(hist)}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Numbers and special values}
+
+  \begin{itemize}
+  \item numeric (floating-point, double): 12, 4.92, 1.5e3
+    \ri{is.numeric()} (integers converted to f.p.)
+  \item complex: 3+2i.  \ri{is.complex()}
+  \end{itemize}
+
+  Special values:
+
+  \begin{itemize}
+  \item NA: not available.  (Often used to represent missing data
+    point) \ri{is.na()}
+  \item NaN: not a number.  e.g. 0/0. \ri{is.nan()}
+  \item Inf, -Inf: $\pm \infty$ \ri{is.finite()}
+  \end{itemize}
+  
+  You might also meet:
+  \begin{itemize}
+  \item   NULL: often, list of zero length.  \ri{is.null()}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operator precedence  ?Syntax}
+{\footnotesize
+\begin{rc}
+  3 * 4 + 2 != 3 * (4 + 2)
+  2^3+1  != 2^(3+1)
+  1:5-1 ## caught me out.
+\end{rc}
+Subset taken from ?Syntax, see that page for full list. Highest
+precedence at top.
+\begin{verbatim}
+       '[ [['             indexing
+       '$ @'              component / slot extraction
+       '^'                exponentiation (right to left)
+       '- +'              unary minus and plus
+       ':'                sequence operator
+       '%any%'            special operators
+       '* /'              multiply, divide
+       '+ -'              (binary) add, subtract
+       '< > <= >= == !='  ordering and comparison
+       '!'                negation
+       '&  &&'            and
+       '| ||'             or
+       '<- <<-'           assignment (right to left)
+       '?'                help (unary and binary)
+\end{verbatim}
+
+  Bottom line: use parentheses (parens) to order preference.
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operators}
+
+Most operators will be familiar, but some may not:
+
+\begin{rc}
+x <- 10
+x == 4     ## test for equality
+x != 10    ## not equal?
+7 %/% 2    ## division, ignoring remainder. (3)
+7 %% 2     ## remainder (1)
+
+x <- 9     ## assignment
+x <<- 9    ## assign x to 9 in the global env. (BAD)
+
+## Raising to a power can be done in two ways.
+all.equal( 10.1 ** 2.5, 10.1^2.5)
+\end{rc}
+ 
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{When things go wrong}
+
+
+Syntax errors are those where you've just made a typing mistake.
+
+Logical errors are harder to find! \ds
+
+Common problems:
+\begin{itemize}
+\item missing close bracket leads to  continuation line.
+\begin{rc}
+> x <- (1 + (2 * 3)
++ 
+\end{rc}
+Hit Ctrl C (below) or keep typing!
+
+\item too many parens: 2 + (2*3))
+
+\item wrong/mismatched brackets (see next slide).
+
+\item Likewise, do not mix double quotes and single quotes.
+
+\item \ldots 
+
+\item wrong variable name (not syntax error)
+
+\item When things seem to take too long, try C-c [Ctrl and C,
+  together]
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Types of parentheses}
+
+  \begin{itemize}
+  \item f(3,4) -- call the function f, with arg1=3, arg2=4.
+  \item a + (b*c)  -- use to enforce order over which statements are
+    executed.
+  \item \{ expr1; expr2; \ldots exprn \} -- group a set of expressions
+    into one compound expression.  Value returned is value of last
+    expression; used in looping/conditionals.
+  \item x[4] -- get the 4th element of the vector x.
+  \item l[[3]] -- get the 3rd element of some list l, and return it.
+    (compare with l[3] which returns a list with just the 3rd element
+    inside).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{From interactive to source files}
+
+\begin{itemize}
+\item Typing in commands interactively is good for one-liners, but soon you
+will want to switch to putting your sequence of commands into a script
+file, and then ask R to run (`source') those commands.
+
+\item This leaves to a rapid edit--run--edit cycle.
+
+\item e.g. type these commands into a file:
+
+\lstinputlisting{trig.R}
+
+\item Eval within R using \ri{source('trig.R')}.
+
+\end{itemize}
+\end{frame}
+
+\section{Scripts}
+
+\begin{frame}
+  \frametitle{Scripts}
+
+  \begin{itemize}
+
+  \item Use \ri{source('trig.R', echo=T)} to see  commands and output.
+    Or use \ri{print(x)} to print an object within a script.
+
+  \item Keep your code open in the editor in one window, and keep R
+    running in another window.
+
+  \item Are you in the right directory?  Check that you can see your
+    script file in the same directory as where R is currently.  Check
+    \ri{dir()}, and \ri{setwd}, see later.  \note{could tidy up the
+      use of reading files from directory with here.}
+
+  \item On unix, the initial directory is the directory from where you
+    started R.  On windows, the initial directory might be
+    ``My Documents''.  You may need to change directory (setwd) first.
+
+  \item Use a good editor that helps you spot mistakes (e.g. paren
+    matching).  Examples: Emacs/ESS (disclaimer!), gedit. 
+ 
+  \item Use ``.R'' or ``.r'' as the filename suffix.  Avoid any
+    temptation to put spaces (although R does not mind) in your
+    filenames!
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why are scripts a good thing?}
+
+  \begin{itemize}
+  \item You don't have to remember what commands you ran, they are
+    saved in the file.  
+
+  \item This corresponds to the ``source is real'' philosophy of using
+    S/R.
+
+  \item You can easily give your work to others, by passing them the
+    file.
+
+  \item You can eventually run your scripts in BATCH,
+    i.e. non-interactively.  Good for long jobs which you can leave
+    overnight.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Running scripts in batch \adv}
+  \begin{itemize}
+
+  \item At the command line, type ``R CMD BATCH trig.R''.  R will
+    start up, process your commands and then quit.
+    
+  \item Output is stored in the file trig.Rout
+
+  \item If there were no errors, the last line of the output file
+    shows the time taken to run the script.
+
+  \item Any output is not shown on the screen but sent to a PDF
+     called \url{Rplots.pdf}.
+
+  \item This is a GREAT way of testing your scripts, since R starts
+    with an empty workspace, you will see if you have all the steps
+    needed.
+    
+  \item Aim to always leave your scripts in a working state at the end
+    of a session, so that a few days later you don't have to remember
+    why it wasn't working!
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Commenting your work}
+
+  \begin{itemize}
+  \item Do not be shy when putting comments into your code.
+
+  \item Meaningful variable names help, but do document.  At a bare minimum,
+    each file should state at the top what the purpose of the file.
+    Important variables and functions should be clearly documented.
+
+  \item You may think it obvious how your code works, but try looking
+    at it a week or a month later and then see if you clearly
+    understand it.  If in doubt, document it.
+
+    \item Describe {\it what} your code is doing, not {\it how} it is doing it
+      (WSS, p79).  Compare the following two:
+\begin{rc}
+  s <- s + 1   ## prepare to process next subject
+  j <- j + 1   ## increment j by 1.
+\end{rc}
+\item Comments can be put before commands, if you temporarily do not
+  want to run that command; remove the comments when you want to run
+  the command again, or delete the line.
+\begin{rc}
+  ## x <- c(x, c(1,2,3))
+\end{rc}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Line wrapping}
+  
+  %% TODO: is there a continuation character for long strings? \?
+  \begin{itemize}
+
+  \item Line-wrapping.  Do not write beyond around column 72, for
+    readability.  You can break long expressions at suitable points.
+
+  \item End of line shold not look like end of an expression.  Compare:
+
+    \begin{rc}
+## 1: ok - all fits onto one line, just.
+x <- sqrt(  c(100, 200, 300, 400, 500) ) + 10
+
+## 2: not okay -- first line is seen as complete.
+x <- sqrt(  c(100, 200, 300, 400, 500) )      
++ 10      
+
+## 3: solved, by moving the operator (+) up.
+x <- sqrt(  c(100, 200, 300, 400, 500) ) +
+10
+
+## 4: as 3, but indentation makes it clearer.
+x <- sqrt(  c(100, 200, 300, 400, 500) ) +
+     10
+   \end{rc}
+  \end{itemize}
+\end{frame}
+
+
+\section{Matrices}
+
+
+\begin{frame}[fragile]
+  \frametitle{Matrices}
+
+A matrix is just a vector with some additional markup to reformat it.
+Matrix stored in column-major order (like fortran, unlike C).
+%% We can then extract rows and cols.
+
+\begin{rc}
+x <- 1:6
+is.matrix(x)
+dim(x) <- c(2,3)
+is.matrix(x)
+x
+dim(x)
+x[2,2]
+x[1,]                           ## extracting values.
+x[1:2, 2:3]
+x[,2]                           ## not column vector!
+x[,2,drop=F]                    ## gotcha!
+\end{rc}
+
+\begin{verbatim}
+> x
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Typical matrix construction methods}
+
+  \begin{itemize}
+  \item matrix()
+  \item cbind()
+  \item rbind()
+  \end{itemize}
+
+\begin{rc}
+m <- matrix( floor(runif(6, max=50)), nrow=3) ##ncol=2
+x <- rbind( c(1,4,9), c(2,6,8), c(3,2,1))
+y <- cbind( c(1,2,3), 5, c(4,5,6))  # recycling again
+\end{rc}
+Note that matrix indices can also be named:
+\begin{rc}
+dimnames(m) <- list(student=c("ann", "bob", "joe"), 
+                    exam=c("math", "french"))
+m["bob",]  ## get bob's scores
+\end{rc}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Common matrix operations}
+
+   \begin{itemize}
+   \item diagonal: \ri{diag(x)  ## watch if x matrix or scalar.}
+   \item matrix multiplication: \ri{\%*\%} vs \ri{*} (element-wise)
+\begin{rc}
+x <- matrix(1:4, 2,2)
+i <- diag(2) ## 2x2 identity matrix
+x %*% i      ## should be x
+x  *  i      ## not x!
+\end{rc}
+\item transpose: \ri{t(x)}
+\item dim, nrow, ncol
+\item inverse: \ri{solve(x)}, \ri{x \%*\%  solve(x) == diag(nrow(x))}
+
+\item Arrays as extension of matrices to multiple dimensions. 
+  \ri{x <- array(1:12, c(2,2,3))}.
+
+\end{itemize}
+
+\end{frame}
+
+\section{Boolean logic}
+
+\begin{frame}[fragile]
+  \frametitle{Boolean values \hfill ?logical}
+
+  Logical values TRUE/FALSE  (abbrev to T/F).\ds
+
+  TRUE/FALSE equivalent to 1/0; as.integer(TRUE) is 1.
+
+\begin{rc}
+  d <- c(3.2, 1.0, 4.0, 9.2, 2.3, 8.1, 6.3)
+  d > 5.0
+  d[d> 5.0]
+  which(d>5.0)
+  d[ which(d>5.0)]
+  medium.sized <- (d > 3.0) & (d< 5.0)
+  d[medium.sized]
+  d[-medium.sized]
+  ifelse(d > 3.0, 1.0, 0.0)     ## Very handy!
+\end{rc}
+
+Key operators for handling boolean values:
+\begin{rc}
+!TRUE                  ## negation: swap T -- F.
+TRUE  & FALSE          ## and: both must be true.
+FALSE | TRUE           ## or: one must be true.
+xor(TRUE, TRUE)        ## xor: only one is true.
+\end{rc}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Boolean logic: issues}
+
+  \ri{a & b} (same for \ri{a | b}) is an elementwise operation, with a
+  result the same length as the longer of a, b (recycling is used if
+  one vector is shorter). \ds
+
+  \ri{a && b} examines only the first element of a and b,
+  returning one logical value.  \textbf{Lazy evaluation} is used: we
+  calculate only what's needed to determine result.
+
+\begin{rc}
+TRUE || some.long.computation()
+TRUE && stop("no")
+\end{rc}
+
+
+
+\textbf{Comparing numbers:} When testing numbers for equality, can use
+x == y when x,y are integers, otherwise use all.equal(x,y).  See later
+on numerics.
+
+Avoid using F where possible: \ri{F <- 3; F == FALSE}
+\end{frame}
+
+\section{Lists}
+
+
+\begin{frame}[fragile]
+  \frametitle{What is a list?}
+
+A list is used to collect a group of objects of different sizes and
+types.  Very flexible.  Often returned as the result of a complex
+function (e.g. model fit) to return all relevant information in one
+object.
+
+
+\begin{rc}
+  l <- list(id='joe', height=1.70, dob=c(1960, 12, 1))
+  l
+  length(l)
+  names(l)                      ##show components
+  l\$height                      ##access an element.
+  unlist(l) ## compact way of viewing it.
+\end{rc}
+
+List elements can either be accessed by name (e.g. \ri{l\$height}) or
+by position (\ri{l[[2]]}).
+
+When using numbers to index list, compare l[2] (a list with one
+element) with l[[2]].  You can therefore do l[2:3] but not l[[2:3]].
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modifying lists \adv}
+
+We can append new items to list either by making a new list from the
+old one (e.g. 1) , or directly by assigning new element (e.g. 2):
+\begin{rc}
+l1 <- list(who="fred")
+l1 <- c(l1, height=1.8)        ## e.g. 1
+l1[["dob"]] <- c(1965, 10, 17) ## e.g. 2
+\end{rc}
+
+Deleting list items:
+\begin{rc}
+l1["height"] <- NULL
+\end{rc}
+
+Finally, for completeness, here is a way to predefine a list of given
+length and gradually fill it in:
+\begin{rc}
+empty <- vector("list", 3) ## Prealloc to given length.
+names(empty) <- c("who", "height", "dob")
+empty[["height"]] <- 1.8
+\end{rc}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Data frames}
+  
+  Data frame is a special kind of list; all elements are vectors of same
+  length.  This is like a matrix, but each column can be of a
+  different type.
+
+  Useful for reading in tabular data from a file (see read.csv).
+  
+\begin{rc}
+names <- c("joe", "fred", "harry")
+a <- c(24, 19, 30)
+ht <- c(1.7, 1.8, 1.75)
+s <- c(TRUE, FALSE, TRUE)
+d <- data.frame(name=names, age=a, 
+                height=ht, student=s)
+d$age
+names(d)
+d[2,] ## access 2nd row.
+\end{rc}
+Compare how a data frame (d) is printed, compared to printing \ri{as.list(d)}
+\end{frame}
+
+\section{Factors}
+
+\begin{frame}[fragile]
+  \frametitle{Factors \adv}
+
+  (Mostly seen when reading in data from e.g. CSV file)
+
+  Factors internally code categorical variables with a number.  e.g.
+  1=Sunday, 2=Monday, \ldots 7=Saturday.  For large vectors, this is
+  more efficient storage, especially when character strings repeat.
+  Can also make code  more readable.
+
+\begin{rc}
+scores1 <- c('good', 'poor', 'bad', 'poor',
+             'bad', 'bad', 'good')
+scores <- factor(scores1)
+scores
+levels(scores)
+as.integer(scores)
+which(scores1 == 'bad')
+
+## Can do further comparisons with an ordered factor
+## Levels are now ordered, as shown by "<" in levels.
+s2 <- factor(scores1, levels=c('poor', 'bad', 
+             'good'), ordered=T)
+s2[1] > s2[2]
+\end{rc}
+\end{frame}
+
+\section{Character arrays}
+
+\begin{frame}[fragile]
+  \frametitle{Strings / character arrays}
+  Character arrays are vectors of strings.
+  \begin{itemize}
+  \item Use  single (') or double (") quotes to mark strings,
+    but don't mix:
+\begin{rc}
+x <- 'good'
+z <- "no'
+z <- "it's working"
+\end{rc}
+\item Within a script, easy way to generate output:\\
+\begin{rc}
+cat("Now computing the steady-state\n")
+x <- 134
+cat("sqrt of", x, "is", sqrt(x), "\n")
+cat("sqrt of", x, "is", sqrt(x), "\n", sep='__')
+\end{rc}
+\item blackslash characters allow you to generate control
+    characters, importantly: newline: $\backslash n$, tab: $\backslash
+    t$.  e.g.  \ri{cat("5\\t9\\n")}
+  \item \ri{paste()} returns string, e.g. for assignment.
+\end{itemize}
+\begin{rc}
+x <- 1:5; exp.dir <- '/home/stephen/res'
+file <- paste(exp.dir, '/expt_res', x, '.dat', sep='')
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Strings}
+  \begin{itemize}
+  \item Just as R stores vectors of numbers, it also stores
+    vectors of strings.  
+  \item Pattern matching facilities are available, based on Unix terms
+    (grep, regular expressions).  These are worth learning:
+  \end{itemize}
+
+\begin{rc}
+s <- c('apple', 'bee', 'cars', 'danish', 'egg')
+nchar(s)    
+substr(s, 2,3)
+grep('e', s)
+grep('^e', s)   ## regexps...
+ sub('e', '_', s)
+gsub('e', '_', s)  ## global sub, watch "bee"
+
+toupper(s)
+sprintf('name %s len %d', s, nchar(s)) ## C users!
+\end{rc}
+\end{frame}
+
+\section{Objects in your environment}
+
+\begin{frame}[fragile]
+  \frametitle{Inspecting variables and the environment}
+
+  \ri{is.xyz}, \ri{as.xyz} family of functions are useful for checking
+  mode of objects and converting between them.  (e.g. \ri{is.vector}).
+
+\begin{rc}
+objects()            ## what vars do I have?
+ls()                 ## shorthand for objects.
+rm(list = ls()) ## clear up the working environment
+x <- 9; y<- c(2,4,5); m <- matrix(2:5, 2,2)
+ls()
+rm(x)           ## remove a var
+mode(y)
+object.size(y)
+is.vector(y)
+is.matrix(y)
+as.vector(m) ## convert from one family to another.
+\end{rc}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{What is an object?}
+
+  \begin{itemize}
+  \item An object is typically either a variable or a function.
+
+  \item You can use the same name for a function and a variable, and R
+    uses context to decide which you mean:
+
+    \begin{rc}
+> sum <- 3 + 4 + 5
+> total <- sum(1:4)
+> total
+[1] 10
+> sum
+[1] 12
+> sum(sum)  ## can get confusing!
+[1] 12
+    \end{rc}
+  \end{itemize}
+  
+\end{frame}
+
+\section{Basic plotting}
+
+\begin{frame}
+  \frametitle{Basic plotting}
+  \begin{itemize}
+  \item Basic x,y plots
+  \item Multiple plots in one figure
+  \item Saving your plots
+  \end{itemize}
+
+This section will just introduce the mechanics of making basic plots,
+rather than worry about interpreting them.  
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Basic plotting}
+\begin{rc}
+x <- seq(from=0, to=2*pi, len=1000)
+y <- cos(2*x)
+## just provide data; sensible labelling
+plot(x,y)
+
+## Expand on previous plot ...
+plot(x,y, main='cos(2x)', type='l', lty=1, bty='n')
+y2 <- sin(2*x)
+lines(x,y2, main='sin(2x)', type='l', lty=2)
+same <- which( abs(y - y2) < 0.01)
+points(x[same], y[same], pch=19, col='red', cex=3)
+legend('bottomright', c("cos(2x)", "sin(2x)"),
+       lty=c(1,2))
+\end{rc}
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Options controlling the plot}
+
+   par() outputs the (long) list of options that control plotting
+   behaviour.  Read ?par for all the details!
+
+   Common options to explore:
+   \begin{itemize}
+   \item mfrow, mfcol: multiple plots in figure
+   \item mar, oma: margins around plot and figure.
+
+   \item ask: whether to hit RETURN between pages of figures.
+     
+   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Mutltiple data sources on one plot}
+
+When you wish to have multiple data sources on one plot (e.g. two
+time-series plots), the approach is to draw  the first using plot and
+then draw subsequent features using lines or points.  
+
+Axes are not rescaled, so draw the bigger plot first.
+
+\begin{rc}
+x <- 1:30
+y <- sqrt(x); z <- log(x)
+plot(x,y); lines(x,z, col='red')
+plot(x,z); lines(x,y, col='red') ## some data missing
+\end{rc}
+
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Multiple plots in one figure}
+
+mfrow and mfcol are useful parameters within par(), but margins often
+need to be changed to maximise space.
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    {\scriptsize
+      \lstinputlisting{mfrow.R}
+    }
+    \column{0.5\textwidth}
+    \fbox{\includegraphics[width=6cm]{mfrow_eg}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Saving your plots}
+R can save plots in many formats, including PDF, postscript, PNG,
+JPEG.  Best to use vector formats (PDF, postscript) for graphs and
+bitmap formats (png, jpeg) for images.
+
+R has output devices, only one of which is active, \ri{dev.cur()}.
+\begin{rc}
+dev.list()
+pdf(file='hist.pdf', width=7, height=7) ## inch
+dev.list()
+hist( rnorm(9999) )
+dev.off()                     ## close device
+
+png(file='hist.png', w=600, h=600) ## pixels
+hist( rnorm(9999) )
+dev.off()
+\end{rc}
+Zoom in on text of PNG to see limitations of this format.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Next steps with plotting \adv}
+
+R has a vast range of functions for plotting particular data types.
+You may read about different packages for plotting:
+
+\begin{itemize}
+\item base graphics (or ``traditional'')
+\item lattice/grid  (lattice is built upon grid)
+\item ggplot (quite new)\\ \url{http://had.co.nz/ggplot2/}
+\end{itemize}
+
+Here are some starting points to explore:
+
+\begin{itemize}
+\item \ri{demo(graphics)} to see diversity of plots.
+
+\item low-level functions: symbols(), rect(), segments(), abline().
+
+\item R graphics gallery\\
+  \url{http://addictedtor.free.fr/graphiques}
+\end{itemize}
+\end{frame}
+
+\section{Reading/writing data to file system}
+
+
+\begin{frame}
+  \frametitle{Reading/writing data to file system}
+
+  \begin{itemize}
+  \item What's my current directory?  \ri{dir, getwd, setwd}
+  \item scan, readLines
+  \item read.csv, read.table, write.table
+  \item RData files
+  \item Further I/O functions
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Interacting with the file system}
+
+  \begin{itemize}
+
+  \item where am I currently?  \ri{getwd()}
+
+  \item change me to a new directory: \ri{setwd("/tmp")}\\
+    (GUIs have chooser for interactively changing directory.)
+
+  \item What files are in my [current] directory?
+    \begin{rc}
+      dir()
+      dir("/tmp")
+      dir(pattern="\\.R$")  ## regexps, see later.
+    \end{rc}
+
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Scan, write, readLines}
+For basic reading/writing of data, use scan/write.  Filenames are
+specified relative to current directory.  Can even give URL as a
+file.  Files often have a header which can be skipped over.
+
+%% TODO: need shorter URL below.
+\begin{rc}
+x <- scan('ages.dat', skip=1)
+summary(x)
+
+## No line break in next line...
+h <- scan('http://www.damtp.cam.ac.uk/
+user/eglen/teaching/r/heights.dat}')
+
+rand.vals <- round( runif(100, min=5, max=10), 2)
+write(rand.vals, '/tmp/randvals.dat')
+s <- scan('/tmp/randvals.dat')
+all.equal(s, rand.vals)
+
+s1 <- readLines('ages.dat')  ## treats as strings
+\end{rc}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{read.table / read.csv / write.csv}
+If data are tabular, read.table or read.csv is often useful.  (Useful
+for importing spreadsheets; just save as a comma separated value file,
+CSV.)
+
+\note{Demonstrate role of header=T, and compare with header=F.  File
+  should be made available}
+
+\begin{rc}
+x <- read.table('../data/players.dat',
+                sep='\t',header=T)
+names(x)
+x
+x[2,]
+x$age
+is.data.frame(x)
+write.csv(x, '/tmp/players.csv', row.names=F)
+
+## sort by goals scored.
+x[order(-x$goals),]
+\end{rc}
+
+See ?read.table.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rdata files}
+
+Text files are useful for portably storing data, so that they
+can be read across applications.  R has its own format for
+\textit{efficiently} storing objects.  Files much smaller than text
+files.  However, this format is not universally known.
+\begin{rc}
+n <- 99999; x <- rnorm(n)
+txt.file <- '/tmp/my_rnorm.txt'
+rda.file <- '/tmp/my_rnorm.rda'
+write(x, n, file=txt.file)
+save(x, n,  file=rda.file)
+
+## Compare sizes of files with the object.
+object.size(x)
+file.info(txt.file)$size
+file.info(rda.file)$size   ## compression?
+
+rm(x,n)
+load(rda.file) ## reload data.
+\end{rc}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Saving your workspace with .RData files}
+
+When you quit R, you are asked:
+\begin{verbatim}
+> q()
+Save workspace image? [y/n/c]: 
+\end{verbatim}
+If you answer y, all objects in your global environment are saved for
+future use, using \ri{save.image}.  From ?save:
+\begin{verbatim}
+'save.image()' is just a short-cut for "save my current
+workspace", i.e., 'save(list = ls(all=TRUE), file = ".RData")'. 
+It is also what happens with 'q("yes")'.
+\end{verbatim}
+
+If an \url{.RData} file is present in your current directory when you
+start R, it is silently loaded.  This may be useful, but I think it
+can be dangerous, as you may not realise what values have been
+silently loaded.
+
+Here, ``all objects'' means all your variables and functions.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Further I/O functions \adv}
+
+R has many facilities for I/O.  See for example the following help
+topics.
+
+\begin{itemize}
+\item ?connections --- interface to files, pipes, sockets, compressed
+  files \ldots
+
+\item ?sink --- divert R output to a connectin
+
+\item ?dget / ?dput --- read/write ASCII representation of an R
+  object.
+
+\end{itemize}
+\end{frame}
+\section{Writing functions}
+
+\begin{frame}
+  \frametitle{Writing functions: overview}
+  \begin{itemize}
+  \item Why bother?
+  \item How to write (local args, return value; cannot change value)
+  \item Example: computing std. deviation
+  \item Local variables within functions
+  \item Recursion.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Functions}
+
+  \begin{itemize}
+  \item Functions promote code reuse.
+  \item Black-box approach; given inputs, what output should I expect?
+    This requires good documentation of what your function does.  Can
+    it be described without having to look at the code?
+
+  \item Finding the right level of definition for a function is hard,
+    and how to modularise comes with experience.  Typically rewrite
+    many times before getting final solution
+  \item How to define  a new function:
+\begin{rc}
+my.fun <- function(arg1, arg2, ...) {
+  ## Doc string here.
+  x <- arg1 * 2
+  y <- sqrt(arg2) + 5
+  z <- x * y
+  ## last value is the return value of the function.  
+  ## Use a list to return several items.
+  z
+}
+\end{rc}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Example of writing a new function}
+
+
+  Compute the standard deviation of a vector of numbers:
+  
+\[ std.dev = \sqrt{ \frac{ \sum_{i=1}^n (x_i - \bar{x})^2}{n-1}} 
+\quad \text{where} \quad \bar{x} = \frac{\sum_{i=1}^n x_i}{n} \]
+
+\begin{rc}
+std.dev <- function(x) {
+  ## Return std dev of X.
+  n <- length(x)
+  xbar <- sum(x)/n
+  diff <- x - xbar
+  sum.sq <- sum( diff^2)
+  var <- sum.sq / (n-1)
+
+  ## last value calculated is return value.
+  sqrt(var)
+}
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Terminology of variables within functions}
+  \begin{itemize}
+  \item In std.dev, x is the name of a \textbf{formal argument}.  In
+    the following, y is called the \textbf{actual argument} (doesn't
+    have to be named x -- can be named however you wish).
+
+\begin{rc}
+n <- 5
+y <- c(9, 2, 7, 10)
+std.dev(y)      
+print(n) ## should still be 5, not 4.
+\end{rc}
+
+\item \textbf{Local variables} within function are not available
+  outside of function.
+
+\item Any change to formal args within a function does not change value of actual
+  argument outside the function:
+\begin{rc}
+sum.sq <- function(x) {
+  x <- x^2   ## change internally
+  sum(x)
+}
+y <- c(4, 5, 6)
+sum.sq(y)
+y 
+\end{rc}
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Handling unbound variables}
+
+  Variables created by assignment within a function are known as local
+  variables (e.g. y below).  If a variable is not a local variable, or
+  formal argument, then we call it an \textbf{unbound variable}.  An
+  unbound variable may then be found in the enclosing environment
+  (typically the global workspace), or if it cannot be found, an error
+  is generated.
+
+\begin{rc}
+fn1 <- function(x) {
+  y <- x^2
+  res <- sum( (y - thresh)^2 )
+  res
+}
+
+dat <- 1:5
+fn1(dat)     ## case 1
+
+thresh <- 10
+fn1(dat)     ## case 2
+\end{rc}
+\textbf{Advanced}: use \ri{codetools::checkUsage()} to find unbound
+vars; \ri{codetools::findGlobals()} for globals.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Handling unbound variables (2)}
+
+  In this case, better to define thresh as an argument of the
+  function, and provide a default value:
+
+\begin{rc}
+fn1 <- function(x, thresh=10) {
+  y <- x^2
+  res <- sum( (y - thresh)^2 )
+  res
+}
+fn1(dat)     ## case 3
+\end{rc}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Writing a replacement function \adv}
+
+Convention for a replacement function is that the name should end with
+\ri{<-}.  The last argument of the replacement function must be called
+VALUE and is the RHS of the assignment.
+%% Notes from VR2000, p 48
+
+\begin{rc}
+"threshold<-" <- function(x, value) {
+  ## X is the object to update
+  ##  VALUE is the value on the RHS.
+  y <- ifelse(x>value, 1, 0)
+  y                             ## return new value.
+}
+x <- c(0.3, 0.1, 0.6, 0.7, 0.9, 0.2)
+threshold(x) <- 0.4
+x
+\end{rc}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tips for writing functions}
+  \begin{itemize}
+
+    \item Can you think of a way to break down the problem so that a
+      team can work on the problem, with each person assigned to a
+      independent piece?  ``Divide + conquer''.
+      
+    \item Each function should be easy to test, then you can ``freeze''
+      it.  Write test cases, which can be automatically checked.
+\begin{rc}
+ all.equal(my.fun(100,200), 300)
+\end{rc}
+
+    \item Rule of thumb: each function should be no more than a page or
+      two of code.
+
+    \item For large projects, avoid mixing computation and plotting in
+      the same function -- separate the two jobs; this makes it easier
+      to run in batch.
+\begin{rc}
+res <- some.computation(par1, par2, par3)
+plot.results(res)
+\end{rc}
+
+  \end{itemize}
+\end{frame}
+
+\section{Conditionals and looping}
+
+
+\begin{frame}
+  \frametitle{Control-flow constructs}
+
+  \begin{itemize}
+  \item if 
+  \item switch
+  \item for
+  \item while
+
+  \item Vectorization
+  \item simple applications -- numerics
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{if / if ... else ...}
+
+\begin{rc}
+x <- 8; 
+
+if (x > 10) {
+  ## condition was true
+  cat("x is bigger than 10\n")
+} else {
+  cat("x is 10 or less\n")
+}
+\end{rc}
+
+Notes:
+
+``else {...}'' can be omitted if you do not need it.
+
+\ri{if} returns a value, which can be assigned, e.g.  
+\ri{ y <- if (x <10) 40 else 20}.  A better solution in this case
+however is the vectorized form \ri{y <- ifelse(x<10, 40, 20)}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Braces in conditional constructs}
+
+{\small
+Curly braces not needed if there is only one expression in the if
+clause:
+
+\begin{columns}[T]
+\colhalf
+\begin{rc}
+if ( x > 10 ) {
+  y <- 1
+}
+\end{rc}
+\colhalf
+\begin{rc}
+if ( x > 10 )
+  y <- 1
+\end{rc}
+\end{columns}
+But braces are needed in multiline if/else statement:
+\begin{columns}[T]
+\colhalf
+\begin{rc}
+if ( x > 10 ) {
+  y <- 1
+} else {
+  y <- 0  ## OK
+}
+\end{rc}
+\colhalf
+\begin{rc}
+if ( x > 10 )
+  y <- 1
+else
+  y <- 0  ## NOT OK
+\end{rc}
+\end{columns}
+\begin{verbatim}
+From ?Control:  Note that it is a common mistake to forget to put 
+braces ('{ .. }') around your statements, e.g., after 'if(..)' or
+'for(....)'. In particular, you should not have a newline between
+'}' and 'else' to avoid a syntax error in entering a 'if ... else'
+construct at the keyboard or via 'source'. For that reason, one
+(somewhat extreme) attitude of defensive programming is to always
+use braces, e.g., for 'if' clauses.
+\end{verbatim}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{switch \adv}
+
+  Nested if ... else commands can get a bit messy.  Like other
+  languages, R has a switch construct.  From ?switch:
+
+\begin{verbatim}
+     centre <- function(x, type) {
+       switch(type,
+             mean = mean(x),
+             median = median(x),
+             trimmed = mean(x, trim = .1))
+     }
+     x <- rcauchy(10)
+     centre(x, "mean")
+     centre(x, "median")
+     centre(x, "trimmed")
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Recursive functions}
+
+  Here is an example of using conditionals with a divide and conquer
+  approach; quicksort in a few lines (albeit not very efficient).
+  \url{qsort.R}
+  
+\note{Now that we have seen conditionals, we can see an example
+  function with recursion.  A simpler one would be the factorial
+  function (and could test how well Stirling approximation fits:
+\url{http://mathworld.wolfram.com/StirlingsApproximation.html}
+%%
+  TODO: should have a simple example of e.g. 6 numbers to work
+  through on board.}
+
+
+
+{\scriptsize \begin{rc}
+qsort <- function(data) {
+  ## Sort DATA into ascending order.
+  n <- length(data)
+  if (n <= 1) {
+    data
+  } else {
+    pivot   <- data[floor(n/2)]
+    less    <- data[which(data <  pivot)]
+    equal   <- data[which(data == pivot)]
+    greater <- data[which(data >  pivot)]
+    c( qsort(less), equal, qsort(greater))
+  }
+}
+
+replicate(99, {
+  data <- runif(2000, max=10)
+  all.equal(qsort(data), sort(data)) } )
+\end{rc}}
+
+\note{The last line could also be written \ri{c( Recall(less),
+  equal, Recall(greater))} rather than using the function name
+explicitly.}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Looping constructs}
+
+Looping constructs allow you to repeat calculations as many times as
+you wish.  This is why computers are so useful -- it is just as easy
+(usually) to repeat something 1000 times as 10 times.\ds \ds
+
+e.g. if you want to simulate flipping a (biased) coin 100 times, and
+counting the number of heads, no problem.  If you want to repeat this
+process 1000 times, no problem.  See later.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{for loops}
+
+  \centerline{for (var in seq) command} \ds
+
+  SEQ is a vector; VAR is set in turn to each value in the vector, and
+  then command executed.  Multiple commands can be given within braces.
+
+  e.g.
+\begin{rc}
+x <- 6
+for (i in 1:10) {
+  res <- x * i
+  cat(x, "*", i, "=", res, "\n")
+}
+\end{rc}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{while loops}
+
+\begin{verbatim}
+while (condition) {
+  command
+  command
+}
+\end{verbatim}
+
+So the commands are executed until the condition is no longer true.
+Typically then one of the commands will change the condition.
+
+e.g. print all the Fibonacci numbers (f[i] = f[i-1] + f[i-2]) less than 100.
+
+\begin{rc}
+ n1 <- 0; n2 <- 1
+ while (n2 < 100) {
+   print(n2)
+   old <- n2
+   n2 <- n2 + n1
+   n1 <- old
+}
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Breaking out of loops}
+
+\ri{repeat expr} will repeatedly execute expr until you break out of
+the loop.  
+\begin{rc}
+i <- 3
+repeat { 
+  if (i==10) {
+    break
+  } else {
+    cat("i is", i, "\n")
+    i<- i+1
+  }
+}
+\end{rc}
+
+\ri{next} allows you to skip to next iteration of a loop.  Both
+\ri{next} and \ri{break} can be used within other loops (while,
+for).
+
+\begin{rc}
+for (i in 1:10) {
+  if ((i %% 2) == 0) 
+    next
+  print(i)
+}
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{A word on indentation}
+
+
+  Indentation helps you see the flow of the logic, rather than
+  flattened version.  (Use tab key to indent).  Reformatting tools
+  are available (e.g. within Emacs).
+
+\begin{columns}
+\colhalf
+\begin{rc}
+## version 1.
+i <- 3
+repeat { 
+  if (i==10) {
+    break
+  } else {
+    cat("i is", i, "\n")
+    i<- i+1
+  }
+}
+\end{rc}
+\colhalf
+\begin{rc}
+## version 2.
+i <- 3
+repeat { 
+if (i==10) {
+break
+} else {
+cat("i is", i, "\n")
+i<- i+1
+}
+}
+\end{rc}
+\end{columns}
+Indentation helps to show structure, and match braces.
+\end{frame}
+
+
+\section{Vectorization}
+
+
+\begin{frame}[fragile]
+  \frametitle{Vectorization}
+
+When possible, operate on vectors, rather than using for loops.
+
+Rewrite code, but beware sometimes not possible (Fibonacci).
+e.g. compute difference between times of events, e.  Given n events,
+there will be n-1 inter-event times. interval[i] = e[i+1] - e[i]
+
+{\scriptsize
+\begin{rc.out}
+diff1 <- function(e) {
+  n <- length(e)
+  interval <- rep(0, n-1) ## good to pre-alloc!
+  for (i in 1:(n-1)) {
+    interval[i] <- e[i+1] - e[i]
+  }
+  interval
+}
+diff2 <- function(e) {
+  n <- length(e)
+  e[-1] - e[-n]
+}
+
+e <- c(2, 5, 10.2, 12, 19)
+diff1(e)
+all.equal(diff1(e), diff2(e))
+\end{rc.out}}
+
+Advantages: shorter, more readable, faster (no loops).
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Vectorization example}
+
+Q: Flip a biased coin [p=0.6 of heads] 100 times; how many heads do
+you get?  Repeat this for 1000 trials.
+\begin{rc}
+n <- 100   ## number of coin flips in trial
+p <- 0.6   ## prob of getting heads
+ntrials <- 1000
+\end{rc}
+
+\begin{columns}[T]
+\scriptsize
+\colhalf
+\begin{rc}
+trial1 <- function(n, p.heads) {
+  count <- 0
+  for (i in 1:n) {
+    if (runif(1) < p.heads)
+      count <- count +1
+  }
+  count
+}
+
+res <- rep(0, ntrials)
+for (j in 1:ntrials) {
+  res[j] <- trial1(n, p)
+}
+hist(res)
+\end{rc}
+\pause
+\colhalf
+\begin{rc}
+trial2 <- function(n, p.heads) {
+  rand.vals <- runif(n)
+  sum( rand.vals < p.heads) 
+}
+
+res <- replicate(ntrials, 
+                 trial2(n, p))
+hist(res)
+\end{rc}
+\end{columns}
+\pause
+In this case, \ri{hist( rbinom(1000, 100, 0.6))} would also work!
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{apply family}
+
+  e.g. how to compute sum of each row of a matrix?  sum(A) will
+  normally return the sum of all elements of A.
+
+\begin{verbatim}
+apply(X, MARGIN, FUN, ...)
+MARGIN = 1 for row, 2 for cols.
+FUN = function to apply
+... = extra args to function.
+\end{verbatim}
+
+\begin{rc}
+A <- matrix(1:6, 2,3)
+row.means <- apply(A, 1, mean)
+col.sums  <- apply(A, 2, sum, na.rm=T)
+\end{rc}
+
+
+Other functions: lapply (apply to list), sapply (simplify), replicate.
+\begin{rc}
+lapply(ls(), object.size)
+sapply(ls(), object.size)
+hist( replicate(200, mean(rnorm(100)) ))
+\end{rc}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Anonymous functions \adv}
+
+Sometimes you don't want to pollute name space by defining a new
+function, so just use an ``anonymous function'', i.e. a function
+without a name.
+
+Particularly useful e.g. in an apply call.
+
+\begin{rc}
+my.mat <- matrix(1:10, ncol=5)
+apply(my.mat, 2, function(x) { sum(x^2)+10 } )  
+\end{rc}
+
+Since functions are just objects, anonymous functions are just objects
+without names, similar to 'anonymous numbers' like \ri{a+b} in an
+expression \ri{a+b+c}.
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Fibonacci sequence}
+
+  \centerline{$0, 1, 1, 2, 3, 5, 8, 13, 21, \ldots$}
+
+  \[ f[n] = f[n-1] + f[n-2] \]
+
+  How to vectorize?  
+
+  Exercise: write a function, fibonnaci(n) that returns the nth
+  element of the sequence.  Assume that fibonnaci(1) = 0, fibonacci(2)
+  = 1.  
+
+  Exercise: use fibonacci() to estimate the golden ratio.
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Efficiency}
+
+  Knuth: ``premature optimization is evil'' quote (WSS book).
+
+  Examples adopted from \url{www.mathworks.com/res/code_segments}
+  
+  f1 is bad; should pre-allocate vector, rather than rely on R to
+  allocate memory repeatedly (as seen by high `system' time).
+
+
+
+\begin{columns}[T]
+\scriptsize
+\colhalf
+\begin{rc}
+f1 <- function() {
+  n <- 1e4; decay <- 0.9995
+
+  out <- 1.0
+  for (i in 2:n)
+    out[i] <- out[i-1] * decay
+  out
+}
+\end{rc}
+\colhalf
+\begin{rc}
+f2 <- function() {
+  n <- 1e4; decay <- 0.99995
+  out <- rep(0, n)   ##pre-alloc
+  out[1] <- 1.0
+  for (i in 2:n)
+    out[i] <- out[i-1] * decay
+  out
+} 
+\end{rc}
+\end{columns}
+
+\begin{rc}
+system.time(o1 <- f1())
+system.time(o2 <- f2())
+\end{rc}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Numerics issues}
+
+  Although integer arithmic is reliable, floating-point arithmetic
+  is to be treated with care!  (All R's calculations are in what C
+  programmers call ``double precision''.)
+  
+  \begin{rc}
+    1 + 2 == 3
+    .1 + .2 == .3
+  \end{rc}
+  
+  From FAQ (7.31?)
+  
+  \begin{rc}
+    a <- sqrt(2)
+    a * a == 2
+    a * a  - 2
+  \end{rc}
+
+  \note{could show how numbers are stored as floating point, and
+    how some numbers like 0.25 are okay, but others, like 0.2 are not
+    exact.}
+
+  How can we find out biggest and smallest numbers that can be stored
+  in a double precision number?
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How big is infinity?}
+
+Use while loop to estimate it:
+
+\begin{rc}
+x <- 1
+while ( is.finite(x*2) ) {
+      x <- x*2
+}
+
+> x
+[1] 8.988466e+307
+> x*2
+[1] Inf
+> (x*2)/2
+[1] Inf
+
+.Machine$double.xmax
+[1] 1.797693e+308
+\end{rc}
+\note{x is finite, but if we make it any bigger, it goes infinite;
+  compare this with the double.max value, and it is pretty close.}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How small is epsilon?}
+
+  How big can $\epsilon$ be such that $1 + \epsilon = 1$?  (Taken from
+  Goldberg (1991) ACM article, p220).
+
+\begin{rc}
+eps <- 1
+while (eps + 1 > 1) {
+  eps <- eps * 0.5
+}
+> eps
+[1] 1.110223e-16
+> 1 + eps
+[1] 1
+> (1 + eps == 1)
+[1] TRUE
+> 1 + (2*eps)
+[1] 1
+> (1 + (2*eps) == 1)
+[1] FALSE
+\end{rc}
+\end{frame}
+
+\section{Random number generation}
+
+
+\begin{frame}
+  \frametitle{Random number generation}
+
+  Computers usaully generate ``pseudo-random numbers''.  They are
+  generated based on some iterative formula:
+
+  \[ x_{new} = f( x_{old}) \mod N \]
+
+  where modulo operation provides the ``remainder'' division.
+
+  To generate the first random number, you need a \textbf{seed}.
+  
+  Setting the seed allows you to reliably generate the same sequence
+  of numbers, which can [rarely] be useful when debugging programs.
+
+  R has many routines for generating random samples from various
+  distributions (See A.L.'s lecture ), but for now we will just use
+  runif(), (and maybe rnorm()).
+
+
+  \textbf{Exercise}: write a random number generator.  See: ``Randu: a
+  bad random number generator''.
+  \url{http://physics.ucsc.edu/~peter/115/randu.pdf}
+
+
+  \textbf{Exercise}: Apply the central limit theorem to generate samples from a
+  normal distribution by adding together samples from a uniform
+  distribution.
+
+\end{frame}
+
+
+\section{Debugging}
+
+\begin{frame}[fragile]
+  \frametitle{Debugging \adv}
+
+See \textbf{An introduction to the Interactive Debugging Tools in R,
+  Roger D Peng} for detailed usage.
+\url{http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf}
+
+\begin{itemize}
+
+\item warnings vs errors; converting warnings to errors; stopifnot().
+
+\item what to do when I get an error: traceback()
+
+\item simple print statements are often useful.
+
+\item Use of browser() at key points in code.
+
+\item debug(fn), undebug(fn)
+
+\item Using recover() rather than browser()
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Warnings and errors}
+
+  \begin{itemize}
+  \item A warning is softer than an error; if a warning is generated
+    your program will still continue, whereas an error will stop the
+    program.
+
+\begin{rc}
+log(c(2, 1, 0, -1, 2)); print('end')  # warning 
+xor( c(TRUE, FALSE));  print ('end')  # error  
+\end{rc}
+\note{log will generate NaN for -ve real numbers; recall however if
+  you give the number as complex number, you can then take the log of
+  a negative complex number (with no imag part):  log(-2+0i)}
+
+\item If you try to isolate warnings, you can change warnings to
+  errors: \ri{options(warn=2)}.  See ?options for further details.
+
+\item Add warnings and errors to your code using \ri{warning()},
+  \ri{stop()}.
+
+\item Can add ``assertions'' into your code to check that certain
+  values hold.
+  \begin{rc}
+    stopifnot(x>0)
+  \end{rc}
+  
+\item Other useful safety checks:  \ri{all(x>0)}, \ri{any(x>0)}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Traceback}
+
+When your program generates an error, use traceback() to find out
+where it went wrong:
+
+\lstinputlisting{debug1.R}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Single-stepping through your code}
+
+Use \ri{browser()} to single-step through your code.  Place it within your
+function at the point you want to examine (e.g.) local variables. \ds
+
+Can use \ri{debug(function.name)} to step through entire function.
+\ri{undebug()} will remove that debug call.
+
+Within the browser, you can enter expressions as normal, or you can
+give a few debug commands:
+\begin{itemize}
+\item n: single-step 
+\item c: exit browser and continue
+\item Q: exit browser and abort, return to top-level.
+\item where: show stack trace.
+\end{itemize}
+
+Debug on \url{stddev.R}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Safety-checks: browser}
+
+Here's a possible usage of browser() that I have in my code:
+{\scriptsize
+\lstinputlisting{browser_safety.R}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{recover}
+
+recover() is like browser, except you can choose which level to inspect,
+rather than the level at which browser was called.
+
+Following allows recover() to be launched when you hit an error:
+
+\begin{rc}
+options(error=recover)
+\end{rc}
+
+Here we simply tell R that when an error is generated, we call the
+function ``recover''.  The default is NULL, in which case \ri{stop} is
+called.
+\ds
+
+From ?options:
+\begin{quote}
+  Note that these need to specified as e.g. 'options=utils::recover'
+  in startup files such as '.Rprofile'.
+\end{quote}
+
+\end{frame}
+
+\lecture{What's next?}{sat}
+
+
+\begin{frame}
+  \frametitle{Reproducible research: Sweave and vignettes}
+
+  \begin{itemize}
+  \item Use one file to store code and document.  Best shown by way of
+    example... \url{estimate.Rnw}\ds
+
+  \item Vignettes often used in Bioconductor to document packages.\ds
+    
+  \item \ri{> library(tkWidgets); vExplorer()}
+
+    Interactively explore vignettes.
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Packages}
+
+  \begin{itemize}
+  \item   R has a packaging system for external code.
+
+  \item   A \textbf{package} is loaded from a \textbf{library} using
+    \ri{library(pkg.name)}.
+
+  \item Beware: don't call a package a library!  A library is a group
+    of folders where packages are stored \ldots
+
+  \end{itemize}
+
+\begin{rc}
+library()                 ## view available packages
+library(help=cluster)     ## what's in this?
+library(cluster)          ## load package
+example(pam)              ## can use pam and friends.
+detach("package:cluster") ## remove pkg.
+\end{rc}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{CRAN: Comprehensive R Archive Network}
+
+  CRAN: Site(s) for downloading R, and also its many contributed
+  *packages*.
+
+  
+  Mac/Win have a GUI for installing packages, or it can be done on the
+command line:
+
+\begin{rc}
+library(stats)
+library(help=stats)
+install.packages(c("splancs", "sp"))  
+$ R CMD INSTALL mypackage.tar.gz  ## from shell
+\end{rc}
+
+If asked to selected a CRAN mirror, in UK use:
+\url{http://www.stats.bris.ac.uk/R}.
+
+If installing on a machine where you do not have root access (e.g. PWF
+linux), you should add the following to your .bashrc file:
+\begin{verbatim}
+export R_LIBS=$HOME/NOBACKUP/RLIB
+\end{verbatim}
+
+(Be careful! Check that you are not overwriting an existing
+\ri{R_LIBS} setting.)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Bioconductor}
+  A success story of R.  Started 2001 with aims to:
+  \begin{itemize}
+  \item provide access to stat/graphical methods for analysis of
+    \textit{genomic} data.
+  \item link seamlessly to on-line databases (PubMed/GenBank).
+  \item allow rapid development of extensible software.
+  \item provide training in methods (short courses).
+
+  \item promote software with high quality docs and reproducible
+    research (vignettes) \ldots
+
+  \item Gentleman et al. (2004) Genome Biology 5:R80.
+    \url{http://genomebiology.com/2004/5/10/R80}
+
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Other topics of interest \adv}
+
+  \begin{itemize}
+
+  \item Building your own packages.  Useful for packaging up your
+    code, data sets and documentation.  You may wish to do this for
+    large projects that you wish to share with others.  Read
+    \textit{Writing R Extensions} manual and see \ri{package.skeleton}
+    to get started.
+
+    \item Access to databases.  Computational Biology datasets are
+      often quite large, and you might wish to access data via
+      databases.  R package DBI provides common interface to SQLite,
+      MySQL, Oracle.  See Gentleman (2008), Chapter 8.
+
+
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
+\begin{frame}
+  \frametitle{Misc to fill in}
+
+  \begin{itemize}
+  \item options(), and .Rprofile.
+  \item atttributes(), structure()
+  \item Scientific notation, e.g. 1.2e2
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Complex numbers}
+
+R can handle complex numbers.  See ?complex
+\begin{rc}
+sqrt(-1)    ## errors
+sqrt(-1+0i) ## returns i
+exp(- (0+1i * pi)) ## -1
+\end{rc}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Attributes}
+
+\begin{rc}
+x <- 1:2
+> names(x) <- c("a", "dog")
+> x
+  a dog 
+  1   2 
+> names(x) <- c("a", "dog")
+> names(x) <- c("a", "dog")
+> attributes(x)
+$names
+[1] "a"   "dog"
+\end{rc}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Top-N functions not listed elsewhere...}
+  
+  This will be a random list of half-useful functions that people will
+  find useful to explore at some point.
+  \begin{itemize}
+  \item table
+  \item sample
+  \item options()  --  controls behaviour of R.
+  \end{itemize}
+  
+  \begin{rc}
+    sample(8)               ## w/out replacement
+    sample(5, 6, T)         ## with  replacement
+  \end{rc}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Foreign-language interfaces}
+
+R has the ability to call C and Fortran code from within R.  Very
+useful for reuse of old code, or when speed crucial.
+
+Key points:
+
+\begin{itemize}
+\item Use e.g. pointers to doubles and integers in C
+\item Compile your C code with R CMD SHLIB myfile.c
+\item load dynamic library with \ri{dyn.load("myfile")}
+\item Use the .C() routine to call the C routine.
+\item This is described in Oleg Sklyar's guide:\\
+  \url{http://www.ebi.ac.uk/~osklyar/kb/CtoRinterfacingPrimer.pdf}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Applications to pursue in labs}
+
+
+  \begin{itemize}
+
+  \item Bob May's Logistic equation.  Predator prey discrete equation
+    (Nicholson-Bailey).
+  \item Grading multiple-choice exams; find the cheat!
+  \item Sequence alignment (Following Sean Eddy's exmaple)
+  \item ``Car parking problem'': packing in 1d (or 2d).
+  \item Conway's Game of Life: \\
+    \url{http://en.wikipedia.org/wiki/Conway's_Game_of_Life}
+  \item Estimate of PI through dartboard example (and perhaps other
+    ways of estimating pi).
+  \item In-place quicksort algorithm (qsort.R)
+  \item Take a large chunk of text and compute the letter frequency,
+    then bigram, then what about most common word?  (cf bigrams shown
+    in Mackay, p24).
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Lazy evaluation}
+
+  %% Why is lazy evaluation useful?  In formal arguments, and substitute()
+  %% in plotting contexts.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adding ... to function definitions}
+\end{frame}
+
+\end{document}
+
+
+%% (set (make-local-variable 'reftex-section-levels-all) '(("part" .
+%% 0) ("chapter" . 1)  ("begin" . 2)))

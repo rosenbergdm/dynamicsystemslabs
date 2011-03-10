@@ -1,0 +1,273 @@
+%  exercise.Rnw
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+\pgfrealjobname{exercise}
+
+\svnidlong
+{$LastChangedDate: 2009-10-20 18:24:22 -0500 (Tue, 20 Oct 2009) $}
+{$LastChangedRevision: 156 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+
+
+
+\title{Introduction to computational programming\\\smaller Chapter 3 Exercise\\\smaller Direction fields and Trajectories}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\setlength{\columnsep}{-5pt}
+\begin{document}
+
+\maketitle
+
+\part{Tutorial} % (fold)
+\label{prt:tutorial}
+
+\section*{Overview}
+
+In this exercise we will generate \emph{vector direction fields} as a means of surveying the large scale topology of ordinary differential equations.
+
+\section*{Vector directional fields}
+
+The algorithm provided in your text (see \textbf{2.4.2 Direction fields} on , page 30) is copied below.  Both the verbatim textual description and the standard pseudocode representation are provided.
+
+\textbf{Pseudo code for plotting a direction field:}
+\begin{enumerate}
+\item define a function $f(x, t)$ that represents the derivative of $x(t)$
+\item choose a step length $dx$ for the $x$ direction and $dt$ for the $t$ direction, and vector length parameter $h$
+\item choose a region in the $x,t$ plane: $x$ range $(x_1,x_2)$ and $t$ range $(x_2,t_2)$
+\item set the number of grid points in the $x$ direction $Nx = (x_2-x_1)/dx$  and number of points in the $t$ direction $Nt = (t_2-t_1)/dt$
+\item use the chosen step sizes evenly sample points from this region of the plane: do a loop for $i$ from 0 to $ Nx$ and inside another loop for $j$ from 0 to $Nt$:
+ \begin{enumerate}
+  \item let $x_i = x_1 + i*h$ and let $t_j = t_1 + j*h$
+   \item evaluate the function $ f(x_i,t_j)$ and store it as the slope $m$
+   \item place a line segment with slope $m$ at the point $(t_j, x_i)$ to point $(t_j + h, x_i+h*m)$
+   \item increase $i$ and $j$ by 1
+   \end{enumerate}
+\end{enumerate}
+
+\begin{pcode}[Algorithm for plotting direction fields][plst:dirfield]
+    define function F(x: REAL, t: REAL)
+    var dx, dt : REAL                       // Step size
+    var h : REAL                            // Vector length
+    var x_min, x_max, t_min, t_max : REAL   // Plot limits
+    var x, t, m, u, v : REAL                // temporary placeholders
+    var M, N : INT                          // Number of steps
+    init plot
+
+    M := (x_max - x_min) / dx               // Number of 
+    N := (t_max - t_min) / dt               //      steps per axis
+    
+    for i : INT in 0 to M
+    begin
+        for j : INT in 0 to N
+        begin
+            x := x_min + i * dx * h
+            t := y_min + j * dt * h
+            m := F(x, t)                    // Slope of field at (x, t)
+            u := x + h
+            v := y + h * m;
+            draw [(x, t), (u, v)]           // Line segment
+        end
+    end
+\end{pcode}
+
+
+This is by far the largest algorithm presented in this course.  Although it is \emph{more important} to follow good coding \emph{style} guidelines and organization when writing larger functions such as this, it is much harder to keep your code organized and readable.  In writing the code for this exercise, try to recall these points.
+
+\begin{description}
+  \item[Variable names] Almost twenty different variable names are presented in the pseudocode outline above.  Try to give your variables sensible names.
+  \item[Comments] Remember, the goal is to \emph{express} your understanding of the abstract mathematical concepts.  In-code comments also serve as the ``post-it note'' of the computing world.  They are a great place to keep notes, questions, and references.
+  \item[White space] The algorithm above uses nested \cc{for} loops to efficiently evaluate all points in the plotting range.  As structure of an algorithm becomes more hierarchical (more heavily nested), indentation in particular helps to maintain readability.
+\end{description}
+
+\section*{Example}
+
+Consider the ODE given by $\dot x = \frac{x}{90}(90 - x)$ (example adapted from the text, page 33).
+
+\begin{Rlistfloat}[h]
+\setlength{\columnsep}{-45pt}
+\begin{multicols}{2}
+  \begin{minipage}{0.45\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+> ## Define f(x,t)
+> f <- exampleFun1 <- function(x, t) {
++   return(1 / 90 * (90 - x) * x)
++ }
+> ## Set plotting parameters
+> tRange <- c(0, 10)
+> dt <- 0.5
+> xRange <- c(0, 100)
+> dx <- 5
+> h <- 0.7        ## delta t
+> k <- 0.5        ## aspect correction
+> tSteps <- diff(range(tRange)) / dt
+> xSteps <- diff(range(xRange)) / dx
+> ## Initialize the plot.  Note
+> ##   don't copy these labels!'
+> plot(c(0, 9), c(0, 90), type='n',
++   main=paste("{\\large\\bf $f(x,t)",
++   " = \\frac{x}{90} (90 - x)$ }"),
++   xlab='{\\larger $t$}', xaxs='i',
++   ylab='{\\larger $x$}', fg=gray(0.6),
++   yaxs='i')
+> ## Main loop
+> for (ii in 0:(tSteps-1)) {
++   for (jj in 0:(xSteps-1)) {
++     t <- ii * dt
++     x <- jj * dx
++     m <- f(x, t);
++     u <- t + (h * dt)
++     v <- x + (k * h * dt) * m
++     arrows(t, x, u, v, code=2,
++       length=0.05)
++   }
++ }
+\end{Sinput}
+\end{Schunk}
+
+\end{minipage}
+
+\begin{minipage}{0.65\textwidth}
+\beginpgfgraphicnamed{exercise-dirfieldex1field}
+\input{exercise-dirfieldex1field.pgf}
+\endpgfgraphicnamed
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+\section{New and revisited \R commands}
+
+\begin{enumerate}
+  \item \textbf{\cc{range(), diff()}}\\
+    The \cc{range()} function gives you both the minimum and maximum values of a vector.  The \cc{diff()} function takes as input a vector with $n$ members and returns a vector with $n-1$ entries corresponding to the pairwise differences.
+  \item \textbf{Graphics primitives}\\
+  \begin{enumerate}
+    \item \cc{plot()} In the example above I ``set up'' the plot by plotting a pair of points using the \cc{type='n'} parameter.  This allows the plot to be ``initialized'' without actually drawing any points.  Here the plot range is implicitly defined by the coordinates of these ``dummy points.''
+    \item \cc{arrows()} \emph{Appendix 1} provides a summary of the syntax for generating arrows and segments.
+  \end{enumerate}
+  \item \textbf{Plot ranges and initial values}\\
+  \begin{enumerate}
+    \item Identifying ``interesting'' plot ranges.
+    \begin{itemize}
+      \item Zeros.
+      \item Local minima and maxima.
+      \item Inflection points.
+      \item Discontinuities.
+      \item Asymptotic behavior.
+    \end{itemize}
+    \item Choosing initial values.
+  \end{enumerate}
+\end{enumerate}
+
+
+\part{Exercise}
+\begin{enumerate}
+  \item Compare the following two models of population growth, where $N$ represents the population size, and $r$ and $K$ are positive parameters.
+
+$$ \dot N = f(N) = r N (N/U -1) (1 - N/K) $$
+$$ \dot N = g (N) = rN^2 (1- N/K) $$
+
+  \begin{enumerate}
+    \item Find the equilibria of the two ODEs and analyze their stability analytically.
+
+    \item Plot the functions $f(N)$ and $g(N)$ for values of $r = 10$ and $K = 200$ and describe for what values of $N$ the population grows and for which it decays.
+
+    \item What is the principal difference in the dynamics of the two population models? Give a biological interpretation of the intervals of growth and decay.
+  \end{enumerate}
+
+
+  \item Suppose a bacterial culture in a lab environment grows with a rate $r$ proportional to the population size $N$.  Simultaneously student researchers are removing bacteria from the colony in a time-dependent fashion as given by $ d(t) = \sin \left( \frac{4\, t}{2 \pi}\right) $ with $t$ measured in days.
+
+  \begin{enumerate}
+    \item Write down the differential equation model for describing this population.
+
+    \item Find the fixed point(s) and analyze their stability analytically.
+
+    \item Plot the direction field of this ODE using R using $r = 1$ and indicate where the fixed point(s) are and how the stability is reflected in the plot.
+
+    \item Solve the ODE analytically, and plot three solution curves, starting at different initial conditions. Explain how the plot of the solution curves relates to the direction field you produced.
+  \end{enumerate}
+
+
+  \item
+
+The rate of change of voltage across a membrane with two  voltage-dependent ion channels can be described by the following equation:
+$$ C\dot V = -g _{Na}(V - V_{Na})-g_K(V-V_K)$$
+where $C$ is the capacitance of the membrane, $g_{Na}$ and $g_K$ are the conductances of the sodium and potassium channels, and $V_{Na}$ and $V_K$ are the reversal voltages; all are positive constants.
+
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{l c c}
+    \toprule
+    Parameter & Sodium (Na$^+$) & Potassium K$^+$ \\
+    \midrule
+    Capacitance ($C$) & \multicolumn{2}{c}{0.15 $\mu$F / cm$^2$} \\
+    Conductance ($g$, \emph{m}mho) & 1 & 100 \\
+    E$_\text{rev}$ (\emph{m}V) & 58.1 & -69.6 \\
+    \bottomrule
+    \end{tabular}
+    \caption{\label{tab:ionpotentials} Characteristic electrical properties of the squid giant axon.}
+  \end{center}
+\end{table}
+
+  \begin{enumerate}
+    \item Find the fixed points of the equation and analyze their stability analytically.
+
+    \item Use R to plot the direction field of this model for the following typical scenario. Comment on whether it agrees with the fixed point stability analysis you performed.
+
+    \item Find the general solution of Voltage as a function of time, and plot three solution curves, starting at different initial conditions. What does the model predict for the long-term behavior of the membrane potential? Did you need an analytic solution to come to this conclusion?
+
+  \end{enumerate}
+  
+  \item Section 2.4.1 (\textbf{Plotting flow on the line}, page 22) of your text describes another graphical method for the analysis of ODEs with one dependent variable.
+  \begin{enumerate}
+    \item Translate the textual description from your text into a \emph{pseudocode} algorithm that describes the production of plots similar to the one shown below. Your answer should be similar in structure to Pseudocode listing~1 (page 2).  Don't worry about precise syntax here.
+  \end{enumerate}
+\end{enumerate}
+
+\bc
+\begin{boxedminipage}{0.8\textwidth}
+\centering
+\beginpgfgraphicnamed{exercise-dirfieldex2}
+\input{exercise-dirfieldex2.pgf}
+\endpgfgraphicnamed
+\end{boxedminipage}
+\ec
+
+\begin{enumerate}
+  \begin{enumerate}
+    \item 
+    Implement your algorithm in \R and use it to analyze logistic model $ f(x) = \dfrac{x}{3} \left(1 - \frac{x}{5}\right) $  Your plot should be similar in design to the above example.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
+

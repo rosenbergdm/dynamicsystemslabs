@@ -1,0 +1,6 @@
+#zsh
+
+add_missing_svn () {
+    svn status | grep \? | awk '{print $2}' | xargs svn add
+}
+

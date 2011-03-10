@@ -1,0 +1,603 @@
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+source('listingPreps.R');
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Chapter 3 Exercise \\ Solutions}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+\maketitle
+
+\part{Solutions}
+\begin{enumerate}
+
+  \item Compare the following two models of population growth, where $N$ represents the population size, and $r$ and $K$ are positive parameters.
+
+$$ \dot N = f(N) = r N (N/U -1) (1 - N/K) $$
+$$ \dot N = g (N) = rN^2 (1- N/K) $$
+$$ U = 20 $$
+
+  \begin{enumerate}
+
+    \item Find the equilibria of the two ODEs and analyze their stability analytically.
+
+\Rsuspend
+
+\begin{Solution}
+<<ex3q1p1sol,eval=t,echo=t>>=
+mSolve2(0 == r * N * (N / 20 - 1) * (1 - N / K), 'N');
+mSolve2(0 == r * N ^ 2 * (1 - N / K), 'N');
+@
+Thus both models are in equilibrium at $N=0$ (no population) and $N=K$ (carrying capacity).  Additionally, the first model is in equilibrium at $N=20$.
+
+To analyze stability, we examine the sign of $\dot N$ near the equilibria.  For the first model, $\dot N$ will be negative $\forall N < 20 $ or $ N > K$ and positive $\forall N: 20 < N < K$.  Thus the equilibria at $N=0$ and $N=K$ will be stable, while the equilibrium at $N=20$ will be unstable.
+
+For the second model, $\dot N$ is positive $\forall N : 0 < N < K$ and negative otherwise.  Thus in this model the the equilibrium at $N=0$ is unstable and the equilibrium at $N=K$ is stable.
+\end{Solution}
+
+
+\Rresume
+
+    \item Plot the functions $f(N)$ and $g(N)$ for values of $r = 10$ and $K = 200$ and describe for what values of $N$ the population grows and for which it decays.
+
+
+\Rsuspend
+
+\begin{Solution}
+  
+<<ex3q1p2sol,eval=t,echo=t>>=
+model1 <- function(r, N, K) {
+  return(r * N * (N / 20 - 1) * (1 - N / K));
+}
+curve1 <- function(x, r=10, K=200) {
+  return(model1(N=x, r=r, K=K));
+}
+zeros <- mSolve2(0 == r * N * (N / 20 - 1) * (1 - N / K), 
+  'N', list(r=10, K=200))
+curve(curve1, 0, 200, 
+  ylab='$f(x) = 10 \\, x (\\frac{x}{20} - 1)(1 - \\frac{x}{200})$',
+  fg=grey(0.6), bty='n');
+abline(v=0);
+abline(h=0);
+for (val in zeros) {
+  abline(v=val, lty=2, col='red')
+}
+
+model2 <- function(r, N, K) {
+  return(r * N ^ 2 * (1 - N / K));
+}
+curve2 <- function(x, r=10, K=200) {
+  return(model2(N=x, r=r, K=K));
+}
+zeros <- mSolve2(0 == r * N ^ 2 * (1 - N / K), 'N',
+  list(r=10, K=200));
+curve(curve2, 0, 200, 
+  ylab='$f(x) = 10 \\, x^2 (1 - \\frac{x}{200})$',
+  fg=grey(0.6), bty='n');
+abline(v=0);
+abline(h=0);
+for (val in zeros) {
+  abline(v=val, lty=2, col='red')
+}
+@
+\end{Solution}
+\begin{Solution}
+\bc
+<<ex3q1p2sol11,eval=t,echo=f,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+model1 <- function(r, N, K) {
+  return(r * N * (N / 20 - 1) * (1 - N / K));
+}
+curve1 <- function(x, r=10, K=200) {
+  return(model1(N=x, r=r, K=K));
+}
+zeros <- mSolve2(0 == r * N * (N / 20 - 1) * (1 - N / K), 
+  'N', list(r=10, K=200))
+curve(curve1, 0, 200, 
+  ylab='$f(x) = 10 \\, x (\\frac{x}{20} - 1)(1 - \\frac{x}{200})$',
+  fg=grey(0.6), bty='n');
+abline(v=0);
+abline(h=0);
+for (val in zeros) {
+  abline(v=val, lty=2, col='red')
+}
+@
+<<ex3q1p2sol12,eval=t,echo=f,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+model2 <- function(r, N, K) {
+  return(r * N ^ 2 * (1 - N / K));
+}
+curve2 <- function(x, r=10, K=200) {
+  return(model2(N=x, r=r, K=K));
+}
+zeros <- mSolve2(0 == r * N ^ 2 * (1 - N / K), 'N',
+  list(r=10, K=200));
+curve(curve2, 0, 200, 
+  ylab='$f(x) = 10 \\, x^2 (1 - \\frac{x}{200})$',
+  fg=grey(0.6), bty='n');
+abline(v=0);
+abline(h=0);
+for (val in zeros) {
+  abline(v=val, lty=2, col='red')
+}
+@
+\ec
+\end{Solution}
+\begin{Solution}
+  For the first model, the population decreases when $N < 20$ or $N > 200$ and increases when $ 0 < N < 200$.  For the second model, the population increases when $N < 200$ and decreases when $N > 200$.
+\end{Solution}
+
+\Rresume
+
+    \item What is the principal difference in the dynamics of the two population models? Give a biological interpretation of the intervals of growth and decay.
+
+\Rsuspend
+
+\begin{Solution}
+  The principal difference in the dynamics of these populations concerns behavior when $N \leq 20$.  For the first model, populations of size $< 20$ move towards extinction and increase (towards carrying capacity $K=200$) otherwise.  In the second model, all nonzero populations move towards the carrying capacity.
+  
+  Pack animals (such as wolves) might be expected to follow the first model.  For these animals, a sufficiently small pack size ($N<20$) may be unable to survive.  Conversely, most bacterial cultures are expected to follow a growth pattern more like the second model.
+\end{Solution}
+
+\Rresume
+\end{enumerate}
+
+  \item Suppose a bacterial culture in a lab environment grows with a rate $r$ proportional to the population size $N$.  Simultaneously student researchers are removing bacteria from the colony in a time-dependent fashion as given by $ d(t) = \sin \left( \frac{4\, t}{2 \pi}\right) $ with $t$ measured in days.
+
+  \begin{enumerate}
+    \item Write down the differential equation model for describing this population.
+
+\Rsuspend
+
+\begin{Solution}
+  \begin{equation}
+    \dot N = r N - 4 \sin \left( \frac{4t}{2 \pi}\right)
+  \end{equation}
+\end{Solution}
+
+\Rresume
+
+    \item Find the fixed point(s) and analyze their stability analytically.
+
+\end{enumerate}
+\end{enumerate}
+\begin{Solution}
+\begin{align*}
+  0 &= r N - 4 \sin \left( \frac{4t}{2 \pi} \right)  \\
+  N &= \frac{4}{r} \sin \left( \frac{2t}{\pi} \right) 
+\end{align*}
+  Fixed points occur whenever $N = \frac{4}{r} \sin \left( \frac{4t}{2 \pi} \right)$.  
+  
+  \begin{align*}
+    \frac{d^2 N}{dN\, dt} &= \frac{d}{dN} \left( r N - 4 \sin \left( 2 \frac{t}{\pi} \right) \right) \\
+    &= r \\
+    \frac{d^2 N}{dN\, dt} &> 0
+  \end{align*}
+  
+  Thus all fixed points are unstable.
+    
+\end{Solution}
+\begin{enumerate}
+\begin{enumerate}
+\setcounter{enumii}{2}
+
+    \item Plot the direction field of this ODE using R using $r = 1$ and indicate where the fixed point(s) are and how the stability is reflected in the plot.
+
+\end{enumerate}
+\end{enumerate}
+\begin{Solution}
+
+<<ex3q2p1sol1,eval=f,echo=t,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+dot_n <- function(N, t, r=1) {
+  return(r * N - 4 * sin(2 * t / 3.14159))
+}
+trange <- c(0, 10); tstep <- 0.5;
+nrange <- c(-5, 20); nstep <- 2.5;
+k <- 5;
+h <- 0.5
+otherpts <- data.frame(x=numeric(), y=numeric());
+plot(c(0, 10), c(-5, 20), type='n', bty='n', fg=grey(0.6), 
+     ylab='$N$', xlab='$t$');
+for (tt in seq(trange[1], trange[2], by=tstep)) {
+  for (nn in seq(nrange[1], nrange[2], by=nstep)) {
+    t0 <- tt; n0 <- nn;
+    t1 <- tt + tstep * h
+    n1 <- nn + dot_n(N=nn, t=tt) * tstep * h
+    arrows(t0, n0, t1, n1, length=0.1);
+  }
+  nzero <- 4 * sin(2 * tt / pi);
+  otherpts <- rbind(otherpts, data.frame(x=tt, y=nzero));
+  points(tt, nzero, col='red', fg='red', pch=19);
+}
+lines(otherpts, col='red');
+abline(h=0);
+abline(v=0);
+@
+
+\end{Solution}
+\begin{Solution}
+  \bc
+<<ex3q2p1sol,eval=t,echo=f,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+dot_n <- function(N, t, r=1) {
+  return(r * N - 4 * sin(2 * t / 3.14159))
+}
+trange <- c(0, 10); tstep <- 0.5;
+nrange <- c(-5, 20); nstep <- 2.5;
+k <- 5;
+h <- 0.5
+otherpts <- data.frame(x=numeric(), y=numeric());
+plot(c(0, 10), c(-5, 20), type='n', bty='n', fg=grey(0.6),
+ylab='$N$', xlab='$t$');
+for (tt in seq(trange[1], trange[2], by=tstep)) {
+  for (nn in seq(nrange[1], nrange[2], by=nstep)) {
+    t0 <- tt; n0 <- nn;
+    t1 <- tt + tstep * h
+    n1 <- nn + dot_n(N=nn, t=tt) * tstep * h
+    arrows(t0, n0, t1, n1, length=0.1);
+  }
+  nzero <- 4 * sin(2 * tt / pi);
+  otherpts <- rbind(otherpts, data.frame(x=tt, y=nzero));
+  points(tt, nzero, col='red', fg='red', pch=19);
+}
+lines(otherpts, col='red');
+abline(h=0);
+abline(v=0);
+@
+
+In the following plot, fixed points occur along the red curve.  The stability of any fixed point is indicated by the direction of the ``arrows'' nearest to the curve.  A stable fixed point is indicated by the direction field ``arrows'' pointing ``towards'' the red curve; unstable fixed points are indicated by direction field arrows pointing ``away'' from the red curve.  In this scenario, there are no stable fixed points.
+
+\ec
+\end{Solution}
+
+\begin{enumerate}
+\begin{enumerate}
+\setcounter{enumii}{3}
+
+    \item Solve the ODE analytically, and plot three solution curves, starting at different initial conditions. Explain how the plot of the solution curves relates to the direction field you produced.
+
+\end{enumerate}
+\end{enumerate}
+
+\begin{Solution}
+  \begin{align*}
+    \dot N &= rN - \sin \left(\frac{2t}{\pi} \right) \\
+    N'(t) - rN(t) &= - \sin \left( \frac{2t}{\pi}\right) \\
+    \mu &= e^{\int -rdt} \\
+    &= e^{-rt} \\
+    \frac{d\mu}{dt} &= -re^{-rt} \\
+    \mu (N'(t) - rN(t)) &= -\mu \sin \left( \frac{2t}{\pi} \right) \\
+    e^{-rt} N'(t) - re^{-rt} N(t) &= - \mu \sin \left( \frac{2t}{\pi} \right) \\
+    =\mu N'(t) + \mu'N(t) & \\
+    =(N(t) \cdot \mu)' &= -\mu \sin \left( \frac{2t}{\pi} \right) \\
+    =\int \left(N(t) \cdot \mu\right)'dt &= \int \left(- e^{-rt} \sin \left( \frac{2t}{\pi} \right)\right)dt  \\
+    N(t) \cdot \mu + C &= \frac{-\pi e^{-rt} \left(\pi r \sin \left(\frac{2t}{\pi}\right) + 2 \cos \left( \frac{2t}{\pi}\right)\right)}{\pi^2r^2+4} \\
+    N(t) &= -\frac{{({(\pi^{2} + 4)} C e^{t} - \pi^{2} \sin\left(2
+    \, \frac{t}{\pi}\right) - 2 \, \pi \cos\left(2 \,
+    \frac{t}{\pi}\right))}}{{(\pi^{2} + 4)}} \\
+    C &= \frac{{(\pi^{2} \sin\left(2 \, \frac{t}{\pi}\right) - {(\pi^{2} + 4)}
+    N\left(t\right) + 2 \, \pi \cos\left(2 \, \frac{t}{\pi}\right))}
+    e^{-t}}{{(\pi^{2} + 4)}}
+  \end{align*}
+
+<<ex3q2p2sol2,eval=f,echo=t,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+t0a <- t0b <- t0c <- 0;
+N0a <- 0;
+N0b <- 0.45
+N0c <- 1;
+calc_int_const <- function(t0, N0, r=1) {
+  return((pi^2*sin(2*t0/pi) - (pi^2 + 4)*N0 + 2*pi*cos(2*t0/pi))*exp(-t0)/(pi^2 +4));
+}
+gen_sol <- function(t, C, r=1) {
+ return(-((pi^2 + 4)*C*exp(t) - pi^2*sin(2*t/pi) - 2*pi*cos(2*t/pi))/(pi^2  + 4));
+}
+Ca <- calc_int_const(t0a, N0a);
+Cb <- calc_int_const(t0b, N0b);
+Cc <- calc_int_const(t0c, N0c);
+
+plot(c(0, 10), c(-5, 25), type='n', bty='n', fg=grey(0.6), 
+      ylab='$N$', xlab='$t$');
+abline(v=0);
+abline(h=0);
+x <- (1:1000) / 50
+lines(x, gen_sol(t=x, C=Ca), col='red')
+lines(x, gen_sol(t=x, C=Cb), col='blue')
+lines(x, gen_sol(t=x, C=Cc), col='green')
+@
+\end{Solution}
+\begin{Solution}
+  \bc
+<<ex3q2p2sol22,eval=t,echo=f,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+t0a <- t0b <- t0c <- 0;
+N0a <- 0;
+N0b <- 0.45
+N0c <- 1;
+calc_int_const <- function(t0, N0, r=1) {
+  return((pi^2*sin(2*t0/pi) - (pi^2 + 4)*N0 + 2*pi*cos(2*t0/pi))*exp(-t0)/(pi^2 +4));
+}
+gen_sol <- function(t, C, r=1) {
+ return(-((pi^2 + 4)*C*exp(t) - pi^2*sin(2*t/pi) - 2*pi*cos(2*t/pi))/(pi^2  + 4));
+}
+Ca <- calc_int_const(t0a, N0a);
+Cb <- calc_int_const(t0b, N0b);
+Cc <- calc_int_const(t0c, N0c);
+
+plot(c(0, 10), c(-5, 25), type='n', bty='n', fg=grey(0.6), 
+      ylab='$N$', xlab='$t$');
+abline(v=0);
+abline(h=0);
+x <- (1:1000) / 50
+lines(x, gen_sol(t=x, C=Ca), col='red')
+lines(x, gen_sol(t=x, C=Cb), col='blue')
+lines(x, gen_sol(t=x, C=Cc), col='green')
+@
+\ec
+\end{Solution}
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+
+  \item
+
+The rate of change of voltage across a membrane with two  voltage-dependent ion channels can be described by the following equation:
+$$ C\dot V = -g _{Na}(V - V_{Na})-g_K(V-V_K)$$
+where $C$ is the capacitance of the membrane, $g_{Na}$ and $g_K$ are the conductances of the sodium and potassium channels, and $V_{Na}$ and $V_K$ are the reversal voltages; all are positive constants.
+
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{l c c}
+    \toprule
+    Parameter & Sodium (Na$^+$) & Potassium K$^+$ \\
+    \midrule
+    Capacitance ($C$) & \multicolumn{2}{c}{0.15 $\mu$F / cm$^2$} \\
+    Conductance ($g$, \emph{m}mho) & 1 & 100 \\
+    E$_\text{rev}$ (\emph{m}V) & 58.1 & -69.6 \\
+    \bottomrule
+    \end{tabular}
+    \caption{\label{tab:ionpotentials} Characteristic electrical properties of the squid giant axon.}
+  \end{center}
+\end{table}
+
+  \begin{enumerate}
+    \item Find the fixed points of the equation and analyze their stability analytically.
+  \end{enumerate}
+\end{enumerate}
+
+\newcommand{\Vna}{V_{\text{NA}}}
+\newcommand{\Vk}{V_{\text{k}}}
+\newcommand{\Gna}{g_{\text{NA}}}
+\newcommand{\Gk}{g_{\text{K}}}
+
+\begin{Solution}
+  \begin{align*}
+    C \dot V = 0 &\Rightarrow -g_{\text{Na}} (V-V_{\text{NA}}) = g_{\text{K}} (V-V_{\text{K}}) \\
+    \Vna - V &= 100 V - 100 \Vk \\
+    101 V &= \Vna + 100 \Vk \\
+    V &= -68.33
+  \end{align*}
+  There is one fixed point for this equation; $V \approx -68.33$.
+\end{Solution}
+
+\begin{enumerate}
+  \begin{enumerate}
+    \setcounter{enumii}{1}
+    \item Use R to plot the direction field of this model for the following typical scenario. Comment on whether it agrees with the fixed point stability analysis you performed.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Solution}
+<<ex3q3p0sol,eval=t,echo=t>>=
+cap <- 0.15e-6
+gna <- 1e-3
+gk <- 100e-3
+vna <- 58.1e-3
+vk <- -69.6e-3
+dot_voltage <- function(v) {
+  return( (-gna * (v-vna) - gk * (v-vk)));
+}
+vrange <- c(-100e-3, 100e-3);
+vstep <- 10e-3;
+trange <- c(0, 10);
+tstep <- 0.5;
+h <- 0.5;
+k <- 1
+@
+\end{Solution}
+\begin{Solution}
+\bc
+<<ex3q3p1sol,eval=t,echo=t,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+plot(trange, vrange, type='n', bty='n', fg=grey(0.6),
+  xlab='t', ylab='V');
+abline(h=0);
+abline(v=0);
+for (vv in seq(vrange[1], vrange[2], by=vstep)) {
+  for (tt in seq(trange[1], trange[2], by=tstep)) {
+    t0 <- tt;
+    t1 <- tt + tstep * h;
+    v0 <- vv;
+    v1 <- vv + dot_voltage(vv) * h * k;
+    arrows(t0, v0, t1, v1, code=2, length=0.05);
+  }
+}
+@
+\ec
+
+This plot agrees with my analytical result, showing a stable fixed point at $V=-68.3$ mV ($-0.0683$ V).
+\end{Solution}
+
+\begin{enumerate}
+  \begin{enumerate}
+    \setcounter{enumii}{2}
+    
+    \item Find the general solution of Voltage as a function of time, and plot three solution curves, starting at different initial conditions. What does the model predict for the long-term behavior of the membrane potential? Did you need an analytic solution to come to this conclusion?
+
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Solution}
+  \begin{align*}
+    \dot V &= -\Gna(V-\Vna) - \Gk (V-\Vk) \\
+    &= \Vna -V - 100 V + 100 \Vk \\
+    &= -101 V + 100\Vk + \Vna \\
+    V'(t) + 101 V(t) &= 100 \Vk + \Vna \\
+    \mu(t) &= e^{\int 101 dt} \\
+    &= e^{101t} \\
+    \mu'(t) &= 101 e^{101 t} \\
+    \mu(t) \left( V'(t) + 101 V(t) \right) &= \mu(t) \cdot \left(100 \Vk + \Vna \right) \\
+    \mu(t) V'(t) + \mu'(t) V(t) &= \mu(t) \cdot \left(100 \Vk + \Vna \right) \\
+    (V(t) \cdot \mu(t))' &= e^{101 t} \left(100 \Vk + \Vna \right) \\
+    \int (V(t)\mu(t))' dt &= \int \left( e^{101 t} \left(100 \Vk + \Vna \right) \right) dt \\
+    V(t)\mu(t) + C &= 101 e^{101t} \left(100 \Vk + \Vna \right) \\
+    V(t) &= \frac{1}{\mu(t)} \left( 101 e^{101t} \left(100 \Vk + \Vna \right)  - C \right) \\
+    &= e^{-101t} \left( 101 e^{101t} \left(100 \Vk + \Vna \right)  - C \right) \\
+    &=\left(100 \Vk + \Vna \right)/101 - Ce^{-101t} \\
+    C &= -V(0) e^{101 \, t_0} - \frac{69019}{1010} \, e^{101 \, t_0}
+  \end{align*}
+\end{Solution}
+
+\begin{Solution}
+\bc
+<<ex3q3p2sol2,eval=t,echo=t,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.25,width=4>>=
+gen_sol <- function(C, t) {
+  return((100 * -69.6 + 58.1)/101 - C * exp(-101 * t));
+}
+init_val <- function(v0, t0) {
+  return(-v0 * exp(101 * t0) - 68.33 * exp(101 * t0));
+}
+t0a <- t0b <- t0c <- 0;
+v0a <- -100; v0b <- 1; v0c <- 100;
+c_a <- init_val(v0=v0a, t0=t0a);
+c_b <- init_val(v0=v0b, t0=t0b);
+c_c <- init_val(v0=v0c, t0=t0c);
+
+plot(c(0, 0.25), c(-100, 100), type='n', bty='n', fg=grey(0.6), xlab='t', ylab='v');
+abline(v=0); abline(h=0); abline(h=-68.33, lty=2)
+lines((0:1000)/1000, gen_sol(C=c_a, t=(0:1000)/1000)+0.25, col='blue');
+lines((0:1000)/1000, gen_sol(C=c_b, t=(0:1000)/1000)-0.25, col='red');
+lines((0:1000)/1000, gen_sol(C=c_c, t=(0:1000)/1000), col='green');
+@
+\ec  
+\end{Solution}
+
+\begin{enumerate}
+  \setcounter{enumi}{3}
+  
+  \item Section 2.4.1 (\textbf{Plotting flow on the line}, page 22) of your text describes another graphical method for the analysis of ODEs with one dependent variable.
+  \begin{enumerate}
+    \item Translate the textual description from your text into a \emph{pseudocode} algorithm that describes the production of plots similar to the one shown below. Your answer should be similar in structure to Pseudocode listing~1 (page 2).  Don't worry about precise syntax here.
+  \end{enumerate}
+\end{enumerate}
+
+\bc
+\begin{boxedminipage}{0.8\textwidth}
+\centering
+<<dirfieldex2,eval=t,echo=f,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.5,width=5>>=
+exampleFun1 <- function(x, t) {
+  return(1 / 90 * (90 - x) * x)
+}
+curve(exampleFun1, from=-10, to=100, col='blue', main="{\\textbf{Flow lines}}",
+xlab='{\\larger $t$ }', fg=gray(0.6),
+ylab=paste("{\\larger\\bf $f(x,t)", 
+" = \\frac{x}{90} (90 - x)$ }"),bty='n');
+arrows(c(2.5, -2.5, 100), c(1, -1, -1), c(87.5, -12.5, 92.5),c(1, -1, -1), col='red', type=2, lwd=2, length=0.05)
+abline(h=0, col='black', lwd=1.5);
+abline(v=0, col='black', lwd=1.5);
+@
+\end{boxedminipage}
+\ec
+
+
+\begin{pcode}[Algorithm for flow on the line][plst:flow_on_line]
+    define function F(x: REAL, t: REAL)
+    var ARRAY Z: REAL                       // zeros
+    var tmin, tmax: INT;
+    var sign: INT;
+    var t0, tmid, t1, y: REAL;
+    
+    
+    init plot;
+    draw F(x, t);
+    z := join( -Inf, solve(F(x,t) == 0), Inf) 
+    define G(x: REAL, t: REAL)              // derivative of F(x,t) dt
+    for (int i in 1:(length(z)))
+    begin
+        t0 := z[i-1]
+        t1 := z[i]
+        tmid := (t0 + t1) / 2;
+        sign := (tmid / abs(tmid)) * (G(0, tmid) / abs(G(0, tmid)))
+        if (sign == 1)
+        begin
+            draw arrow (t0, y) - (t1, y);
+        end
+        else
+        begin
+            draw arrow (t1, -y) - (t0, -y);
+        end
+    end
+\end{pcode}
+
+\pagebreak
+
+\begin{enumerate}
+  \begin{enumerate}
+    \setcounter{enumii}{1}
+    \item 
+    Implement your algorithm in \R and use it to analyze logistic model $ f(x) = \dfrac{x}{3} \left(1 - \frac{x}{5}\right) $  Your plot should be similar in design to the above example.
+  \end{enumerate}
+\end{enumerate}
+
+
+\begin{Solution}
+<<ex3q4p2sol,eval=t,echo=t,cache=t,fig=t,pgf=t,pdf=f,eps=f,external=t,height=4.5,width=5>>=
+fun1 <- function(x, t) {
+  return(x / 3 * ( 1 - x/5 ) );
+}
+curve(fun1, from=-0.5, to=5.5, col='blue', main="{\\textbf{Flow lines}}",
+xlab='{\\larger $t$ }', fg=gray(0.6),
+ylab=paste("{\\larger\\bf $f(x,t)", 
+" = \\frac{x}{3} * ( 1 - \\frac{x}{5} ))$ }"), bty='n');
+abline(h=0, col='black', lwd=1.5);
+abline(v=0, col='black', lwd=1.5);
+arrows(c(0.125, -0.125, 5.5), c(0.025, -0.025, -0.025), c(4.875, -0.5, 5.125), c(0.025, -0.025, -0.025), col='red',  lwd=2, length=0.05)
+@
+\end{Solution}
+
+\end{document}
+

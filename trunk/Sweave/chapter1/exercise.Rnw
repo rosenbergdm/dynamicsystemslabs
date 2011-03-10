@@ -1,0 +1,520 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+\usepackage{alltt}
+\usepackage{boxedminipage}
+
+\svnidlong
+{$LastChangedDate: 2009-10-12 17:39:24 -0500 (Mon, 12 Oct 2009) $}
+{$LastChangedRevision: 105 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+oldRout <- .Rout <- getSweaveListingOption('Rout')
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<aa_-}{<<aa_-}2"
+.myRset$basicstyle <- "{\\footnotesize\\color{Rcommentcolor}}"
+.myRset[['keywordstyle']] <- "{\\footnotesize\\bf\\color{red}}"
+.myRset$numbers <- 'left'
+.myRset$commentstyle <- "{\\color{black}\\ttfamily\\itshape}"
+.myRset$numberstyle="\\tiny"
+.Rout$fancyvrb <- 'true'
+.Rout$keywordstyle <- "{\\color{Routcolor}}"
+.Rout$breaklines <- 'true'
+.Rout$linewidth <- "{0.5\\textwidth}"
+.myRset$extendedchars <- 'true'
+.myRset$breaklines <- 'true'
+.myRset$linewidth="{0.5\\textwidth}"
+.myRset$otherkeywords <- "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<aa_-,/, \\%in\\%}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{red}")
+SweaveListingoptions(Rset=.myRset, Rout=.Rout, intermediate = FALSE)
+#SweaveListingPreparations()
+setCacheDir('cache2')
+options(device=quartz);
+par(mar=c(2,2,2,2))
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Chapter 1 Lab Exercise\\\smaller Functions and Algorithms}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+\part{Tutorial}
+
+\section{Functions}
+\label{sub:example_4_functions}
+
+One of the most fundamental of programming concepts is that of the \emph{function}, a series of commands which take several values (variables) as input and return the result of computations on that input.  It is generally helpful (and frequently necessary) to place a series of related commands in a function.  \R lets you define functions using the following syntax
+
+<<func_syntax,eval=f,echo=t>>=
+functionName <- function(argumentList) {
+  codeBlock
+  {return(returnValue)}
+}
+@
+
+Breaking the components down, we have
+\begin{enumerate}
+  \item \texttt{\emph{functionName}} is the name you would like to assign the new function to.\footnote{See Appendix 1 for more on function name style}.
+  \item \texttt{\emph{argumentList}} the inputs to the function
+  \item \texttt{\emph{codeBlock}} the commands to be evaluated
+  \item \texttt{\emph{returnValue}} (optional) the output value that is ``returned'' by the function
+\end{enumerate}
+
+As an example, let us define a function which takes as input an integer, \texttt{k} and returns the first number in the fibonacci sequence equal to or greater than that number.
+
+<<fun_ex_1,eval=t,echo=t>>=
+fibLargerThan <- function(k) {
+  x0 <- 0
+  x1 <- 1
+  while(x1 < k) {
+    newX1 <- x0 + x1
+    x0 <- x1
+    x1 <- newX1
+  }
+  return(x1);
+}
+fibLargerThan(100)
+fibLargerThan(1000)
+fibLargerThan(10000)
+@
+
+\subsection{Anatomy of a function} % (fold)
+\label{sub:more_about_functions}
+
+\begin{description}
+  \item[name] This is the ``command'' that the function is bound to and is found to the left of the assignment operator in the function definition.
+  \bc
+    \fbox{\cc{\emph{fibLargerThan} <- function(x) } \{ \ldots}
+  \ec
+  \item[arguments] These are the variables passed (copied) into the function.  Only those variables given as arguments to the function may be used within it.  More about argument and scoping will be discussed below.
+  \bc
+    \fbox{\cc{fibLargerThan <- function(\emph{x}) } \{ \ldots}
+  \ec
+  \item[body] The body is the where the ``work'' of the function takes place.  It is a free standing \emph{block} of \R code (enclosed by braces).
+  
+  \bc
+  \begin{boxedminipage}{0.5\textwidth}
+{\tt
+fibLargerThan <- }{\tt function(k) \emph{\{\\
+\hspace*{0.35cm}x0 <- 0\\
+\hspace*{0.35cm}x1 <- 1\\
+\hspace*{3.5mm}while(x1 < k) \{\\
+\hspace*{7mm}newX1 <- x0 + x1\\
+\hspace*{7mm}x0 <- x1\\
+\hspace*{7mm}x1 <- newX1\\
+\hspace*{0.35cm}\}\\}
+\hspace*{0.35cm}return(x1);\\
+\}\\}
+\end{boxedminipage}
+\ec
+  \item[return] The return value is the ``output'' of the function.  There can only be a single ``thing'' returned from any function call\footnote{If you need to return more than one value, use a \cc{list}, \cc{vector}, or \cc{data.frame} to encapsulate them.}.
+  \bc
+    \fbox{\cc{\emph{return(x1);} }}
+  \ec
+  
+\end{description}
+
+\subsection{Scope} % (fold)
+\label{sub:scope}
+
+As stated above, only\footnote{To be fair, this is a bit of a generalization.  But its good practice.} those variables passed to a function as arguments and variables created in the \emph{body} of the function are accessible by the function.  Furthermore, variables created inside a function ``disappear'' once the function returns its result.  This dichotomy between variables ``accessible'' to a function and those accessible outside constitute the notion of variable \emph{scoping} or \emph{scope}.
+
+Many beginning programmers find variable scope to be a confusing and frustrating topic.  It is suggested (until you become more comfortable with variable scope\footnote{These simplified explanations aren't completely correct. \R uses a system called \emph{lexical scoping} over \emph{functional closures} to define which variables are ``in'' scope and which are not.  These rules are confusing and (at times) non-intuitive.  They are beyond the scope of this course.}) that you try not to use the same variable names both ``inside'' and ``outside'' of a function.
+
+% subsection scope (end)
+
+% subsection more_about_functions (end)
+
+% subsection example_4_functions (end)
+
+\subsection{Functors} % (fold)
+\label{sub:functors}
+
+\emph{Functors} are the name given to functions which take \emph{other functions} as an argument.  The following example demonstrates the use of functors.
+
+\begin{Rlistfloat}[h]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<functor_example,echo=t,eval=f>>=
+## Expand on previous plot ...
+parabfun <- function (x) {
+  return(x^2-3)
+}
+curve(parabfun, xlim=c(-2, 2), 
+  ylim=c(-4, 1))
+@
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+<<functor_example_plot,fig=t,echo=f,eval=t,height=4.5,width=4,pgf=t,external=t,cache=t>>=
+parabfun <- function (x) {
+  return(x^2-3)
+}
+curve(parabfun, xlim=c(-2, 2), 
+  ylim=c(-4, 1))
+@
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+In this example, the builtin function \cc{curve()} is a \emph{functor} -- it takes the function \cc{parabfun()} as its first argument.  There are two ways you can build your own functors in \R.
+\begin{description}
+  \item[\cc{apply} family] The \cc{apply} family of functions (named \cc{apply}, \cc{sapply}, \cc{mapply}, \ldots) take a function name (or expression) as their \emph{second} argument and \emph{apply} that function to each member of their first argument (which should be a vector or list).  The \cc{sapply()} function operates on vectors, \cc{lapply()} on lists, and \cc{mapply()}.  See the online help documentation and examples for details.
+  \item[\cc{do.call()}] The \cc{do.call()} function takes to arguments: a function (or expression) is its first argument and a named list of parameters as its second.  It then evaluates the given function with the listed parameters.
+\end{description}
+<<sapply_example,eval=t,echo=t>>=
+myFun <- function (x) {
+  return(x^2 - 1)
+}
+
+myOtherFun <- function (x, y, z) {
+  return(min(c(x/y, x/z, y/z, z/y, z/x, y/x)))
+}
+
+x_vector <- 1:10
+x <- 1
+y <- 2
+z <- 3
+
+sapply(x_vector, myFun)
+do.call(myOtherFun, list(x=x, y=y, z=z))
+@
+
+% subsection functors (end)
+
+\section{Pseudocode translation} % (fold)
+\label{sec:pseudocode_translation}
+
+The process of transforming a pseudocode outline into a functional implementation starts with a basic understand of algorithm itself.  Once you are confident that you understand what the algorithm \emph{means}\footnote{A good test of whether you \emph{understand} an algorithm is whether you could (in theory, with enough time) perform the algorithm with paper and a pencil.  Computers are not magic.}, you are ready to begin.  Below is a \emph{generalized} method transforming pseudocode into an implementation.
+
+\begin{enumerate}
+  \item Try to identify and separate distinct ``parts'' of the algorithm and the relationships between them.  I often find it helpful to look specifically for
+  \begin{enumerate}
+    \item Groups of operations which can naturally form a \emph{function}
+    \item Inputs and outputs
+    \item Loops
+    \item Branches\footnote{Branching describes the situation wherein a the results of a \emph{conditional} (\Com{if} statement) pick between two substantially different options}.
+  \end{enumerate}
+  \item Identify where (and what type of) variables will be needed.  I often find it helpful to write down the names I will use for my variables write next to the pseudocode.
+  \item Identify the \emph{termination conditions} - the ways in which the algorithm will stop.  For iterative algorithms, this is often a maximum number of loops or evidence of convergence.
+  \item Start writing and remember, there's no need to go in order!  Feel free to write whatever ``part'' seems most natural to you.\footnote{Programming is a lot like doing a 1000 piece puzzle.  Sometimes you are very uncertain about the first couple pieces you put down and.  Often you will move or change them later.  But the more pieces you have ``on the board'', the easier it is to see how the rest fit in.}.
+\end{enumerate}
+
+To help you get started, let's work work through the first pseudocode algorithm from the text.  Hopefully, ``seeing'' how the process works may make it easier.  We will consider here the specific scenario described in the first example, where we derived the difference equation.
+\begin{equation*}
+  N_{t+1} - N_t = 4N_t
+\end{equation*}
+Furthermore, let us consider an initial population size of 10 ($N_0 = 10$).
+
+
+% section pseudocode_translation (end)
+
+\section{Example: numerical solutions for difference equations}
+\label{sec:ex_num_sol_for_diff_eq}
+
+An algorithm for numerically solving a difference equation is given in the text.  It is printed again below for reference.
+
+\textbf{Pseudocode for numerical solution of difference equations}
+\begin{enumerate}
+\item Define the iterated map function \texttt{F(x)}
+\item Choose an initial condition $x_0$ and store it as the first element of the array $x$ (we will use $x[0]$, but in some languages it has to be $x[1]$)
+\item For $i$ starting at 1, repeat until $i$ exceeds the specified number of iterations
+\begin{enumerate}
+\item  Assign $x[i] $ the value of \texttt{F(x[i-1])}
+\item increment $i$ by 1
+\end{enumerate}
+\end{enumerate}
+
+More compactly, we can write this as
+
+\begin{pcode}[Numerical difference equation algorithm][plst:numdiffeqal]
+    define function F(x)   // iterated map function
+    real x0                // initial condition
+    int N                  // total iterations
+    real array X [1..N]
+    X[0] := x0              // assign first value
+    for i in 1 to N do
+    begin
+      X[i] := F(x[i-1])
+    end
+\end{pcode}
+
+On first pass, I break the algorithm down into its ``component'' parts and note the names for variables I intend to use.
+
+
+\begin{Rlistfloat}[h!]
+\begin{multicols}{2}
+  \begin{minipage}{0.6\textwidth}
+\begin{llcode}%[Iterated map function][lst:imapfun1]
+
+  define function F(x)   // iterated map function
+(*@\rule{1.0\linewidth}{0.1pt}@*)
+  real x0                // initial condition
+  int N                  // total iterations
+  real array X [1..N]
+  X[0] := x0              // assign first value
+(*@\rule{1.0\textwidth}{0.1pt}@*)
+  for i in 1 to N do
+  begin
+    X[i] := F(x[i-1])
+  end
+(*@@*)
+\end{llcode}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{rrcode}%[Iterated map function][lst:imapfun1]
+
+  lets call this function (*@\texttt{diffEqImap}@*)
+(*@\rule{1.0\linewidth}{0.1pt}@*)
+  call it (*@\texttt{init\_value}@*) (numeric)
+  (*@\texttt{max\_iter}@*) (numeric)
+  (*@\texttt{x\_vector}@*) (numeric)
+(*@@*)
+(*@\rule{1.0\textwidth}{0.1pt}@*)
+  use (*@\texttt{ii}@*) as our counter
+(*@@*)
+(*@@*)
+  termaination condition
+(*@@*)
+\end{rrcode}
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+
+
+%\begin{tabular}{|p{8cm}|p{8cm}|}
+%  \hline
+%  $F(x) := $ iterated map function & lets call the function \Com{difEqImap()} %\\
+%  \hline \hline
+%  $x_0 := $ initial condition & use \Com{init\_value} (numeric) \\
+%  $X_0 \gets x_0$ & call the array \Com{x\_vector} (numeric vector) \\
+%  $N := $ maximum number of iterations & \Com{max\_init} (numeric) \\
+%  \hline \hline
+%  \textbf{for} $i = 1$ to $N$ \textbf{do} & \Com{ii} as our iterator %(numeric)\\
+%  \hspace{0.5cm} $X_0 \gets F(X_{i-1})$ & \\
+%  \textbf{end for} & termination condition \\
+%  \hline
+%\end{tabular}
+%
+Here I have broken the algorithm down into three separate ``chunks'' (represented by the boxes) and notated the variable names I will use.
+
+Writing the first ``chunk'' (the iterated map function) should be no problem, since we already know it from the text!
+
+<<ex1_ch_1_r,eval=t,echo=t>>=
+diffEqImap <- function(x_at_t) {
+  x_at_t1 <- 5 * x_at_t;
+  return(x_at_t1);
+}
+@
+
+No problems there.  Continuing, the next ``chunk'' is merely a bunch of variable assignments.
+
+<<ex1_ch_2_r,eval=t,echo=t>>=
+init_value <- 10;
+max_iter <-20;
+x_array <- numeric(length=max_iter);  # size of x_array determined by max_iter
+x_array[1] <- init_value;             # R indexing begins at 1, not 0
+@
+
+Nothing too bad there, either.  Note how I allocated the array \Com{x\_array} to its full size all at once, rather than starting with a vector of length one and ``growing'' it later.  When possible, this is preferred.
+
+<<ex_1_ch_3_r,eval=t,echo=t>>=
+for (ii in 2:max_iter) {
+  new_value <- diffEqImap(x_array[ii-1]);
+  x_array[ii] <- new_value
+}
+@
+
+At this point we're all done.  Since the pseudocode algorithm didn't specify and output, the plot below shows the resulting values for \Com{x\_array}.
+
+\begin{Rlistfloat}[h]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<sec_plot_first_plot5,echo=t,eval=f>>=
+## Expand on previous plot ...
+plot(1:20, x_array, type='l',
+     main='Example 1', xlab='t',
+     ylab='x(t)');
+@
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+<<sec_plot_first_plot5_1,fig=t,echo=f,eval=t,height=3.5,width=4,pgf=t,external=t,cache=t>>=
+plot(1:20, x_array, type='l',
+     main='Example 1', xlab='t',
+     ylab='x(t)');
+@
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+% section pseudocode_translation (end)
+
+
+\part{Exercises}
+
+\begin{enumerate}
+  \item Write a function that takes as input a polynomial\footnote{Helper functions are included at the end of the exercise.} and returns the polynomial representing the first derivative of the input polynomial.  You will be provided two functions, \texttt{parsePolynomial()} and \texttt{deparsePolynomial} to help you in this task.  The function \Com{parsePolynomial()} takes as input a polynomial in $x$ and returns a vector of exponents and a vector of coefficients.  The function \Com{deparsePolynomial()} takes as input a vector of exponents and a vector of coefficients and returns a polynomial in $x$.
+  \item \emph{Logistic Model.} \begin{enumerate}
+    \item Consider the logistic model $ f(x) = x \left(2-\frac{x}{2}\right) $. Calculate and plot the numerical solution and fixed points of this difference equation..
+    \item Write a \emph{functor} which takes as an argument a function which is a logistic difference equation.  Your functor should find the fixed points of the difference equation and plot its solution as an iterated map.
+  \end{enumerate}
+%  \item \emph{Quicksort.} Recall exercise 2 from the previous section.  There you sorted a list of integers using a method called a \emph{bubble sort}.  A more efficient method for sorting is the \emph{quicksort}, given below in pseudocode.
+%  \begin{pcode}[Quicksort pseudocode.][lst:qsort]
+%    function qsort (int array x[n])
+%        if n == 0 do
+%            return
+%%        else if n == 1 do
+%            return x
+%        else 
+%            int pivot
+%            int array head
+%            int array tail
+%            pivot :=  x[0]
+%            head := [k] in x with k < pivot
+%            head := qsort (head)
+%            tail := [k] in x with k >= pivot
+%%            tail := qsort (tail)
+%            x := join(head, pivot, tail)
+%        return x
+%  \end{pcode}
+%      
+%  \item \emph{Efficiency.}  Under ideal conditions, \emph{quicksorting} a list of $n$ integers involves calling \cc{qsort} approximately $n \log n$  times.  Under the worst conditions, \cc{qsort} is called approximately $n^2$ times.  What do these conditions look like?
+    \item Using the functor from the previous exercise, plot iterated logistic of the following models and analytically find the fixed points of the models.  State whether the solution found computationally approaches the analytically calculated fixed points.
+    \begin{enumerate}
+      \item $f(x) = 2x (1-x)$
+      \item $f(x) = 4x (1-x)$
+    \end{enumerate}
+\end{enumerate}
+
+<<hide_prompt,eval=t,echo=f>>=
+options(prompt=' ', continue=' ')
+@
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=trbl,keywordstyle={\bf\color{red}},otherkeywords={}}
+\begin{quotation}
+<<exam00,eval=TRUE>>=
+#!/usr/bin/env rr
+# encoding: utf-8
+# parsePolynomial.R
+#
+# parsePolynomial - a function for parsing a polynomial (in x) into a
+#            vector of coefficients and a vector of exponents.
+# argument - inputExpression - a polynomial in x, expressed as a string.
+#            For example,   "x^3 + 2x^2 - x - 1"
+# returns  - a list with two components, coefficients and exponents,
+#            representing the coefficients and exponents of the polynomial,
+#            respectively.
+#
+# Example:
+#       > inputEx <- "x^3 + 2x^2 - x - 1"
+#       > result <- parsePolynomial(inputEx)
+#       > result[['exponents']]
+#       [1] 3 2 1 0
+#       > result[['coefficients']]
+#       [1] 1 2 -1 -1
+#
+parsePolynomial <- function(inputExpression) {
+  numberTerms <- nchar(gsub("[^x]", "", inputExpression));
+  coefficients <- numeric(length=(numberTerms)+1);
+  exponents <- numeric((length=numberTerms)+1);
+  splitTerms <- strsplit(gsub('-', '+ -', inputExpression), '\\+')[[1]]
+  for (ii in seq(along=splitTerms)) {
+    term <- gsub(' ', '', splitTerms[ii]);
+    if(gsub("[^x]", "", term) == '') {
+      term <- paste(term, 'x^0', sep='');
+    }
+    if (gsub("([\\+|-]*)(.*)x.*", "\\2", term) == '') {
+      term <- gsub('x', '1x', term);
+    }
+    if (gsub(".*x", "", term) == '') {
+      term <- paste(term, '^1', sep='');
+    }
+    coef <- eval(as.integer(gsub('x.*', '', term)));
+    coefficients[ii] <- coef;
+    exponent <- eval(as.integer(gsub('.*\\^(.*)', '\\1', term)));
+    exponents[ii] <- exponent;
+  }
+  o <- -(order(exponents)) + length(exponents) + 1;
+  exponents <- exponents[o];
+  coefficients <- coefficients[o];
+  result <- list(exponents=exponents, coefficients=coefficients);
+  return(result);
+}
+
+# deparsePolynomial - a function which takes a vector of coefficients and a 
+#            vector of exponents and constructs a polynomial.
+# arguments - coefficients - a vector of integer coefficients
+#             exponents - a vector of exponents
+#
+# Example:
+#       > exponents <- c(3, 2, 1, 0)
+#       > coefficients <- c(1, 2, -1, -1)
+#       > deparsePolynomial(coefficients, exponents)
+#       [1] "x^3 + 2x^2 - x - 1"
+#
+deparsePolynomial <- function(coefficients, exponents) {
+  if (length(exponents) != length(coefficients)) {
+    stop('Exponent vector and coefficient vector must be of equal length.\n')
+  }
+  out_string <- '';
+  for (ii in seq(along=exponents)) {
+    out_string <- paste(out_string, ' + ', as.character(coefficients[ii]),
+                        'x^', as.character(exponents[ii]), sep='');
+  }
+  out_string <- gsub('\\+ -', '- ', out_string);
+  out_string <- gsub('1x', 'x', out_string);
+  out_string <- gsub(' x\\^0', ' 1', out_string);
+  out_string <- gsub('x\\^0', '', out_string);
+  out_string <- gsub('^ [\\+|-] ', '', out_string);
+  out_string <- gsub('x\\^1', 'x', out_string);
+  return(out_string);
+}
+@
+\end{quotation}
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=none,keywordstyle={\bf\color{RRecomdcolor}},otherkeywords={!,!=,~,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/, \%in\%}}
+<<unhide_prompt,eval=t,echo=f>>=
+options(prompt='> ', continue='+ ')
+@
+
+
+\end{document}

@@ -1,0 +1,36 @@
+Package: Rgraphviz
+Title: Provides plotting capabilities for R graph objects
+Description: Interfaces R with the AT and T graphviz library for
+        plotting R graph objects from the graph package. Users on all
+        platforms must install graphviz; see the README file,
+        available in the source distribution of this file, for
+        details.
+Version: 1.22.2
+Author: Jeff Gentry <jgentry@jimmy.harvard.edu>, Li Long <li.long@isb-sib.ch>,
+   Robert Gentleman <rgentlem@fhcrc.org>, Seth Falcon <sethf@fhcrc.org>,
+   Florian Hahne <fhahne@fhcrc.org>, Deepayan Sarkar <dsarkar@fhcrc.org>,
+   Kasper Hansen <khansen@stat.berkeley.edu>
+Maintainer: Kasper Hansen <khansen@stat.berkeley.edu>
+Depends: R (>= 2.6.0), methods, utils, graph, grid
+Imports: graph, graphics, grDevices, grid, methods, utils
+SystemRequirements: Graphviz version >= 2.2
+License: Artistic-2.0
+LazyLoad: Yes
+Collate: AllGenerics.R
+	 AllClasses.R
+	 Ragraph.R
+	 defaultAttrs.R
+	 graph.R
+	 makeNodeAttrs.R
+	 Rgraphviz.R
+	 ellipse.R
+	 layoutGraph.R
+	 pieGlyph.R
+	 gcneData.R
+	 LL_funcs.R
+	 plot.R
+	 renderGraph.R
+	 graphviz_build_version.R
+ 	 zzz.R
+biocViews: GraphsAndNetworks
+Packaged: 2009-10-13 20:21:46 UTC; biocbuild

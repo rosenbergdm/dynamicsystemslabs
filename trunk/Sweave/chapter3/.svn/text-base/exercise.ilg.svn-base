@@ -1,0 +1,435 @@
+This is makeindex, version 2.15 [TeX Live 2009] (kpathsea + Thai support).
+Scanning input file exercise.tex...
+!! Input index error (file = exercise.tex, line = 1):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 2):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 3):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 4):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 5):
+   -- Unknown index keyword \documentclass[10pt,letterpaper].
+!! Input index error (file = exercise.tex, line = 6):
+   -- Unknown index keyword \usepackage[Rpdflatex].
+!! Input index error (file = exercise.tex, line = 7):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = exercise.tex, line = 8):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = exercise.tex, line = 9):
+   -- Unknown index keyword \pgfrealjobname.
+!! Input index error (file = exercise.tex, line = 11):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 12):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 13):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 14):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 15):
+   -- Unknown index keyword %\svnid.
+!! Input index error (file = exercise.tex, line = 16):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 17):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 18):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 19):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 20):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = exercise.tex, line = 21):
+   -- Unknown index keyword \svnRegisterAuthor.
+!! Input index error (file = exercise.tex, line = 24):
+   -- Unknown index keyword %\usepackage.
+!! Input index error (file = exercise.tex, line = 30):
+   -- Unknown index keyword \title.
+!! Input index error (file = exercise.tex, line = 31):
+   -- Unknown index keyword \author.
+!! Input index error (file = exercise.tex, line = 32):
+   -- Unknown index keyword {\footnotesize\parbox[t].
+!! Input index error (file = exercise.tex, line = 33):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 34):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 35):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 36):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 37):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 38):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 39):
+   -- Unknown index keyword Version:\>\svnFullRevision*.
+!! Input index error (file = exercise.tex, line = 40):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 41):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 42):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 43):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 44):
+   -- Unknown index keyword \setlength.
+!! Input index error (file = exercise.tex, line = 45):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 47):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 49):
+   -- Unknown index keyword \part.
+!! Input index error (file = exercise.tex, line = 50):
+   -- Unknown index keyword \label.
+!! Input index error (file = exercise.tex, line = 52):
+   -- Unknown index keyword \section*.
+!! Input index error (file = exercise.tex, line = 54):
+   -- Unknown index keyword Inthisexercisewewillgenerate\emph.
+!! Input index error (file = exercise.tex, line = 56):
+   -- Unknown index keyword \section*.
+!! Input index error (file = exercise.tex, line = 58):
+   -- Unknown index keyword Thealgorithmprovidedinyourtext(see\textbf.
+!! Input index error (file = exercise.tex, line = 60):
+   -- Unknown index keyword \textbf.
+!! Input index error (file = exercise.tex, line = 61):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 62):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 63):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 64):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 65):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 66):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 67):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 68):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 69):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 70):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 71):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 72):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 73):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 75):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 76):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 77):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 78):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 79):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 80):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 81):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 82):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 84):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 85):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 87):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 88):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 89):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 90):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 91):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 92):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 93):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 94):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 95):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 96):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 97):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 98):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 99):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 102):
+   -- Unknown index keyword Thisisbyfarthelargestalgorithmpresentedinthiscourse.Althoughitis\emph.
+!! Input index error (file = exercise.tex, line = 104):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 105):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 106):
+   -- Unknown index keyword \item[Comments]Remember,thegoalisto\emph.
+!! Input index error (file = exercise.tex, line = 107):
+   -- Unknown index keyword \item[Whitespace]Thealgorithmaboveusesnested\cc.
+!! Input index error (file = exercise.tex, line = 108):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 110):
+   -- Unknown index keyword \section*.
+!! Input index error (file = exercise.tex, line = 112):
+   -- Unknown index keyword ConsidertheODEgivenby$\dotx=\frac.
+!! Input index error (file = exercise.tex, line = 114):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 115):
+   -- Unknown index keyword \setlength.
+!! Input index error (file = exercise.tex, line = 116):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 117):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 118):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 119):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 120):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 121):
+   -- Unknown index keyword >f<-exampleFun1<-function(x,t).
+!! Input index error (file = exercise.tex, line = 122):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 123):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 124):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 125):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 126):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 127):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 128):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 129):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 130):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 131):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 132):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 133):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 134):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 135):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 136):
+   -- Unknown index keyword +main=paste(".
+!! Input index error (file = exercise.tex, line = 137):
+   -- Unknown index keyword +"=\\frac.
+!! Input index error (file = exercise.tex, line = 138):
+   -- Unknown index keyword +xlab='.
+!! Input index error (file = exercise.tex, line = 139):
+   -- Unknown index keyword +ylab='.
+!! Input index error (file = exercise.tex, line = 140):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 141):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 142):
+   -- Unknown index keyword >for(iiin0:(tSteps-1)).
+!! Input index error (file = exercise.tex, line = 143):
+   -- Unknown index keyword +for(jjin0:(xSteps-1)).
+!! Input index error (file = exercise.tex, line = 144):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 145):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 146):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 147):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 148):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 149):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 150):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 151):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 152):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 153):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 154):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 156):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 158):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 159):
+   -- Unknown index keyword \beginpgfgraphicnamed.
+!! Input index error (file = exercise.tex, line = 160):
+   -- Unknown index keyword \input.
+!! Input index error (file = exercise.tex, line = 161):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 162):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 163):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 164):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 166):
+   -- Unknown index keyword \section.
+!! Input index error (file = exercise.tex, line = 168):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 169):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = exercise.tex, line = 170):
+   -- Unknown index keyword The\cc.
+!! Input index error (file = exercise.tex, line = 171):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = exercise.tex, line = 172):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 173):
+   -- Unknown index keyword \item\cc.
+!! Input index error (file = exercise.tex, line = 174):
+   -- Unknown index keyword \item\cc.
+!! Input index error (file = exercise.tex, line = 175):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 176):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = exercise.tex, line = 177):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 178):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 179):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 180):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 181):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 182):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 183):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 184):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 185):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 186):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 187):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 188):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 191):
+   -- Unknown index keyword \part.
+!! Input index error (file = exercise.tex, line = 192):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 193):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 195):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 196):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 198):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 199):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 201):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 203):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 204):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 207):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 209):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 210):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 212):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 214):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 216):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 217):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 220):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 222):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 223):
+   -- Unknown index keyword $$C\dotV=-g_.
+!! Input index error (file = exercise.tex, line = 224):
+   -- Unknown index keyword where$C$isthecapacitanceofthemembrane,$g_.
+!! Input index error (file = exercise.tex, line = 226):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 227):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 228):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 229):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 230):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 231):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 232):
+   -- Unknown index keyword Capacitance($C$)&\multicolumn.
+!! Input index error (file = exercise.tex, line = 233):
+   -- Unknown index keyword Conductance($g$,\emph.
+!! Input index error (file = exercise.tex, line = 234):
+   -- Unknown index keyword E$_\text.
+!! Input index error (file = exercise.tex, line = 235):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 236):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 237):
+   -- Unknown index keyword \caption.
+!! Input index error (file = exercise.tex, line = 238):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 239):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 241):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 242):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 244):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 246):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 248):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 250):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = exercise.tex, line = 251):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 252):
+   -- Unknown index keyword \itemTranslatethetextualdescriptionfromyourtextintoa\emph.
+!! Input index error (file = exercise.tex, line = 253):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 254):
+   -- Unknown index keyword \begin.
+!! Input index error (file = exercise.tex, line = 255):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 256):
+   -- Unknown index keyword \beginpgfgraphicnamed.
+!! Input index error (file = exercise.tex, line = 257):
+   -- Unknown index keyword \input.
+!! Input index error (file = exercise.tex, line = 258):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 259):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 260):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 262):
+   -- Unknown index keyword \itemImplementyouralgorithmin\Randuseittoanalyzelogisticmodel$$f(x)=\dfrac.
+!! Input index error (file = exercise.tex, line = 263):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = exercise.tex, line = 264):
+   -- Unknown index keyword \end.
+!! Input index error (file = exercise.tex, line = 267):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 215 rejected).
+Nothing written in exercise.ind.
+Transcript written in exercise.ilg.

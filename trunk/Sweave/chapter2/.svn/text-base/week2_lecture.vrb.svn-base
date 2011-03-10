@@ -1,0 +1,13 @@
+\frametitle {Style}\framesubtitle {Rules}
+      \begin{tabular}{cp{8cm}}
+        \toprule
+        Category & Description \\
+        \midrule
+        variable names & Variable names should describe their function and follow a consistent capitalization scheme \\
+        indentation & \emph{code blocks} (generally delimited by brackets) should be indented (recommended 2 spaces) relative to surrounding code \\
+        blank lines & use blank lines to separate independent ``chunks'' or concepts \\
+        spaces & blank spaces should surround symbols and parentheses \\
+        comments & comments should be used liberally to explain code and concepts \\
+        line length & Individual lines should be no more than 80 characters long.  Continuation lines (if necessary) should be indented relative to surrounding code \\
+        \bottomrule
+      \end{tabular}

@@ -1,0 +1,126 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{hyperref,url}               % used in bibliography
+\usepackage[superscript,nomove]{cite}
+\usepackage{geometry}
+\usepackage{svn-multi}
+\usepackage{pgf}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{fontspec}
+%\setmainfont{Hoefler Text}
+%\setromanfont{Latin Modern Roman}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\emph{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\textwidth 6.5in
+\pagestyle{fancy}
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\usepackage{ifpdf}
+
+
+% ----------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+% \usepackage{Sweave}
+%
+%----------------------------------------------------------------------------
+\SweaveOpts{keep.source=TRUE}
+%------------------------------------------------------------------------------
+<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+oldRout <- .Rout <- getSweaveListingOption('Rout')
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<-}{<<-}2"
+.myRset[['keywordstyle']] <- "{\\bf\\color{RRecomdcolor}}"
+.myRset$numbers <- 'left'
+.myRset$numberstyle="\\tiny"
+.Rout$fancyvrb <- 'true'
+.Rout$keywordstyle <- "{\\color{Routcolor}}"
+.myRset$extendedchars <- 'true'
+.myRset$otherkeywords <- "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<-,/, \\%in\\%}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{RRecomdcolor}")
+SweaveListingoptions(Rset=.myRset, Rout=.Rout, intermediate = FALSE)
+SweaveListingPreparations()
+setCacheDir('cache')
+@
+% -------------------------------------------------------------------------------
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                      basicstyle={\color{black}\small},%
+                      keywordstyle={\bf\color{black}},%
+                      commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                      literate={<-}{<-}2{<<-}{<<-}2}
+
+% \lstdefinestyle{Routstyle1}{style=RoutstyleO,numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt}
+
+\lstset{commentstyle=\color{red},showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{language=R}}{}
+% \newenvironment{rc} {\begin{alltt}\small} {\end{alltt}}
+
+\newcommand{\adv}{{\tiny (Advanced)}}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstnewenvironment{rc.out}[1][]{\lstset{language=R,%%
+morecomment=[is]{/*}{*/},%
+moredelim=[is][\itshape]{(-}{-)},frame=single}}{}
+
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+\definecolor{simpleRed}{rgb}{1,0,0}
+\definecolor{simpleGreen}{rgb}{0,1,0}
+\definecolor{simpleBlue}{rgb}{0,0,1}
+
+
+
+
+\title{Introduction to computational programming\\\smaller Using \emph{R}}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> \svnFullAuthor*{\svnauthor}\\
+\end{tabbing}
+}
+}}
+\begin{document}

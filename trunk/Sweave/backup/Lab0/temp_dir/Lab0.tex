@@ -1,0 +1,1064 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{hyperref,url}               % used in bibliography
+\usepackage[superscript,nomove]{cite}
+\usepackage{geometry}
+\usepackage{svn-multi}
+\usepackage{pgf}
+\usepackage{amsmath,amsthm,amssymb}
+
+
+\svnidlong
+{$LastChangedDate: 2009-09-15 18:34:08 -0500 (Tue, 15 Sep 2009) $}
+{$LastChangedRevision: 24 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\emph{R} }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+\usepackage{ae}
+
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\textwidth 6.5in
+\pagestyle{fancy}
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\usepackage{ifpdf}
+
+
+% ----------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+% \usepackage{Sweave}
+%
+%----------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+%------------------------------------------------------------------------------%
+%Preparations for Sweave and Listings
+%------------------------------------------------------------------------------%
+%
+\RequirePackage{color}
+\definecolor{Rcolor}{rgb}{0, 0.5, 0.5}
+\definecolor{RRecomdcolor}{rgb}{0, 0.6, 0.4}
+\definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}
+\definecolor{Routcolor}{rgb}{0.461, 0.039, 0.102}
+\definecolor{Rcommentcolor}{rgb}{0.101, 0.043, 0.432}
+%------------------------------------------------------------------------------%
+\lstdefinelanguage{Rd}[common]{TeX}%
+{moretexcs={acronym,alias,arguments,author,bold,cite,%
+          code,command,concept,cr,deqn,describe,%
+          description,details,dfn,doctype,dots,%
+          dontrun,dontshow,donttest,dQuote,%
+          email,emph,enc,encoding,enumerate,env,eqn,%
+          examples,file,format,item,itemize,kbd,keyword,%
+          ldots,link,linkS4class,method,name,note,%
+          option,pkg,preformatted,R,Rdopts,Rdversion,%
+          references,S3method,S4method,Sexpr,samp,section,%
+          seealso,source,sp,special,%
+          sQuote,strong,synopsis,tab,tabular,testonly,%
+          title,url,usage,value,var,verb},
+   sensitive=true,%
+   morecomment=[l]\%% 2008/9 Peter Ruckdeschel
+}[keywords,comments]%%
+%------------------------------------------------------------------------------%
+
+%----------------
+\lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=`,extendedchars=true,%
+                          language=R,%
+                          basicstyle={\color{Rcolor}\small},%
+                          keywordstyle={\bf\color{RRecomdcolor}},%
+                          commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                          literate={<-}{<-}2{<<-}{<<-}2,%
+                          alsoother={$},%
+                          alsoletter={.<-},%
+                          otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/, \%in\%},%
+                          escapeinside={(*}{*)},%
+                          numbers=left,%
+                          numberstyle=\tiny}%
+%----------------
+\lstdefinestyle{Rstyle}{style=RstyleO1}
+
+%----------------
+\lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
+                         basicstyle={\color{black}\footnotesize},%
+                         commentstyle={\ttfamily\itshape},%
+                         alsolanguage=R}%
+%----------------
+%------------------------------------------------------------------------------%
+\global\def\Rlstset{\lstset{style=Rstyle}}%
+\global\def\Rdlstset{\lstset{style=Rdstyle}}%
+%------------------------------------------------------------------------------%
+\global\def\Rinlstset{\lstset{style=Rinstyle}}%
+\global\def\Routlstset{\lstset{style=Routstyle}}%
+\global\def\Rcodelstset{\lstset{style=Rcodestyle}}%
+%------------------------------------------------------------------------------%
+\Rlstset
+%------------------------------------------------------------------------------%
+%copying relevant parts of Sweave.sty
+%------------------------------------------------------------------------------%
+%
+\RequirePackage{graphicx,fancyvrb}%
+\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}%
+
+\RequirePackage{ifthen}%
+\newboolean{Sweave@gin}%
+\setboolean{Sweave@gin}{true}%
+\setkeys{Gin}{width=0.8\textwidth}%
+\newboolean{Sweave@ae}
+\setboolean{Sweave@ae}{true}%
+\RequirePackage[T1]{fontenc}
+\RequirePackage{ae}
+%
+\newenvironment{Schunk}{}{}
+
+\newcommand{\Sconcordance}[1]{% 
+\ifx\pdfoutput\undefined% 
+\csname newcount\endcsname\pdfoutput\fi% 
+\ifcase\pdfoutput\special{#1}% 
+\else\immediate\pdfobj{#1}\fi} 
+
+%------------------------------------------------------------------------------%
+% ---- end of parts of Sweave.sty
+%------------------------------------------------------------------------------%
+%
+% ---- input 
+\lstdefinestyle{RinstyleO}{style=Rstyle,fancyvrb=true,%
+                           basicstyle=\color{Rcolor}\small}%
+\lstdefinestyle{Rinstyle}{style=RinstyleO}
+\lstnewenvironment{Sinput}{\Rinlstset}{\Rlstset}
+%
+% ---- output 
+\lstdefinestyle{RoutstyleO}{fancyvrb=true,basicstyle=\color{Routcolor}\small,%
+                            keywordstyle={\color{Routcolor}}}%
+\lstdefinestyle{Routstyle}{style=RoutstyleO}
+\lstnewenvironment{Soutput}{\Routlstset}{\Rlstset}
+%
+% ---- code 
+\lstdefinestyle{RcodestyleO}{style=Rstyle,fancyvrb=true,fontshape=sl,%
+                             basicstyle=\color{Rcolor}}%
+\lstdefinestyle{Rcodestyle}{style=RcodestyleO}
+\lstnewenvironment{Scode}{\Rcodelstset}{\Rlstset}
+%
+%------------------------------------------------------------------------------%
+\let\code\lstinline
+\def\Code#1{{\tt\color{Rcolor} #1}}
+\def\file#1{{\tt #1}} 
+\def\pkg#1{{\tt "#1"}} 
+\newcommand{\pkgversion}{{\tt 2.1.3}}
+%------------------------------------------------------------------------------%
+
+\lstdefinestyle{RstyleO2}{style=RstyleO1,%
+% --------------------------
+% Registration of package SweaveListingUtils
+% --------------------------
+morekeywords={[2]taglist,SweaveListingPreparations,SweaveListingOptions,SweaveListingoptions,SweaveListingMASK,%
+setToBeDefinedPkgs,setBaseOrRecommended,readSourceFromRForge,readPkgVersion,lstsetRout,%
+lstsetRin,lstsetRd,lstsetRcode,lstsetRall,lstsetR,%
+lstsetLanguage,lstset,lstinputSourceFromRForge,lstdefRstyle,isBaseOrRecommended,%
+getSweaveListingOption,copySourceFromRForge,changeKeywordstyles%
+},%
+keywordstyle={[2]{\bf}},%
+%
+% --------------------------
+% Registration of package startupmsg
+% --------------------------
+morekeywords={[3]suppressStartupMessages,startupType,startupPackage,StartupMessage,startupMessage,%
+startupEndline,readVersionInformation,readURLInformation,pointertoNEWS,onlytypeStartupMessages,%
+NEWS,mystartupMessage,mySMHandler,infoShow,buildStartupMessage%
+},%
+keywordstyle={[3]{\bf}},%
+%
+% --------------------------
+% Registration of package pgfSweave
+% --------------------------
+morekeywords={[4]pgfSweaveDriver,pgfSweave%
+},%
+keywordstyle={[4]{\bf}},%
+%
+% --------------------------
+% Registration of package cacheSweave
+% --------------------------
+morekeywords={[5]setCacheDir,getCacheDir,cacheSweaveDriver%
+},%
+keywordstyle={[5]{\bf}},%
+%
+% --------------------------
+% Registration of package stashR
+% --------------------------
+morekeywords={[6]stashROption,setDir<-,reposVersion<-,reposVersion,dbSync,%
+copyDB%
+},%
+keywordstyle={[6]{\bf}},%
+%
+% --------------------------
+% Registration of package filehash
+% --------------------------
+morekeywords={[7]with,top,registerFormatDB,push,pop,%
+mpush,isEmpty,initS,initQ,filehashOption,%
+filehashFormats,dumpObjects,dumpList,dumpImage,dumpEnv,%
+dumpDF,dbUnlink,dbReorganize,dbMultiFetch,dbLoad,%
+dbList,dbLazyLoad,dbInsert,dbInit,dbFetch,%
+dbExists,dbDelete,dbCreate,db2env,createS,%
+createQ%
+},%
+keywordstyle={[7]{\bf}},%
+%
+% --------------------------
+% Registration of package stats [recommended or base] 
+% --------------------------
+morekeywords={[8]xtabs,write.ftable,window<-,wilcox.test,weighted.residuals,%
+weighted.mean,vcov,varimax,variable.names,var.test,%
+update.formula,update.default,TukeyHSD.aov,TukeyHSD,tsSmooth,%
+tsp<-,tsdiag,ts.union,ts.plot,ts.intersect,%
+toeplitz,terms.terms,terms.formula,terms.default,terms.aovlist,%
+termplot,t.test,supsmu,summary.stepfun,summary.mlm,%
+summary.manova,summary.lm,summary.infl,summary.glm,summary.aovlist,%
+summary.aov,StructTS,stl,stepfun,stat.anova,%
+SSweibull,SSmicmen,SSlogis,SSgompertz,SSfpl,%
+SSfol,SSD,SSbiexp,SSasympOrig,SSasympOff,%
+SSasymp,splinefunH,spectrum,spec.taper,spec.pgram,%
+spec.ar,sortedXyData,smoothEnds,smooth.spline,smooth,%
+simulate,shapiro.test,setNames,selfStart,se.contrast,%
+screeplot,scatter.smooth,runmed,rstudent.lm,rstudent.glm,%
+rstandard.lm,rstandard.glm,rmultinom,residuals.lm,residuals.glm,%
+residuals.default,reshapeWide,reshapeLong,reshape,reorder,%
+rect.hclust,read.ftable,r2dtable,quasipoisson,quasibinomial,%
+quantile.default,quade.test,qqnorm.default,qbirthday,prop.trend.test,%
+prop.test,promax,printCoefmat,print.ts,print.terms,%
+print.logLik,print.lm,print.integrate,print.infl,print.glm,%
+print.ftable,print.formula,print.family,print.density,print.coefmat,%
+print.anova,princomp,predict.poly,predict.mlm,predict.lm,%
+predict.glm,prcomp,ppr,PP.test,power.t.test,%
+power.prop.test,power.anova.test,polym,poisson.test,plot.TukeyHSD,%
+plot.ts,plot.stepfun,plot.spec.phase,plot.spec.coherency,plot.spec,%
+plot.mlm,plot.lm,plot.ecdf,plot.density,plclust,%
+pbirthday,pairwise.wilcox.test,pairwise.table,pairwise.t.test,pairwise.prop.test,%
+pacf,p.adjust.methods,p.adjust,order.dendrogram,oneway.test,%
+numericDeriv,NLSstRtAsymptote,NLSstLfAsymptote,NLSstClosestX,NLSstAsymptotic,%
+nls.control,nls,nlminb,naresid,naprint,%
+napredict,na.pass,na.omit,na.fail,na.exclude,%
+na.contiguous,na.action,mood.test,monthplot,model.weights,%
+model.tables,model.response,model.offset,model.matrix.lm,model.matrix.default,%
+model.matrix,model.frame.lm,model.frame.glm,model.frame.default,model.frame.aovlist,%
+model.frame,model.extract,medpolish,median.default,mcnemar.test,%
+mauchly.test,mauchley.test,mantelhaen.test,manova,makepredictcall,%
+makeARIMA,make.link,ls.print,ls.diag,logLik,%
+loess.smooth,loess.control,loess,loadings,lm.wfit.null,%
+lm.wfit,lm.influence,lm.fit.null,lm.fit,lines.ts,%
+line,lag.plot,lag,ksmooth,ks.test,%
+kruskal.test,knots,kmeans,kernel,kernapply,%
+KalmanSmooth,KalmanRun,KalmanLike,KalmanForecast,isoreg,%
+is.tskernel,is.ts,is.stepfun,is.mts,is.leaf,%
+is.empty.model,inverse.gaussian,interaction.plot,integrate,influence.measures,%
+HoltWinters,heatmap,hclust,hatvalues.lm,hatvalues,%
+glm.fit.null,glm.fit,glm.control,getInitial,get_all_vars,%
+friedman.test,fligner.test,fitted.values,fisher.test,filter,%
+factor.scope,factanal,expand.model.frame,estVar,embed,%
+eff.aovlist,ecdf,dummy.coef,drop.terms,drop.scope,%
+dmultinom,dist,diffinv,diff.ts,dfbeta,%
+df.residual,df.kernel,deriv3.formula,deriv3.default,deriv3,%
+deriv.formula,deriv.default,density.default,dendrapply,delete.response,%
+decompose,cutree,cpgram,cov2cor,cov.wt,%
+cor.test,cophenetic,cooks.distance,contrasts<-,contr.treatment,%
+contr.sum,contr.SAS,contr.poly,contr.helmert,constrOptim,%
+confint.default,confint,complete.cases,cmdscale,clearNames,%
+chisq.test,ccf,case.names,cancor,bw.ucv,%
+bw.SJ,bw.nrd0,bw.nrd,bw.bcv,Box.test,%
+biplot,binom.test,bartlett.test,bandwidth.kernel,asOneSidedFormula,%
+as.ts,as.stepfun,as.hclust,as.formula,as.dist,%
+as.dendrogram,ARMAtoMA,ARMAacf,arima0.diag,arima0,%
+arima.sim,arima,ar.yw,ar.ols,ar.mle,%
+ar.burg,ar,ansari.test,anovalist.lm,anova.mlm,%
+anova.lmlist,anova.lm,anova.glmlist,anova.glm,AIC,%
+aggregate.ts,aggregate.default,aggregate.data.frame,addmargins,add.scope,%
+acf2AR,acf%
+},%
+keywordstyle={[8]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package graphics [recommended or base] 
+% --------------------------
+morekeywords={[9]xspline,text.default,stripchart,strheight,split.screen,%
+spineplot,smoothScatter,points.default,plot.xy,plot.window,%
+plot.new,plot.design,plot.default,pie,panel.smooth,%
+pairs.default,lines.default,layout.show,image.default,hist.default,%
+grconvertY,grconvertX,fourfoldplot,filled.contour,erase.screen,%
+dotchart,contour.default,co.intervals,close.screen,clip,%
+cdplot,boxplot.matrix,boxplot.default,barplot.default,axTicks,%
+axis.POSIXct,axis.Date,Axis,assocplot%
+},%
+keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package grDevices [recommended or base] 
+% --------------------------
+morekeywords={[10]xyz.coords,xyTable,xy.coords,xfig,X11Fonts,%
+X11Font,X11.options,Type1Font,trans3d,topo.colors,%
+tiff,terrain.colors,svg,setPS,setEPS,%
+savePlot,rgb2hsv,replayPlot,recordPlot,recordGraphics,%
+quartzFonts,quartzFont,quartz.options,quartz,ps.options,%
+postscriptFonts,postscriptFont,png,pdfFonts,pdf.options,%
+pdf,nclass.Sturges,nclass.scott,nclass.FD,n2mfrow,%
+make.rgb,jpeg,Hershey,heat.colors,hcl,%
+grey.colors,gray.colors,graphics.off,getGraphicsEvent,extendrange,%
+embedFonts,deviceIsInteractive,devAskNewPage,dev.size,dev.set,%
+dev.print,dev.prev,dev.off,dev.next,dev.new,%
+dev.list,dev.interactive,dev.cur,dev.copy2pdf,dev.copy2eps,%
+dev.copy,dev.control,densCols,convertColor,contourLines,%
+colorspaces,colorRampPalette,colorRamp,colorConverter,col2rgb,%
+cm.colors,CIDFont,check.options,cairo_ps,cairo_pdf,%
+boxplot.stats,bmp,blues9,bitmap,as.graphicsAnnot%
+},%
+keywordstyle={[10]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package utils [recommended or base] 
+% --------------------------
+morekeywords={[11]zip.file.extract,wsbrowser,write.table,write.socket,write.csv2,%
+write.csv,vignette,View,URLencode,URLdecode,%
+url.show,upgrade,update.packageStatus,update.packages,unzip,%
+unstack,type.convert,txtProgressBar,toLatex,toBibtex,%
+timestamp,tail.matrix,tail,SweaveSyntConv,SweaveSyntaxNoweb,%
+SweaveSyntaxLatex,SweaveHooks,Sweave,summaryRprof,strOptions,%
+str,Stangle,stack,setTxtProgressBar,setRepositories,%
+sessionInfo,select.list,savehistory,RweaveTryStop,RweaveLatexWritedoc,%
+RweaveLatexSetup,RweaveLatexOptions,RweaveLatexFinish,RweaveLatex,RweaveEvalWithOpt,%
+RweaveChunkPrefix,RtangleWritedoc,RtangleSetup,Rtangle,rtags,%
+RSiteSearch,RShowDoc,Rprofmem,Rprof,remove.packages,%
+relist,recover,readCitationFile,read.table,read.socket,%
+read.fwf,read.fortran,read.DIF,read.delim2,read.delim,%
+read.csv2,read.csv,rc.status,rc.settings,rc.options,%
+rc.getOption,promptPackage,promptData,personList,person,%
+packageStatus,packageDescription,package.skeleton,package.contents,old.packages,%
+object.size,nsl,normalizePath,new.packages,modifyList,%
+mirror2html,memory.size,memory.limit,makeRweaveLatexCodeRunner,make.socket,%
+make.packages.html,lsf.str,ls.str,localeToCharset,loadhistory,%
+limitedLabels,is.relistable,installed.packages,install.packages,index.search,%
+history,help.start,help.search,help.request,head.matrix,%
+head,glob2rx,getTxtProgressBar,getS3method,getFromNamespace,%
+getCRANmirrors,getAnywhere,formatUL,formatOL,flush.console,%
+fixInNamespace,file.edit,file_test,dump.frames,download.packages,%
+download.file,de.setup,de.restore,de.ncols,data.entry,%
+CRAN.packages,count.fields,contrib.url,compareVersion,combn,%
+close.socket,citHeader,citFooter,citEntry,citation,%
+chooseCRANmirror,checkCRAN,capture.output,bug.report,browseVignettes,%
+browseURL,browseEnv,available.packages,assignInNamespace,as.roman,%
+as.relistable,as.personList,as.person,argsAnywhere,alarm%
+},%
+keywordstyle={[11]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package datasets [recommended or base] 
+% --------------------------
+morekeywords={[12]WWWusage,WorldPhones,women,warpbreaks,volcano,%
+VADeaths,uspop,USPersonalExpenditure,USJudgeRatings,USArrests,%
+USAccDeaths,UKgas,UKDriverDeaths,UCBAdmissions,trees,%
+treering,ToothGrowth,Titanic,Theoph,swiss,%
+sunspots,sunspot.year,sunspot.month,state.x77,state.region,%
+state.name,state.division,state.center,state.area,state.abb,%
+stackloss,stack.x,stack.loss,sleep,Seatbelts,%
+rock,rivers,randu,quakes,Puromycin,%
+pressure,presidents,precip,PlantGrowth,OrchardSprays,%
+Orange,occupationalStatus,nottem,Nile,nhtemp,%
+mtcars,morley,mdeaths,lynx,longley,%
+Loblolly,LifeCycleSavings,lh,ldeaths,LakeHuron,%
+JohnsonJohnson,islands,iris3,iris,InsectSprays,%
+infert,Indometh,Harman74.cor,Harman23.cor,HairEyeColor,%
+freeny.y,freeny.x,freeny,Formaldehyde,fdeaths,%
+faithful,EuStockMarkets,eurodist,euro.cross,euro,%
+esoph,DNase,discoveries,crimtab,CO2,%
+co2,chickwts,ChickWeight,cars,BOD,%
+BJsales.lead,BJsales,beaver2,beaver1,austres,%
+attitude,attenu,anscombe,airquality,AirPassengers,%
+airmiles,ability.cov%
+},%
+keywordstyle={[12]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package methods [recommended or base] 
+% --------------------------
+morekeywords={[13]validSlotNames,validObject,unRematchDefinition,trySilent,tryNew,%
+traceOn,traceOff,testVirtual,testInheritedMethods,superClassDepth,%
+Summary,substituteFunctionArgs,substituteDirect,slotsFromS3,slotNames,%
+slot<-,slot,sigToEnv,SignatureMethod,signature,%
+showMlist,showMethods,showExtends,showDefault,showClass,%
+setValidity,setReplaceMethod,setPrimitiveMethods,setPackageName,setOldClass,%
+setMethod,setIs,setGroupGeneric,setGenericImplicit,setGeneric,%
+setDataPart,setClassUnion,setClass,setAs,sessionData,%
+selectSuperClasses,selectMethod,seemsS4Object,sealClass,S3Part<-,%
+S3Part,S3Class<-,S3Class,resetGeneric,resetClass,%
+requireMethods,representation,removeMethodsObject,removeMethods,removeMethod,%
+removeGeneric,removeClass,rematchDefinition,registerImplicitGenerics,reconcilePropertiesAndPrototype,%
+rbind2,Quote,prototype,promptMethods,promptClass,%
+prohibitGeneric,possibleExtends,packageSlot<-,packageSlot,newEmptyObject,%
+newClassRepresentation,newBasic,mlistMetaName,missingArg,methodsPackageMetaName,%
+MethodsListSelect,MethodsList,methodSignatureMatrix,MethodAddCoerce,method.skeleton,%
+metaNameUndo,mergeMethods,Math2,matchSignature,makeStandardGeneric,%
+makePrototypeFromClassDef,makeMethodsList,makeGeneric,makeExtends,makeClassRepresentation,%
+Logic,loadMethod,listFromMlist,listFromMethods,linearizeMlist,%
+languageEl<-,languageEl,isXS3Class,isVirtualClass,isSealedMethod,%
+isSealedClass,isGroup,isGrammarSymbol,isGeneric,isClassUnion,%
+isClassDef,isClass,insertMethod,initialize,implicitGeneric,%
+hasMethods,hasMethod,hasArg,getVirtual,getValidity,%
+getSubclasses,getSlots,getPrototype,getProperties,getPackageName,%
+getMethodsMetaData,getMethodsForDispatch,getMethods,getMethod,getGroupMembers,%
+getGroup,getGenerics,getGeneric,getFunction,getExtends,%
+getDataPart,getClassPackage,getClassName,getClasses,getClassDef,%
+getClass,getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,%
+functionBody<-,functionBody,formalArgs,fixPre1.8,findUnique,%
+findMethodSignatures,findMethods,findMethod,findFunction,findClass,%
+finalDefaultMethod,extends,existsMethod,existsFunction,emptyMethodsList,%
+empty.dump,elNamed<-,elNamed,el<-,el,%
+dumpMethods,dumpMethod,doPrimitiveMethod,defaultPrototype,defaultDumpName,%
+conformMethod,Complex,completeSubclasses,completeExtends,completeClassDefinition,%
+Compare,coerce<-,coerce,classMetaName,classesToAM,%
+checkSlotAssignment,cbind2,canCoerce,callNextMethod,callGeneric,%
+cacheMethod,cacheMetaData,cacheGenericsMetaData,body<-,balanceMethodsList,%
+assignMethodsMetaData,assignClassDef,asMethodDefinition,as<-,Arith,%
+allNames,allGenerics,addNextMethod%
+},%
+keywordstyle={[13]{\bf\color{RRecomdcolor}}},%
+%
+% --------------------------
+% Registration of package base [recommended or base] 
+% --------------------------
+morekeywords={[14]xtfrm.Surv,xtfrm.POSIXlt,xtfrm.POSIXct,xtfrm.numeric_version,xtfrm.factor,%
+xtfrm.default,xtfrm.Date,xtfrm,xpdrows.data.frame,writeLines,%
+writeChar,writeBin,write.table0,write.dcf,withVisible,%
+withRestarts,within.list,within.data.frame,within,withCallingHandlers,%
+with.default,with,which.min,which.max,weekdays.POSIXt,%
+weekdays.Date,weekdays,version,Vectorize,utf8ToInt,%
+upper.tri,unz,untracemem,unsplit,unserialize,%
+unlockBinding,unloadNamespace,unix.time,units<-.difftime,units<-,%
+units.difftime,units,unique.POSIXlt,unique.numeric_version,unique.matrix,%
+unique.default,unique.data.frame,unique.array,tryCatch,truncate.connection,%
+truncate,trunc.POSIXt,trunc.Date,transform.default,transform.data.frame,%
+tracingState,tracemem,toupper,toString.default,toString,%
+topenv,tolower,textConnectionValue,textConnection,testPlatformEquivalence,%
+tempdir,tcrossprod,taskCallbackManager,t.default,t.data.frame,%
+T,system.time,system.file,Sys.which,Sys.unsetenv,%
+Sys.umask,Sys.timezone,Sys.time,sys.status,sys.source,%
+Sys.sleep,Sys.setlocale,Sys.setenv,sys.save.image,Sys.putenv,%
+sys.parents,sys.parent,sys.on.exit,sys.nframe,Sys.localeconv,%
+sys.load.image,Sys.info,Sys.glob,Sys.getpid,Sys.getlocale,%
+Sys.getenv,sys.function,sys.frames,sys.frame,Sys.Date,%
+Sys.chmod,sys.calls,sys.call,symbol.For,symbol.C,%
+suppressWarnings,suppressPackageStartupMessages,suppressMessages,summary.table,Summary.POSIXlt,%
+summary.POSIXlt,Summary.POSIXct,summary.POSIXct,Summary.numeric_version,summary.matrix,%
+Summary.factor,summary.factor,Summary.difftime,summary.default,Summary.Date,%
+summary.Date,Summary.data.frame,summary.data.frame,summary.connection,substring<-,%
+substr<-,subset.matrix,subset.default,subset.data.frame,strwrap,%
+strtrim,strptime,strftime,storage.mode<-,storage.mode,%
+stopifnot,stdout,stdin,stderr,standardGeneric,%
+srcref,srcfilecopy,srcfile,sQuote,sprintf,%
+split<-.default,split<-.data.frame,split<-,split.POSIXct,split.default,%
+split.Date,split.data.frame,source.url,sort.POSIXlt,sort.list,%
+sort.int,sort.default,solve.qr,solve.default,socketSelect,%
+socketConnection,slice.index,sink.number,simpleWarning,simpleMessage,%
+simpleError,simpleCondition,signalCondition,shQuote,showConnections,%
+setTimeLimit,setSessionTimeLimit,setNamespaceInfo,setHook,setCConverterStatus,%
+set.seed,serialize,seq.POSIXt,seq.int,seq.default,%
+seq.Date,seq_len,seq_along,seek.connection,seek,%
+scan.url,scale.default,saveNamespaceImage,save.image,sample.int,%
+rowSums,rowsum.default,rowsum.data.frame,rownames<-,rowMeans,%
+row.names<-.default,row.names<-.data.frame,row.names<-,row.names.default,row.names.data.frame,%
+row.names,round.POSIXt,round.Date,RNGversion,rev.default,%
+retracemem,restartFormals,restartDescription,replicate,rep.POSIXlt,%
+rep.POSIXct,rep.numeric_version,rep.int,rep.factor,rep.Date,%
+removeTaskCallback,removeCConverter,registerS3methods,registerS3method,reg.finalizer,%
+Reduce,readLines,readChar,readBin,read.table.url,%
+read.dcf,rcond,rbind.data.frame,rawToChar,rawToBits,%
+rawShift,rawConnectionValue,rawConnection,raw,rapply,%
+range.default,R.version.string,R.Version,R.version,R.home,%
+R_system_version,quarters.POSIXt,quarters.Date,quarters,qr.X,%
+qr.solve,qr.resid,qr.R,qr.qy,qr.qty,%
+qr.Q,qr.fitted,qr.default,qr.coef,pushBackLength,%
+pushBack,psigamma,prop.table,proc.time,printNoClass,%
+print.warnings,print.table,print.summary.table,print.srcref,print.srcfile,%
+print.simple.list,print.rle,print.restart,print.proc_time,print.POSIXlt,%
+print.POSIXct,print.packageInfo,print.octmode,print.numeric_version,print.noquote,%
+print.NativeRoutineList,print.listof,print.libraryIQR,print.hexmode,print.function,%
+print.factor,print.DLLRegisteredRoutines,print.DLLInfoList,print.DLLInfo,print.difftime,%
+print.default,print.Date,print.data.frame,print.connection,print.condition,%
+print.by,print.AsIs,prettyNum,Position,pos.to.env,%
+pmin.int,pmax.int,pipe,pi,path.expand,%
+parseNamespaceFile,parse.dcf,parent.frame,parent.env<-,parent.env,%
+packBits,packageStartupMessage,packageHasNamespace,packageEvent,package.description,%
+package_version,Ops.POSIXt,Ops.ordered,Ops.numeric_version,Ops.factor,%
+Ops.difftime,Ops.Date,Ops.data.frame,open.srcfilecopy,open.srcfile,%
+open.connection,open,on.exit,oldClass<-,oldClass,%
+nzchar,numeric_version,ngettext,new.env,Negate,%
+namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,namespaceImport,namespaceExport,%
+names<-,mostattributes<-,months.POSIXt,months.Date,months,%
+month.name,month.abb,mode<-,mget,message,%
+merge.default,merge.data.frame,memory.profile,mem.limits,mean.POSIXlt,%
+mean.POSIXct,mean.difftime,mean.default,mean.Date,mean.data.frame,%
+max.col,Math.POSIXt,Math.factor,Math.difftime,Math.Date,%
+Math.data.frame,match.fun,match.call,match.arg,mat.or.vec,%
+margin.table,mapply,Map,manglePackageName,makeActiveBinding,%
+make.unique,make.names,lower.tri,logb,lockEnvironment,%
+lockBinding,loadURL,loadNamespace,loadingNamespaceInfo,loadedNamespaces,%
+list.files,library.dynam.unload,library.dynam,lfactorial,levels<-.factor,%
+levels<-,levels.default,LETTERS,letters,length<-.factor,%
+length<-,lazyLoadDBfetch,lazyLoad,labels.default,La.svd,%
+La.eigen,La.chol2inv,La.chol,l10n_info,kappa.tri,%
+kappa.qr,kappa.lm,kappa.default,julian.POSIXt,julian.Date,%
+julian,isTRUE,isSymmetric.matrix,isSymmetric,isSeekable,%
+isS4,isRestart,isOpen,ISOdatetime,ISOdate,%
+isNamespace,isIncomplete,isdebugged,isBaseNamespace,is.vector,%
+is.unsorted,is.table,is.symbol,is.single,is.recursive,%
+is.real,is.raw,is.R,is.qr,is.primitive,%
+is.pairlist,is.package_version,is.ordered,is.object,is.numeric.POSIXt,%
+is.numeric.Date,is.numeric_version,is.numeric,is.null,is.nan,%
+is.name,is.na<-.factor,is.na<-.default,is.na<-,is.na.POSIXlt,%
+is.na.data.frame,is.na,is.matrix,is.logical,is.loaded,%
+is.list,is.language,is.integer,is.infinite,is.function,%
+is.finite,is.factor,is.expression,is.environment,is.element,%
+is.double,is.data.frame,is.complex,is.character,is.call,%
+is.atomic,is.array,invokeRestartInteractively,invokeRestart,inverse.rle,%
+intToUtf8,intToBits,importIntoEnv,identity,identical,%
+icuSetCollate,iconvlist,iconv,gzfile,gzcon,%
+grepl,gregexpr,gettextf,gettext,getTaskCallbackNames,%
+getSrcLines,getRversion,getNumCConverters,getNativeSymbolInfo,getNamespaceVersion,%
+getNamespaceUsers,getNamespaceName,getNamespaceInfo,getNamespaceImports,getNamespaceExports,%
+getNamespace,getLoadedDLLs,getHook,getExportedValue,getDLLRegisteredRoutines.DLLInfo,%
+getDLLRegisteredRoutines.character,getDLLRegisteredRoutines,getConnection,getCConverterStatus,getCConverterDescriptions,%
+getCallingDLLe,getCallingDLL,getAllConnections,gc.time,formatDL,%
+format.pval,format.POSIXlt,format.POSIXct,format.octmode,format.info,%
+format.hexmode,format.factor,format.difftime,format.default,format.Date,%
+format.data.frame,format.char,format.AsIs,formals<-,force,%
+flush.connection,flush,findRestart,findPackageEnv,findInterval,%
+Find,Filter,file.symlink,file.show,file.rename,%
+file.remove,file.path,file.info,file.exists,file.create,%
+file.copy,file.choose,file.append,file.access,fifo,%
+factorial,F,expm1,expand.grid,eval.parent,%
+environmentName,environmentIsLocked,environment<-,env.profile,Encoding<-,%
+Encoding,encodeString,emptyenv,eapply,dyn.unload,%
+dyn.load,duplicated.POSIXlt,duplicated.numeric_version,duplicated.matrix,duplicated.default,%
+duplicated.data.frame,duplicated.array,dQuote,do.call,dir.create,%
+dimnames<-.data.frame,dimnames<-,dimnames.data.frame,dim<-,dim.data.frame,%
+difftime,diff.POSIXt,diff.default,diff.Date,diag<-,%
+determinant.matrix,determinant,det,delayedAssign,default.stringsAsFactors,%
+debugonce,data.matrix,data.frame,data.class,cut.POSIXt,%
+cut.default,cut.Date,Cstack_info,contributors,conditionMessage.condition,%
+conditionMessage,conditionCall.condition,conditionCall,computeRestarts,comment<-,%
+colSums,colnames<-,colMeans,codes<-,codes.ordered,%
+codes.factor,closeAllConnections,close.srcfile,close.connection,class<-,%
+chol.default,check_tzones,chartr,charToRaw,char.expand,%
+cbind.data.frame,casefold,capabilities,callCC,c.POSIXlt,%
+c.POSIXct,c.numeric_version,c.noquote,c.Date,bzfile,%
+by.default,by.data.frame,browserText,browserSetDebug,browserCondition,%
+bquote,body<-,bindtextdomain,bindingIsLocked,bindingIsActive,%
+baseenv,attributes<-,attr<-,attr.all.equal,attachNamespace,%
+assign,asS4,asNamespace,as.vector.factor,as.vector,%
+as.table.default,as.table,as.symbol,as.single.default,as.single,%
+as.real,as.raw,as.qr,as.POSIXlt.POSIXct,as.POSIXlt.numeric,%
+as.POSIXlt.factor,as.POSIXlt.default,as.POSIXlt.dates,as.POSIXlt.Date,as.POSIXlt.date,%
+as.POSIXlt.character,as.POSIXlt,as.POSIXct.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,%
+as.POSIXct.dates,as.POSIXct.Date,as.POSIXct.date,as.POSIXct,as.pairlist,%
+as.package_version,as.ordered,as.octmode,as.numeric_version,as.numeric,%
+as.null.default,as.null,as.name,as.matrix.POSIXlt,as.matrix.noquote,%
+as.matrix.default,as.matrix.data.frame,as.matrix,as.logical,as.list.numeric_version,%
+as.list.function,as.list.factor,as.list.environment,as.list.default,as.list.data.frame,%
+as.list,as.integer,as.hexmode,as.function.default,as.function,%
+as.factor,as.expression.default,as.expression,as.environment,as.double.POSIXlt,%
+as.double.difftime,as.double,as.difftime,as.Date.POSIXlt,as.Date.POSIXct,%
+as.Date.numeric,as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,%
+as.Date.character,as.Date,as.data.frame.vector,as.data.frame.ts,as.data.frame.table,%
+as.data.frame.raw,as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.ordered,as.data.frame.numeric_version,%
+as.data.frame.numeric,as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,%
+as.data.frame.integer,as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.Date,%
+as.data.frame.data.frame,as.data.frame.complex,as.data.frame.character,as.data.frame.AsIs,as.data.frame.array,%
+as.data.frame,as.complex,as.character.srcref,as.character.POSIXt,as.character.octmode,%
+as.character.numeric_version,as.character.hexmode,as.character.factor,as.character.error,as.character.default,%
+as.character.Date,as.character.condition,as.character,as.call,as.array.default,%
+as.array,anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,%
+anyDuplicated,all.vars,all.names,all.equal.raw,all.equal.POSIXct,%
+all.equal.numeric,all.equal.list,all.equal.language,all.equal.formula,all.equal.factor,%
+all.equal.default,all.equal.character,all.equal,agrep,addTaskCallback,%
+addNA%
+},%
+keywordstyle={[14]{\bf\color{RRecomdcolor}}}%
+%
+}%
+\lstdefinestyle{Rstyle}{style=RstyleO2}
+
+%------------------------------------------------------------------------------%
+%
+%% -------------------------------------------------------------------------------
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                      basicstyle={\color{black}\small},%
+                      keywordstyle={\bf\color{black}},%
+                      commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                      literate={<-}{<-}2{<<-}{<<-}2}
+
+% \lstdefinestyle{Routstyle1}{style=RoutstyleO,numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt}
+
+\lstset{commentstyle=\color{red},showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{language=R}}{}
+% \newenvironment{rc} {\begin{alltt}\small} {\end{alltt}}
+
+\newcommand{\adv}{{\tiny (Advanced)}}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstnewenvironment{rc.out}[1][]{\lstset{language=R,%%
+morecomment=[is]{/*}{*/},%
+moredelim=[is][\itshape]{(-}{-)},frame=single}}{}
+
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+\definecolor{simpleRed}{rgb}{1,0,0}
+\definecolor{simpleGreen}{rgb}{0,1,0}
+\definecolor{simpleBlue}{rgb}{0,0,1}
+
+
+
+
+
+% \usepackage{Sweave}
+
+% To produce both postscript and pdf graphics, remove the eps and pdf
+% parameters in the next line.  Set default plot size to 5 x 3.5 in.
+% \SweaveOpts{width=3.5, height=3.5}
+
+\title{Introduction to computational programming\\\smaller Using \emph{R}}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> \svnFullAuthor*{\svnauthor}\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+
+\maketitle
+% Use the following 3 lines for long reports needing navigation
+% \tableofcontents
+%\listoftables
+%\listoffigures     % not used unless figure environments used
+
+\section*{Overview}
+
+This exercise is designed to serve as a practical introduction to the computational tools that will be used throughout this course.  It assumes no previous knowledge of numerical analysis nor experience in computer programming.
+
+In order to help distinguish between \emph{code}, example output, computer commands and textual information, the following conventions will be used (both here and in later computational exercises).
+
+\subsubsection*{\emph{R} input}
+
+Commands to be entered into the \emph{R} interpreter will be presented in \emph{syntax-highlighted} typewriter font, with the ``>'' character marking the beginning of each line.  Here is an example:
+
+\begin{Schunk}
+\begin{Sinput}
+> 3 + 5
+> help.start()
+> load('myData.RData')
+\end{Sinput}
+\end{Schunk}
+
+\subsubsection*{\emph{R} output}
+
+Output from the \emph{R} interpreter when shown, will be displayed directly after the corresponding input lines using the same font but in a different color and without the leading ``>''.
+
+\begin{Schunk}
+\begin{Sinput}
+> 3 + 5
+\end{Sinput}
+\begin{Soutput}
+[1] 8
+\end{Soutput}
+\begin{Sinput}
+> randomData <- rnorm(n=100)
+> summary(randomData)
+\end{Sinput}
+\begin{Soutput}
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.76200 -0.68870 -0.11780 -0.06238  0.52560  2.29900 
+\end{Soutput}
+\end{Schunk}
+
+\subsubsection*{Computer commands / keyboard keys}
+
+Following standard conventions, keyboard commands/shortcuts will be printed inline with the text in black typewriter font.  Combinations of keys which must be pressed simultaneously are separated by hyphens.  Keys to be pressed sequentially are separated by spaces.  ``Modifier keys'' (which vary in name from keyboard to keyboard) are denoted using a capital \texttt{C} or \texttt{M}.  Keyboard notation is summarized below:
+
+
+\begin{itemize}
+  \item \emph{Control:} Typically the ``control'' key abbreviated as \texttt{C-}
+  \item \emph{Meta:} Usually the ``alt'' on standard keyboards and the ``command'' on apple keyboards, abbreviated as \texttt{M-}
+  \item \emph{Enter:} Variously termed ``enter'', ``return'', ``carriage return'', ``linefeed'', and ``newline'', abbreviated as \texttt{[CR]}
+  \item \emph{Directional arrows:} the arrow keys are represented by \texttt{[LEFT]}, \texttt{[RIGHT]}, \texttt{[UP]}, and \texttt{[DOWN]} respectively.
+  \item \emph{Other keys:} Other keys are represented similarly, such as \texttt{[Esc]}, \texttt{[F1]} and \texttt{[TAB]}.
+\end{itemize}
+
+
+For example \texttt{C-c} means to simultaneously press the ``Control key'' and the letter ``c''.  \texttt{C-x C-c} means to first simultaneously press the ``Control'' key and the letter ``x'', then to simultaneously press the ``Control'' key and the letter ``c'', and \texttt{[Esc] : q !} means to sequentially press ``escape'', the ``colon'' (requires \texttt{[shift]}), ``q'' and the exclamation point (requires \texttt{[shift]}).
+
+
+Make sure to pay special to similar looking characters such as
+\begin{itemize}
+  \item Single- (\textcolor{simpleRed}{\textbf{\'}}), double- (\textcolor{simpleRed}{\textbf{\"}}) and ``back-'' (\textcolor{simpleRed}{\textbf{\`}}) quotes
+  \item Parentheses (\textcolor{simpleRed}{\textbf{ ( ) }}), brackets (\textcolor{simpleRed}{\textbf{ [ ] }}) and braces (\textcolor{simpleRed}{\textbf{ \{ \} }})
+\end{itemize}
+
+Graphical menus navigation is represented by placing boxes around menu and button names, such as \fbox{\texttt{File}} - \fbox{\texttt{Quit}}.
+
+\subsection*{Source text} % (fold)
+\label{sub:source_text}
+
+Large sections of source code and file contents will be displayed similarly to \R code with the following exceptions.
+\begin{enumerate}
+  \item The select will be surrounded by a box.
+  \item No prompts will be displayed (see section \ref{ssub:prompt})
+  \item A header comment (see section \ref{sub:style}) will give the name of the file, URL to download it and other metadata
+\end{enumerate}
+
+Here is an example \R source file, defining a function needed in Exercise 2 (see \ref{prt:exercises}).
+
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=trbl,keywordstyle={\bf\color{red}},otherkeywords={}}
+\begin{quotation}
+\begin{Schunk}
+\begin{Sinput}
+ #!/usr/bin/env rr
+ # encoding: utf-8
+ # sumDigits.R
+ #
+ # sumDigits - a function which takes as input a number and returns the
+ #            sum of its digits
+ #
+ # Example:
+ #       > sumDigits(15)
+ #       [1] 6
+ #       > sumDigits(c(10, 122, 134))
+ #       [1] 1 5 8
+ #
+ sumDigits <- function(x) {
+   return(sum(as.integer(strsplit(as.character(x), '')[[1]])))
+ }
+\end{Sinput}
+\end{Schunk}
+\end{quotation}
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=none,keywordstyle={\bf\color{RRecomdcolor}},otherkeywords={!,!=,~,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/, \%in\%}}
+
+% subsection source_text (end)
+% section* Overview (end)
+\part{Tutorial} % (fold)
+\label{prt:tutorial}
+
+
+
+\section{Getting Started}
+
+While not strictly necessary, many students find it helpful to have access to \emph{R} and associated tools on their own computers.  Fortunately, \emph{R} is \emph{free software}\footnote{By calling \emph{R free software}, we are saying both that: \begin{enumerate} \item You don't have to pay to use \emph{R} (free as in beer) \item You are free to examine and improve \emph{R} as you like (free as in speech)\end{enumerate}.}, and available for most computing platforms.
+
+\subsection{GNU \emph{R}}
+
+The R homepage \url{http://r-project.org} provides compiled binaries for Windows, OS X, and linux platforms as well as the source distributions (for other platforms).  The following are platform specific installation instructions for the most common scenarios.
+
+\subsubsection{Mac OSX} % (fold)
+\label{ssub:mac_osx}
+
+The Mac OSX binary distribution of \emph{R} can be downloaded from  \url{http://streaming.stat.iastate.edu/CRAN/bin/macosx/} as a \texttt{.dmg} file.  After downloading the image, simply open the \texttt{.dmg} file and drag the \texttt{R.app} icon into your \texttt{Applications} folder.
+
+Once you have done this, starting \emph{R} is as easy as double-clicking the \texttt{R.app} icon in your \texttt{Applications} folder.  Alternatively, you may run \emph{R} in a console window by opening \texttt{Terminal.app} (located in the \texttt{Utilities} subfolder of \texttt{Applications}) and typing \texttt{R}\footnote{If you have trouble with this, it may be due to having the default \texttt{PATH} set incorrectly.  See me for details.}.
+
+Running \texttt{R.app} provides you with some additional GUI functionality,
+provided through the menu interface, such as a \emph{R} source editor
+(\MenuC{File} - \MenuC{New Document}), a package installer (\MenuC{Packages \& Data} - \MenuC{Package Installer}) and easy access to package guides (\MenuC{Help} - \MenuC{Vignettes}).
+
+% subsubsection mac_osx (end)
+
+\subsubsection{Windows} % (fold)
+\label{ssub:windows}
+
+Installing \emph{R} under windows is accomplished by downloading the windows binary installer from \url{http://streaming.stat.iastate.edu/CRAN/bin/windows/base/}, opening the installer and following the on-screen directions.  Upon completion of the installer (and possibly rebooting), you should have an icon labelled \texttt{R 2.9.2} on your desktop (and possibly in the \texttt{Start} menu as well).
+
+To start a new \emph{R} session, simply double-click on the \texttt{R 2.9.2} icon.
+% subsubsection windows (end)
+
+\subsubsection{Linux} % (fold)
+\label{ssub:linux}
+
+Installing \emph{R} on a linux system can generally be performed using your distribution-specific package manager (\texttt{rpm/yum} for RedHat-type distributions, \texttt{apt} for Debian based distributions such as Ubuntu).
+
+If your distribution does not provide \emph{R} packages, you can download the compressed sources from \url{http://streaming.stat.iastate.edu/CRAN/bin/linux/ubuntu/} and compile them yourself\footnote{If you need help with this, see me.}.
+
+
+\TODO{Dependency issues}
+% TODO Linux dependency issues
+
+% subsubsection linux (end)
+
+\subsubsection{Other options} % (fold)
+\label{ssub:other_options}
+
+Should none of the above options prove successful for you, alternative methods of running \emph{R} do exist.
+
+\TODO{other methods}
+% TODO other methods.
+
+\begin{itemize}
+    \item Java i.e. Biocep
+    \item remote (ssh)
+\end{itemize}
+% subsubsection other_options (end)
+
+\subsection{Text Editor}
+
+A \emph{Text editor} is a program that lets you edit \emph{plain text} documents (such as \emph{R} source code) without inserting any formatting or other markup (as you would find in a document edited by Microsoft Word.)  Additionally, all of the text editors described below provide additional capabilities to aid in the writing of \emph{R} source code.
+
+At first glance, the use of a text editor may seem superfluous; why edit your code elsewhere instead of typing it directly into \emph{R}.  The answer to this is threefold:
+\begin{enumerate}
+  \item \textbf{Repeatability:} The act of typing code directly into an interpreter is innately error prone.  Additionally, you will often find ``chunks'' of code which you find yourself using over and over.  In order to speed up this process and ensure that the same code is used every time, it is beneficial to save the ``chunk'' in a code file.  A text editor is the proper tool for this.
+  \item \textbf{Communication:} Having code stored in a text file makes it easy to share between users.
+  \item \textbf{Analysis:} Having code stored in a text file enables easy post-hoc analysis and modification.
+\end{enumerate}
+
+With these benefits in mind, I recommend that each student find a text editor that they become comfortable with.  The following are some suggestions:
+
+\subsubsection{Cross-platform} % (fold)
+\label{ssub:cross_platform}
+
+\emph{Cross-platform} tools are tools which are available on multiple operating systems (i.e. Mac OSX, Windows, etc).  Of the three cross-platform text editors listed below, two deserve special mention.  \emph{Vi(m)} and \emph{Emacs} are the two most popular text editors in the world.  They can be found on most modern operating systems without installing any software (with the exception of windows).  They are both very mature tools with a lot of features, but both carry a significant learning curve.  If you use Mac OSX or Linux, I would highly encourage you to take a look at one (or both) of them even if you don't end up using it as your ``primary'' text editing tool.
+
+\begin{itemize}
+    \item \textbf{vi(m)} is (arguably) easier to use and learn than \emph{Emacs}, and is available (as a source package) at  \url{ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2}.
+    \item \textbf{Emacs}, though somewhat more difficult to get started with, is a more full-featured tool and has a special add-on package called \emph{ESS (Emacs Speaks Statistics)} which provides high-level integration with \emph{R}.
+    \item \textbf{jedit} is a relatively new Java-based cross-platform editor which can be downloaded (all platforms) from  \url{http://prdownloads.sourceforge.net/jedit/jedit42install.jar}.
+\end{itemize}
+% subsubsection cross_platform (end)
+
+\subsubsection{Mac OSX} % (fold)
+\label{ssub:mac_osx2}
+
+The following \emph{OS X} specific text-editors deserve special mention.
+
+\begin{itemize}
+    \item \textbf{TextMate}, available at \url{http://macromates.com/} is a very easy-to-use and powerful text editor that I \emph{highly} recommend to anyone running \emph{OS X}.
+    \item \textbf{MacVim}, available at \url{http://code.google.com/p/macvim/} is an enhanced version of \emph{Vi(m)} which provides additional GUI capabilities and ease-of-use enhancements.
+    \item \textbf{Aquamacs}, available at \url{http://aquamacs.org/} is an enhanced version of \emph{Emacs} which provides GUI integration, ease-of-use enahancements, and includes many add-on packages such as \emph{ESS}.
+\end{itemize}
+% subsubsection mac_osx2 (end)
+
+\subsubsection{Windows} % (fold)
+\label{ssub:windows2}
+
+The default windows text editor, \emph{Notepad}, provides only the bare minimum of features.  Recommended alternatives include:
+
+\begin{itemize}
+    \item \textbf{Gvim}, available at \url{ftp://ftp.vim.org/pub/vim/pc/gvim72.exe}, provides the power of the \emph{vi} editor to windows users as well as an easier to use GUI.
+    \item \textbf{Emacs} for windows can be downloaded from  \url{http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip}.  I have no experience using \emph{emacs} under windows.
+    \item \textbf{e-texteditor} is a \emph{TextMate} clone (see  \ref{ssub:mac_osx2}), providing many of the same features and the ability to use \emph{TextMate} extensions.  It is available from  \url{http://www.e-texteditor.com/}.
+    \item \textbf{notepad++} is another popular Windows text-editor with which I have no experience.  It can be downloaded from  \url{http://notepad-plus.sourceforge.net/uk/site.htm}.
+\end{itemize}
+% subsubsection windows2 (end)
+
+\section{Your first \emph{R} session}
+\label{sec:first_r_session}
+
+Lets dive right into your first \emph{R} session.  If you are in the lab, Click on the \texttt{Finder} icon, click \texttt{Applications} in the left sidebar, find the Open \texttt{R.app} icon, and double-click it.  You should be greeted by a message similar to
+
+\begin{Schunk}
+\begin{Soutput}
+R version 2.10.0 Under development (unstable) (2009-06-03 r48708)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+>
+\end{Soutput}
+\end{Schunk}
+
+\subsection{Interpreter}
+
+Try entering the following commands into the \emph{R} interpreter.
+
+\begin{Schunk}
+\begin{Sinput}
+> 3
+> 3 + 5
+> 1:50
+> x <- 1:5
+> x / 2
+\end{Sinput}
+\end{Schunk}
+
+You should see the following result:
+
+\begin{Schunk}
+\begin{Sinput}
+> 3
+\end{Sinput}
+\begin{Soutput}
+[1] 3
+\end{Soutput}
+\begin{Sinput}
+> 3 + 5
+\end{Sinput}
+\begin{Soutput}
+[1] 8
+\end{Soutput}
+\begin{Sinput}
+> 1:50
+\end{Sinput}
+\begin{Soutput}
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+\end{Soutput}
+\begin{Sinput}
+> x <- 1:50
+> x / 2
+\end{Sinput}
+\begin{Soutput}
+ [1]  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
+[16]  8.0  8.5  9.0  9.5 10.0 10.5 11.0 11.5 12.0 12.5 13.0 13.5 14.0 14.5 15.0
+[31] 15.5 16.0 16.5 17.0 17.5 18.0 18.5 19.0 19.5 20.0 20.5 21.0 21.5 22.0 22.5
+[46] 23.0 23.5 24.0 24.5 25.0
+\end{Soutput}
+\end{Schunk}
+
+Lets go through this one line at a time.
+
+\begin{Schunk}
+\begin{Sinput}
+> 3
+\end{Sinput}
+\begin{Soutput}
+[1] 3
+\end{Soutput}
+\end{Schunk}
+
+The \emph{R} interpreter runs in what is called a \emph{Read-Evaluate-Print} loop.  It \emph{reads} in commands as you type them, \emph{evaluates} those commands, and finally \emph{prints} the result to the screen.  Here, you entered the number \texttt{3}, which was evaluated to \texttt{3}, and printed to the screen.  The \texttt{[1]} preceding the \texttt{3} in the output indicates that there is only one result.
+
+\begin{Schunk}
+\begin{Sinput}
+> 3 + 5
+\end{Sinput}
+\begin{Soutput}
+[1] 8
+\end{Soutput}
+\end{Schunk}
+
+Here, the \emph{R} interpreter evaluated the expression \texttt{3 + 5} and printed the result, \texttt{8}.
+
+\begin{Schunk}
+\begin{Sinput}
+> 1:50
+\end{Sinput}
+\begin{Soutput}
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+\end{Soutput}
+\end{Schunk}
+
+This expression introduces an important concept in \emph{R}.  The expression \texttt{1:5} means (to \emph{R}) ``all whole numbers between 1 and 50, inclusive'' and represents a \emph{vector}\footnote{This will be elaborated on \ref{sub:ex_variables_intro}.} or collection of values.  In order to display this result on the screen, the numbers from 1 to 50 are split over several lines.  Each line begins with a number in brackets, which denotes the ``number'' of each result.
+
+\begin{Schunk}
+\begin{Sinput}
+> x <- 1:50
+\end{Sinput}
+\end{Schunk}
+
+This expression introduces two additional important concepts.  The first is that of a \emph{variable}.  A \emph{variable} is a symbol which has a value assigned to it.  Here \texttt{x} is a variable.  The second concept is that of \emph{assignment}\footnote{If you have used other programming languages before, this may seem strange (traditionally, \texttt{=} was used for assignment).  Although \emph{R} will generally permit you to use \texttt{=} instead of \texttt{<-} for assignment, this practice is strongly discouraged.}.  It is the most basic of of variable operations, and is represented by the characters \texttt{<-}.  The assignment operator works by taking the expression to its right (\texttt{1:50}), and assigning it to the variable to its left (\texttt{x}).  From this point forward, typing \texttt{x} by itself is \emph{exactly} the same as typing \texttt{1:50}.  Try it.  enter the following:
+\begin{Schunk}
+\begin{Sinput}
+> x
+\end{Sinput}
+\begin{Soutput}
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+\end{Soutput}
+\end{Schunk}
+The result such be exactly the same as when you typed \texttt{1:50}.
+
+\begin{Schunk}
+\begin{Sinput}
+> x / 2
+\end{Sinput}
+\begin{Soutput}
+ [1]  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
+[16]  8.0  8.5  9.0  9.5 10.0 10.5 11.0 11.5 12.0 12.5 13.0 13.5 14.0 14.5 15.0
+[31] 15.5 16.0 16.5 17.0 17.5 18.0 18.5 19.0 19.5 20.0 20.5 21.0 21.5 22.0 22.5
+[46] 23.0 23.5 24.0 24.5 25.0
+\end{Soutput}
+\end{Schunk}
+
+Here we show that the variable \texttt{x} can be used just like a number, and that basic operations (such as division) operate on all elements of a vector.
+
+\subsubsection{Example 1} % (fold)
+\label{ssub:example_1}
+
+Here is another example session for you to try, exploring further features of the \emph{R} interpreter.
+
+\begin{Schunk}
+\begin{Sinput}
+> x <- rnorm(50, mean=4)
+> x
+\end{Sinput}
+\begin{Soutput}
+ [1] 3.999271 3.571538 3.869729 2.984994 4.149655 2.498947 3.203574 4.539674
+ [9] 3.921955 2.643393 3.594127 4.056117 1.756125 4.247103 3.404948 4.650388
+[17] 4.066298 4.180971 5.904895 2.975269 3.690566 5.313053 4.531527 3.894842
+[25] 3.751858 3.161076 4.066057 3.573960 5.351787 2.775150 2.960097 4.023968
+[33] 3.373124 4.472353 3.240710 3.071161 4.254094 4.864014 3.679021 4.190451
+[41] 4.816644 3.601009 4.429415 6.336646 3.990036 3.633345 3.925628 3.273813
+[49] 4.172919 3.352902
+\end{Soutput}
+\begin{Sinput}
+> mean(x)
+\end{Sinput}
+\begin{Soutput}
+[1] 3.879804
+\end{Soutput}
+\begin{Sinput}
+> range(x)
+\end{Sinput}
+\begin{Soutput}
+[1] 1.756125 6.336646
+\end{Soutput}
+\begin{Sinput}
+> hist(x)
+\end{Sinput}
+\end{Schunk}

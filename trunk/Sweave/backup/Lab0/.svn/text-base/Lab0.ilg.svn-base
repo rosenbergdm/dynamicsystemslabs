@@ -1,0 +1,3607 @@
+This is makeindex, version 2.15 [20-Nov-2007] (kpathsea + Thai support).
+Scanning input file Lab0.tex...
+!! Input index error (file = Lab0.tex, line = 1):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 3):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 4):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 5):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 6):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 7):
+   -- Unknown index keyword \documentclass[10pt,letterpaper].
+!! Input index error (file = Lab0.tex, line = 8):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 9):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 10):
+   -- Unknown index keyword \usepackage[superscript,nomove].
+!! Input index error (file = Lab0.tex, line = 11):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 12):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 13):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 14):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 17):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 18):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 19):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 20):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 21):
+   -- Unknown index keyword %\svnid.
+!! Input index error (file = Lab0.tex, line = 22):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 23):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 24):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 25):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 26):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 27):
+   -- Unknown index keyword \svnRegisterAuthor.
+!! Input index error (file = Lab0.tex, line = 30):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 31):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 32):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 33):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 34):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 35):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 36):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 39):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 40):
+   -- Unknown index keyword \usepackage[parfill].
+!! Input index error (file = Lab0.tex, line = 41):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 42):
+   -- Unknown index keyword \pagestyle.
+!! Input index error (file = Lab0.tex, line = 43):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 44):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 45):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 47):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 50):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 51):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 52):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 53):
+   -- Unknown index keyword %\usepackage.
+!! Input index error (file = Lab0.tex, line = 54):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 55):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 57):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 58):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 59):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 60):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 61):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 62):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 63):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 64):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 65):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 66):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 67):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 68):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 69):
+   -- Unknown index keyword \lstdefinelanguage.
+!! Input index error (file = Lab0.tex, line = 70):
+   -- Unknown index keyword {moretexcs=.
+!! Input index error (file = Lab0.tex, line = 71):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 72):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 73):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 74):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 75):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 76):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 77):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 78):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 79):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 80):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 81):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 82):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 83):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 84):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 85):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 87):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 88):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 89):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 90):
+   -- Unknown index keyword basicstyle=.
+!! Input index error (file = Lab0.tex, line = 91):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 92):
+   -- Unknown index keyword commentstyle=.
+!! Input index error (file = Lab0.tex, line = 93):
+   -- Unknown index keyword literate=.
+!! Input index error (file = Lab0.tex, line = 94):
+   -- Unknown index keyword alsoother=.
+!! Input index error (file = Lab0.tex, line = 95):
+   -- Unknown index keyword alsoletter=.
+!! Input index error (file = Lab0.tex, line = 96):
+   -- Unknown index keyword otherkeywords=.
+!! Input index error (file = Lab0.tex, line = 97):
+   -- Unknown index keyword escapeinside=.
+!! Input index error (file = Lab0.tex, line = 98):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 99):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 100):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 101):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 103):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 104):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 105):
+   -- Unknown index keyword basicstyle=.
+!! Input index error (file = Lab0.tex, line = 106):
+   -- Unknown index keyword commentstyle=.
+!! Input index error (file = Lab0.tex, line = 107):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 108):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 109):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 110):
+   -- Unknown index keyword \global\def\Rlstset.
+!! Input index error (file = Lab0.tex, line = 111):
+   -- Unknown index keyword \global\def\Rdlstset.
+!! Input index error (file = Lab0.tex, line = 112):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 113):
+   -- Unknown index keyword \global\def\Rinlstset.
+!! Input index error (file = Lab0.tex, line = 114):
+   -- Unknown index keyword \global\def\Routlstset.
+!! Input index error (file = Lab0.tex, line = 115):
+   -- Unknown index keyword \global\def\Rcodelstset.
+!! Input index error (file = Lab0.tex, line = 116):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 117):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 118):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 119):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 120):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 121):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 122):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 123):
+   -- Unknown index keyword \IfFileExists.
+!! Input index error (file = Lab0.tex, line = 125):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 126):
+   -- Unknown index keyword \newboolean.
+!! Input index error (file = Lab0.tex, line = 127):
+   -- Unknown index keyword \setboolean.
+!! Input index error (file = Lab0.tex, line = 128):
+   -- Unknown index keyword \setkeys.
+!! Input index error (file = Lab0.tex, line = 129):
+   -- Unknown index keyword \newboolean.
+!! Input index error (file = Lab0.tex, line = 130):
+   -- Unknown index keyword \setboolean.
+!! Input index error (file = Lab0.tex, line = 131):
+   -- Unknown index keyword \RequirePackage[T1].
+!! Input index error (file = Lab0.tex, line = 132):
+   -- Unknown index keyword \RequirePackage.
+!! Input index error (file = Lab0.tex, line = 133):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 134):
+   -- Unknown index keyword \newenvironment.
+!! Input index error (file = Lab0.tex, line = 136):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 137):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 138):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 139):
+   -- Unknown index keyword \ifcase\pdfoutput\special.
+!! Input index error (file = Lab0.tex, line = 140):
+   -- Unknown index keyword \else\immediate\pdfobj.
+!! Input index error (file = Lab0.tex, line = 142):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 143):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 144):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 145):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 146):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 147):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 148):
+   -- Unknown index keyword basicstyle=\color.
+!! Input index error (file = Lab0.tex, line = 149):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 150):
+   -- Unknown index keyword \lstnewenvironment.
+!! Input index error (file = Lab0.tex, line = 151):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 152):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 153):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 154):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 155):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 156):
+   -- Unknown index keyword \lstnewenvironment.
+!! Input index error (file = Lab0.tex, line = 157):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 158):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 159):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 160):
+   -- Unknown index keyword basicstyle=\color.
+!! Input index error (file = Lab0.tex, line = 161):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 162):
+   -- Unknown index keyword \lstnewenvironment.
+!! Input index error (file = Lab0.tex, line = 163):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 164):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 165):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 166):
+   -- Unknown index keyword \def\Code#1.
+!! Input index error (file = Lab0.tex, line = 167):
+   -- Unknown index keyword \def\file#1.
+!! Input index error (file = Lab0.tex, line = 168):
+   -- Unknown index keyword \def\pkg#1.
+!! Input index error (file = Lab0.tex, line = 169):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 170):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 172):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 173):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 174):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 175):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 176):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 177):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 178):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 179):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 180):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 181):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 182):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 183):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 184):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 185):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 186):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 187):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 188):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 189):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 190):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 191):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 192):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 193):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 194):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 195):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 196):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 197):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 198):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 199):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 200):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 201):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 202):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 203):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 204):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 205):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 206):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 207):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 208):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 209):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 210):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 211):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 212):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 213):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 214):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 215):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 216):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 217):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 218):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 219):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 220):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 221):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 222):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 223):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 224):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 225):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 226):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 227):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 228):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 229):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 230):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 231):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 232):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 233):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 234):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 235):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 236):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 237):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 238):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 239):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 240):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 241):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 242):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 243):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 244):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 245):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 246):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 247):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 248):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 249):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 250):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 251):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 252):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 253):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 254):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 255):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 256):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 257):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 258):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 259):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 260):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 261):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 262):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 263):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 264):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 265):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 266):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 267):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 268):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 269):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 270):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 271):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 272):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 273):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 274):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 275):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 276):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 277):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 278):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 279):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 280):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 281):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 282):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 283):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 284):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 285):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 286):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 287):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 288):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 289):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 290):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 291):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 292):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 293):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 294):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 295):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 296):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 297):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 298):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 299):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 300):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 301):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 302):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 303):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 304):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 305):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 306):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 307):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 308):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 309):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 310):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 311):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 312):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 313):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 314):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 315):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 316):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 317):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 318):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 319):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 320):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 321):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 322):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 323):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 324):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 325):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 326):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 327):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 328):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 329):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 330):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 331):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 332):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 333):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 334):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 335):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 336):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 337):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 338):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 339):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 340):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 341):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 342):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 343):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 344):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 345):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 346):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 347):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 348):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 349):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 350):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 351):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 352):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 353):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 354):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 355):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 356):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 357):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 358):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 359):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 360):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 361):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 362):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 363):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 364):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 365):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 366):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 367):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 368):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 369):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 370):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 371):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 372):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 373):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 374):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 375):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 376):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 377):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 378):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 379):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 380):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 381):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 382):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 383):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 384):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 385):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 386):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 387):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 388):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 389):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 390):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 391):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 392):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 393):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 394):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 395):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 396):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 397):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 398):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 399):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 400):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 401):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 402):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 403):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 404):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 405):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 406):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 407):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 408):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 409):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 410):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 411):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 412):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 413):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 414):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 415):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 416):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 417):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 418):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 419):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 420):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 421):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 422):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 423):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 424):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 425):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 426):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 427):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 428):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 429):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 430):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 431):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 432):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 433):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 434):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 435):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 436):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 437):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 438):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 439):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 440):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 441):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 442):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 443):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 444):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 445):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 446):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 447):
+   -- Unknown index keyword morekeywords=.
+!! Input index error (file = Lab0.tex, line = 448):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 449):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 450):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 451):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 452):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 453):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 454):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 455):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 456):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 457):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 458):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 459):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 460):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 461):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 462):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 463):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 464):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 465):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 466):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 467):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 468):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 469):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 470):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 471):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 472):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 473):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 474):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 475):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 476):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 477):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 478):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 479):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 480):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 481):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 482):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 483):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 484):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 485):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 486):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 487):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 488):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 489):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 490):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 491):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 492):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 493):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 494):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 495):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 496):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 497):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 498):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 499):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 500):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 501):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 502):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 503):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 504):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 505):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 506):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 507):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 508):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 509):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 510):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 511):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 512):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 513):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 514):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 515):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 516):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 517):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 518):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 519):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 520):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 521):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 522):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 523):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 524):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 525):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 526):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 527):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 528):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 529):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 530):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 531):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 532):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 533):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 534):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 535):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 536):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 537):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 538):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 539):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 540):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 541):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 542):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 543):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 544):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 545):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 546):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 547):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 548):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 549):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 550):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 551):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 552):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 553):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 554):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 555):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 556):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 557):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 558):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 559):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 560):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 561):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 562):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 563):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 564):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 565):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 566):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 567):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 568):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 569):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 570):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 571):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 572):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 573):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 574):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 575):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 576):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 577):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 578):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 579):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 580):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 581):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 582):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 583):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 584):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 585):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 586):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 587):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 588):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 589):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 590):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 591):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 592):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 593):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 594):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 595):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 596):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 597):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 598):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 599):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 600):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 601):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 602):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 603):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 604):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 605):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 606):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 608):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 609):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 610):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 611):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 612):
+   -- Unknown index keyword basicstyle=.
+!! Input index error (file = Lab0.tex, line = 613):
+   -- Unknown index keyword keywordstyle=.
+!! Input index error (file = Lab0.tex, line = 614):
+   -- Unknown index keyword commentstyle=.
+!! Input index error (file = Lab0.tex, line = 615):
+   -- Unknown index keyword literate=.
+!! Input index error (file = Lab0.tex, line = 617):
+   -- Unknown index keyword %\lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 619):
+   -- Unknown index keyword \lstset.
+!! Input index error (file = Lab0.tex, line = 620):
+   -- Unknown index keyword \lstnewenvironment.
+!! Input index error (file = Lab0.tex, line = 621):
+   -- Unknown index keyword %\newenvironment.
+!! Input index error (file = Lab0.tex, line = 623):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 624):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = Lab0.tex, line = 626):
+   -- Unknown index keyword \lstnewenvironment.
+!! Input index error (file = Lab0.tex, line = 627):
+   -- Unknown index keyword morecomment=[is].
+!! Input index error (file = Lab0.tex, line = 628):
+   -- Unknown index keyword moredelim=[is][\itshape].
+!! Input index error (file = Lab0.tex, line = 631):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Lab0.tex, line = 632):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 633):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 634):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 635):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 636):
+   -- Unknown index keyword \definecolor.
+!! Input index error (file = Lab0.tex, line = 642):
+   -- Unknown index keyword %\usepackage.
+!! Input index error (file = Lab0.tex, line = 644):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 645):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 646):
+   -- Unknown index keyword %\SweaveOpts.
+!! Input index error (file = Lab0.tex, line = 648):
+   -- Unknown index keyword \title.
+!! Input index error (file = Lab0.tex, line = 649):
+   -- Unknown index keyword \author.
+!! Input index error (file = Lab0.tex, line = 650):
+   -- Unknown index keyword {\footnotesize\parbox[t].
+!! Input index error (file = Lab0.tex, line = 651):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 652):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 653):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 654):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 655):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 656):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 657):
+   -- Unknown index keyword Version:\>\svnFullRevision*.
+!! Input index error (file = Lab0.tex, line = 658):
+   -- Unknown index keyword Lastchangedby:\>\svnFullAuthor*.
+!! Input index error (file = Lab0.tex, line = 659):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 660):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 661):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 662):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 665):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 666):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 667):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 668):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 669):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 671):
+   -- Unknown index keyword \section*.
+!! Input index error (file = Lab0.tex, line = 673):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 675):
+   -- Unknown index keyword Inordertohelpdistinguishbetween\emph.
+!! Input index error (file = Lab0.tex, line = 677):
+   -- Unknown index keyword \subsubsection*.
+!! Input index error (file = Lab0.tex, line = 679):
+   -- Unknown index keyword Commandstobeenteredintothe\emph.
+!! Input index error (file = Lab0.tex, line = 681):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 682):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 683):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 684):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 685):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 686):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 687):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 689):
+   -- Unknown index keyword \subsubsection*.
+!! Input index error (file = Lab0.tex, line = 691):
+   -- Unknown index keyword Outputfromthe\emph.
+!! Input index error (file = Lab0.tex, line = 693):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 694):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 695):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 696):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 697):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 698):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 699):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 700):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 701):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 702):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 703):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 704):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 705):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 706):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 707):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 708):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 710):
+   -- Unknown index keyword \subsubsection*.
+!! Input index error (file = Lab0.tex, line = 712):
+   -- Unknown index keyword Followingstandardconventions,keyboardcommands/shortcutswillbeprintedinlinewiththetextinblacktypewriterfont.Combinationsofkeyswhichmustbepressedsimultaneouslyareseparatedbyhyphens.Keystobepressedsequentiallyareseparatedbyspaces.``Modifierkeys''(whichvaryinnamefromkeyboardtokeyboard)aredenotedusingacapital\texttt.
+!! Input index error (file = Lab0.tex, line = 715):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 716):
+   -- Unknown index keyword \item\emph.
+!! Input index error (file = Lab0.tex, line = 717):
+   -- Unknown index keyword \item\emph.
+!! Input index error (file = Lab0.tex, line = 718):
+   -- Unknown index keyword \item\emph.
+!! Input index error (file = Lab0.tex, line = 719):
+   -- Unknown index keyword \item\emph.
+!! Input index error (file = Lab0.tex, line = 720):
+   -- Unknown index keyword \item\emph.
+!! Input index error (file = Lab0.tex, line = 721):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 724):
+   -- Unknown index keyword Forexample\texttt.
+!! Input index error (file = Lab0.tex, line = 727):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 728):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 729):
+   -- Unknown index keyword \itemSingle-(\textcolor.
+!! Input index error (file = Lab0.tex, line = 730):
+   -- Unknown index keyword \itemParentheses(\textcolor.
+!! Input index error (file = Lab0.tex, line = 731):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 733):
+   -- Unknown index keyword Graphicalmenusnavigationisrepresentedbyplacingboxesaroundmenuandbuttonnames,suchas\fbox.
+!! Input index error (file = Lab0.tex, line = 735):
+   -- Unknown index keyword \subsection*.
+!! Input index error (file = Lab0.tex, line = 736):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 738):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 739):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 740):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 741):
+   -- Unknown index keyword \itemNopromptswillbedisplayed(seesection\ref.
+!! Input index error (file = Lab0.tex, line = 742):
+   -- Unknown index keyword \itemAheadercomment(seesection\ref.
+!! Input index error (file = Lab0.tex, line = 743):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 745):
+   -- Unknown index keyword Hereisanexample\Rsourcefile,definingafunctionneededinExercise2(see\ref.
+!! Input index error (file = Lab0.tex, line = 747):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 748):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 749):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 750):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 751):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 752):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 753):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 754):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 755):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 756):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 757):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 758):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 759):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 760):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 761):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 762):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 763):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 764):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 765):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 766):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 767):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 768):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 769):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 770):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 771):
+   -- Unknown index keyword parsePolynomial<-function(inputExpression).
+!! Input index error (file = Lab0.tex, line = 772):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 773):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 774):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 775):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 776):
+   -- Unknown index keyword for(iiinseq(along=splitTerms)).
+!! Input index error (file = Lab0.tex, line = 777):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 778):
+   -- Unknown index keyword if(gsub("[^x]","",term)=='').
+!! Input index error (file = Lab0.tex, line = 779):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 780):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 781):
+   -- Unknown index keyword if(gsub("([\\+|-]*)(.*)x.*","\\2",term)=='').
+!! Input index error (file = Lab0.tex, line = 782):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 783):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 784):
+   -- Unknown index keyword if(gsub(".*x","",term)=='').
+!! Input index error (file = Lab0.tex, line = 785):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 786):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 787):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 788):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 789):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 790):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 791):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 792):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 793):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 794):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 795):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 796):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 797):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 798):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 799):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 800):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 801):
+   -- Unknown index keyword \lstdefinestyle.
+!! Input index error (file = Lab0.tex, line = 803):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 804):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 805):
+   -- Unknown index keyword \part.
+!! Input index error (file = Lab0.tex, line = 806):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 810):
+   -- Unknown index keyword \section.
+!! Input index error (file = Lab0.tex, line = 812):
+   -- Unknown index keyword Whilenotstrictlynecessary,manystudentsfindithelpfultohaveaccessto\emph.
+!! Input index error (file = Lab0.tex, line = 814):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 816):
+   -- Unknown index keyword TheRhomepage\url.
+!! Input index error (file = Lab0.tex, line = 818):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 819):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 821):
+   -- Unknown index keyword TheMacOSXbinarydistributionof\emph.
+!! Input index error (file = Lab0.tex, line = 823):
+   -- Unknown index keyword Onceyouhavedonethis,starting\emph.
+!! Input index error (file = Lab0.tex, line = 825):
+   -- Unknown index keyword Running\texttt.
+!! Input index error (file = Lab0.tex, line = 826):
+   -- Unknown index keyword providedthroughthemenuinterface,suchasa\emph.
+!! Input index error (file = Lab0.tex, line = 827):
+   -- Unknown index keyword (\MenuC.
+!! Input index error (file = Lab0.tex, line = 829):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 831):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 832):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 834):
+   -- Unknown index keyword Installing\emph.
+!! Input index error (file = Lab0.tex, line = 836):
+   -- Unknown index keyword Tostartanew\emph.
+!! Input index error (file = Lab0.tex, line = 837):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 839):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 840):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 842):
+   -- Unknown index keyword Installing\emph.
+!! Input index error (file = Lab0.tex, line = 844):
+   -- Unknown index keyword Ifyourdistributiondoesnotprovide\emph.
+!! Input index error (file = Lab0.tex, line = 847):
+   -- Unknown index keyword \TODO.
+!! Input index error (file = Lab0.tex, line = 848):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 850):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 852):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 853):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 855):
+   -- Unknown index keyword Shouldnoneoftheaboveoptionsprovesuccessfulforyou,alternativemethodsofrunning\emph.
+!! Input index error (file = Lab0.tex, line = 857):
+   -- Unknown index keyword \TODO.
+!! Input index error (file = Lab0.tex, line = 858):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 860):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 861):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 862):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 863):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 864):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 866):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 868):
+   -- Unknown index keyword A\emph.
+!! Input index error (file = Lab0.tex, line = 870):
+   -- Unknown index keyword Atfirstglance,theuseofatexteditormayseemsuperfluous;whyedityourcodeelsewhereinsteadoftypingitdirectlyinto\emph.
+!! Input index error (file = Lab0.tex, line = 871):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 872):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 873):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 874):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 875):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 877):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 879):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 880):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 882):
+   -- Unknown index keyword \emph.
+!! Input index error (file = Lab0.tex, line = 884):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 885):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 886):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 887):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 888):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 889):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 891):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 892):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 894):
+   -- Unknown index keyword Thefollowing\emph.
+!! Input index error (file = Lab0.tex, line = 896):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 897):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 898):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 899):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 900):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 901):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 903):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 904):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 906):
+   -- Unknown index keyword Thedefaultwindowstexteditor,\emph.
+!! Input index error (file = Lab0.tex, line = 908):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 909):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 910):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 911):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 912):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 913):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 914):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 916):
+   -- Unknown index keyword \section.
+!! Input index error (file = Lab0.tex, line = 918):
+   -- Unknown index keyword Letsdiverightintoyourfirst\emph.
+!! Input index error (file = Lab0.tex, line = 920):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 921):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 922):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 923):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 924):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 926):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 927):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 928):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 930):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 932):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 933):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 934):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 936):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 937):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 938):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 940):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 941):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 942):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 944):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 946):
+   -- Unknown index keyword Tryenteringthefollowingcommandsintothe\emph.
+!! Input index error (file = Lab0.tex, line = 948):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 949):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 950):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 951):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 952):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 953):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 954):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 955):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 956):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 958):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 960):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 961):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 962):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 963):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 964):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 965):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 966):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 967):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 968):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 969):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 970):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 971):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 972):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 973):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 974):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 975):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 976):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 977):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 978):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 979):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 980):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 981):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 982):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 983):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 984):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 985):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 986):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 987):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 988):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 989):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 990):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 992):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 994):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 995):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 996):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 997):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 998):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 999):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1000):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1001):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1003):
+   -- Unknown index keyword The\emph.
+!! Input index error (file = Lab0.tex, line = 1005):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1006):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1007):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1008):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1009):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1010):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1011):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1012):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1014):
+   -- Unknown index keyword Here,the\emph.
+!! Input index error (file = Lab0.tex, line = 1016):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1017):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1018):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1019):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1020):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1021):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1022):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1023):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1024):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1026):
+   -- Unknown index keyword Thisexpressionintroducesanimportantconceptin\emph.
+!! Input index error (file = Lab0.tex, line = 1028):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1029):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1030):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1031):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1032):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1034):
+   -- Unknown index keyword Thisexpressionintroducestwoadditionalimportantconcepts.Thefirstisthatofa\emph.
+!! Input index error (file = Lab0.tex, line = 1035):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1036):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1037):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1038):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1039):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1040):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1041):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1042):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1043):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1044):
+   -- Unknown index keyword Theresultsuchbeexactlythesameaswhenyoutyped\texttt.
+!! Input index error (file = Lab0.tex, line = 1046):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1047):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1048):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1049):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1050):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1051):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1052):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1053):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1054):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1055):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1056):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1058):
+   -- Unknown index keyword Hereweshowthatthevariable\texttt.
+!! Input index error (file = Lab0.tex, line = 1060):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1061):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1063):
+   -- Unknown index keyword Hereisanotherexamplesessionforyoutotry,exploringfurtherfeaturesofthe\emph.
+!! Input index error (file = Lab0.tex, line = 1065):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1066):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1067):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1068):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1069):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1070):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1071):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1072):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1073):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1074):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1075):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1076):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1077):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1078):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1079):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1080):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1081):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1082):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1083):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1084):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1085):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1086):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1087):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1088):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1089):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1090):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1091):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1092):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1093):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1094):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1095):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1096):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1097):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1098):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1099):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1100):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1101):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1102):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1103):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1104):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1105):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1106):
+   -- Unknown index keyword \includegraphics.
+!! Input index error (file = Lab0.tex, line = 1107):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1109):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1111):
+   -- Unknown index keyword The\emph.
+!! Input index error (file = Lab0.tex, line = 1113):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1114):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1117):
+   -- Unknown index keyword \emph.
+!! Input index error (file = Lab0.tex, line = 1119):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1120):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1121):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1122):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1123):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1124):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1125):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1126):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1127):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1128):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1129):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1131):
+   -- Unknown index keyword Tab-completioncanalsobeusedtofindtheargumentstoafunction.Considerthe\texttt.
+!! Input index error (file = Lab0.tex, line = 1133):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1134):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1135):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1136):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1137):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1138):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1139):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1140):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1141):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1142):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1143):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1144):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1145):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1146):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1147):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1148):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1149):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1150):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1151):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1152):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1153):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1154):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1155):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1156):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1157):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1158):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1159):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1160):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1161):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1162):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1163):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1164):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1165):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1166):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1167):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1168):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1169):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1170):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1171):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1172):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1173):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1174):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1175):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1177):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1179):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1181):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1182):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1184):
+   -- Unknown index keyword Asecondusefulfeatureofthe\emph.
+!! Input index error (file = Lab0.tex, line = 1186):
+   -- Unknown index keyword Youcanviewyourfullcommandhistorybyusingthecommand\texttt.
+!! Input index error (file = Lab0.tex, line = 1188):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1190):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1191):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1193):
+   -- Unknown index keyword In\emph.
+!! Input index error (file = Lab0.tex, line = 1195):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1196):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1197):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1198):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1199):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1200):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1201):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1202):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1203):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1205):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1207):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1208):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1210):
+   -- Unknown index keyword Asyouhaveseen,thestandard\emph.
+!! Input index error (file = Lab0.tex, line = 1212):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1213):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1214):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1215):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1216):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1217):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1218):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1219):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1220):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1221):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1222):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1223):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1224):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1225):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1226):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1227):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1229):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1230):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1231):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1232):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1233):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1234):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1235):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1237):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1238):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1240):
+   -- Unknown index keyword Sometimes,itiseasytoloosetrackofthevariablesyouhavedefined.\Rprovidesasimplecommandtoviewthem:\Com.
+!! Input index error (file = Lab0.tex, line = 1242):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1243):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1244):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1245):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1246):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1247):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1248):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1249):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1250):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1251):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1252):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1253):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1254):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1255):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1256):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1257):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1258):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1259):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1262):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1264):
+   -- Unknown index keyword Oneof\R\'sgreateststrengthsistheavailabilityofonlinehelpinsidetheinterpreter.Wheninsidethe\Rhelpsystem,youcanmoveupanddownwiththearrowkeys,andreturntotheinterpreterbypressing\texttt.
+!! Input index error (file = Lab0.tex, line = 1266):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1268):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1270):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1271):
+   -- Unknown index keyword \itemUsingthe\texttt.
+!! Input index error (file = Lab0.tex, line = 1272):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1274):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1275):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1276):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1277):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1278):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1279):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1280):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1281):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1283):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1285):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1287):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1288):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1290):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1291):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1292):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1294):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1295):
+   -- Unknown index keyword \itemUsingthe\texttt.
+!! Input index error (file = Lab0.tex, line = 1296):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1298):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1299):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1300):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1301):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1302):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1303):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1304):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1305):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1306):
+   -- Unknown index keyword %plot_help_text<-gsub('_\\\b(..
+!! Input index error (file = Lab0.tex, line = 1307):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1308):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1309):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1310):
+   -- Unknown index keyword Ingeneral,youcanreceivehelpforanycommand\emph.
+!! Input index error (file = Lab0.tex, line = 1312):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1314):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1315):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1316):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1317):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1318):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1319):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1321):
+   -- Unknown index keyword Finally,youcaninvokethe\emph.
+!! Input index error (file = Lab0.tex, line = 1323):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1325):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1326):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1328):
+   -- Unknown index keyword Anotherfeatureoftheonlinehelpsystemsisthe\Com.
+!! Input index error (file = Lab0.tex, line = 1330):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1331):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1332):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1333):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1334):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1335):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1337):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1338):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1340):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1341):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1343):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1344):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1346):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1347):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1348):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1349):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1351):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1354):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1355):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1357):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1359):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1360):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1361):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1362):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1363):
+   -- Unknown index keyword \item\Com.
+!! Input index error (file = Lab0.tex, line = 1364):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1365):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1367):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1369):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1370):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1372):
+   -- Unknown index keyword Toquitthe\Rinterpreter,usethecommand\Com.
+!! Input index error (file = Lab0.tex, line = 1374):
+   -- Unknown index keyword Notethat,bydefault,\R\emph.
+!! Input index error (file = Lab0.tex, line = 1376):
+   -- Unknown index keyword Toclearthecurrentsession,issuethecommand\Com.
+!! Input index error (file = Lab0.tex, line = 1378):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1380):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1381):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1383):
+   -- Unknown index keyword Occasionally,youmayfindthat\Rseems``stuck.''Perhapsyoumistakenlycreatedaninfinitelooporenteredaprohibitivelycomplicatedcommand.Ifyouwouldliketocancelinin-progresscomputation,press\Com.
+!! Input index error (file = Lab0.tex, line = 1385):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1387):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1389):
+   -- Unknown index keyword \section.
+!! Input index error (file = Lab0.tex, line = 1390):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1392):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1393):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1395):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1397):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1398):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1399):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1400):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1401):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1402):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1403):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1404):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1405):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1406):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1407):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1408):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1409):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1410):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1411):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1412):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1413):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1414):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1415):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1416):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1417):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1418):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1419):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1420):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1421):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1422):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1423):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1424):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1425):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1426):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1427):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1428):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1429):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1430):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1431):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1432):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1433):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1434):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1435):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1436):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1437):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1438):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1439):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1440):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1441):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1442):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1443):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1444):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1445):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1446):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1447):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1448):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1449):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1450):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1451):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1452):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1453):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1454):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1455):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1456):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1457):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1458):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1459):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1460):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1461):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1462):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1463):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1464):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1465):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1466):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1467):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1468):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1469):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1470):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1471):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1472):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1473):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1474):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1475):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1476):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1477):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1478):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1479):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1480):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1481):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1484):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1486):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1488):
+   -- Unknown index keyword Asdiscussedin\ref.
+!! Input index error (file = Lab0.tex, line = 1490):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1491):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1493):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1494):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1495):
+   -- Unknown index keyword \itemVariablenamescannotstartwithanunderscoreoranumber.Variablenames\emph.
+!! Input index error (file = Lab0.tex, line = 1496):
+   -- Unknown index keyword \itemVariablenamesarecasesensitive.Thismeansthatthenames\Com.
+!! Input index error (file = Lab0.tex, line = 1497):
+   -- Unknown index keyword \itemThereareasmallnumberofreservedvariablenames(listedintable\ref.
+!! Input index error (file = Lab0.tex, line = 1498):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1500):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1501):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1503):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1504):
+   -- Unknown index keyword \multicolumn.
+!! Input index error (file = Lab0.tex, line = 1505):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1506):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1507):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1508):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1509):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1510):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1511):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1512):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1513):
+   -- Unknown index keyword \caption.
+!! Input index error (file = Lab0.tex, line = 1514):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1515):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1517):
+   -- Unknown index keyword Inadditiontotheserestrictions,style\footnote.
+!! Input index error (file = Lab0.tex, line = 1519):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1520):
+   -- Unknown index keyword \itemVariablenamesshouldbedescriptive.Forexampleavariablecontainingthenumberofstudentsinaclass:\Com.
+!! Input index error (file = Lab0.tex, line = 1521):
+   -- Unknown index keyword \itemVariablenamesshouldnotbewritteninallcapitallettersandshouldnotstartwithcapitalletters.\Com.
+!! Input index error (file = Lab0.tex, line = 1522):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1524):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1526):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1527):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1529):
+   -- Unknown index keyword Variablesareclassifiedby\emph.
+!! Input index error (file = Lab0.tex, line = 1531):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1532):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1533):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1534):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1535):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1536):
+   -- Unknown index keyword numeric&numbervalues&\texttt.
+!! Input index error (file = Lab0.tex, line = 1537):
+   -- Unknown index keyword logical&booleanvalues&\texttt.
+!! Input index error (file = Lab0.tex, line = 1538):
+   -- Unknown index keyword character&sequenceofletters,numbersandpunctuation&\texttt.
+!! Input index error (file = Lab0.tex, line = 1539):
+   -- Unknown index keyword function&abuilt-inoruserdefinedfunction&\texttt.
+!! Input index error (file = Lab0.tex, line = 1540):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1541):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1542):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1543):
+   -- Unknown index keyword \caption.
+!! Input index error (file = Lab0.tex, line = 1544):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1545):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1548):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1550):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1551):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1554):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1555):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1557):
+   -- Unknown index keyword Oneofthefundamentalconceptsofcomputerprogramming,andoneoftenunfamiliartonon-programmers,istheconceptof\emph.
+!! Input index error (file = Lab0.tex, line = 1559):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1560):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1561):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1562):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1563):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1564):
+   -- Unknown index keyword true&\texttt.
+!! Input index error (file = Lab0.tex, line = 1565):
+   -- Unknown index keyword false&\texttt.
+!! Input index error (file = Lab0.tex, line = 1566):
+   -- Unknown index keyword not&\texttt.
+!! Input index error (file = Lab0.tex, line = 1567):
+   -- Unknown index keyword and&\texttt.
+!! Input index error (file = Lab0.tex, line = 1568):
+   -- Unknown index keyword or&\texttt.
+!! Input index error (file = Lab0.tex, line = 1569):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1570):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1571):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1573):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1574):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1575):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 1576):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 1577):
+   -- Unknown index keyword \item\textbf.
+!! Input index error (file = Lab0.tex, line = 1578):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1580):
+   -- Unknown index keyword Booleanlogicisextremelyimportantfor\emph.
+!! Input index error (file = Lab0.tex, line = 1582):
+   -- Unknown index keyword Onefinalaspectof\emph.
+!! Input index error (file = Lab0.tex, line = 1584):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1585):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1586):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1587):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1588):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1589):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1590):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1591):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1592):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1593):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1594):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1595):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1596):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1597):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1598):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1599):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1601):
+   -- Unknown index keyword Youcanalsousea\emph.
+!! Input index error (file = Lab0.tex, line = 1603):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1604):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1605):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1606):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1607):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1608):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1609):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1610):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1611):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1612):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1613):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1614):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1615):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1616):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1617):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1618):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1619):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1620):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1621):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1622):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1623):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1624):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1625):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1626):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1627):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1628):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1630):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1632):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1633):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1635):
+   -- Unknown index keyword Conditionalsare``tests''whichreturneither\texttt.
+!! Input index error (file = Lab0.tex, line = 1637):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1638):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1639):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1640):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1641):
+   -- Unknown index keyword equality&\texttt.
+!! Input index error (file = Lab0.tex, line = 1642):
+   -- Unknown index keyword inequality&\texttt.
+!! Input index error (file = Lab0.tex, line = 1643):
+   -- Unknown index keyword lessthan,greaterthan&\texttt.
+!! Input index error (file = Lab0.tex, line = 1644):
+   -- Unknown index keyword lessthanorequalto&\texttt.
+!! Input index error (file = Lab0.tex, line = 1645):
+   -- Unknown index keyword set-theoreticinclusion&\texttt.
+!! Input index error (file = Lab0.tex, line = 1646):
+   -- Unknown index keyword vectorunion&\texttt.
+!! Input index error (file = Lab0.tex, line = 1647):
+   -- Unknown index keyword vectorintersection&\texttt.
+!! Input index error (file = Lab0.tex, line = 1648):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1649):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1650):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1652):
+   -- Unknown index keyword Themostbasicuseofconditionalsinvolvesthe\R\texttt.
+!! Input index error (file = Lab0.tex, line = 1654):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1655):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1656):
+   -- Unknown index keyword >if(CONDITION).
+!! Input index error (file = Lab0.tex, line = 1657):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1658):
+   -- Unknown index keyword +}elseif(CONDITION_2).
+!! Input index error (file = Lab0.tex, line = 1659):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1660):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1661):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1662):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1663):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1664):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1665):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1666):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1667):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1668):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1669):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1670):
+   -- Unknown index keyword \texttt.
+!! Input index error (file = Lab0.tex, line = 1671):
+   -- Unknown index keyword \texttt.
+!! Input index error (file = Lab0.tex, line = 1672):
+   -- Unknown index keyword &evaluatesto\texttt.
+!! Input index error (file = Lab0.tex, line = 1673):
+   -- Unknown index keyword \texttt.
+!! Input index error (file = Lab0.tex, line = 1674):
+   -- Unknown index keyword &evaluatesto\texttt.
+!! Input index error (file = Lab0.tex, line = 1675):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1676):
+   -- Unknown index keyword \texttt.
+!! Input index error (file = Lab0.tex, line = 1677):
+   -- Unknown index keyword &isevaluatedand\texttt.
+!! Input index error (file = Lab0.tex, line = 1678):
+   -- Unknown index keyword \texttt.
+!! Input index error (file = Lab0.tex, line = 1679):
+   -- Unknown index keyword &ofthe\texttt.
+!! Input index error (file = Lab0.tex, line = 1680):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1681):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1682):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1684):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1686):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1687):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1688):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1689):
+   -- Unknown index keyword >if(x1<10).
+!! Input index error (file = Lab0.tex, line = 1690):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1691):
+   -- Unknown index keyword +}elseif(x1<100).
+!! Input index error (file = Lab0.tex, line = 1692):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1693):
+   -- Unknown index keyword +}elseif(x1<1000).
+!! Input index error (file = Lab0.tex, line = 1694):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1695):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1696):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1697):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1698):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1699):
+   -- Unknown index keyword >if(x1<10).
+!! Input index error (file = Lab0.tex, line = 1700):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1701):
+   -- Unknown index keyword +}elseif(x1<100).
+!! Input index error (file = Lab0.tex, line = 1702):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1703):
+   -- Unknown index keyword +}elseif(x1<1000).
+!! Input index error (file = Lab0.tex, line = 1704):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1705):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1706):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1707):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1708):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1709):
+   -- Unknown index keyword >if(x1<10).
+!! Input index error (file = Lab0.tex, line = 1710):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1711):
+   -- Unknown index keyword +}elseif(x1<100).
+!! Input index error (file = Lab0.tex, line = 1712):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1713):
+   -- Unknown index keyword +}elseif(x1<1000).
+!! Input index error (file = Lab0.tex, line = 1714):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1715):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1716):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1717):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1718):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1719):
+   -- Unknown index keyword >if(x1<10).
+!! Input index error (file = Lab0.tex, line = 1720):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1721):
+   -- Unknown index keyword +}elseif(x1<100).
+!! Input index error (file = Lab0.tex, line = 1722):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1723):
+   -- Unknown index keyword +}elseif(x1<1000).
+!! Input index error (file = Lab0.tex, line = 1724):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1725):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1726):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1727):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1728):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1729):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1731):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1732):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1733):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1734):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1735):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1736):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1737):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1738):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1739):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1740):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1741):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1742):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1743):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1744):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1745):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1746):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1749):
+   -- Unknown index keyword \subsubsection.
+!! Input index error (file = Lab0.tex, line = 1750):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1752):
+   -- Unknown index keyword \emph.
+!! Input index error (file = Lab0.tex, line = 1754):
+   -- Unknown index keyword \emph.
+!! Input index error (file = Lab0.tex, line = 1756):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1757):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1758):
+   -- Unknown index keyword >while(CONDITION).
+!! Input index error (file = Lab0.tex, line = 1759):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1760):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1761):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1762):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1763):
+   -- Unknown index keyword Here,\texttt.
+!! Input index error (file = Lab0.tex, line = 1764):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1765):
+   -- Unknown index keyword f_n=\begin.
+!! Input index error (file = Lab0.tex, line = 1766):
+   -- Unknown index keyword 0&\text.
+!! Input index error (file = Lab0.tex, line = 1767):
+   -- Unknown index keyword 1,&\text.
+!! Input index error (file = Lab0.tex, line = 1768):
+   -- Unknown index keyword f_.
+!! Input index error (file = Lab0.tex, line = 1769):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1770):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1771):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1773):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1774):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1775):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1776):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1777):
+   -- Unknown index keyword >while(x1<1000).
+!! Input index error (file = Lab0.tex, line = 1778):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1779):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1780):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1781):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1782):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1783):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1784):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1785):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1786):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1787):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1789):
+   -- Unknown index keyword Thesecondofourloopingconstructs,the\texttt.
+!! Input index error (file = Lab0.tex, line = 1791):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1792):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1793):
+   -- Unknown index keyword >for(COUNTERinVECTOR).
+!! Input index error (file = Lab0.tex, line = 1794):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1795):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1796):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1797):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1799):
+   -- Unknown index keyword Here\texttt.
+!! Input index error (file = Lab0.tex, line = 1801):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1803):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1804):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1805):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1806):
+   -- Unknown index keyword >for(iiin3:20).
+!! Input index error (file = Lab0.tex, line = 1807):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1808):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1809):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1810):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1811):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1812):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1813):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1814):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1815):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1816):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1817):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1818):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1820):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1821):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1822):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1823):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1824):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1826):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1829):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1830):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1832):
+   -- Unknown index keyword Oneofthemostfundamentalofprogrammingconceptsisthatofthe\emph.
+!! Input index error (file = Lab0.tex, line = 1834):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1835):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1836):
+   -- Unknown index keyword >functionName<-function(argumentList).
+!! Input index error (file = Lab0.tex, line = 1837):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1838):
+   -- Unknown index keyword +.
+!! Input index error (file = Lab0.tex, line = 1839):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1840):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1841):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1843):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1844):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1845):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1846):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1847):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1848):
+   -- Unknown index keyword \item\texttt.
+!! Input index error (file = Lab0.tex, line = 1849):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1851):
+   -- Unknown index keyword Asanexample,letusdefineafunctionwhichtakesasinputaninteger,\texttt.
+!! Input index error (file = Lab0.tex, line = 1853):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1854):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1855):
+   -- Unknown index keyword >fibLargerThan<-function(k).
+!! Input index error (file = Lab0.tex, line = 1856):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1857):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1858):
+   -- Unknown index keyword +while(x1<k).
+!! Input index error (file = Lab0.tex, line = 1859):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1860):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1861):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1862):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1863):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1864):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1865):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1866):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1867):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1868):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1869):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1870):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1871):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1872):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1873):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1874):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1875):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1876):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1877):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1878):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1879):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1880):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1881):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1882):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1884):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1885):
+   -- Unknown index keyword \itemParts\begin.
+!! Input index error (file = Lab0.tex, line = 1886):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1887):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1888):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1889):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1890):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1891):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1892):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1893):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1895):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1897):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1898):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1900):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1904):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1906):
+   -- Unknown index keyword \section.
+!! Input index error (file = Lab0.tex, line = 1907):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1909):
+   -- Unknown index keyword Asdiscussedintheoverview,keeping\Rsourcecodeintextfilesmakesmaintainingandusingyourcodemucheasier\footnote.
+!! Input index error (file = Lab0.tex, line = 1911):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1912):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1914):
+   -- Unknown index keyword Althoughtherearefewhardandfastrulesdefiningwhatandhowyoumayusesourcefiles(anycommandsthatmaybeenteredintothe\Rinterpretermaybeputintoasourcefile),thenotionof\emph.
+!! Input index error (file = Lab0.tex, line = 1916):
+   -- Unknown index keyword \Rsourcefilesaregenerallydescribedasbeing\emph.
+!! Input index error (file = Lab0.tex, line = 1918):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1920):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 1921):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 1923):
+   -- Unknown index keyword Unlikethesyntacticrequirementsandother``necessary''elementspreviouslyexplored,code\emph.
+!! Input index error (file = Lab0.tex, line = 1925):
+   -- Unknown index keyword Ourintenthereisnottoburdenyouwithmore``rules''or``requirements'',butinsteadtoprovideyouwithhelpfulguidancewhichmanyhavefoundtobehelpful.Table\ref.
+!! Input index error (file = Lab0.tex, line = 1927):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1928):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1929):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1930):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1931):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1932):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1933):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1934):
+   -- Unknown index keyword indentation&\emph.
+!! Input index error (file = Lab0.tex, line = 1935):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1936):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1937):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1938):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1939):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1940):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1941):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1942):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1943):
+   -- Unknown index keyword \caption.
+!! Input index error (file = Lab0.tex, line = 1944):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1945):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 1947):
+   -- Unknown index keyword Amoreconcreteexampleoftheseguidelinesisprovidedinthefollowingcodelisting.Whereapplicablecommentsreferencingstyleguidelinesareprefixedwith\texttt.
+!! Input index error (file = Lab0.tex, line = 1949):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1950):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 1951):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1952):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1953):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1954):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1955):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1956):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1957):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1958):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1959):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1960):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1961):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1962):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1963):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1964):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1965):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1966):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1967):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1968):
+   -- Unknown index keyword >getPrimeFactors<-function(input_number).
+!! Input index error (file = Lab0.tex, line = 1969):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1970):
+   -- Unknown index keyword +if(input_number>100000).
+!! Input index error (file = Lab0.tex, line = 1971):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1972):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1973):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1974):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1975):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1976):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1977):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1978):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1979):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1980):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1981):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1982):
+   -- Unknown index keyword +isFactor<-function(dividend,divisor).
+!! Input index error (file = Lab0.tex, line = 1983):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1984):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1985):
+   -- Unknown index keyword +if(remainder==0).
+!! Input index error (file = Lab0.tex, line = 1986):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1987):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 1988):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1989):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1990):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1991):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1992):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1993):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1994):
+   -- Unknown index keyword +getPrimeMultiplicity<-function(dividend,divisor).
+!! Input index error (file = Lab0.tex, line = 1995):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1996):
+   -- Unknown index keyword +while(dividend%%divisor==0).
+!! Input index error (file = Lab0.tex, line = 1997):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1998):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 1999):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2000):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2001):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2002):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2003):
+   -- Unknown index keyword +removeMultiples<-function(total_list,divisor).
+!! Input index error (file = Lab0.tex, line = 2004):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2005):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2006):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2007):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2008):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2009):
+   -- Unknown index keyword +while(length(possible_factors)>0).
+!! Input index error (file = Lab0.tex, line = 2010):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2011):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2012):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2013):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2014):
+   -- Unknown index keyword +if(isFactor(input_number,divisor)).
+!! Input index error (file = Lab0.tex, line = 2015):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2016):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2017):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2018):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2019):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2020):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2021):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2022):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2023):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2024):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2025):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2026):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2027):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2028):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2029):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2030):
+   -- Unknown index keyword +if(length(prime_factors)==0).
+!! Input index error (file = Lab0.tex, line = 2031):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2032):
+   -- Unknown index keyword +}else.
+!! Input index error (file = Lab0.tex, line = 2033):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2034):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2035):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2036):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2037):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 2038):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 2040):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 2041):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 2043):
+   -- Unknown index keyword \Rfunctionfilesarefilesthatcontainone(ormore,ifrelated)functiondefinitions(see\ref.
+!! Input index error (file = Lab0.tex, line = 2044):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2046):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = Lab0.tex, line = 2047):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 2049):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2052):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2054):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2056):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2058):
+   -- Unknown index keyword \part.
+!! Input index error (file = Lab0.tex, line = 2059):
+   -- Unknown index keyword \label.
+!! Input index error (file = Lab0.tex, line = 2061):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Lab0.tex, line = 2062):
+   -- Unknown index keyword \item\begin.
+!! Input index error (file = Lab0.tex, line = 2063):
+   -- Unknown index keyword \itemStartingwiththefibonaccifunctionsfromthetutorial,writeanewfunctionwhichtakesasinputanumber\Com.
+!! Input index error (file = Lab0.tex, line = 2064):
+   -- Unknown index keyword \itemWriteafunctionwhichtakesasinputthreenumbers(say,\Com.
+!! Input index error (file = Lab0.tex, line = 2065):
+   -- Unknown index keyword \itemWriteafunctionwhichtakesasinputanumber\Com.
+!! Input index error (file = Lab0.tex, line = 2066):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 2067):
+   -- Unknown index keyword \itemWriteafunctionthattakesasinputavectorofintegersandreturnsavectorofthoseintegers,sortedfromsmallesttolargest.\footnote.
+!! Input index error (file = Lab0.tex, line = 2068):
+   -- Unknown index keyword \itemWriteafunctionthattakesasinputapolynomial\footnote.
+!! Input index error (file = Lab0.tex, line = 2069):
+   -- Unknown index keyword \end.
+!! Input index error (file = Lab0.tex, line = 2071):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Lab0.tex, line = 2073):
+   -- Unknown index keyword \bibliographystyle.
+!! Input index error (file = Lab0.tex, line = 2074):
+   -- Unknown index keyword \bibliography.
+!! Input index error (file = Lab0.tex, line = 2075):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 1801 rejected).
+Nothing written in Lab0.ind.
+Transcript written in Lab0.ilg.

@@ -1,0 +1,98 @@
+%
+%  lab_slides
+%
+%  Created by David Rosenberg on 2009-10-14.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[]{beamer}
+\usepackage{Rosenberg}
+\usepackage{svn-multi}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemesplit}
+\usetheme{Berkeley}
+\usecolortheme{dolphin}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{Common questions about using R\\\smaller{\ldots and answers}  }
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+
+
+\date{\today}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Outline}
+  \begin{enumerate}
+    \item Manipulating data
+    \begin{enumerate}
+      \item Vectors
+      \item Numerical indexing
+      \item Logical indexing
+    \end{enumerate}
+    \item Data frames and lists
+    \begin{enumerate}
+      \item Subsets (slicing) vs. extraction
+      \item syntax
+    \end{enumerate}
+    \begin{Interfacing with other functions}
+      \item What does \emph{this} mean in \ldots ?
+      \item What does \emph{that} do?
+    \end{enumerate}
+    \item{Style}
+    \begin{enumerate}
+      \item Submission style
+      \item ``rules''
+      \item golden-rule
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+
+\end{document}

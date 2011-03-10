@@ -1,0 +1,21 @@
+\relax 
+\ifx\hyper@anchor\@undefined
+\global \let \oldcontentsline\contentsline
+\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global \let \oldnewlabel\newlabel
+\gdef \newlabel#1#2{\newlabelxx{#1}#2}
+\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\let \contentsline\oldcontentsline
+\let \newlabel\oldnewlabel}
+\else
+\global \let \hyper@last\relax 
+\fi
+
+\@writefile{toc}{\contentsline {part}{I\hspace  {1em}Tutorial}{1}{part.1}}
+\newlabel{prt:tutorial}{{I}{1}{Tutorial\relax }{part.1}{}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{[}{{\caption@xref {[}{ on input line 75}}{2}{\relax }{lstlisting.-1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}New and revisited \emph  {R} commands}{3}{section.1}}
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Exercise}{4}{part.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Characteristic electrical properties of the squid giant axon.\relax }}{5}{table.caption.5}}
+\newlabel{tab:ionpotentials}{{1}{5}{\label {tab:ionpotentials} Characteristic electrical properties of the squid giant axon.\relax \relax }{table.caption.5}{}}

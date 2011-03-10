@@ -1,0 +1,112 @@
+%%% Rosenberg.sty
+
+\NeedsTexFormat{LaTeX2e}
+\ProvidesPackage{Rosenberg}{}
+
+\RequirePackage{ifthen}
+\RequirePackage{float}
+\RequirePackage{hyprref,url}
+\RequirePackage{geometry}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{algorithmic}
+\RequirePackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
+\RequirePackage{ifpdf}
+\RequirePackage{booktabs}
+\RequirePackage{fancyvrb,listings,color,relsize,ae}
+\RequirePackage[T1]{fontenc}
+
+\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}
+
+
+\newboolean{Rosenberg@use@xelatex}
+\newboolean{Rosenberg@use@pdflatex}
+\newboolean{Rosenberg@use@lualatex}
+\newboolean{Rosenberg@use@beamer}
+
+\DeclareOption{Rpdflatex}{\setboolean{Rosenberg@use@pdflatex}{true}}
+\DeclareOption{Rxelatex}{\setboolean{Rosenberg@use@xelatex}{true}}
+\DeclareOption{Rlualatex}{\setboolean{Rosenberg@use@lualatex}{true}}
+\DeclareOption{Rbeamer}{\setboolean{Rosenberg@use@beamer}{true}}
+\ProcessOptions
+
+
+
+\floatstyle{boxed}
+\newfloat{Rlistfloat}{thp}{lop}
+\floatname{Rlistfloat}{Code Listing}
+
+\providecommand{\Sweavesize}{\smaller}
+\providecommand{\Rcolor}{\color[rgb]{0, 0.5, 0.5}}
+\providecommand{\Routcolor}{\color[rgb]{0.461, 0.039, 0.102}}
+\providecommand{\Rcommentcolor}{\color[rgb]{0.101, 0.043, 0.432}}
+
+\providecommand{\Rbackground}{\color[gray]{0.91}}
+\providecommand{\Routbackground}{\color[gray]{0.935}}
+
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+\newcommand{\cc}[1]{\texttt{#1}}
+\newcommand{\R}{\emph{R} }
+\newcommand{\Rs}{\emph{R}'s }
+
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+
+
+\SweaveOpts{keep.source=TRUE,height=3.5,width=5}
+
+
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                      basicstyle={\color{black}\small},%
+                      keywordstyle={\bf\color{black}},%
+                      commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                      literate={<-}{<-}2{<<-}{<<-}2}
+
+
+\lstdefinestyle{Rstyle}{fancyvrb=false,escapechar=`,language=R,%
+                        basicstyle={\Rcolor\Sweavesize},%
+                        backgroundcolor=\Rbackground,%
+                        showstringspaces=false,%
+                        keywordstyle=\outcolor,%
+                        commentstyle={\Rcommentcolor\ttfamily\itshape},%
+                        alsoother={$,$},%
+                        alsoletter={.<-},%
+                  otherkeywords={!,!=,~,$,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
+                        escapeinside={(*}{*)},%
+                        literate={<-}{<-}2{<<-}{<<-}2}%
+% Other options of interest:
+% frame=single,framerule=0.1pt,framesep=1pt,rulecolor=\color{blue},
+% numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt,
+% keywordstyle={\bf\Rcolor}
+
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+\definecolor{simpleRed}{rgb}{1,0,0}
+\definecolor{simpleGreen}{rgb}{0,1,0}
+\definecolor{simpleBlue}{rgb}{0,0,1}
+
+
+\lstdefinestyle{Routstyle}{fancyvrb=false,%literate={~}{{$\sim$}}1{R^2}{{$R^{2}$}}2{^}{{$^{\scriptstyle\wedge}$}}1{R-squared}{{$R^{2}$}}2,%
+ frame=single,framerule=0.2pt,framesep=1pt,basicstyle=\Routcolor\Sweavesize,%
+ backgroundcolor=\Routbackground}
+
+\newenvironment{Schunk}{}{}
+\lstnewenvironment{Sinput}{\lstset{style=Rstyle}}{}
+\lstnewenvironment{Scode}{\lstset{style=Rstyle}}{}
+\lstnewenvironment{Soutput}{\lstset{style=Routstyle}}{}

@@ -1,0 +1,309 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{hyperref,url}               % used in bibliography
+\usepackage[superscript,nomove]{cite}
+\usepackage{geometry}
+\usepackage{svn-multi}
+\usepackage{pgf}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{fancyvrb,color,graphics,multicolumn}
+\begin{document}
+
+\section{Getting started}\label{uGettingStarted}
+%
+%
+\subsection{A minimal file}\label{uAMinimalFile}
+%
+Before using the \packagename{listings} package, you should be familiar with
+the \LaTeX\ typesetting system. You need not to be an expert.
+Here is a minimal file for \packagename{listings}.
+\begin{verbatim}
+   \documentclass{article}
+   \usepackage{listings}
+%
+   \begin{document}
+   \lstset{language=Pascal}
+%
+     % Insert Pascal examples here.
+%
+   \end{document}\end{verbatim}
+Now type in this first example and run it through \LaTeX.
+\begin{advise}
+\item Must I do that really?
+      \advisespace
+      Yes and no. Some books about programming say this is good.
+      What a mistake! Typing takes time---which is wasted if the code is clear to
+      you. And if you need that time to understand what is going on, the
+      author of the book should reconsider the concept of presenting the
+      crucial things---you might want to say that about this guide even---or
+      you're simply inexperienced with programming. If only the latter case
+      applies, you should spend more time on reading (good) books about
+      programming, (good) documentations, and (good) source code from other
+      people. Of course you should also make your own experiments.
+      You will learn a lot. However, running the example through \LaTeX\
+      shows whether the \packagename{listings} package is installed correctly.
+\item The example doesn't work.
+      \advisespace
+      Are the two packages \packagename{listings} and \packagename{keyval}
+      installed on your system? Consult the administration tool of your
+      \TeX\ distribution, your system administrator, the local \TeX\ and
+      \LaTeX\ guides, a \TeX\ FAQ, and section \ref{rInstallation}---in
+      that order. If you've checked \emph{all} these sources and are
+      still helpless, you might want to write a post to a \TeX\ newsgroup
+      like \texttt{comp.text.tex}.
+\item Should I read the software license before using the package?
+      \advisespace
+      Yes, but read this \emph{Getting started} section first to decide
+      whether you are willing to use the package.^^A ;-)
+\end{advise}
+%
+%
+\subsection{Typesetting listings}
+%
+Three types of source codes are supported: code snippets, code segments, and
+listings of stand alone files.  Snippets are placed inside paragraphs and the
+others as separate paragraphs---the difference is the same as between text
+style and display style formulas.
+\begin{advise}
+\item No matter what kind of source you have, if a listing contains national
+      characters like \'e, \L, \"a, or whatever, you must tell the
+      package about it! Section \lstref{uSpecialCharacters} discusses this issue.
+\end{advise}
+%
+\paragraph{Code snippets}
+The well-known \LaTeX\ command |\verb| typesets code snippets verbatim.
+The new command |\lstinline| pretty-prints the code, for example
+%`\lstinline!var i:integer;!' is typeset by
+%`{\rstyle|\lstinline|}|!var i:integer;!|'. The exclamation marks delimit
+the code and can be replaced by any character not in the code;
+|\lstinline$var i:integer;$| gives the same result.
+%
+\paragraph{Displayed code}
+The \texttt{lstlisting} environment typesets the enclosed source code. Like
+most examples, the following one shows verbatim \LaTeX\ code on the right
+and the result on the left. You might take the right-hand side, put it into
+the minimal file, and run it through \LaTeX.
+\begin{lstsample}[lstlisting]{}{}
+   \begin{lstlisting}
+   for i:=maxint to 0 do
+   begin
+       { do nothing }
+   end;
+%
+   Write('Case insensitive ');
+   WritE('Pascal keywords.');
+   \end{lstlisting}
+\end{lstsample}
+It can't be easier.
+\begin{advise}
+\item That's not true. The name `\texttt{listing}' is shorter.
+      \advisespace
+      Indeed. But other packages already define environments with that name.
+      To be compatible with such packages, all commands and environments of
+      the \packagename{listings} package use the prefix `\texttt{lst}'.
+\end{advise}
+The environment provides an optional argument. It tells the package to
+perform special tasks, for example, to print only the lines 2--5:
+\begin{lstsample}{\lstset{frame=trbl,framesep=0pt}\label{gFirstKey=ValueList}}{}
+   \begin{lstlisting}[firstline=2,
+                      lastline=5]
+   for i:=maxint to 0 do
+   begin
+       { do nothing }
+   end;
+%
+   Write('Case insensitive ');
+   WritE('Pascal keywords.');
+   \end{lstlisting}
+\end{lstsample}
+\begin{advise}
+\item Hold on! Where comes the frame from and what is it good for?
+      \advisespace
+      You can put frames around all listings except code snippets.
+      You will learn how later. The frame shows that empty lines at the end
+      of listings aren't printed. This is line 5 in the example.
+\item Hey, you can't drop my empty lines!
+      \advisespace
+      You can tell the package not to drop them:
+      The key `\ikeyname{showlines}' controls these empty lines and is
+      described in section \ref{rTypesettingListings}. Warning: First
+      read ahead on how to use keys in general.
+\item I get obscure error messages when using `\ikeyname{firstline}'.
+      \advisespace
+      That shouldn't happen. Make a bug report as described in section
+      \lstref{uTroubleshooting}.
+\end{advise}
+%
+\paragraph{Stand alone files}
+Finally we come to |\lstinputlisting|, the command used to pretty-print
+stand alone files. It has one optional and one file name argument.
+Note that you possibly need to specify the relative path to the file.
+Here now the result is printed below the verbatim code since both together
+don't fit the text width.
+\begin{lstsample}{\lstset{comment=[l]\%,columns=fullflexible}}{\lstset{alsoletter=\\,emph=\\lstinputlisting,emphstyle=\rstyle}\lstaspectindex{\lstinputlisting}{}}
+   \lstinputlisting[lastline=4]{listings.sty}
+\end{lstsample}
+\begin{advise}
+\item The spacing is different in this example.
+      \advisespace
+      Yes. The two previous examples have aligned columns, i.e.~columns with
+      identical numbers have the same horizontal position---this package
+      makes small adjustments only. The columns in the example here are not
+      aligned. This is explained in section \ref{uFixedAndFlexibleColumns}
+      (keyword: full flexible column format).
+\end{advise}
+%
+Now you know all pretty-printing commands and environments. It remains
+to learn the parameters which control the work of the \packagename{listings}
+package. This is, however, the main task. Here are some of them.
+%
+%
+\subsection{Figure out the appearance}\label{gFigureOutTheAppearance}
+%
+Keywords are typeset bold, comments in italic shape, and spaces in strings
+appear as \textvisiblespace. You don't like these settings? Look at this:
+%\ifcolor
+\begin{lstxsample}[basicstyle,keywordstyle,identifierstyle,commentstyle,stringstyle,showstringspaces]
+   \lstset{% general command to set parameter(s)
+       basicstyle=\small,          % print whole listing small
+       keywordstyle=\color{black}\bfseries\underbar,
+                                   % underlined bold black keywords
+       identifierstyle=,           % nothing happens
+       commentstyle=\color{white}, % white comments
+       stringstyle=\ttfamily,      % typewriter type for strings
+       showstringspaces=false}     % no special string spaces
+\end{lstxsample}
+%\else
+\begin{lstxsample}[basicstyle,keywordstyle,identifierstyle,commentstyle,stringstyle,showstringspaces]
+   \lstset{% general command to set parameter(s)
+       basicstyle=\small,          % print whole listing small
+       keywordstyle=\bfseries\underbar,
+                                   % underlined bold keywords
+       identifierstyle=,           % nothing happens
+       commentstyle=\itshape,      % default
+       stringstyle=\ttfamily,      % typewriter type for strings
+       showstringspaces=false}     % no special string spaces
+\end{lstxsample}
+%\fi
+\begin{lstsample}{}{}
+   \begin{lstlisting}
+   for i:=maxint to 0 do
+   begin
+       { do nothing }
+   end;
+%
+   Write('Case insensitive ');
+   WritE('Pascal keywords.');
+   \end{lstlisting}
+\end{lstsample}
+%\ifcolor
+\begin{advise}
+\item You've requested white coloured comments, but I can see the comment
+      on the left side.
+      \advisespace
+      There are a couple of possible reasons:
+      (1) You've printed the documentation on nonwhite paper.
+      (2) If you are viewing this documentation as a \texttt{.dvi}-file, your
+          viewer seems to have problems with colour specials. Try to print
+          the page on white paper.
+      (3) If a printout on white paper shows the comment, the colour
+          specials aren't suitable for your printer or printer driver.
+          Recreate the documentation and try it again---and ensure that
+          the \packagename{color} package is well-configured.
+\end{advise}
+%\fi
+The styles use two different kinds of commands. |\ttfamily| and |\bfseries|
+both take no arguments but |\underbar| does; it underlines the following
+argument. In general, the \emph{very last} command may read exactly one
+argument, namely some material the package typesets. There's one exception.
+The last command of \ikeyname{basicstyle} \emph{must not} read any
+tokens---or you will get deep in trouble.
+\begin{advise}
+\item `|basicstyle=\small|' looks fine, but comments look really bad with
+      `|commentstyle=\tiny|' and empty basic style, say.
+      \advisespace
+      Don't use different font sizes in a single listing.
+\item But I really want it!
+      \advisespace
+      No, you don't.
+%^^A       The package adjusts internal data after selecting the basic style at
+%^^A       the beginning of each listing. This is a problem if you change the
+%^^A       font size for comments or strings, for example.
+%^^A       Section \ref{rColumnAlignment} shows how to overcome this.
+%^^A       But once again: Don't use different font sizes in a single listing
+%^^A       unless you really know what you are doing.
+\end{advise}
+%
+\paragraph{Warning}\label{wStrikingStyles}
+You should be very careful with striking styles; the recent example is rather
+moderate---it can get horrible. \emph{Always use decent highlighting.}
+Unfortunately it is difficult to give more recommendations since they depend
+on the type of document you're creating. Slides or other presentations often
+require more striking styles than books, for example.
+In the end, it's \emph{you} who have to find the golden mean!
+%
+%
+\subsection{Seduce to use}\label{gSeduceToUse}
+%
+You know all pretty-printing commands and some main parameters. Here now
+comes a small and incomplete overview of other features. The table of
+contents and the index also provide information.
+%
+\paragraph{Line numbers}
+are available for all displayed listings, e.g.~tiny numbers on the left, each
+second line, with 5pt distance to the listing:
+\begin{lstxsample}[numbers,numberstyle,stepnumber,numbersep]
+   \lstset{numbers=left, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
+\end{lstxsample}
+\begin{lstsample}{}{}
+   \begin{lstlisting}
+   for i:=maxint to 0 do
+   begin
+       { do nothing }
+   end;
+%
+   Write('Case insensitive ');
+   WritE('Pascal keywords.');
+   \end{lstlisting}
+\end{lstsample}
+\begin{advise}
+\item I can't get rid of line numbers in subsequent listings.
+      \advisespace
+      `|numbers=none|' turns them off.
+\item Can I use these keys in the optional arguments?
+      \advisespace
+      Of course. Note that optional arguments modify values for one
+      particular listing only: you change the appearance, step or distance
+      of line numbers for a single listing. The previous values are
+      restored afterwards.
+\end{advise}
+The environment allows you to interrupt your listings: you can end a listing
+and continue it later with the correct line number even if there are other
+listings in between. Read section \ref{uLineNumbers} for a thorough
+discussion.
+%
+\paragraph{Floating listings}
+Displayed listings may float:
+\begin{lstsample}{\lstset{frame=tb}}{}
+   \begin{lstlisting}[float,caption=A floating example]
+   for i:=maxint to 0 do
+   begin
+       { do nothing }
+   end;
+%
+   Write('Case insensitive ');
+   WritE('Pascal keywords.');
+   \end{lstlisting}
+\end{lstsample}
+Don't care about the parameter \ikeyname{caption} now. And if you put the
+example into the minimal file and run it through \LaTeX, please don't wonder:
+you'll miss the horizontal rules since they are described elsewhere.
+\begin{advise}
+\item \LaTeX's float mechanism allows one to determine the placement of floats.
+      How can I do that with these?
+      \advisespace
+      You can write `|float=tp|', for example.
+\end{advise}
+\end{document}

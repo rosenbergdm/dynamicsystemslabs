@@ -1,0 +1,49 @@
+
+R version 2.9.2 (2009-08-24)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.29 (5464) i386-apple-darwin8.11.1]
+
+> source("/Users/Megan/Documents/Hwk1.r")
+Megan Liszewski
+Mathematical Models for Biological Sciences I
+Homework 1
+10/9/09
+
+#1a
+The largest fibonacci number less than or equal to 1000 is 987 .
+
+#1b
+10 is closer to 8 than 45 is.
+
+#1c
+34 is the fibonacci number that is closest to 32 .
+
+#2a
+Two vectors 7 8 and 5 sort to 5 7 8
+
+#2b
+6 4 is sorted to 4 6
+
+#2c
+Unsorted vector 8.764384 11.02600 10.30456 10.65678 7.97737 10.11825 8.91688 9.659486 9.067561 10.38475 
+sorts to 7.97737 8.764384 8.91688 9.067561 9.659486 10.11825 10.30456 10.38475 10.65678 11.02600 .
+
+#3
+For k= 6 the solutions to the equation x^k-1 = 0 are 0.5+0.8660254i -0.5+0.8660254i -1+0i -0.5-0.8660254i 0.5-0.8660254i 1-0i
+> 

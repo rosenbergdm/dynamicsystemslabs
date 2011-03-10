@@ -1,0 +1,18 @@
+chunk: setup
+chunkprefix: pgfSweave-example-setup
+fig:
+cacheDB:
+time: 2009-09-15 21:08:34
+
+chunk: data
+chunkprefix: pgfSweave-example-data
+fig:
+cacheDB: cache/data_770a0be29d34849870492da60672b268
+time: 2009-09-15 21:08:34
+
+chunk: boxplot
+chunkprefix: pgfSweave-example-boxplot
+fig: pgfSweave-example-boxplot.pdf
+cacheDB:
+time: 2009-09-15 21:08:34
+

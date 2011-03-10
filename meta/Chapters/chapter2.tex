@@ -1,0 +1,293 @@
+\documentclass[11pt]{book}
+\usepackage[left=2in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{setspace}
+\doublespacing
+
+\textwidth 5.0in
+%\headheight 1.0in
+\topmargin 0in
+
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#2}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#2}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#2}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+
+
+%\title{Chapter 2}
+%\author{Dmitry Kondrashov}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+%\maketitle
+\setcounter{chapter}{1}
+\chapter[One variable in continuous time]{Models with one variable in continuous time: biochemical kinetics and membrane potential}
+\section{Introduction}
+
+In the previous chapter we have considered discrete time models, in which time is measured in integers. This worked well to describe processes that happen in periodic cycles, like cell division or heart pumping. Many biological systems do not work this way. Change can happen continuously, that is, at any point in time. For instance, the concentration of a biological molecule in the cell changes gradually, as does the voltage across the cell membrane in a neuron.
+
+The models for continuously changing variables require their own set of mathematical tools. Instead of difference equations, we are going to see our first differential equations, which use derivatives to describe how a variable changes with time. There is a tremendous amount of knowledge accumulated by mathematicians, physicists and engineers for analyzing and solving differential equations. There are many classes of differential equations for which it is possible to find analytic solutions, often in the form of ``special functions.'' Differential equations courses for physicists and engineers are typically focused on learning about the variety of existing tools for solving a few types of differential equaitons. For the purposes of biological modeling, knowing how to solve a limited number of differential equations is of limited usefulness. We will instead focus on learning how to analyze the behavior of differential equations in general, without having to solve them on paper.
+
+In this chapter, the modeling section will introduce differential equations for describing biochemical reactions and develop some intuition for constructing such models. In the analytical section, we will see how the concepts we developed for the analysis of difference equations apply to study of differential equations. In the computational section we will develop graphical tools for the study of the behavior of differential equations. In the synthesis section we will develop a model cell membrane potential and analyze it with the newly acquired tools.
+
+\section{Modeling: more population growth and chemical kinetics}
+We consider models with \emph{continuous time}, for which it does not make sense to break time up into equal intervals. Instead of equations describing the increments in the dependent variable from one time step to the next, we will see equations with the instantaneous rate of the change (derivative) of the variable. For discrete time models, one formulation of the general difference equation was this:
+$$ x_{t+1} - x_t = g(x)$$
+$g(x)$ is a function of the dependent variable, which may be as simple as 0 or $ax$, or can be horribly nonlinear and complicated.
+
+For difference equations, the time variable $t$ is measured in the number of time steps ($\Delta t$), whether the time step is 20 minutes or 20 years. In continuous time models, we express $t$ in actual units of time, instead of counting time steps. Thus, what we wrote as $t+1$ for discrete time should be expressed as $t+\Delta t$ for continuous time. The left-hand-side of the equation above describes the change in the variable $x$ over one time step $\Delta t$. We can write it as a Newton's quotient, and then take the limit of the time step shrinking to 0:
+$$ \lim_{\Delta t \rightarrow 0} \frac{x(t +\Delta t) - x(t)} {\Delta t} = \frac{d x} {dt}  = g(x)  $$
+To take the limit of the time step going to 0 means that we allow the increments in time to be infinitesimally small, and therefore the time variable may be any real number. The equation above thus becomes a differential equation, because it involves a derivative of the dependent variable.
+
+There are at least two good reasons to use differential equations for many applications. First,  they are often more realistic than discrete time models, because some events happen very frequently and non-peridically. The second reason is mathematical: it turns out that dynamical systems with continuous time, described by differential equations, are better behaved than difference equations. This has to do with the essential ``jumpiness'' of difference equations. Even for simple nonlinear equations, the value of the variable after one time step can be far removed from its last value. This can lead to highly complicated solutions, as we saw in the logistic model in Chapter 1, and that we will discuss in more detail in Chapter 3.
+
+\subsection{Growth proportional to population size}
+We will now build up some of the most common differential equations models. First up, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate $r$. This is reflected in the following differential equation:
+\begin{equation}
+\frac{d x} {dt} = \dot x = r x
+\label{eq:linear_ode}
+ \end{equation}
+This expression states that the rate of change of $x$, which we take to be population size, is proportional to $x$ with multiplicative constant $r$. We will use the common notation $\dot x$ for the time derivative of $x$ for aesthetic reasons.
+
+First, we apply dimensional analysis to this model. The units of the derivative are population per time, as can be deduced from the Newton's quotient definition. Thus, the units in the equation have the following relationship:
+$$ \frac{[population]}{[time]} = [r] [population] = \frac{1}{[time]}[population] $$
+This shows that as in the discrete time models, the units of the population growth rate $r$ are inverse time, or frequency. The difference with the discrete time population models lies in the time scope of the rate. In the case of the difference equation, $r$ is the rate of change per one time step of the model. In the differential equation, $r$ is the \emph{instantaneous rate of population growth}. It is less intuitive than the growth rate per single reproductive cycle, just like the slope of a curve is less intuitive than the slope of a line. The population growth happens continuously, so the growth rate of $r$ individuals per year does not mean that if we start with one individual, there will be $r$ after one year. In order to make quantitative predictions, we need to find the solution of the equation, which we will see in the next section.
+
+\subsection{Biochemical kinetics}
+Reactions between molecules in cells occur continuously, driven by molecular collisions and physical forces. In order to model this complex behavior, it is generally assumed that reactions occur with a particular \emph{kinetic rate}. A simple reaction of conversion from one type of molecule ($A$) to another ($B$) can be written as follows:
+$$ A \rightarrow^k B $$
+In this equation the parameter $k$ is the kinetic rate, describing the speed of conversion of $A$ into $B$, per concentration of $A$.
+
+Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the \emph{laws of mass action}. For the reaction above, the concentration of molecule $A$ decreases continuously proportionally to itself, and the concentration of molecule $B$ increases continuously proportionally to the concentration of $A$. This is expressed by the following two differential equations:
+\begin{eqnarray}
+\label{eq:lin_chem_kin}
+\dot A &=& - k A \\
+\dot B &=& kA
+\end{eqnarray}
+Several conclusions are apparent by inspection of the equations. First, the dynamics depend only on the concentration of $A$, so keeping track of the concentration of $B$ is superfluous. The second observation reinforces the first: the sum of the concentrations of $A$ and $B$ is constant. This is mathematically demonstrated by adding the two equations together to obtain the following:
+$$ \dot A + \dot B = -kA + kA = 0$$
+One of the basic properties of the derivative is that the sum of derivatives is the same as the derivative of the sum:
+$$\dot A + \dot B = \frac{d(A+B)}{dt} = 0$$
+This means that the sum of the concentrations of $A$ and $B$ is a constant. This is a mathematical expression of the law of conservation in chemistry: molecules can change from one type to another, but they cannot appear or disappear in other ways. In this case, a single molecule of $A$ becomes a single molecule of $B$, so it follows that the sum of the two has to remain the same. If the reaction were instead two molecules of $A$ converting to a molecule of $B$, then the conserved quantity is $2A + B$.
+
+The concept of conserved quantity is very useful for the analysis of differential equations. We will see in later chapters how it can help us find solutions, and explain the behavior of complex dynamical systems.
+
+%$$ A \leftrightarrow^{k1}_{k2} B $$
+\section[ODE: solutions, fixed points]{Analytical: solutions and fixed points of ordinary differential equations}
+In this section we will see our first analytic solutions for ordinary differential equations (ODE). A differential equation is an equation that contains derivatives of the dependent variable (which we will usually call $x$). For the time being, we will restrict ourselves to ODEs with the highest derivative being of first order. In general, we can write all such ODE as follows:
+$$\dot x = f(x,t)$$
+Note that the function may depend on both the dependent variable $x$ and the independent variable $t$. Let us first define some terminology for ODE:
+\begin{itemize}
+\item The \emph{order} of an ODE is the highest order of the derivative of the dependent variable $x$. For example, $\dot x = rx$ is a first order ODE, while $\ddot x = - mx$ is a second order ODE (double dot stands for second derivative).
+\item An ODE is  \emph{autonomous} is the function $f$ depends only on the dependent variable $x$ and not on $t$. For example, $\dot x = 5x -4$ is an autonomous equation, while $\dot x = 5t $ is not. An autonomous ODE is also said to have \emph{constant coefficients} (e.g. 5 and -4 in the first equation above).
+\item An ODE is \emph{homogeneous} if every term involves either the dependent variable $x$ or its derivative. For instance, $\dot x = x^2 + \sin(x)$ is homogeneous, while $\dot x = -x + 5t$ is not.
+\end{itemize}
+
+Most simple biological models that we will encounter in the next three units are first order, autonomous, homogeneous ODEs. However, inhomogeneous equations are important in many applications, and we will give an introduction to their solutions at the end of the present section.
+
+\subsection{Solving ODE by integration}
+The solution of a differential equation is a function of the independent variable that satisfies the equation for a range of values of the independent variable. In contrast with algebraic equations, we cannot simply isolate $x$ on one side of the equal sign and find the solutions as one, or a few numbers. Instead, solving ordinary differential equations is very tricky, and no general strategy for solving an arbitrary ODE exists. Moreover, a solution for an ODE is not guaranteed to exist at all, or not for all values of $t$. We will discuss some of the difficulties later, but let us start with equations that we can solve.
+
+The most obvious strategy for solving an ODE is integration. Since a differential equation contains derivatives, integrating it can remove the derivative. In the case of the general first order equation, we can integrate both sides to obtain the following:
+$$ \int \frac{dx}{dt} dt = \int f(x,t) dt \Rightarrow x + C = \int f(x,t) dt$$
+The constant of integration $C$ appears as in the standard antiderivative definition. It can be specified by an initial condition for the solution $x(t)$.
+
+Consider a very simple differential equation: $\dot x  = a$, where $\dot x$ stands for the time derivative of the dependent variable $x$, and $a$ is a constant. It can be solved by integration:
+$$ \int \frac{dx}{dt} dt  = \int a dt  \Rightarrow x(t) + C = at $$
+This solution contains an undetermined integration constant; if an initial condition is specified, we can determine the complete solution. Generally speaking, if the initial condition is $x(0) = x_0$, we need to solve an algebraic equation to determine $C$:  $x_0 = a*0 - C$, which results in $C = -x_0$. The complete solution is then $x(t) = at + x_0$. To make the example more specific, if $a = 5$ and the initial condition is $x(0) = -3$, the solution is $x(t) = 5t -3$.
+
+Now let us solve the linear population growth model in equation \ref{eq:linear_ode}: $\dot x = rx$. The equation can be solved by  first dividing  both sides by $x$ and then integrating:
+$$ \int \frac{1}{x} \frac{d x}{dt}  dt = \int \frac{dx}{x} = \int r dt \Longrightarrow \log |x| = rt + C  \Longrightarrow  x =  e^{rt+C} = Ae^{rt}$$
+We used basic algebra to solve for $x$, exponentiating both sides to get rid of the logarithm on the left side. As a result, the additive constant $C$ gave rise to the multiplicative constant $A=e^C$. Once again, the solution contains a constant which can be determined by specifying an initial condition $x(0) = x_0$. In this case, the relationship is quite straightforward: $x(0) = A e^0 = A$. Thus, the complete solution for equation \ref{eq:linear_ode} is:
+$$ x(t) = x_0e^{rt}$$
+As in the case of the discrete-time models, population growth with a constant birth rate has exponential form. The general solution  allows us to classify its behavior into three categories:
+\begin{itemize}
+\item $ r > 0$: $x(t)$ grows without bound
+\item $ r < 0$: $x(t)$ decays to 0
+\item $ r = 0 $: $x(t)$ remains constant at the initial value
+\end{itemize}
+The rate $r$ being positive reflects the dominance of birth rate over death rate in the population, leading to unlimited population growth. If the death rate is greater, the population will decline and die out. If the two are exactly matched, the population size will remain unchanged.
+
+The solution for the biochemical kinetic model in equation \ref{eq:lin_chem_kin} is identical except for the sign: $ A(t) = A_0 e^{-kt}$. When the reaction rate $k$ is positive, as it is in chemistry, the concentration of $A$ decays to 0 over time. This should be obvious from our model, since there is no back reaction, and the only chemical process is conversion of $A$ into $B$.  The concentration of $B$ can be found by using the fact that the total concentration of molecules in the model is conserved. Let us call it $C$. Then $B(t) = C - A(t) = C- A_0e^{-kt}$. The concentration of $B$ increases to the asymptotic limit of $C$, meaning that all molecules of $A$ have been converted to $B$.
+
+\subsection{Fixed points in ODE}
+Generally, ODE models for realistic biological systems are nonlinear, and most nonlinear differential equations cannot be solved analytically. Instead, we will analyze the behavior of the solutions without finding an exact formula. The first step to understanding the dynamics of an ODE is finding its fixed points. The concept is the same as in the case of difference equations: a fixed point is a value of the solution at which the dynamical system stays constant. Thus, the derivative of the solution must be zero, which leads us to to the formal definition:
+
+ \textbf{Definition:} For a differential equation $\dot x = f(x)$, a point $x^*$ which satisfies $f(x^*)=0$ is called a \emph{fixed point or equilibrium}, and the solution with the initial condition $x(0)=x^*$ is $x(t)=x^*$.
+
+For instance, the linear equation $\dot x  = rx$ has a single fixed point at $x^* = 0$. For a more interesting example, consider a logistic equation: $\dot x = x - x^2 $. Its fixed points are the solutions of $x - x^2 = 0$, therefore there two fixed points: $x^* = 0, 1$. We know that if the solution has either of the fixed points as the initial condition, it will remain at that value for all time.
+
+Locating the fixed points is not sufficient to predict the global behavior of the dynamical system, however. The next question to address is the behavior of the solution if the initial condition is \textbf{near} the fixed point. This is the same notion of stability that we saw for discrete dynamical systems. The definition is identical:
+
+\textbf{Definition:} A fixed point  $x^*$ of an ODE $\dot x = f(x)$ is called \emph{stable (sink)}, if for a sufficiently small number $\epsilon$, the solution $x(t)$ with the initial condition $x_0 = x^* + \epsilon$ approaches the fixed point $x^*$ as $t \rightarrow \infty$. If the solution $x(t)$ does not approach $x^*$ for all nonzero $\epsilon$, the fixed point is called \emph{unstable (source)}.
+
+We will see that the slope of $f(x)$ determines whether a fixed point is stable. We use the same methodology as we did in Chapter 1. First, define $\epsilon(t)$ to be the deviation of the solution $x(t)$ from the fixed point $x^*$, that is, write $x(t) = x^* + \epsilon(t)$. Assuming that $\epsilon(t)$ is small, we can write the function $f(x)$ using Taylor's formula:
+$$ f(x^*+\epsilon(t))= f(x^*)+f'(x^*) \epsilon(t) + ... = f'(x^*) \epsilon(t) + ... $$
+The term $f(x^*)$ vanished because it is zero by definition of a fixed point. The ellipsis indicates terms of order $\epsilon(t)^2$ and higher, which are very small by assumption. Thus, we can write the following approximation to the ODE $\dot x = f(x)$ near a fixed point:
+$$ \dot x =  \frac{ d(x^* + \epsilon(t))}{dt} = \dot \epsilon(t) =  f'(x^*) \epsilon(t)$$
+This differential equation describes the dynamics of the deviation $\epsilon(t)$ near the fixed point $x^*$; note that the derivative $f'(x^*)$ is a constant for any given fixed point. We have obtained a linear equation for $\epsilon(t)$, known as the linearization of the ODE near the fixed point. We have classified the behavior of solutions for the general linear ODE $\dot x = rx$, and now we apply this classification to the behavior of the deviation $\epsilon(t)$:
+\begin{itemize}
+\item $f'(x^*) > 0$: the deviation  $\epsilon(t)$ grows exponentially, and the solution moves away from the fixed point $x^*$, therefore the fixed point is \textbf{unstable}.
+\item $f'(x^*) < 0$: the deviation $\epsilon(t)$ decays to 0, therefore the fixed point is \textbf{stable}.
+\item $f'(x^*) = 0$: the situation is more complicated.
+\end{itemize}
+The classification of the  behavior near a fixed point is directly analogous to that in discrete time models, with the difference that the discrimination between stable and unstable depends on the sign of the derivative, rather than whether its absolute value is greater than or less than 1. As before, the borderline situation is tricky, because if the first derivative is zero, higher order terms that we neglected make the difference. We will mostly avoid such borderline cases, but they are important in some applications.
+
+We have learned to find fixed points and analyze their stability. This will be the bedrock of our analysis of continuous-time dynamical systems, first in one variable and then in higher dimensions.
+\subsection{General solution for linear inhomogeneous ODE}
+%\textbf{Definition:} A differential equation $\dot x = f(x,t)$ is called linear if the function $f(x)$ is linear, that is, it has the form $f(x,t) = a(t)x + b(t)$. In more than one dimension, linear functions can be expressed as $f(x_1,...,x_N) = \sum_{i=1}^{N} a_i(t) x_i + b_i(t)$. \\
+
+%The linear property of an ODE leads to special, ``nice'' properties of its solutions. What makes linear equations so special? Vaguely speaking, the fact that a linear combination of any two solutions  ($x_{new} = ax_1 + bx_2$) is also a solution (can you verify that?). This results in solutions that are guaranteed to exist everywhere in time, without finite-time blow-ups. Further, there is always a way to write down an analytic solution.
+
+Let us now expand our analytical skills to tackle the general linear differential equations, in which the growth rate may change with time, and there may be a extra term that depends only on $t$. The general linear equation with one dependent variable has the following form: $ \dot x = a(t)x + b(t)$. The term $b(t)$, which does not depend on $x$, is called the \emph{inhomogeneous} term, and its presence makes the ODE inhomogeneous, as defined at the beginning of the section.
+
+First, let us solve the general homogenous equation with a non-constant coefficient $\dot x = a(t) x$. To do this, we need to \emph{separate the variables}  by collecting the terms that contain the variables $x$ and $t$, on the left- and right-hand sides,  respectively, and then integrating the two sides separately:
+$$ \frac{d x} {dt} = a(t) x \Rightarrow \frac{dx}{x} = a(t) dt \Rightarrow \int \frac{dx}{x} = \int a(t) dt $$
+We are solving this equation with an arbitrary function $a(t)$, so we must leave the right-hand side as an integral. The left-hand side, as we saw above, integrates to the natural logarithm of $x$, and we take the exponential of both sides to find the solution $x(t)$:
+$$ \ln |x| + C = \int a(t) dt \Rightarrow x(t) e^C = e^{\int a(t) dt} \Rightarrow x(t) = A e^{\int a(t) dt} $$
+where $A = e^{-C}$  is a constant of integration determined by the initial condition.
+
+Second, let us tackle Inhomogeneous equations, which present a more difficult challenge.  Let us see if this equation can be solved by separation of variables: $\dot x -a(t)x = b(t)$. However, when we try to distribute the differentials $dx$ and $dt$, we run into trouble - the variables cannot be untangled. Instead, we'd like to write the left hand side as a \emph{derivative of some expression}. We can see that:
+ $$\frac{d}{dt} \left[ e^{-\int a(t)dt}x \right] = \dot x e^{-\int a(t)dt} -ae^{-\int a(t)dt}x = e^{-\int a(t)dt}(\dot x -ax)$$ So we use the trick of multiplying both sides of the equation by $e^{-\int a(t)dt}$. This gives us the following:
+ $$ \frac{d}{dt} \left[ e^{-\int a(t)dt}x \right]  = b(t)e^{-\int a(t)dt} $$
+ We now integrate both sides, to obtain:
+ $$  e^{-\int a(t)dt}x  = \int {b(t)}e^{-\int a(t)dt}dt + C$$
+Solving for $x(t)$, we obtain:
+\begin{equation}
+x(t) =  e^{\int a(t)dt}\int {b(t)}e^{-\int a(t)dt}dt + Ce^{\int a(t)dt}
+\end{equation}
+We now have the complete, general solution of any linear first-order ODE. Note that the second term happens to be the solution to the homogeneous equation $\dot x = a(t)x$. Thus, the complete solution to an inhomogeneous linear equation is a sum of an inhomogeneous and a homogeneous solution, with the free constant $C$ determined by the initial condition. If the two pieces can be found separately, this is useful to know. In concrete examples, the solution need not be so hairy.
+
+\underline{Example:} $\dot x = x + e^{-t}$, with $x(0) = x_0$. We can go through the same steps, or just use the general expression derived above. Since $a(t) = 1$, the integrating factor is $e^{-\int dt} = e^{-t}$. The solution can then be written as follows:
+$$ x(t) = e^t \int e^{-t} e^{-t} dt + Ce^{t} = -\frac{1}{2}e^{-t} + Ce^{t}$$
+Plugging in the initial condition, we get $x_0 = -1/2+C \Rightarrow C = 1/2+x_0$, thus the complete solution in terms of the initial conditions is:
+\begin{equation}
+x(t) =  -\frac{1}{2}e^{-t} + (\frac{1}{2}+x_0)e^{t}
+\end{equation}
+
+\section[Graphical analysis of ODE]{Computational: graphical analysis of ODE}
+In the last section we have acquired some skills for analyzing dynamical systems on paper. Another approach to studying ODE is called \emph{qualitative} or \emph{geometric}, which uses the graph the function that defines the derivative in the differential equation to make inferences about the behavior of the solution.
+\subsection{Plotting flow on the line}
+The defining function of the ODE $\dot x = f(x)$ gives the rate of change of $x(t)$ depending on the value of $x$. If $f(x)$ is large and positive, that means $x(t)$ is increasing rapidly. If $f(x)$ is small and negative, $x(t)$ is decreasing at a slow rate. If $f(x)=0$, this value of $x$ is a fixed point, and $x$ is not changing at all.
+
+For an ODE with one dependent variable, we can sketch the \emph{flow on the line} defined by the differential equation. The ``flow'' stands for the direction of change at every point, specifically increasing, decreasing, or not changing. We will plot the flow on the horizontal x-axis, so if $x$ is increasing, the flow will be indicated by a rightward arrow, and if it is decreasing, the flow will point to the left. The fixed points separate the regions of increasing (rightward) flow and decreasing (leftward) flow.
+
+The graphical approach to finding areas of right and left flow is based on graphing the function $f(x)$, and dividing the x-axis based on the sign of $f(x)$. In the areas where $f(x) > 0$, its graph is above the x-axis, and the flow is to the right; conversely, when $f(x) < 0$, its graph is below the x-axis, and the flow is to the left. The fixed points are found at the intersections of the graph of $f(x)$ with the x-axis.
+
+Graphical analysis is also used to determine the stability of fixed points. As we saw above, the slope of $f(x)$ at a fixed point determines its stability. If the slope of the graph of $f(x)$ when its crosses the x-axis is downward, we conclude that the fixed point is stable; if the slope is upward, the fixed point is negative. If the graph just touches the x-axis, the slope is zero and we must do further analysis to determine stability.
+
+Two examples are shown in figure \ref{fig:line_flow_example}. In part a) there is a plot of a logistic model $f(x) =  1/90(90-x)x$. This dynamical system has fixed points at $x = 0, 90$. The flow in the region between the two fixed points is rightward, that is the population increases, approaching the carrying capacity of 90. The flow to the right of $x=90$ is leftward, meaning the population decreases to the carrying capacity. The flow makes plain that the fixed point  at $x=0$ is unstable, as flow moves solutions away from it, and the fixed point at $x=90$ is stable. Note that the slope of the function is positive at $x=0$ and negative at $x=90$. This is an alternate demonstration of how the slope of the function $f(x)$ at the fixed point determines its stability.
+
+In part b) of  figure \ref{fig:line_flow_example}, the function $f(x) =  -x^3 + x^2 $ is plotted, with two fixed points at $x = 0, 1$. The red arrows on the x-axis show the direction of the flow in the three different regions separated by the fixed points. Flow is to the right for $x<1$, to the left for for $x>1$; it is plain to see that the arrows approach the fixed point from both sides, and thus the fixed point  is stable, as the negative slope of $f(x)$ at  $x=1$ indicates.  The fixed point at $x=0$ presents a more complicated situation: the slope of $f(x)$ is zero, and the flow is rightward on both sides of the fixed point. This type of fixed point is sometimes called \emph{semi-stable}, because it is stable when approached from one side, and unstable when approached from the other.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+
+   \includegraphics[width=3in]{lec2_fig2.jpg}
+    \includegraphics[width=3in]{lec2_fig1.jpg}
+   \caption{Line flow analysis of two different ODEs: a) $\dot x = 1/90(90-x)x$ and b)  $ \dot x = -x^3 + x^2 $. Red arrows indicate the direction field in the intervals separated by the fixed points.}
+   \label{fig:line_flow_example}
+\end{figure}
+
+\subsection{Direction fields}
+Let us consider the general one-variable ODE $\dot x = f(x,t)$, which defines the derivative of $x$ as both a function of $x$ and $t$. A powerful way to visualize the directions of change prescribed by $f(x,t)$ is to plot them as vectors in the $(x,t)$ plane. That is, for some number $(x_0,t_0)$, evaluate $f(x_0,t_0)$ and plot a vector with that slope, attached to the point $(x_0,t_0)$ This gives a graphical view of what is termed the \emph{direction field} of the ODE. This providesa visualization of how the solution function $x(t)$ grows or decays over time.
+
+\textbf{Pseudo code for plotting a direction field:}
+\begin{enumerate}
+\item define a function $f(x, t)$ that represents the derivative of $x(t)$
+\item choose a step length $dx$ for the $x$ direction and $dt$ for the $t$ direction, and vector length parameter $h$
+\item choose a region in the $x,t$ plane: $x$ range $(x_1,x_2)$ and $t$ range $(x_2,t_2)$
+\item set the number of grid points in the $x$ direction $Nx = (x_2-x_1)/dx$  and number of points in the $t$ direction $Nt = (t_2-t_1)/dt$
+\item use the chosen step sizes evenly sample points from this region of the plane: do a loop for $i$ from 0 to $ Nx$ and inside another loop for $j$ from 0 to $Nt$:
+ \begin{enumerate}
+  \item let $x_i = x_1 + i*h$ and let $t_j = t_1 + j*h$
+   \item evaluate the function $ f(x_i,t_j)$ and store it as the slope $m$
+   \item place a line segment with slope $m$ at the point $(t_j, x_i)$ to point $(t_j + h, x_i+h*m)$
+   \item increase $i$ and $j$ by 1
+   \end{enumerate}
+\end{enumerate}
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=3in]{dir_field_log.png}
+   \includegraphics[width=3in]{dir_field_cubic.png}
+   \caption{Examples of direction fields: a) $\dot x = 1/90(90-x)x$ and b)  $ \dot x = -x^3 + x^2 $.}
+   \label{fig:dir_fields_examples}
+\end{figure}
+
+Figure \ref{fig:dir_fields_examples} show two examples of direction fields for autonomous ODE, which do not depend on the time variable $t$. In terms of the plot, these direction fields are the same for any horizontal line. The first direction filed is for the logistic model $\dot x = 1/90(90-x)x$. The two fixed points at $x=0$ and $x=90$ are characterized by lines of slope zero, meaning that the dependent variable does not change at those points. The direction field at other points indicates that $x$ increases between 0 and 90, and decreases in other regions, just as shown in the line flow analysis above.
+
+The second example is of the ODE $ \dot x = -x^3 + x^2 $, which has two fixed points, at $x=0$ and $x=1$. The direction of flow is increasing (upward) for $x < 1$, with the exception of  $x=0$. This is the unusual semi-stable fixed point discussed above. The direction of flow is decreasing (downward) for $x >1$, illustrating that the fixed point $x=1$ is stable.
+
+The graphical representation of direction fields in the $(x,t)$ plane provides a clear illustration of the dynamics generated by a particular ODE. An initial condition can be specified as a point at $t=0$ (the $x$ axis), and the direction vectors indicate the slope of the solution at any particular point. Loosely joining the line segments gives an idea of the individual \emph{trajectories}, or solutions starting at a particular initial condition. There are as many different trajectories as there are initial conditions, which is infinitely many.
+
+\section{Synthesis: membrane as electric circuit}
+In this example we will construct and analyze a model of electric potential across a membrane. The potential is determined by the difference in concentrations of charged particles (ions) on the two sides of the phospholipid bilayer. The ions can flow through specific channels across the membrane, changing the concentration and thus the electric potential.
+\subsection{Basic laws of electricity}
+To start, we will review the physical concepts and laws describing the flow of charged particles. The amount of charge (number of charged particles) is denoted by $Q$. The rate of flow of charge per time is called the current:
+$$I = \frac{dQ}{dt}$$
+Current can be analogized to the flow of a liquid, and the difference in height that drives the liquid flow is similar to the electric potential, or voltage. The relationship between voltage and current is given by \emph{Ohm's law:}
+$$ V = IR$$
+where $R$ is the \emph{resistance} of an electrical conductance, and sometimes we use the \emph{conductance} $g = 1/R$ in the relationship between current and voltage:
+$$gV = I$$
+
+There are devices known as capacitors, which can store a certain amount of electrical potential in two conducting plates separated by a dielectric (non-conductor). The voltage drop across a capacitor is described by the capacitor law:
+$$ V_C = \frac{Q}{C}$$
+where $C$ is the \emph{capacitance} and $Q$ is the charge of the capacitor.
+
+\subsection{Cole's membrane model}
+Lipid bilayer membranes separate media with different concentrations of ions on the two sides, typically the extracellular and cytoplasmic sides. The differences in concentrations of different ions produce a membrane potential. The membrane itself can be thought of as a capacitor, with two charged layers separated by the hydrophobic fatty acid tails in the middle. In addition, there are ion channels that allow ions to flow from the side with higher concentration to that with lower (these are known as passive channels, as opposed to active pumps that can transport ions against the concentration gradient, which we will neglect for now.) These channels are often gated, which means that they conduct ions up to a certain voltage $V_R$, but then close and reverse direction at higher voltage. The channels are analogous to conducting metal wires, and therefore act as resistors with a specified conductance $g$. Finally, the electrochemical concentrations of ions act as batteries for each species, (Na$^+$, K$^+$, etc.) The overall electric circuit diagram of this model is shown in figure \ref{fig:membrane_potential}.
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=5in]{membrane_circuit.png}
+   \caption{Simple model of ion flow through membrane as an electrical circuit}
+   \label{fig:membrane_potential}
+\end{figure}
+Because the different components are connected in parallel, the total current has to equal the sum of the current passing through each element: the capacitor (membrane) and the gated resistors (specific ion channels). The current flowing through a capacitor can be found by differentiating the capacitor law:
+$$ \frac{dQ}{dt} = I = C \frac{dV_C}{dt}$$
+The current flowing through each ionic channel is described by this relation:
+$$ I = g (V-V_R)$$
+Then, the total ion flow through the system is described as follows, where $i$ denotes the different ionic species:
+\begin{equation}
+I_{app} = C \frac{dV}{dt} + \sum_i g (V-V_{Ri})
+\end{equation}
+Let us solve a simple version of this model, where there is no applied current, and only a single ionic species with reversal potential $V_R$. Then, we get the following linear inhomogeneous equation:
+$$ \dot V = - \frac{g}{C} (V-V_R)$$
+Let us solve this, using the integrating factor approach. Remember, that $V_R$ is a constant, while $V(t)$ is the dependent variable. Thus, bringing all dependent variables over to the left-hand side, we get:
+$$ \dot V + \frac{g}{C} V = \frac{g}{C} V_R$$
+The integrating factor is $e^{\int \frac{g}{C}dt} = e^{\frac{g}{C}t}$. Solving it in the same way as before, we get the following general solution:
+$$ V(t) = \frac{g}{C}\frac{C}{g}e^{\frac{g}{C}t}e^{-\frac{g}{C}t}V_R + Ae^{-\frac{g}{C}t} = V_R + Ae^{-\frac{g}{C}t}$$
+where A is a constant of integration. So, if we began with the voltage potential of $V_0$ at time 0, we have $V_0 = V_R + A \Rightarrow A = V_0-V_R$. Thus, the complete solution is:
+\begin{equation}
+V(t) = V_R + (V_0-V_R)e^{-\frac{g}{C}t}
+\end{equation}
+This model predicts that if there is no applied current, then starting at a voltage $V_0$, the membrane potential will exponentially decay (or grow) to the channel resting (or reversal) potential.
+
+% As simple extension, you can solve for the voltage behavior if the applied current is a nonzero constant.
+
+
+
+\end{document}

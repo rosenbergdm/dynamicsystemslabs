@@ -1,0 +1,980 @@
+This is LuaTeX, Version beta-0.40.6-2009091210 (TeX Live 2009) (format=lualatex 2009.9.12)  20 OCT 2009 12:26
+ restricted \write18 enabled.
+**\documentclass{article}
+
+*\begin{document}
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (texput.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+
+*\tracingonline=1
+
+*\tracemacros=2
+! Undefined control sequence.
+<*> \tracemacros
+                =2
+? 
+
+*\tracingmacros=1
+
+*\begin{enumerate}
+
+\begin #1->\@ifundefined {#1}{\def \reserved@a {\@latex@error {Environment #1 u
+ndefined}\@eha }}{\def \reserved@a {\def \@currenvir {#1}\edef \@currenvline {\
+on@line }\csname #1\endcsname }}\@ignorefalse \begingroup \@endpefalse \reserve
+d@a 
+#1<-enumerate
+
+\@ifundefined #1->\expandafter \ifx \csname #1\endcsname \relax \expandafter \@
+firstoftwo \else \expandafter \@secondoftwo \fi 
+#1<-enumerate
+
+\@secondoftwo #1#2->#2
+#1<-\def \reserved@a {\@latex@error {Environment enumerate undefined}\@eha }
+#2<-\def \reserved@a {\def \@currenvir {enumerate}\edef \@currenvline {\on@line
+ }\csname enumerate\endcsname }
+
+\@ignorefalse ->\global \let \if@ignore \iffalse 
+
+\@endpefalse ->\let \if@endpe \iffalse 
+
+\reserved@a ->\def \@currenvir {enumerate}\edef \@currenvline {\on@line }\csnam
+e enumerate\endcsname 
+
+\on@line -> on input line \the \inputlineno 
+
+\enumerate ->\ifnum \@enumdepth >\thr@@ \@toodeep \else \advance \@enumdepth \@
+ne \edef \@enumctr {enum\romannumeral \the \@enumdepth }\expandafter \list \csn
+ame label\@enumctr \endcsname {\usecounter \@enumctr \def \makelabel ##1{\hss \
+llap {##1}}}\fi 
+
+\@enumctr ->enumi
+
+\list #1#2->\ifnum \@listdepth >5\relax \@toodeep \else \global \advance \@list
+depth \@ne \fi \rightmargin \z@ \listparindent \z@ \itemindent \z@ \csname @lis
+t\romannumeral \the \@listdepth \endcsname \def \@itemlabel {#1}\let \makelabel
+ \@mklab \@nmbrlistfalse #2\relax \@trivlist \parskip \parsep \parindent \listp
+arindent \advance \linewidth -\rightmargin \advance \linewidth -\leftmargin \ad
+vance \@totalleftmargin \leftmargin \parshape \@ne \@totalleftmargin \linewidth
+ \ignorespaces 
+#1<-\labelenumi 
+#2<-\usecounter \@enumctr \def \makelabel ##1{\hss \llap {##1}}
+
+\@listi ->\leftmargin \leftmargini \parsep 4\p@ \@plus 2\p@ \@minus \p@ \topsep
+ 8\p@ \@plus 2\p@ \@minus 4\p@ \itemsep 4\p@ \@plus 2\p@ \@minus \p@ 
+
+\@plus ->plus
+
+\@minus ->minus
+
+\@plus ->plus
+
+\@minus ->minus
+
+\@plus ->plus
+
+\@minus ->minus
+
+\@nmbrlistfalse ->\let \if@nmbrlist \iffalse 
+
+\usecounter #1->\@nmbrlisttrue \def \@listctr {#1}\setcounter {#1}\z@ 
+#1<-\@enumctr 
+
+\@nmbrlisttrue ->\let \if@nmbrlist \iftrue 
+
+\setcounter #1#2->\@ifundefined {c@#1}{\@nocounterr {#1}}{\global \csname c@#1\
+endcsname #2\relax }
+#1<-\@enumctr 
+#2<-\z@ 
+
+\@ifundefined #1->\expandafter \ifx \csname #1\endcsname \relax \expandafter \@
+firstoftwo \else \expandafter \@secondoftwo \fi 
+#1<-c@\@enumctr 
+
+\@enumctr ->enumi
+
+\@secondoftwo #1#2->#2
+#1<-\@nocounterr {\@enumctr }
+#2<-\global \csname c@\@enumctr \endcsname \z@ \relax 
+
+\@enumctr ->enumi
+
+\@trivlist ->\if@noskipsec \leavevmode \fi \@topsepadd \topsep \ifvmode \advanc
+e \@topsepadd \partopsep \else \unskip \par \fi \if@inlabel \@noparitemtrue \@n
+oparlisttrue \else \if@newlist \@noitemerr \fi \@noparlistfalse \@topsep \@tops
+epadd \fi \advance \@topsep \parskip \leftskip \z@skip \rightskip \@rightskip \
+parfillskip \@flushglue \par@deathcycles \z@ \@setpar {\if@newlist \advance \pa
+r@deathcycles \@ne \ifnum \par@deathcycles >\@m \@noitemerr {\@@par }\fi \else 
+{\@@par }\fi }\global \@newlisttrue \@outerparskip \parskip 
+
+\@noparlistfalse ->\let \if@noparlist \iffalse 
+
+\@setpar #1->\def \par {#1}\def \@par {#1}
+#1<-\if@newlist \advance \par@deathcycles \@ne \ifnum \par@deathcycles >\@m \@n
+oitemerr {\@@par }\fi \else {\@@par }\fi 
+
+\@newlisttrue ->\let \if@newlist \iftrue 
+
+*\item
+
+\item ->\@inmatherr \item \@ifnextchar [\@item {\@noitemargtrue \@item [\@iteml
+abel ]}
+
+\@inmatherr #1->\relax \ifmmode \@latex@error {Command \protect #1 invalid in m
+ath mode}\@ehc \fi 
+#1<-\item 
+
+\@ifnextchar #1#2#3->\let \reserved@d =#1\def \reserved@a {#2}\def \reserved@b 
+{#3}\futurelet \@let@token \@ifnch 
+#1<-[
+#2<-\@item 
+#3<-\@noitemargtrue \@item [\@itemlabel ]
+
+*This is my item
+
+\@ifnch ->\ifx \@let@token \@sptoken \let \reserved@c \@xifnch \else \ifx \@let
+@token \reserved@d \let \reserved@c \reserved@a \else \let \reserved@c \reserve
+d@b \fi \fi \reserved@c 
+
+\reserved@c ->\@noitemargtrue \@item [\@itemlabel ]
+
+\@noitemargtrue ->\let \if@noitemarg \iftrue 
+
+\@item [#1]->\if@noparitem \@donoparitem \else \if@inlabel \indent \par \fi \if
+hmode \unskip \unskip \par \fi \if@newlist \if@nobreak \@nbitem \else \addpenal
+ty \@beginparpenalty \addvspace \@topsep \addvspace {-\parskip }\fi \else \addp
+enalty \@itempenalty \addvspace \itemsep \fi \global \@inlabeltrue \fi \everypa
+r {\@minipagefalse \global \@newlistfalse \if@inlabel \global \@inlabelfalse {\
+setbox \z@ \lastbox \ifvoid \z@ \kern -\itemindent \fi }\box \@labels \penalty 
+\z@ \fi \if@nobreak \@nobreakfalse \clubpenalty \@M \else \clubpenalty \@clubpe
+nalty \everypar {}\fi }\if@noitemarg \@noitemargfalse \if@nmbrlist \refstepcoun
+ter \@listctr \fi \fi \sbox \@tempboxa {\makelabel {#1}}\global \setbox \@label
+s \hbox {\unhbox \@labels \hskip \itemindent \hskip -\labelwidth \hskip -\label
+sep \ifdim \wd \@tempboxa >\labelwidth \box \@tempboxa \else \hbox to\labelwidt
+h {\unhbox \@tempboxa }\fi \hskip \labelsep }\ignorespaces 
+#1<-\@itemlabel 
+
+\addpenalty #1->\ifvmode \if@minipage \else \if@nobreak \else \ifdim \lastskip 
+=\z@ \penalty #1\relax \else \@tempskipb \lastskip \vskip -\lastskip \penalty #
+1\vskip \@tempskipb \fi \fi \fi \else \@noitemerr \fi 
+#1<-\@beginparpenalty 
+
+\addvspace #1->\ifvmode \if@minipage \else \ifdim \lastskip =\z@ \vskip #1\rela
+x \else \@tempskipb #1\relax \@xaddvskip \fi \fi \else \@noitemerr \fi 
+#1<-\@topsep 
+
+\addvspace #1->\ifvmode \if@minipage \else \ifdim \lastskip =\z@ \vskip #1\rela
+x \else \@tempskipb #1\relax \@xaddvskip \fi \fi \else \@noitemerr \fi 
+#1<--\parskip 
+
+\@xaddvskip ->\ifdim \lastskip <\@tempskipb \vskip -\lastskip \vskip \@tempskip
+b \else \ifdim \@tempskipb <\z@ \ifdim \lastskip <\z@ \else \advance \@tempskip
+b \lastskip \vskip -\lastskip \vskip \@tempskipb \fi \fi \fi 
+
+\@inlabeltrue ->\let \if@inlabel \iftrue 
+
+\@noitemargfalse ->\let \if@noitemarg \iffalse 
+
+\refstepcounter #1->\stepcounter {#1}\protected@edef \@currentlabel {\csname p@
+#1\endcsname \csname the#1\endcsname }
+#1<-\@listctr 
+
+\stepcounter #1->\addtocounter {#1}\@ne \begingroup \let \@elt \@stpelt \csname
+ cl@#1\endcsname \endgroup 
+#1<-\@listctr 
+
+\addtocounter #1#2->\@ifundefined {c@#1}{\@nocounterr {#1}}{\global \advance \c
+sname c@#1\endcsname #2\relax }
+#1<-\@listctr 
+#2<-\@ne 
+
+\@ifundefined #1->\expandafter \ifx \csname #1\endcsname \relax \expandafter \@
+firstoftwo \else \expandafter \@secondoftwo \fi 
+#1<-c@\@listctr 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\@secondoftwo #1#2->#2
+#1<-\@nocounterr {\@listctr }
+#2<-\global \advance \csname c@\@listctr \endcsname \@ne \relax 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\cl@enumi ->
+
+\protected@edef ->\let \@@protect \protect \let \protect \@unexpandable@protect
+ \afterassignment \restore@protect \edef 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\p@enumi ->
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\theenumi ->\@arabic \c@enumi 
+
+\@arabic #1->\number #1
+#1<-\c@enumi 
+
+\restore@protect ->\let \protect \@@protect 
+
+\sbox #1#2->\setbox #1\hbox {\color@setgroup #2\color@endgroup }
+#1<-\@tempboxa 
+#2<-\makelabel {\@itemlabel }
+
+\makelabel #1->\hss \llap {#1}
+#1<-\@itemlabel 
+
+\llap #1->\hb@xt@ \z@ {\hss #1}
+#1<-\@itemlabel 
+
+\hb@xt@ ->\hbox to
+
+\@itemlabel ->\labelenumi 
+
+\labelenumi ->\theenumi .
+
+\theenumi ->\@arabic \c@enumi 
+
+\@arabic #1->\number #1
+#1<-\c@enumi 
+
+\@minipagefalse ->\global \let \if@minipage \iffalse 
+
+\@newlistfalse ->\let \if@newlist \iffalse 
+
+\@inlabelfalse ->\let \if@inlabel \iffalse 
+
+*\item
+
+\item ->\@inmatherr \item \@ifnextchar [\@item {\@noitemargtrue \@item [\@iteml
+abel ]}
+
+\@inmatherr #1->\relax \ifmmode \@latex@error {Command \protect #1 invalid in m
+ath mode}\@ehc \fi 
+#1<-\item 
+
+\@ifnextchar #1#2#3->\let \reserved@d =#1\def \reserved@a {#2}\def \reserved@b 
+{#3}\futurelet \@let@token \@ifnch 
+#1<-[
+#2<-\@item 
+#3<-\@noitemargtrue \@item [\@itemlabel ]
+
+*Another item
+
+\@ifnch ->\ifx \@let@token \@sptoken \let \reserved@c \@xifnch \else \ifx \@let
+@token \reserved@d \let \reserved@c \reserved@a \else \let \reserved@c \reserve
+d@b \fi \fi \reserved@c 
+
+\reserved@c ->\@noitemargtrue \@item [\@itemlabel ]
+
+\@noitemargtrue ->\let \if@noitemarg \iftrue 
+
+\@item [#1]->\if@noparitem \@donoparitem \else \if@inlabel \indent \par \fi \if
+hmode \unskip \unskip \par \fi \if@newlist \if@nobreak \@nbitem \else \addpenal
+ty \@beginparpenalty \addvspace \@topsep \addvspace {-\parskip }\fi \else \addp
+enalty \@itempenalty \addvspace \itemsep \fi \global \@inlabeltrue \fi \everypa
+r {\@minipagefalse \global \@newlistfalse \if@inlabel \global \@inlabelfalse {\
+setbox \z@ \lastbox \ifvoid \z@ \kern -\itemindent \fi }\box \@labels \penalty 
+\z@ \fi \if@nobreak \@nobreakfalse \clubpenalty \@M \else \clubpenalty \@clubpe
+nalty \everypar {}\fi }\if@noitemarg \@noitemargfalse \if@nmbrlist \refstepcoun
+ter \@listctr \fi \fi \sbox \@tempboxa {\makelabel {#1}}\global \setbox \@label
+s \hbox {\unhbox \@labels \hskip \itemindent \hskip -\labelwidth \hskip -\label
+sep \ifdim \wd \@tempboxa >\labelwidth \box \@tempboxa \else \hbox to\labelwidt
+h {\unhbox \@tempboxa }\fi \hskip \labelsep }\ignorespaces 
+#1<-\@itemlabel 
+
+\par ->\if@newlist \advance \par@deathcycles \@ne \ifnum \par@deathcycles >\@m 
+\@noitemerr {\@@par }\fi \else {\@@par }\fi 
+
+\addpenalty #1->\ifvmode \if@minipage \else \if@nobreak \else \ifdim \lastskip 
+=\z@ \penalty #1\relax \else \@tempskipb \lastskip \vskip -\lastskip \penalty #
+1\vskip \@tempskipb \fi \fi \fi \else \@noitemerr \fi 
+#1<-\@itempenalty 
+
+\addvspace #1->\ifvmode \if@minipage \else \ifdim \lastskip =\z@ \vskip #1\rela
+x \else \@tempskipb #1\relax \@xaddvskip \fi \fi \else \@noitemerr \fi 
+#1<-\itemsep 
+
+\@inlabeltrue ->\let \if@inlabel \iftrue 
+
+\@noitemargfalse ->\let \if@noitemarg \iffalse 
+
+\refstepcounter #1->\stepcounter {#1}\protected@edef \@currentlabel {\csname p@
+#1\endcsname \csname the#1\endcsname }
+#1<-\@listctr 
+
+\stepcounter #1->\addtocounter {#1}\@ne \begingroup \let \@elt \@stpelt \csname
+ cl@#1\endcsname \endgroup 
+#1<-\@listctr 
+
+\addtocounter #1#2->\@ifundefined {c@#1}{\@nocounterr {#1}}{\global \advance \c
+sname c@#1\endcsname #2\relax }
+#1<-\@listctr 
+#2<-\@ne 
+
+\@ifundefined #1->\expandafter \ifx \csname #1\endcsname \relax \expandafter \@
+firstoftwo \else \expandafter \@secondoftwo \fi 
+#1<-c@\@listctr 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\@secondoftwo #1#2->#2
+#1<-\@nocounterr {\@listctr }
+#2<-\global \advance \csname c@\@listctr \endcsname \@ne \relax 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\cl@enumi ->
+
+\protected@edef ->\let \@@protect \protect \let \protect \@unexpandable@protect
+ \afterassignment \restore@protect \edef 
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\p@enumi ->
+
+\@listctr ->\@enumctr 
+
+\@enumctr ->enumi
+
+\theenumi ->\@arabic \c@enumi 
+
+\@arabic #1->\number #1
+#1<-\c@enumi 
+
+\restore@protect ->\let \protect \@@protect 
+
+\sbox #1#2->\setbox #1\hbox {\color@setgroup #2\color@endgroup }
+#1<-\@tempboxa 
+#2<-\makelabel {\@itemlabel }
+
+\makelabel #1->\hss \llap {#1}
+#1<-\@itemlabel 
+
+\llap #1->\hb@xt@ \z@ {\hss #1}
+#1<-\@itemlabel 
+
+\hb@xt@ ->\hbox to
+
+\@itemlabel ->\labelenumi 
+
+\labelenumi ->\theenumi .
+
+\theenumi ->\@arabic \c@enumi 
+
+\@arabic #1->\number #1
+#1<-\c@enumi 
+
+\@minipagefalse ->\global \let \if@minipage \iffalse 
+
+\@newlistfalse ->\let \if@newlist \iffalse 
+
+\@inlabelfalse ->\let \if@inlabel \iffalse 
+
+*\end{enumerate}
+
+\end #1->\csname end#1\endcsname \@checkend {#1}\expandafter \endgroup \if@endp
+e \@doendpe \fi \if@ignore \@ignorefalse \ignorespaces \fi 
+#1<-enumerate
+
+\endenumerate ->\global \advance \@listdepth \m@ne \endtrivlist 
+
+\endtrivlist ->\if@inlabel \leavevmode \global \@inlabelfalse \fi \if@newlist \
+@noitemerr \global \@newlistfalse \fi \ifhmode \unskip \par \else \@inmatherr {
+\end {\@currenvir }}\fi \if@noparlist \else \ifdim \lastskip >\z@ \@tempskipa \
+lastskip \vskip -\lastskip \advance \@tempskipa \parskip \advance \@tempskipa -
+\@outerparskip \vskip \@tempskipa \fi \@endparenv \fi 
+
+\par ->\if@newlist \advance \par@deathcycles \@ne \ifnum \par@deathcycles >\@m 
+\@noitemerr {\@@par }\fi \else {\@@par }\fi 
+
+\@endparenv ->\addpenalty \@endparpenalty \addvspace \@topsepadd \@endpetrue 
+
+\addpenalty #1->\ifvmode \if@minipage \else \if@nobreak \else \ifdim \lastskip 
+=\z@ \penalty #1\relax \else \@tempskipb \lastskip \vskip -\lastskip \penalty #
+1\vskip \@tempskipb \fi \fi \fi \else \@noitemerr \fi 
+#1<-\@endparpenalty 
+
+\addvspace #1->\ifvmode \if@minipage \else \ifdim \lastskip =\z@ \vskip #1\rela
+x \else \@tempskipb #1\relax \@xaddvskip \fi \fi \else \@noitemerr \fi 
+#1<-\@topsepadd 
+
+\@endpetrue ->\let \if@endpe \iftrue 
+
+\@checkend #1->\def \reserved@a {#1}\ifx \reserved@a \@currenvir \else \@badend
+ {#1}\fi 
+#1<-enumerate
+
+\@doendpe ->\@endpetrue \def \par {\@restorepar \everypar {}\par \@endpefalse }
+\everypar {{\setbox \z@ \lastbox }\everypar {}\@endpefalse }
+
+\@endpetrue ->\let \if@endpe \iftrue 
+
+*\end{document}
+
+\end #1->\csname end#1\endcsname \@checkend {#1}\expandafter \endgroup \if@endp
+e \@doendpe \fi \if@ignore \@ignorefalse \ignorespaces \fi 
+#1<-document
+
+\enddocument ->\let \AtEndDocument \@firstofone \@enddocumenthook \@checkend {d
+ocument}\clearpage \begingroup \if@filesw \immediate \closeout \@mainaux \let \
+@setckpt \@gobbletwo \let \@newl@bel \@testdef \@tempswafalse \makeatletter \in
+put \jobname .aux \fi \@dofilelist \ifdim \font@submax >\fontsubfuzz \relax \@f
+ont@warning {Size substitutions with differences\MessageBreak up to \font@subma
+x \space have occurred.\@gobbletwo }\fi \@defaultsubs \@refundefined \if@filesw
+ \ifx \@multiplelabels \relax \if@tempswa \@latex@warning@no@line {Label(s) may
+ have changed. Rerun to get cross-references right}\fi \else \@multiplelabels \
+fi \fi \endgroup \deadcycles \z@ \@@end 
+
+\@enddocumenthook ->
+
+\@checkend #1->\def \reserved@a {#1}\ifx \reserved@a \@currenvir \else \@badend
+ {#1}\fi 
+#1<-document
+
+\clearpage ->\ifvmode \ifnum \@dbltopnum =\m@ne \ifdim \pagetotal <\topskip \hb
+ox {}\fi \fi \fi \newpage \write \m@ne {}\vbox {}\penalty -\@Mi 
+
+\newpage ->\if@noskipsec \ifx \@nodocument \relax \leavevmode \global \@noskips
+ecfalse \fi \fi \if@inlabel \leavevmode \global \@inlabelfalse \fi \if@nobreak 
+\@nobreakfalse \everypar {}\fi \par \vfil \penalty -\@M 
+
+\par ->\@restorepar \everypar {}\par \@endpefalse 
+
+\@restorepar ->\def \par {\@par }
+
+\par ->\@par 
+
+\@par ->\let \par \@@par \par 
+
+\@endpefalse ->\let \if@endpe \iffalse 
+
+\@makecol ->\ifvoid \footins \setbox \@outputbox \box \@cclv \else \setbox \@ou
+tputbox \vbox {\boxmaxdepth \@maxdepth \unvbox \@cclv \vskip \skip \footins \co
+lor@begingroup \normalcolor \footnoterule \unvbox \footins \color@endgroup }\fi
+ \let \@elt \relax \xdef \@freelist {\@freelist \@midlist }\global \let \@midli
+st \@empty \@combinefloats \ifvbox \@kludgeins \@makespecialcolbox \else \setbo
+x \@outputbox \vbox to\@colht {\@texttop \dimen@ \dp \@outputbox \unvbox \@outp
+utbox \vskip -\dimen@ \@textbottom }\fi \global \maxdepth \@maxdepth 
+
+\@freelist ->\@elt \bx@A \@elt \bx@B \@elt \bx@C \@elt \bx@D \@elt \bx@E \@elt 
+\bx@F \@elt \bx@G \@elt \bx@H \@elt \bx@I \@elt \bx@J \@elt \bx@K \@elt \bx@L \
+@elt \bx@M \@elt \bx@N \@elt \bx@O \@elt \bx@P \@elt \bx@Q \@elt \bx@R 
+
+\@midlist ->
+
+\@combinefloats ->\ifx \@toplist \@empty \else \@cflt \fi \ifx \@botlist \@empt
+y \else \@cflb \fi 
+
+\@textbottom ->\vskip \z@ \@plus .0001fil
+
+\@plus ->plus
+
+\@opcol ->\if@twocolumn \@outputdblcol \else \@outputpage \fi \global \@mparbot
+tom \z@ \global \@textfloatsheight \z@ \@floatplacement 
+
+\@outputpage ->\begingroup \let \protect \noexpand \@resetactivechars \global \
+let \@@if@newlist \if@newlist \global \@newlistfalse \@parboxrestore \shipout \
+vbox {\set@typeset@protect \aftergroup \endgroup \aftergroup \set@typeset@prote
+ct \if@specialpage \global \@specialpagefalse \@nameuse {ps@\@specialstyle }\fi
+ \if@twoside \ifodd \count \z@ \let \@thehead \@oddhead \let \@thefoot \@oddfoo
+t \let \@themargin \oddsidemargin \else \let \@thehead \@evenhead \let \@thefoo
+t \@evenfoot \let \@themargin \evensidemargin \fi \fi \reset@font \normalsize \
+normalsfcodes \let \label \@gobble \let \index \@gobble \let \glossary \@gobble
+ \baselineskip \z@skip \lineskip \z@skip \lineskiplimit \z@ \@begindvi \vskip \
+topmargin \moveright \@themargin \vbox {\setbox \@tempboxa \vbox to\headheight 
+{\vfil \color@hbox \normalcolor \hb@xt@ \textwidth {\@thehead }\color@endbox }\
+dp \@tempboxa \z@ \box \@tempboxa \vskip \headsep \box \@outputbox \baselineski
+p \footskip \color@hbox \normalcolor \hb@xt@ \textwidth {\@thefoot }\color@endb
+ox }}\global \let \if@newlist \@@if@newlist \global \@colht \textheight \stepco
+unter {page}\let \firstmark \botmark 
+
+\@resetactivechars ->\def {\@activechar@info {EOL}\space }\def  {\@activechar@
+info {space}\space }\let '\active@math@prime 
+
+\@newlistfalse ->\let \if@newlist \iffalse 
+
+\@parboxrestore ->\@arrayparboxrestore \let \\\@normalcr 
+
+\@arrayparboxrestore ->\let \if@nobreak \iffalse \let \if@noskipsec \iffalse \l
+et \par \@@par \let \-\@dischyph \let \'\@acci \let \`\@accii \let \=\@acciii \
+parindent \z@ \parskip \z@skip \everypar {}\linewidth \hsize \@totalleftmargin 
+\z@ \leftskip \z@skip \rightskip \z@skip \@rightskip \z@skip \parfillskip \@flu
+shglue \lineskip \normallineskip \baselineskip \normalbaselineskip \sloppy 
+
+\sloppy ->\tolerance 9999\emergencystretch 3em\hfuzz .5\p@ \vfuzz \hfuzz 
+
+\set@typeset@protect ->\let \protect \@typeset@protect 
+
+\reset@font ->\protect \normalfont  
+
+\normalfont  ->\usefont \encodingdefault \familydefault \seriesdefault \shapede
+fault \relax 
+
+\usefont #1#2#3#4->\fontencoding {#1}\fontfamily {#2}\fontseries {#3}\fontshape
+ {#4}\selectfont \ignorespaces 
+#1<-\encodingdefault 
+#2<-\familydefault 
+#3<-\seriesdefault 
+#4<-\shapedefault 
+
+\fontencoding ->\protect \fontencoding  
+
+\fontencoding  #1->\expandafter \ifx \csname T@#1\endcsname \relax \@latex@erro
+r {Encoding scheme `#1' unknown}\@eha \else \edef \f@encoding {#1}\ifx \cf@enco
+ding \f@encoding \let \enc@update \relax \else \let \enc@update \@@enc@update \
+fi \fi 
+#1<-\encodingdefault 
+
+\encodingdefault ->OT1
+
+\encodingdefault ->OT1
+
+\fontfamily ->\protect \fontfamily  
+
+\fontfamily  #1->\edef \f@family {#1}
+#1<-\familydefault 
+
+\familydefault ->\rmdefault 
+
+\rmdefault ->cmr
+
+\fontseries ->\protect \fontseries  
+
+\fontseries  #1->\edef \f@series {#1}
+#1<-\seriesdefault 
+
+\seriesdefault ->\mddefault 
+
+\mddefault ->m
+
+\fontshape ->\protect \fontshape  
+
+\fontshape  #1->\edef \f@shape {#1}
+#1<-\shapedefault 
+
+\shapedefault ->\updefault 
+
+\updefault ->n
+
+\selectfont ->\protect \selectfont  
+
+\selectfont  ->\ifx \f@linespread \baselinestretch \else \set@fontsize \baselin
+estretch \f@size \f@baselineskip \fi \xdef \font@name {\csname \curr@fontshape 
+/\f@size \endcsname }\pickup@font \font@name \size@update \enc@update 
+
+\curr@fontshape ->\f@encoding /\f@family /\f@series /\f@shape 
+
+\f@encoding ->OT1
+
+\f@family ->cmr
+
+\f@series ->m
+
+\f@shape ->n
+
+\f@size ->10
+
+\pickup@font ->\expandafter \ifx \font@name \relax \define@newfont \fi 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\normalsize ->\@setfontsize \normalsize \@xpt \@xiipt \abovedisplayskip 10\p@ \
+@plus 2\p@ \@minus 5\p@ \abovedisplayshortskip \z@ \@plus 3\p@ \belowdisplaysho
+rtskip 6\p@ \@plus 3\p@ \@minus 3\p@ \belowdisplayskip \abovedisplayskip \let \
+@listi \@listI 
+
+\@setfontsize #1#2#3->\@nomath #1\ifx \protect \@typeset@protect \let \@currsiz
+e #1\fi \fontsize {#2}{#3}\selectfont 
+#1<-\normalsize 
+#2<-\@xpt 
+#3<-\@xiipt 
+
+\@nomath #1->\relax \ifmmode \@font@warning {Command \noexpand #1invalid in mat
+h mode}\fi 
+#1<-\normalsize 
+
+\fontsize ->\protect \fontsize  
+
+\fontsize  #1#2->\set@fontsize \baselinestretch {#1}{#2}
+#1<-\@xpt 
+#2<-\@xiipt 
+
+\set@fontsize #1#2#3->\@defaultunits \@tempdimb #2pt\relax \@nnil \edef \f@size
+ {\strip@pt \@tempdimb }\@defaultunits \@tempskipa #3pt\relax \@nnil \edef \f@b
+aselineskip {\the \@tempskipa }\edef \f@linespread {#1}\let \baselinestretch \f
+@linespread \def \size@update {\baselineskip \f@baselineskip \relax \baselinesk
+ip \f@linespread \baselineskip \normalbaselineskip \baselineskip \setbox \strut
+box \hbox {\vrule \@height .7\baselineskip \@depth .3\baselineskip \@width \z@ 
+}\let \size@update \relax }
+#1<-\baselinestretch 
+#2<-\@xpt 
+#3<-\@xiipt 
+
+\@defaultunits ->\afterassignment \remove@to@nnil 
+
+\@xpt ->10
+
+\remove@to@nnil #1\@nnil ->
+#1<-\relax 
+
+\strip@pt ->\expandafter \rem@pt \the 
+
+\rem@pt #1.#2pt->#1\ifnum #2>\z@ .#2\fi 
+#1<-10
+#2<-0
+
+\@defaultunits ->\afterassignment \remove@to@nnil 
+
+\@xiipt ->12
+
+\remove@to@nnil #1\@nnil ->
+#1<-\relax 
+
+\baselinestretch ->
+
+\selectfont ->\protect \selectfont  
+
+\selectfont  ->\ifx \f@linespread \baselinestretch \else \set@fontsize \baselin
+estretch \f@size \f@baselineskip \fi \xdef \font@name {\csname \curr@fontshape 
+/\f@size \endcsname }\pickup@font \font@name \size@update \enc@update 
+
+\curr@fontshape ->\f@encoding /\f@family /\f@series /\f@shape 
+
+\f@encoding ->OT1
+
+\f@family ->cmr
+
+\f@series ->m
+
+\f@shape ->n
+
+\f@size ->10
+
+\pickup@font ->\expandafter \ifx \font@name \relax \define@newfont \fi 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\size@update ->\baselineskip \f@baselineskip \relax \baselineskip \f@linespread
+ \baselineskip \normalbaselineskip \baselineskip \setbox \strutbox \hbox {\vrul
+e \@height .7\baselineskip \@depth .3\baselineskip \@width \z@ }\let \size@upda
+te \relax 
+
+\f@baselineskip ->12.0pt
+
+\f@linespread ->
+
+\@height ->height
+
+\@depth ->depth
+
+\@width ->width
+
+\@plus ->plus
+
+\@minus ->minus
+
+\@plus ->plus
+
+\@plus ->plus
+
+\@minus ->minus
+
+\normalsfcodes ->\sfcode `\.3000\sfcode `\?3000\sfcode `\!3000\sfcode `\:2000\s
+fcode `\;1500\sfcode `\,1250 
+
+\@begindvi ->\unvbox \@begindvibox \global \let \@begindvi \@empty 
+
+\hb@xt@ ->\hbox to
+
+\@thehead ->\@oddhead 
+
+\@oddhead ->
+
+\hb@xt@ ->\hbox to
+
+\@thefoot ->\@oddfoot 
+
+\@oddfoot ->\reset@font \hfil \thepage \hfil 
+
+\reset@font ->\protect \normalfont  
+
+\normalfont  ->\usefont \encodingdefault \familydefault \seriesdefault \shapede
+fault \relax 
+
+\usefont #1#2#3#4->\fontencoding {#1}\fontfamily {#2}\fontseries {#3}\fontshape
+ {#4}\selectfont \ignorespaces 
+#1<-\encodingdefault 
+#2<-\familydefault 
+#3<-\seriesdefault 
+#4<-\shapedefault 
+
+\fontencoding ->\protect \fontencoding  
+
+\fontencoding  #1->\expandafter \ifx \csname T@#1\endcsname \relax \@latex@erro
+r {Encoding scheme `#1' unknown}\@eha \else \edef \f@encoding {#1}\ifx \cf@enco
+ding \f@encoding \let \enc@update \relax \else \let \enc@update \@@enc@update \
+fi \fi 
+#1<-\encodingdefault 
+
+\encodingdefault ->OT1
+
+\encodingdefault ->OT1
+
+\fontfamily ->\protect \fontfamily  
+
+\fontfamily  #1->\edef \f@family {#1}
+#1<-\familydefault 
+
+\familydefault ->\rmdefault 
+
+\rmdefault ->cmr
+
+\fontseries ->\protect \fontseries  
+
+\fontseries  #1->\edef \f@series {#1}
+#1<-\seriesdefault 
+
+\seriesdefault ->\mddefault 
+
+\mddefault ->m
+
+\fontshape ->\protect \fontshape  
+
+\fontshape  #1->\edef \f@shape {#1}
+#1<-\shapedefault 
+
+\shapedefault ->\updefault 
+
+\updefault ->n
+
+\selectfont ->\protect \selectfont  
+
+\selectfont  ->\ifx \f@linespread \baselinestretch \else \set@fontsize \baselin
+estretch \f@size \f@baselineskip \fi \xdef \font@name {\csname \curr@fontshape 
+/\f@size \endcsname }\pickup@font \font@name \size@update \enc@update 
+
+\curr@fontshape ->\f@encoding /\f@family /\f@series /\f@shape 
+
+\f@encoding ->OT1
+
+\f@family ->cmr
+
+\f@series ->m
+
+\f@shape ->n
+
+\f@size ->10
+
+\pickup@font ->\expandafter \ifx \font@name \relax \define@newfont \fi 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\font@name ->\OT1/cmr/m/n/10 
+
+\thepage ->\csname @arabic\endcsname \c@page 
+
+\@arabic #1->\number #1
+#1<-\c@page 
+[1
+
+{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+\set@typeset@protect ->\let \protect \@typeset@protect 
+
+\stepcounter #1->\addtocounter {#1}\@ne \begingroup \let \@elt \@stpelt \csname
+ cl@#1\endcsname \endgroup 
+#1<-page
+
+\addtocounter #1#2->\@ifundefined {c@#1}{\@nocounterr {#1}}{\global \advance \c
+sname c@#1\endcsname #2\relax }
+#1<-page
+#2<-\@ne 
+
+\@ifundefined #1->\expandafter \ifx \csname #1\endcsname \relax \expandafter \@
+firstoftwo \else \expandafter \@secondoftwo \fi 
+#1<-c@page
+
+\@secondoftwo #1#2->#2
+#1<-\@nocounterr {page}
+#2<-\global \advance \csname c@page\endcsname \@ne \relax 
+
+\cl@page ->
+
+\@floatplacement ->\global \@topnum \c@topnumber \global \@toproom \topfraction
+ \@colht \global \@botnum \c@bottomnumber \global \@botroom \bottomfraction \@c
+olht \global \@colnum \c@totalnumber \@fpmin \floatpagefraction \@colht 
+
+\topfraction ->.7
+
+\bottomfraction ->.3
+
+\floatpagefraction ->.5
+
+\@startcolumn ->\global \@colroom \@colht \@tryfcolumn \@deferlist \if@fcolmade
+ \else \begingroup \let \reserved@b \@deferlist \global \let \@deferlist \@empt
+y \let \@elt \@scolelt \reserved@b \endgroup \fi 
+
+\@tryfcolumn #1->\global \@fcolmadefalse \ifx #1\@empty \else \xdef \@trylist {
+#1}\global \let \@failedlist \@empty \begingroup \let \@elt \@xtryfc \@trylist 
+\endgroup \if@fcolmade \@vtryfc #1\fi \fi 
+#1<-\@deferlist 
+
+\@fcolmadefalse ->\let \if@fcolmade \iffalse 
+
+\reserved@b ->
+
+\@whilesw #1\fi #2->#1#2\@iwhilesw {#1#2}\fi \fi 
+#1<-\if@fcolmade 
+#2<-\@opcol \@startcolumn 
+
+\@specialoutput ->\ifnum \outputpenalty >-\@Mii \@doclearpage \else \ifnum \out
+putpenalty <-\@Miii \ifnum \outputpenalty <-\@MM \deadcycles \z@ \fi \global \s
+etbox \@holdpg \vbox {\unvbox \@cclv }\else \global \setbox \@holdpg \vbox {\un
+vbox \@holdpg \unvbox \@cclv \setbox \@tempboxa \lastbox \unskip }\@pagedp \dp 
+\@holdpg \@pageht \ht \@holdpg \unvbox \@holdpg \@next \@currbox \@currlist {\i
+fnum \count \@currbox >\z@ \advance \@pageht \@pagedp \ifvoid \footins \else \a
+dvance \@pageht \ht \footins \advance \@pageht \skip \footins \advance \@pageht
+ \dp \footins \fi \ifvbox \@kludgeins \ifdim \wd \@kludgeins =\z@ \advance \@pa
+geht \ht \@kludgeins \fi \fi \@reinserts \@addtocurcol \else \@reinserts \@addm
+arginpar \fi }\@latexbug \ifnum \outputpenalty <\z@ \if@nobreak \nobreak \else 
+\addpenalty \interlinepenalty \fi \fi \fi \fi 
+
+\@doclearpage ->\ifvoid \footins \ifvbox \@kludgeins {\setbox \@tempboxa \box \
+@kludgeins }\fi \setbox \@tempboxa \vsplit \@cclv to\z@ \unvbox \@tempboxa \set
+box \@tempboxa \box \@cclv \xdef \@deferlist {\@toplist \@botlist \@deferlist }
+\global \let \@toplist \@empty \global \let \@botlist \@empty \global \@colroom
+ \@colht \ifx \@currlist \@empty \else \@latexerr {Float(s) lost}\@ehb \global 
+\let \@currlist \@empty \fi \@makefcolumn \@deferlist \@whilesw \if@fcolmade \f
+i {\@opcol \@makefcolumn \@deferlist }\if@twocolumn \if@firstcolumn \xdef \@dbl
+deferlist {\@dbltoplist \@dbldeferlist }\global \let \@dbltoplist \@empty \glob
+al \@colht \textheight \begingroup \@dblfloatplacement \@makefcolumn \@dbldefer
+list \@whilesw \if@fcolmade \fi {\@outputpage \@makefcolumn \@dbldeferlist }\en
+dgroup \else \vbox {}\clearpage \fi \fi \else \setbox \@cclv \vbox {\box \@cclv
+ \vfil }\@makecol \@opcol \clearpage \fi 
+
+\@toplist ->
+
+\@botlist ->
+
+\@deferlist ->
+
+\@makefcolumn #1->\begingroup \@fpmin \z@ \let \@testfp \@gobble \@tryfcolumn #
+1\endgroup 
+#1<-\@deferlist 
+
+\@tryfcolumn #1->\global \@fcolmadefalse \ifx #1\@empty \else \xdef \@trylist {
+#1}\global \let \@failedlist \@empty \begingroup \let \@elt \@xtryfc \@trylist 
+\endgroup \if@fcolmade \@vtryfc #1\fi \fi 
+#1<-\@deferlist 
+
+\@fcolmadefalse ->\let \if@fcolmade \iffalse 
+
+\@whilesw #1\fi #2->#1#2\@iwhilesw {#1#2}\fi \fi 
+#1<-\if@fcolmade 
+#2<-\@opcol \@makefcolumn \@deferlist 
+
+\@tempswafalse ->\let \if@tempswa \iffalse 
+
+\makeatletter ->\catcode `\@11\relax 
+
+\input ->\@ifnextchar \bgroup \@iinput \@@input 
+
+\@ifnextchar #1#2#3->\let \reserved@d =#1\def \reserved@a {#2}\def \reserved@b 
+{#3}\futurelet \@let@token \@ifnch 
+#1<-\bgroup 
+#2<-\@iinput 
+#3<-\@@input 
+
+\@ifnch ->\ifx \@let@token \@sptoken \let \reserved@c \@xifnch \else \ifx \@let
+@token \reserved@d \let \reserved@c \reserved@a \else \let \reserved@c \reserve
+d@b \fi \fi \reserved@c 
+
+\reserved@c ->\@@input 
+(texput.aux)
+\font@submax ->0pt
+
+\fontsubfuzz ->.4pt
+
+\@specialoutput ->\ifnum \outputpenalty >-\@Mii \@doclearpage \else \ifnum \out
+putpenalty <-\@Miii \ifnum \outputpenalty <-\@MM \deadcycles \z@ \fi \global \s
+etbox \@holdpg \vbox {\unvbox \@cclv }\else \global \setbox \@holdpg \vbox {\un
+vbox \@holdpg \unvbox \@cclv \setbox \@tempboxa \lastbox \unskip }\@pagedp \dp 
+\@holdpg \@pageht \ht \@holdpg \unvbox \@holdpg \@next \@currbox \@currlist {\i
+fnum \count \@currbox >\z@ \advance \@pageht \@pagedp \ifvoid \footins \else \a
+dvance \@pageht \ht \footins \advance \@pageht \skip \footins \advance \@pageht
+ \dp \footins \fi \ifvbox \@kludgeins \ifdim \wd \@kludgeins =\z@ \advance \@pa
+geht \ht \@kludgeins \fi \fi \@reinserts \@addtocurcol \else \@reinserts \@addm
+arginpar \fi }\@latexbug \ifnum \outputpenalty <\z@ \if@nobreak \nobreak \else 
+\addpenalty \interlinepenalty \fi \fi \fi \fi 
+ 
+Here is how much of TeX's memory you used:
+ 228 strings out of 255430
+ 2359 string characters out of 3141302
+ 100000,552014 words of node,token memory allocated
+node memory in use: 273 words out of 100000
+rapidly available: 2:13, 3:9, 4:68, 5:31, 6:8, 7:1, 9:14, 10:1 nodes
+current usage: 2 hlist, 1 vlist, 1 rule, 2 glue, 40 glue_spec, 1 write, 2 dir n
+odes
+ 3835 multiletter control sequences out of 65536+200000
+ 15 fonts using 224383 bytes
+ 22i,4n,17p,127b,122s stack positions out of 5000i,500n,6000p,200000b,50000s
+</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on texput.pdf (1 page, 13668 bytes).
+PDF statistics:
+ 10 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

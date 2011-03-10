@@ -1,0 +1,90 @@
+chunk: aa_SweaveListingsPreparations
+chunkprefix: solution-aa_SweaveListingsPreparations
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: noprompt
+chunkprefix: solution-noprompt
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: functor_def
+chunkprefix: solution-functor_def
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: functor_def2
+chunkprefix: solution-functor_def2
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: functor_def3
+chunkprefix: solution-functor_def3
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: functor_def3
+chunkprefix: solution-functor_def3
+fig:
+cacheDB:
+time: 2009-11-05 06:11:30
+
+chunk: functor_def11
+chunkprefix: solution-functor_def11
+fig: solution-functor_def11.pgf
+cacheDB: cache2/functor_def11_280f6a7b01a9714d895be87337d16e22
+time: 2009-11-05 06:11:30
+
+chunk: functor_def12
+chunkprefix: solution-functor_def12
+fig: solution-functor_def12.pgf
+cacheDB: cache2/functor_def12_d201c03fe9f9ac6f34459ecbd45b6e99
+time: 2009-11-05 06:11:33
+
+chunk: functor_def13
+chunkprefix: solution-functor_def13
+fig: solution-functor_def13.pgf
+cacheDB: cache2/functor_def13_8bfc4f82b37ecdec3564b7af541dba30
+time: 2009-11-05 06:11:37
+
+chunk: functor_def14
+chunkprefix: solution-functor_def14
+fig: solution-functor_def14.pgf
+cacheDB: cache2/functor_def14_19bd7b6a00e7f00e006bc6866033dad4
+time: 2009-11-05 06:11:40
+
+chunk: nonhomogenous_part2
+chunkprefix: solution-nonhomogenous_part2
+fig:
+cacheDB: cache2/nonhomogenous_part2_b9957108324632153b98595953142415
+time: 2009-11-05 06:11:43
+
+chunk: nonhomogenous_part3
+chunkprefix: solution-nonhomogenous_part3
+fig: solution-nonhomogenous_part3.pgf
+cacheDB: cache2/nonhomogenous_part3_9bf166e67442d38847fcb578ee4b5bfd
+time: 2009-11-05 06:11:43
+
+chunk: binsearch1
+chunkprefix: solution-binsearch1
+fig:
+cacheDB:
+time: 2009-11-05 06:11:45
+
+chunk: bsearch2
+chunkprefix: solution-bsearch2
+fig:
+cacheDB:
+time: 2009-11-05 06:11:45
+
+chunk: bsearch3
+chunkprefix: solution-bsearch3
+fig:
+cacheDB:
+time: 2009-11-05 06:11:45
+

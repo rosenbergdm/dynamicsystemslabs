@@ -1,0 +1,144 @@
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256008435.53955
+function(equ, var='x', ..., symbolic=FALSE) {
+  ##  sanity check
+  if ( (length(equ) > 1) | symbolic ) {
+    stop('Not yet implemented');
+  } else if (length(equ) < 1) {
+    stop('You must specify the equation(s) to solve.');
+  }
+  
+  ##  values to (eventually) substitute into the result.
+  var_values <- list(...);
+  
+  ##  prep command string
+  maxima_commands <- c( 
+                        'display2d:false;',
+                        'stardisp:true;',
+                         paste('print(solve(', equ, ', ', var, '));', sep='')
+                      );
+                      
+  shell_wrap_commands <- paste(   
+                                 "echo \"", 
+                                 paste(maxima_commands, collapse=' '),
+                                 '" | ',
+                                 maxima_binary,
+                                 sep=' '
+                              );
+  
+  ## Recall hidden persistent connection
+  con <- get('RServeConnection', envir=.RMaximaEnv);
+  server_id <- get('server_id', envir=.RMaximaEnv)
+  
+  RSassign(con, shell_wrap_commands, 'shell_wrap_commands');
+  raw_output <- RSeval( con, 
+                        quote(system(shell_wrap_commands, intern=TRUE) ) 
+                      );
+  
+  ## High-level deparse of maxima's  output
+  
+  output_no_message <- raw_output[1:length(raw_output) > 5];
+  
+  print_lines <- paste( 
+              output_no_message[
+            grep("^[(\\(%)|(rat)]", output_no_message,
+          invert=TRUE, perl=TRUE)],
+              collapse=' '
+                      );
+
+  deparsed_result <- strsplit(
+                            gsub('\\]', '', 
+                                gsub(var, '', 
+                                  gsub('[=|\\[]', '', print_lines
+                                      )
+                                    )
+                                ),', '
+                             )[[1]];
+  
+  solutions <- numeric(length=length(deparsed_result));
+  
+  ##
+  ## TODO: This is where there ... substitutions need to be made.
+  ##
+  
+  for (ii in seq(along=deparsed_result)) {
+    solutions[ii] <- eval( parse(text=deparsed_result[ii]),
+                           var_values );
+    
+  }
+  
+  return(solutions);
+}
+
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256008435.53955
+function(equ, var='x', ..., symbolic=FALSE) {
+  ##  sanity check
+  if ( (length(equ) > 1) | symbolic ) {
+    stop('Not yet implemented');
+  } else if (length(equ) < 1) {
+    stop('You must specify the equation(s) to solve.');
+  }
+  
+  ##  values to (eventually) substitute into the result.
+  var_values <- list(...);
+  
+  ##  prep command string
+  maxima_commands <- c( 
+                        'display2d:false;',
+                        'stardisp:true;',
+                         paste('print(solve(', equ, ', ', var, '));', sep='')
+                      );
+                      
+  shell_wrap_commands <- paste(   
+                                 "echo \"", 
+                                 paste(maxima_commands, collapse=' '),
+                                 '" | ',
+                                 maxima_binary,
+                                 sep=' '
+                              );
+  
+  ## Recall hidden persistent connection
+  con <- get('RServeConnection', envir=.RMaximaEnv);
+  # server_id <- get('server_id', envir=.RMaximaEnv)
+  
+  RSassign(con, shell_wrap_commands, 'shell_wrap_commands');
+  raw_output <- RSeval( con, 
+                        quote(system(shell_wrap_commands, intern=TRUE) ) 
+                      );
+  
+  ## High-level deparse of maxima's  output
+  
+  output_no_message <- raw_output[1:length(raw_output) > 5];
+  
+  print_lines <- paste( 
+              output_no_message[
+            grep("^[(\\(%)|(rat)]", output_no_message,
+          invert=TRUE, perl=TRUE)],
+              collapse=' '
+                      );
+
+  deparsed_result <- strsplit(
+                            gsub('\\]', '', 
+                                gsub(var, '', 
+                                  gsub('[=|\\[]', '', print_lines
+                                      )
+                                    )
+                                ),', '
+                             )[[1]];
+  
+  solutions <- numeric(length=length(deparsed_result));
+  
+  ##
+  ## TODO: This is where there ... substitutions need to be made.
+  ##
+  
+  for (ii in seq(along=deparsed_result)) {
+    solutions[ii] <- eval( parse(text=deparsed_result[ii]),
+                           var_values );
+    
+  }
+  
+  return(solutions);
+}
+

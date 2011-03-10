@@ -1,0 +1,122 @@
+
+
+\documentclass[9pt]{beamer}
+
+\usepackage[Rbeamer]{Rosenberg}
+
+%\usepackage{Sweave}
+
+
+
+\definecolor{ricolor}{rgb}{0.101, 0.043, 0.432}
+\newcommand{\ri}[1]{\textcolor{blue}{\tt\smaller #1}}
+
+
+\title{Common questions (and answers) about \R  }
+\author{David M. Rosenberg}
+\institute[University of Chicago] % (optional, but mostly needed)
+{
+  Committee on Neurobiology\\
+  University of Chicago
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{\today}
+
+\subject{Talks}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSection[]
+\newcommand{\makeOutline}{%
+  \begin{frame}<beamer>{Outline}
+    \begin{columns}[c]
+      \column{0.5\textwidth}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{columns}
+  \end{frame}
+}
+
+\AtBeginSection[]
+{
+  \show\section
+  \begin{frame}<beamer>{Outline}
+  \begin{columns}[c]
+  \column{0.5\textwidth}
+    \tableofcontents[currentsection,sections={<1-3>}]
+  \column{0.5\textwidth}
+    \tableofcontents[currentsection,sections={<4-5>}]
+  \end{columns}
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \begin{columns}[c]
+    \column{0.5\textwidth}
+      \tableofcontents
+    \end{columns}
+\end{frame}
+
+
+% Since this a solution template for a generic talk, very little can
+% be said about how it should be structured. However, the talk length
+% of between 15min and 45min and the theme suggest that you stick to
+% the following rules:  
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+\section{Admin issues}
+\subsection{Things to ask for}
+
+\begin{frame}{Admin issues}{Things to ask for}
+\begin{itemize}[<+->]
+  \item \textbf{Email addresses:}\\
+    If you use a non-University of Chicago email account, let me know either via an email from your {\tt uchicago.edu} email account or a written note.
+  \end{itemize}
+  \begin{onlyenv}<2->\begin{itemize}[<+->]
+    \item \textbf{Use of lab time:}\\
+      What do you think would be the best use of your time in lab.
+      \begin{itemize}[<+->]
+        \item Status quo.  Labs are principally time for you to try to work on the lab.
+        \item \emph{Short} lectures. Presentations like this (but shorter; 10-20 minutes) at the start / end / middle of labs seems helpful.
+        \item Review of the previous week's assignment and / or group discussion of the different ways you solved the problems.
+        \item Discussion / question-and-answer time about the topics and concepts presented in lecture \emph{not} directly pertaining to computational programming.
+      \end{itemize}
+\end{itemize}
+\end{onlyenv}
+\end{frame}
+  
+
+\subsection{Things}
+
+\end{document}

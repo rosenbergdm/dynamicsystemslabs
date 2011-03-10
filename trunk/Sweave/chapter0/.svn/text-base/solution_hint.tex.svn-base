@@ -1,0 +1,100 @@
+%
+%  untitled
+%
+%  Created by David Rosenberg on 2009-10-04.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+\usepackage{amsmath,amsthm,amssymb}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{A LaTeX Article}
+\author{  }
+
+\date{2009-10-04}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+Hint for exercise 3 on the homework.
+
+\begin{displaymath}
+\begin{aligned}
+  (a_k) &= a_1, a_2, \ldots \\
+  \text{ and } a_k &= b_k + c_k \, i,\quad b_k, c_k \in \mathbb{Q}\\
+  &= \sqrt{b_k^2 + c_k^2} e^{i\ \left( \arctan \left( \dfrac{b_k}{c_k} \right) \right) } \\
+  \text{Let } r_k &= \sqrt{b_k^2 + c_k^2} \text{ and } \psi_k = \arctan \left( \dfrac{b_k}{c_k} \right) \\
+  \text{Then } a_k &= r_k e^{\psi_k i} \\
+  a_k^n &= \left(r_k e^{\psi_k i}\right) ^n \\
+  &=r_k {}^n e^{n i \psi_k} \\
+\end{aligned}
+\end{displaymath}
+Since $x^n - 1, r_k {}^n = 1$ and $e^{n i \psi_k} = 0 \pm 2c \pi$, where $c \in \mathbb{Z}$, we know that \( r_k {}^n = 1 \) and further, \( r_k = 1 \).  We also know that \( 0 \leq \psi_k \leq 2\pi \).  The first two solutions, then, are given by
+\begin{displaymath}
+\begin{aligned}
+	n \psi_k &= 2 \pi \quad &n \psi_k &= 0 \\
+	\psi_k &= \dfrac{2 \pi}{n} \quad &\psi_k &= 0 \\
+\end{aligned}
+\end{displaymath}
+Furthermore, the set of all solutions is the set of linear combinations of these two solutions, modulo $2 \pi$.
+
+\begin{displaymath}
+\begin{aligned}
+	\psi_0 &= 0 \\
+	\psi_1 &= \dfrac{2 \pi}{n} \\
+	\psi_2 &= 2 \left( \dfrac{2 \pi}{n} \right) \\
+	\vdots \\
+	\psi_n &= n \left( \dfrac{2 \pi}{n} \right) = 2 \pi \equiv 0 \\
+\end{aligned}
+\end{displaymath}
+Therefore \( \forall k \in \mathbb{Z}: 0 \leq k < n \), the complex number \( e^{\frac{2 k i \pi}{n}} \) is a solution for \( x^k - 1 = 0 \).
+
+\end{document}

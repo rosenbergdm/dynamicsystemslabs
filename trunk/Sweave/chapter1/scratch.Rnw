@@ -1,0 +1,114 @@
+\subsection{Example 4: Functions} % (fold)
+\label{sub:example_4_functions}
+
+One of the most fundamental of programming concepts is that of the \emph{function}, a series of commands which take several values (variables) as input and return the result of computations on that input.  It is generally helpful (and frequently necessary) to place a series of related commands in a function.  \R lets you define functions using the following syntax
+
+<<func_syntax,eval=f,echo=t>>=
+functionName <- function(argumentList) {
+  codeBlock
+  {return(returnValue)}
+}
+@
+
+Breaking the components down, we have
+\begin{enumerate}
+  \item \texttt{\emph{functionName}} is the name you would like to assign the new function to.\footnote{\TODO{MORE ABOUT FUNCTION NAMES}}.
+  \item \texttt{\emph{argumentList}} the inputs to the function
+  \item \texttt{\emph{codeBlock}} the commands to be evaluated
+  \item \texttt{\emph{returnValue}} (optional) the output value that is ``returned'' by the function
+\end{enumerate}
+
+As an example, let us define a function which takes as input an integer, \texttt{k} and returns the first number in the fibonacci sequence equal to or greater than that number.
+
+<<fun_ex_1,eval=t,echo=t>>=
+fibLargerThan <- function(k) {
+  x0 <- 0
+  x1 <- 1
+  while(x1 < k) {
+    newX1 <- x0 + x1
+    x0 <- x1
+    x1 <- newX1
+  }
+  return(x1);
+}
+fibLargerThan(100)
+fibLargerThan(1000)
+fibLargerThan(10000)
+@
+
+\begin{itemize}
+  \item Parts \begin{enumerate}
+    \item name
+    \item args
+    \item body
+    \item return
+  \end{enumerate}
+  \item scope
+  \item calling
+\end{itemize}
+
+% subsection example_4_functions (end)
+
+
+  \item Write a function that takes as input a polynomial\footnote{\TODO{parsing function}} and returns the polynomial representing the first derivative of the input polynomial.  You will be provided two functions, \texttt{parsePolynomial()} and \texttt{deparsePolynomial} to help you in this task.  The function \Com{parsePolynomial()} takes as input a polynomial in $x$ and returns a vector of exponents and a vector of coefficients.  The function \Com{deparsePolynomial()} takes as input a vector of exponents and a vector of coefficients and returns a polynomial in $x$.
+\end{enumerate}
+
+<<hide_prompt,eval=t,echo=f>>=
+options(prompt=' ', continue=' ')
+@
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=trbl,keywordstyle={\bf\color{red}},otherkeywords={}}
+\begin{quotation}
+<<exam00,eval=TRUE>>=
+#!/usr/bin/env rr
+# encoding: utf-8
+# parsePolynomial.R
+#
+# parsePolynomial - a function for parsing a polynomial (in x) into a
+#            vector of coefficients and a vector of exponents.
+# argument - inputExpression - a polynomial in x, expressed as a string.
+#            For example,   "x^3 + 2x^2 - x - 1"
+# returns  - a list with two components, coefficients and exponents,
+#            representing the coefficients and exponents of the polynomial,
+#            respectively.
+#
+# Example:
+#       > inputEx <- "x^3 + 2x^2 - x - 1"
+#       > result <- parsePolynomial(inputEx)
+#       > result[['exponents']]
+#       [1] 3 2 1 0
+#       > result[['coefficients']]
+#       [1] 1 2 -1 -1
+#
+parsePolynomial <- function(inputExpression) {
+  numberTerms <- nchar(gsub("[^x]", "", inputExpression));
+  coefficients <- numeric(length=(numberTerms)+1);
+  exponents <- numeric((length=numberTerms)+1);
+  splitTerms <- strsplit(gsub('-', '+ -', inputExpression), '\\+')[[1]]
+  for (ii in seq(along=splitTerms)) {
+    term <- gsub(' ', '', splitTerms[ii]);
+    if(gsub("[^x]", "", term) == '') {
+      term <- paste(term, 'x^0', sep='');
+    }
+    if (gsub("([\\+|-]*)(.*)x.*", "\\2", term) == '') {
+      term <- gsub('x', '1x', term);
+    }
+    if (gsub(".*x", "", term) == '') {
+      term <- paste(term, '^1', sep='');
+    }
+    coef <- eval(as.integer(gsub('x.*', '', term)));
+    coefficients[ii] <- coef;
+    exponent <- eval(as.integer(gsub('.*\\^(.*)', '\\1', term)));
+    exponents[ii] <- exponent;
+  }
+  o <- -(order(exponents)) + length(exponents) + 1;
+  exponents <- exponents[o];
+  coefficients <- coefficients[o];
+  result <- list(exponents=exponents, coefficients=coefficients);
+  return(result);
+}
+@
+\end{quotation}
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=none,keywordstyle={\bf\color{RRecomdcolor}},otherkeywords={!,!=,~,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/, \%in\%}}
+<<unhide_prompt,eval=t,echo=f>>=
+options(prompt='> ', continue='+ ')
+@

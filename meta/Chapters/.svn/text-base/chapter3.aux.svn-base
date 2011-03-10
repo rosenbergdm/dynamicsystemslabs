@@ -1,0 +1,15 @@
+\relax 
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Numerical methods for ODE}{1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Modeling: nonlinear model of infection}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Sources of nonlinearity}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Simple epidemiology model}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Analytical: Existence and uniqueness of solutions}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Existence of solutions}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Numerical methods and error}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Computation: simple numerical schemes}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Forward Euler method}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Backward Euler method}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Synthesis: Lacker model of ovarian follicle maturation}{15}}

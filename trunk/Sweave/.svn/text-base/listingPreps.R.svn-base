@@ -1,0 +1,30 @@
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+options(width=50);
+oldRout <- .Rout <- getSweaveListingOption('Rout')
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<aa_-}{<<aa_-}2"
+.myRset$basicstyle <- "{\\tiny\\color{Rcommentcolor}}"
+.myRset[['keywordstyle']] <- "{\\tiny\\bf\\color{red}}"
+.myRset$numbers <- 'left'
+.myRset$commentstyle <- "{\\color{black}\\ttfamily\\itshape}"
+.myRset$numberstyle="\\tiny"
+.myRset$escapeinside="{(*@}{@*)}"
+.Rout$fancyvrb <- 'true'
+.Rout$keywordstyle <- "{\\color{Routcolor}}"
+.Rout$breaklines <- 'true'
+.Rout$linewidth <- "{0.7\\textwidth}"
+.myRset$extendedchars <- 'true'
+.myRset$breaklines <- 'true'
+.myRset$linewidth="{0.7\\textwidth}"
+.myRset$otherkeywords <- "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<aa_-,/, \\%in\\%}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{red}")
+SweaveListingoptions(Rset=.myRset, Rout=.Rout, intermediate = FALSE)
+#SweaveListingPreparations()
+setCacheDir('cache2')
+#options(device=quartz);
+source('maxima_utilities.R')
+par(mar=c(2,2,2,2))

@@ -1,0 +1,8 @@
+pdflatex --jobname=solution-ex3q1p2sol11 solution.tex
+pdflatex --jobname=solution-ex3q1p2sol12 solution.tex
+pdflatex --jobname=solution-ex3q2p1sol solution.tex
+pdflatex --jobname=solution-ex3q2p2sol22 solution.tex
+pdflatex --jobname=solution-ex3q3p1sol solution.tex
+pdflatex --jobname=solution-ex3q3p2sol2 solution.tex
+pdflatex --jobname=solution-dirfieldex2 solution.tex
+pdflatex --jobname=solution-ex3q4p2sol solution.tex

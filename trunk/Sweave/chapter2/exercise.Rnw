@@ -1,0 +1,266 @@
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+\usepackage[version=3]{mhchem}
+
+\svnidlong
+{$LastChangedDate: 2009-10-20 19:41:04 -0500 (Tue, 20 Oct 2009) $}
+{$LastChangedRevision: 161 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+source('listingPreps.R');
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Chapter 2 Lab Exercise \\\smaller Cobweb plots and stability}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+In this exercise we will build more complicated (cobweb) plots and continue our analysis of stability and fixed points.
+
+\part{Tutorial}
+
+\section{Example: Cobweb plots} % (fold)
+\label{sec:example_cobweb_plots}
+
+% section example_cobweb_plots (end)
+
+Lets start by examining the provided pseudocode for cobweb plot generation.
+
+\textbf{Pseudocode for producing a cobweb plot for an iterated map:}
+\begin{enumerate}
+\item Define the iterated map function \texttt{F(x)}
+\item Choose an initial condition $x_0$ and store it as the first element of the array $x$ (we will start at $x[0]$, but in some languages the first index has to be 1)
+\item Store in \texttt{y[0]} the value 0 (start the graph on the x-axis)
+\item For $i$ starting at 1, repeat until $i$ exceeds the specified number of iterations
+\begin{enumerate}
+\item store in \texttt{y[2i-1]} the value of \texttt{F(x[2i-2])}  (draw a vertical line to the graph of $y=f(x)$)
+\item store in \texttt{y[2i]} the value of \texttt{y[2i-1]}  (draw a horizontal line to the graph of $y=x$)
+\item store in \texttt{x[2i-1]} the value \texttt{x[2i-2]} (draw a vertical line to the graph of $y=f(x)$)
+\item store in \texttt{x[2i]} the value of \texttt{y[2i]} (draw a horizontal line to the graph of $y=x$)
+\item increment $i$ by 1
+\end{enumerate}
+\item plot the graph of $F(x)$
+\item plot the graph of $y=x$
+\item plot the array $y$ versus the array $x$
+\end{enumerate}
+
+In the more compact form, this becomes
+
+\begin{pcode}[Cobweb plot algorithm][lst:cobwebplot1]
+  function F(x: real)   // iterated map function
+  var x0 : real         // initial condition
+  var N : integer       // maximum number of iterations
+  var X,Y : real array [1..N]
+  x[0] := x0
+  Y[0] := 0
+  for i := 1 to N do
+  begin
+     Y[2i-1] := F(X[2i-2])
+     Y[2i] := F(Y[2i-1])
+     X[2i-1] := F(X[2i-2])
+     X[2i] := F(Y[2i])
+  end
+  plot F(x)
+  plot y = x
+  plot X,Y
+\end{pcode}
+
+The following example generates a ``cobweb'' plot for the logistic model given by $f(x) = x \left( 2-\frac{x}{2} \right)$
+
+\begin{Rlistfloat}[h]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<cobwebplot_func_1,eval=f,echo=t>>=
+cobImapFun <- function(x) {
+  return(2 * x - 0.5 * x ** 2);
+}
+max_iter <- 50;
+y_vector <- x_vector <- numeric(
+  max_iter * 2);
+y_vector[1] <- 0;
+x_vector[1] <- 0.5;
+
+for(ii in 1:50) {
+  y_vector[2 * ii] <- cobImapFun(
+    x_vector[2 * ii - 1]);
+  y_vector[2 * ii + 1] <-
+    y_vector[2 * ii];
+  x_vector[2 * ii] <- 
+    x_vector[2 * ii - 1];
+  x_vector[2 * ii + 1] <- 
+    y_vector[2 * ii + 1];
+}
+
+plot( -10:50 / 10, 
+      cobImapFun(-10:50 / 10),
+      xlab='x', 
+      ylab='y', 
+      main='Example cobweb',
+      type='l', 
+      xlim=c(0, 4),
+      ylim=c(0, 2.5), 
+      xaxs='i', 
+      yaxs='i');
+lines(-2:6, -2:6, col='red');
+lines(x_vector, y_vector, 
+      col='blue');
+@
+  \end{minipage}
+\begin{minipage}{0.6\textwidth}
+  \bc
+<<cobwebplot_func_11,eval=t,echo=f,fig=t,height=4,width=4,pgf=t,external=t,cache=t>>=
+cobImapFun <- function(x) {
+  return(2 * x - 0.5 * x ** 2);
+}
+max_iter <- 50;
+y_vector <- x_vector <- numeric(max_iter * 2);
+y_vector[1] <- 0;
+x_vector[1] <- 0.5;
+
+for(ii in 1:50) {
+  y_vector[2 * ii] <- cobImapFun(x_vector[2 * ii - 1]);
+  y_vector[2 * ii + 1] <- y_vector[2 * ii];
+  x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  x_vector[2 * ii + 1] <- y_vector[2 * ii + 1];
+}
+
+plot(-10:50 / 10, cobImapFun(-10:50 / 10),
+     xlab='x', ylab='y', main='Example cobweb',
+     type='l', xlim=c(0, 4),
+     ylim=c(0, 2.5), xaxs='i', yaxs='i');
+lines(-2:6, -2:6, col='red');
+lines(x_vector, y_vector, col='blue');
+@
+\ec
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+\pagebreak
+
+\part{Exercise} % (fold)
+\label{prt:exercise}
+
+\begin{enumerate}
+  \item Find the equilibrium values of populations governed by the following equations, and determine their stability analytically. Is there is a stable nonzero equilibrium  (carrying capacity) that the population may approach in the long run?
+  \begin{enumerate}
+    \item $N_{t+1} = 41N_t -10N_t^2$
+    \item $N_{t+1} = 41N_t +2N_t^2$
+  \end{enumerate}
+  \item Generate cobweb plots for the following logistic models.  Graphically identify all fixed points, and state whether they are ``stable.''
+  \begin{enumerate}
+    \item $f(x) = 3x - \frac{3x^2}{4} + 1$
+    \item $f(x) = 100x -2x^2$
+    \item $f(x) = -100 x + \frac{x^2}{2}$
+  \end{enumerate}
+  \item Write a \emph{functor} which takes as an argument a function describing a logistic model and generates a cobweb plot.
+  \item In physiology, maintaining a steady level of glucose in the bloodstream is necessary for the proper functioning of all organs. To study
+  this process, define $G(t)$ to be the amount of glucose in the bloodstream of a person at time $t$. Assume that glucose is absorbed from the bloodstream at a rate proportional to the concentration $G(t)$, with rate parameter $k$.
+  \begin{enumerate}
+    \item Write down a differential equation to describe this situation. What kind of ODE is it?
+    \item Find the analytical solution for this equation, in terms of an initial value $G_0$ and the rate parameter $k$.
+    \item Let the initial glucose concentration be $G_0 = 100 mg/dl$, and the glucose removal rate be $k = 0.01 / min$. Use R to plot the solution as a graph over a reasonable time interval, with properly labeled axes.
+    \item What is the equilibrium concentration of blood sugar in this model? Is the equilibrium stable or unstable?
+    \end{enumerate}
+  \item Now let us assume that glucose is added to to bloodstream at a constant rate $a$, independent of glucose concentration.
+  \begin{enumerate}
+    \item Write down a differential equation to describe this situation. What kind of ODE is it?
+    \item Find the analytical solution for this equation, in terms of an initial value $G_0$ and the parameters $k$ and $a$.
+    \item Let the initial glucose concentration be $G_0 = 100 mg/dl$, the glucose removal rate be $k = 0.01 / min$, and $a = 4 mg/dl/min$. Use R to plot the solution as a graph over a reasonable time interval, with properly labeled axes.
+    \item What is the equilibrium concentration of blood sugar in the model with glucose infusion? Is the equilibrium stable or unstable?
+  \end{enumerate}
+%  \item \emph{Analytically} find all fixed points for the following logistic models.  You may use a pencil and paper to solve these problems (hand in for credit).
+
+
+%   \item \emph{Enzyme kinetics.}  Consider the following reaction and observations.
+%   \begin{center}
+%     \ce{A + 2B <=> AB2}
+%   \end{center}
+%   \bc
+%     \begin{tabular}{c c c c c c c c}
+%     \toprule
+%     & & \multicolumn{6}{c}{Concentration (mM)} \\
+%     \multicolumn{2}{c}{\hspace{0.8cm}Time (ms)}\hspace{1.6cm} & \multicolumn{3}{c}{Before} & \multicolumn{3}{c}{After} \\
+%     & & [\ce{A}] & [\ce{B}] & [\ce{AB2}] & [\ce{A}] & [\ce{B}] & [\ce{AB2}] \\
+%     \midrule
+%     1.177 & 1.253 & 1.021 & 1.011 & 0.014 & 1.012 & 0.992 & 0.023 \\ 
+%     2.662 & 2.820 & 1.012 & 2.015 & 0.006 & 0.943 & 1.879 & 0.074 \\ 
+%     3.184 & 3.670 & 1.023 & 3.015 & 0.018 & 0.918 & 2.805 & 0.123 \\ 
+%     4.495 & 4.586 & 2.040 & 1.003 & 0.016 & 1.937 & 0.797 & 0.119 \\ 
+%     5.492 & 5.827 & 2.019 & 2.018 & 0.012 & 1.679 & 1.339 & 0.351 \\ 
+%     6.678 & 6.769 & 2.026 & 3.009 & 0.016 & 1.608 & 2.174 & 0.434 \\ 
+%     7.221 & 7.805 & 0.021 & 1.008 & 1.005 & 0.061 & 1.089 & 0.965 \\ 
+%     8.220 & 8.256 & 0.014 & 2.016 & 2.018 & 0.040 & 2.068 & 1.992 \\ 
+%     9.260 & 9.802 & 0.032 & 3.014 & 3.002 & 0.071 & 3.092 & 2.962 \\ 
+%     10.380 & 10.698 & 0.015 & 1.018 & 4.013 & 0.091 & 1.170 & 3.937 \\ 
+%     \bottomrule
+%   \end{tabular}
+%   \ec
+%   \begin{enumerate}
+%     \item Calculate the rate law for the forward and reverse reactions. (\emph{Hint: the file c3e4.R on the website contains this raw data}).
+%     \item Calculate $K_1$ and $K_{-1}$, the forward and backwards rate coefficients.
+%   \end{enumerate}
+%   \item \emph{Goldman equation and Action potentials}.  The \emph{Nernst potential} of a single ion \ce{A^z} with charge $z$ across a cell membrane is given by
+%   \begin{align}
+%     E_{\ce{A}} &= \frac{RT}{zF} \log \frac{[\ce{A^z}_o]}{[\ce{A^z}_i]} \\
+%     R &= 8.314 J K^{-1} mol^{-1} \text{(Universal gas constant)} \\
+%     T &= \text{Temperature in kelvins.  Assume $T=298$} \\
+%     F &= 9.648 \times 10^4 C mol^{-1} \text{(Faraday constant; i.e. charge per mole of electrons)} \\
+%     [\ce{A^z_o}] &= \text{Extracellular concentration} \\
+%     [\ce{A^z_i}] &= \text{Intracellular concentration}
+%   \end{align}
+%   Thus for sodium (\ce{NA+}), the Nernst potential, given $[\ce{NA+}_o] = 100$ mM and $[\ce{NA+}_i] = 10$ mM is
+%   \begin{align*}
+%     E_{\ce{NA+}} &= \frac{RT}{zF} \log \frac{[\ce{NA+}_o]}{[\ce{NA+}_i]} \\
+%     &= \frac{8.314 J K^{-1} mol^{-1} \cdot 298 K}{1 \cdot 9.68 \times 10^4 C mol^{-1}} * \log{\frac{100}{10}} \\
+%     &= 25.3 mV \log 10 \\
+%     &= 58 mV
+%   \end{align*}
+%   Furthermore, the total potential across a membrane by combining the products of the individual ionic Nernst potentials and ionic conductances.
+%   \begin{equation}
+%     E_{m} = \frac{RT}{F} \ln{ \left( \frac{ \sum_{i}^{N} P_{M^{+}_{i}}[M^{+}_{i}]_\text{out} + \sum_{j}^{M} P_{A^{-}_{j}}[A^{-}_{j}]_\text{in}}{ \sum_{i}^{N} P_{M^{+}_{i}}[M^{+}_{i}]_\text{in} + \sum_{j}^{M} P_{A^{-}_{j}}[A^{-}_{j}]_\text{out}} \right) }
+%     \end{equation} 
+  \item \emph{Not required.  A good exercise which relates to numerical approximation.} \begin{enumerate}
+    \item \emph{Binary Search.} Write a function which, given a sorted vector $X$ of $n$ unique integers, and an integer $k$, returns the index of $k$ in vector $X$ if $k \in X$ and $-1$ otherwise.  Your solution should perform approximately $\log n$ comparisons in the ``worst case'' scenario. \emph{Hint:}  one example of a ``worst case'' is when the $X_0 = k$.
+    \item Modify the previous solution so that the requirement of \emph{unique} integers may be relaxed.  In the case that multiple solutions exist return a vector of all such solutions.
+  \end{enumerate}
+\end{enumerate}
+% part exercise (end)
+
+
+\end{document}

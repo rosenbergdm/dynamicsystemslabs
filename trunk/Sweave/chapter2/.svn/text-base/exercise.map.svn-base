@@ -1,0 +1,18 @@
+chunk: aa_SweaveListingsPreparations
+chunkprefix: exercise-aa_SweaveListingsPreparations
+fig:
+cacheDB:
+time: 2009-11-06 11:50:17
+
+chunk: cobwebplot_func_1
+chunkprefix: exercise-cobwebplot_func_1
+fig:
+cacheDB:
+time: 2009-11-06 11:50:17
+
+chunk: cobwebplot_func_11
+chunkprefix: exercise-cobwebplot_func_11
+fig: exercise-cobwebplot_func_11.pdf
+cacheDB: cache2/cobwebplot_func_11_ee8223e50e7ced5b654882504f74c0bc
+time: 2009-11-06 11:50:17
+

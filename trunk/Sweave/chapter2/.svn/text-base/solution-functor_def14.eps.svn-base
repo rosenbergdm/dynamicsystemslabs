@@ -1,0 +1,361 @@
+%!PS-Adobe-3.0
+%%DocumentNeededResources: font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Helvetica-Oblique
+%%+ font Helvetica-BoldOblique
+%%+ font Symbol
+%%DocumentMedia: special 360 360 0 () ()
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%BoundingBox: 0 0 360 360
+%%EndComments
+%%BeginProlog
+/bp  { gs gs } def
+% begin .ps.prolog
+/gs  { gsave } def
+/gr  { grestore } def
+/ep  { showpage gr gr } def
+/m   { moveto } def
+/l  { rlineto } def
+/np  { newpath } def
+/cp  { closepath } def
+/f   { fill } def
+/o   { stroke } def
+/c   { newpath 0 360 arc } def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
+/p1  { stroke } def
+/p2  { gsave bg fill grestore newpath } def
+/p3  { gsave bg fill grestore stroke } def
+/t   { 5 -2 roll moveto gsave rotate
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } def
+/ta  { 4 -2 roll moveto gsave rotate show } def
+/tb  { 2 -1 roll 0 rmoveto show } def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } def
+/rgb { setrgbcolor } def
+/s   { scalefont setfont } def
+% end   .ps.prolog
+%%IncludeResource: font Helvetica
+/Helvetica findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Helvetica-Oblique
+/Helvetica-Oblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Helvetica-BoldOblique
+/Helvetica-BoldOblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+59.04 73.44 329.76 300.96 cl
+1 0 0 rgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+69.07 81.87 m
+7.02 22.93 l
+7.01 21.61 l
+7.02 20.29 l
+7.02 18.97 l
+7.02 17.65 l
+7.02 16.33 l
+7.02 15.01 l
+7.02 13.68 l
+7.01 12.37 l
+7.02 11.04 l
+7.02 9.72 l
+7.02 8.40 l
+7.02 7.08 l
+7.02 5.75 l
+7.02 4.44 l
+7.02 3.11 l
+7.01 1.80 l
+7.02 0.47 l
+7.02 -0.85 l
+7.02 -2.17 l
+7.02 -3.49 l
+7.02 -4.82 l
+7.02 -6.13 l
+7.01 -7.46 l
+7.02 -8.77 l
+7.02 -10.10 l
+7.02 -11.42 l
+7.02 -12.74 l
+7.02 -14.07 l
+7.02 -15.38 l
+7.02 -16.70 l
+7.01 -18.03 l
+7.02 -19.35 l
+7.02 -20.67 l
+7.02 -21.99 l
+7.02 -23.31 l
+7.02 -24.63 l
+7.02 -25.96 l
+6.30 -24.48 l
+o
+0.00 0.00 360.00 360.00 cl
+0.6000 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+69.07 73.44 m
+245.65 0 l
+o
+np
+69.07 73.44 m
+0 -7.20 l
+o
+np
+104.16 73.44 m
+0 -7.20 l
+o
+np
+139.25 73.44 m
+0 -7.20 l
+o
+np
+174.35 73.44 m
+0 -7.20 l
+o
+np
+209.44 73.44 m
+0 -7.20 l
+o
+np
+244.53 73.44 m
+0 -7.20 l
+o
+np
+279.63 73.44 m
+0 -7.20 l
+o
+np
+314.72 73.44 m
+0 -7.20 l
+o
+/Font1 findfont 12 s
+0 setgray
+69.07 47.52 (0.00) .5 0 t
+104.16 47.52 (0.05) .5 0 t
+139.25 47.52 (0.10) .5 0 t
+174.35 47.52 (0.15) .5 0 t
+209.44 47.52 (0.20) .5 0 t
+244.53 47.52 (0.25) .5 0 t
+279.63 47.52 (0.30) .5 0 t
+314.72 47.52 (0.35) .5 0 t
+0.6000 setgray
+np
+59.04 81.87 m
+0 188.75 l
+o
+np
+59.04 81.87 m
+-7.20 0 l
+o
+np
+59.04 129.06 m
+-7.20 0 l
+o
+np
+59.04 176.25 m
+-7.20 0 l
+o
+np
+59.04 223.43 m
+-7.20 0 l
+o
+np
+59.04 270.62 m
+-7.20 0 l
+o
+0 setgray
+41.76 81.87 (0.00) .5 90 t
+41.76 129.06 (0.05) .5 90 t
+41.76 176.25 (0.10) .5 90 t
+41.76 223.43 (0.15) .5 90 t
+41.76 270.62 (0.20) .5 90 t
+0.00 0.00 360.00 360.00 cl
+/Font1 findfont 12 s
+0 setgray
+194.40 18.72 ($t$) .5 0 t
+12.96 187.20 ($f\(t\)$) .5 90 t
+59.04 73.44 329.76 300.96 cl
+0 setgray
+1.12 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+59.04 81.87 m
+270.72 0 l
+o
+np
+69.07 73.44 m
+0 227.52 l
+o
+0 0 1 rgb
+0.75 setlinewidth
+[] 0 setdash
+np
+59.04 68.38 m
+216.87 291.62 l
+o
+0 0.3922 0 rgb
+np
+131.73 81.87 m
+0 158.00 l
+54.84 0 l
+0 51.84 l
+38.55 0 l
+0 -11.83 l
+-8.80 0 l
+0 6.21 l
+4.62 0 l
+0 -3.00 l
+-2.23 0 l
+0 1.52 l
+1.13 0 l
+0 -0.76 l
+-0.56 0 l
+0 0.38 l
+0.28 0 l
+0 -0.19 l
+-0.14 0 l
+0 0.10 l
+0.07 0 l
+0 -0.05 l
+-0.04 0 l
+0 0.02 l
+0.02 0 l
+0 -0.01 l
+-0.01 0 l
+0 0.01 l
+0.01 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+0 0 l
+219.47 284.11 lineto
+o
+0.00 0.00 360.00 360.00 cl
+/Font2 findfont 14 s
+0 setgray
+194.40 325.45 ({\\larger\\bf Cobweb plot of $ f\(x\) =  x  \(5/2 - 7  x\) $ }) .5 0 t
+59.04 73.44 329.76 300.96 cl
+/Font1 findfont 12 s
+0 setgray
+194.40 133.91 (Fixed points: $ \\{  0, 0.214285714285714  $ \\} ) .5 0 t
+194.40 119.51 (Carrying capacity $ k= 0.357142857142857  $) .5 0 t
+194.40 99.60 (Rate: $ r=  2.5 \\quad \\rightarrow 1 < r < 3$) .5 0 t
+194.40 85.48 ({\\bf $\\therefore $ the fixed point is stable }) .5 0 t
+ep
+%%Trailer
+%%Pages: 1
+%%EOF

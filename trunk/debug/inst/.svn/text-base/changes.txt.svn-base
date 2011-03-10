@@ -1,0 +1,19 @@
+30/1/2004: In R-1.8.1, 'object.size' gives an error on certain types of object (e.g. 'externalptr'). Code of 'print.if.small' adjusted to cope.
+
+3/2/2004: getOption( "debug.command.recall") now defaults to FALSE if 'savehistory' would give an error (as it will under ESS, for example), or TRUE otherwise; used to default to TRUE always.
+
+4/2/2004: minor changes to documentation in 'README.debug', mainly to do with ESS.
+
+16/2/2005: added support for 'local.on.exit' to match 'mvbutils'
+
+  Fixed obscure bug to do with missing-mode objects in 'move.to.next.expr'
+  
+  Fixed buggy display of long subscript-replacement expressions
+  
+  Fixed bugs with 'skip'ping into exit code
+  
+  NAMESPACEd it-- with difficulty, owing to the unusual nature of 'debug'.
+  
+2/4/2005: added 'debug.catfile' option to (by default) print to stderr() rather than stdout(); helps if 'sink' is in operation
+
+20/10/2008: added ESCAPE handling-- drops you back to the debugger prompt, rather than straight back to the terminal. (Unless the interrupt happens while you're in debug's own code-- need some muffleWarnings stuff.)

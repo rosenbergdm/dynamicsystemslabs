@@ -1,0 +1,10 @@
+assignment	submitted	graded	returned	files
+chapter0	Y	Y:8	N	jrojas.chapter0.R
+chapter1	Y	Y:8	N	"Chapter 1.R"
+chapter2	Y	Y:11	N	"Chapter 2.R"
+chapter3
+chapter4
+chapter5
+chapter6
+chapter7
+

@@ -1,0 +1,239 @@
+%%% Rosenberg.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Rosenberg}{}
+
+\RequirePackage{ifthen}
+\RequirePackage{listings,fancyvrb,color,relsize,ae}
+\RequirePackage{svn-multi}
+%\usepackage{Sweave}
+\RequirePackage{float}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{algorithmic}
+\RequirePackage{tikz}
+\RequirePackage{boxedminipage}
+\RequirePackage{booktabs}
+\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}
+\RequirePackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
+
+\newboolean{Rosenberg@use@xelatex}
+\newboolean{Rosenberg@use@pdflatex}
+\newboolean{Rosenberg@use@lualatex}
+\newboolean{Rosenberg@use@beamer}
+
+\DeclareOption{Rpdflatex}{\setboolean{Rosenberg@use@pdflatex}{true}}
+\DeclareOption{Rxelatex}{\setboolean{Rosenberg@use@xelatex}{true}}
+\DeclareOption{Rlualatex}{\setboolean{Rosenberg@use@lualatex}{true}}
+\DeclareOption{Rbeamer}{\setboolean{Rosenberg@use@beamer}{true}}
+\ProcessOptions
+
+\ifthenelse{\boolean{Rosenberg@use@beamer}}{%
+  \mode<presentation>
+  {
+    \usetheme{Warsaw}
+    \setbeamercovered{transparent}
+  }
+  \usepackage[english]{babel}
+  \usepackage[latin1]{inputenc}
+  \usepackage{times}
+  \usepackage[T1]{fontenc}
+  \AtBeginSubsection[]
+  {
+    \begin{frame}<beamer>{Outline}
+      \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+  }
+}{%
+  \RequirePackage{graphicx,fancyhdr}
+  \RequirePackage{hyperref,url}
+  \RequirePackage{geometry}
+  \RequirePackage{multicol}
+  \RequirePackage[parfill]{parskip}
+  \RequirePackage{ifpdf}
+  
+  
+  
+  \renewcommand\floatpagefraction{.9}
+  \renewcommand\topfraction{.9}
+  \renewcommand\bottomfraction{.9}
+  \renewcommand\textfraction{.1}
+  \setcounter{totalnumber}{50}
+  \setcounter{topnumber}{50}
+  \setcounter{bottomnumber}{50}
+  
+  \textwidth 6.5in
+  \pagestyle{fancy}
+}%
+
+
+\floatstyle{plain}
+\newfloat{Rlistfloat}{thp}{lop}
+\floatname{Rlistfloat}{Code Listing}
+
+\floatstyle{boxed}
+\newfloat{RBlistfloat}{thp}{lop}
+\floatname{RBlistfloat}{File Listing}
+
+\providecommand{\Sweavesize}{\smaller}
+\providecommand{\Rcolor}{\color[rgb]{0, 0.5, 0.5}}
+\providecommand{\Routcolor}{\color[rgb]{0.461, 0.039, 0.102}}
+\providecommand{\Rcommentcolor}{\color[rgb]{0.101, 0.043, 0.432}}
+
+\providecommand{\Rbackground}{\color[gray]{%0.91}}
+                                           1.000}}
+\providecommand{\Routbackground}{\color[gray]{%0.935}}
+                                           1.000}}
+
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+\newcommand{\cc}[1]{\texttt{#1}}
+\newcommand{\R}{\emph{R} }
+\newcommand{\Rs}{\emph{R}'s }
+
+
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                      basicstyle={\color{black}\small},%
+                      keywordstyle={\bf\color{black}},%
+                      commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                     literate={<-}{<-}2{<<-}{<<-}2}
+
+
+\lstdefinestyle{Rstyle}{fancyvrb=false,escapechar=`,language=R,%
+                        basicstyle={\Rcolor\Sweavesize},%
+                        backgroundcolor=\Rbackground,%
+                        showstringspaces=false,%
+                        keywordstyle=\Routcolor,%
+                        commentstyle={\Rcommentcolor\ttfamily\itshape},%
+                        alsoother={$,$},%
+                        breaklines=true,%
+                        alsoletter={.<-},%
+                  otherkeywords={!,!=,~,$,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
+                        escapeinside={(*}{*)},%
+                        literate={<-}{<-}2{<<-}{<<-}2}%
+% Other options of interest:
+% frame=single,framerule=0.1pt,framesep=1pt,rulecolor=\color{blue},
+% numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt,
+% keywordstyle={\bf\Rcolor}
+
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+\definecolor{simpleRed}{rgb}{1,0,0}
+\definecolor{simpleGreen}{rgb}{0,1,0}
+\definecolor{simpleBlue}{rgb}{0,0,1}
+
+
+
+\lstdefinestyle{Routstyle}{fancyvrb=false,%literate={~}{{$\sim$}}1{R^2}{{$R^{2}$}}2{^}{{$^{\scriptstyle\wedge}$}}1{R-squared}{{$R^{2}$}}2,%
+ %frame=single,framerule=0.2pt,framesep=1pt,
+ basicstyle=\Routcolor\Sweavesize,%
+ backgroundcolor=\Routbackground,%
+ breaklines=true}
+
+\lstloadlanguages{Pascal}
+
+\lstdefinelanguage{Pseudocode}
+  {morekeywords={define,let,array,for,end,do,done,if,fi,while,print,%
+  plot,call,loop,to,in,read,write,begin,else,function,integer,real,%
+  def,allocate,int,bool,boolean,float},%
+  literate={:=}{{$\gets$}}1,%
+  sensitive=false,%
+  morecomment=[l]{//},%
+  morecomment=[s]{/*}{*/},morestring=[b]",%
+}
+
+
+\newenvironment{Schunk}{}{}
+\lstnewenvironment{Sinput}{\lstset{style=Rstyle}}{}
+\lstnewenvironment{Scode}{\lstset{style=Rstyle}}{}
+\lstnewenvironment{Soutput}{\lstset{style=Routstyle}}{}
+
+\newcounter{pseudo}
+\setcounter{pseudo}{0}
+
+\newenvironment{Solution}{%
+	\par
+	\bc
+	\begin{boxedminipage}{0.7\textwidth}
+}{%
+	\end{boxedminipage}
+	\ec
+}
+
+\lstnewenvironment{pcode}[2][]%
+{\addtocounter{pseudo}{1}%
+  \lstset{%
+    language=Pseudocode,%
+    basicstyle={\footnotesize\ttfamily},%
+    keywordstyle={\bf\color[rgb]{0.0,0.0,0.75}},%
+    commentstyle={\color[rgb]{0.5,0.5,0.5}},%
+    frame=trbl,%
+    framesep=4pt,%
+    float=htbp,%
+    title={\textbf{Pseudocode listing \arabic{pseudo}} -- #1},%
+    label=#2,%
+    captionpos=b,%
+    xleftmargin=0.1\textwidth,%
+    xrightmargin=0.1\textwidth%
+  }}{}
+
+\lstnewenvironment{lcode}[2][]%
+{\addtocounter{pseudo}{1}%
+  \lstset{%
+    language=Pseudocode,%
+    basicstyle={\footnotesize\ttfamily},%
+    keywordstyle={\bf\color[rgb]{0.0,0.0,0.75}},%
+    commentstyle={\color[rgb]{0.5,0.5,0.5}},%
+    frame=tblr,%
+    framesep=0pt,%
+    float=htbp,%
+    title={\textbf{Pseudocode listing \arabic{pseudo}} -- #1},%
+    label=#2,%
+    captionpos=b,%
+    xleftmargin=0.0\textwidth,%
+    xrightmargin=0.4\textwidth,%
+    escapeinside={(*@}{@*)},%
+    rulesep=0pt%
+  }}{}
+
+
+\lstnewenvironment{llcode}%
+{\lstset{%
+    language=Pseudocode,%
+    basicstyle={\footnotesize\ttfamily},%
+    keywordstyle={\bf\color[rgb]{0.0,0.0,0.75}},%
+    commentstyle={\color[rgb]{0.5,0.5,0.5}},%
+    frame=tblr,%
+    xleftmargin=-0.3in,%
+    xrightmargin=0.3in,%
+    framesep=0pt,%
+    breaklines=true,%
+    escapeinside={(*@}{@*)},%
+    rulesep=0pt%
+  }}{}
+
+\lstnewenvironment{rrcode}%
+{\lstset{%
+    language=Pseudocode,%
+    basicstyle={\footnotesize},%
+    keywordstyle={\footnotesize},%
+    commentstyle={\footnotesize},%
+    frame=tblr,%
+    framesep=0pt,%
+    xleftmargin=0.3in,%
+    xrightmargin=-0.3in,%
+    escapeinside={(*@}{@*)},%
+    rulesep=0pt%
+  }}{}
+
+
+\endinput

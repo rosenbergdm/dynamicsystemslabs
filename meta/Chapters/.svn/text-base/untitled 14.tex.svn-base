@@ -1,0 +1,39 @@
+\documentclass[11pt]{book}
+\usepackage[left=2in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{setspace}
+\usepackage{proof}
+\doublespacing
+
+\textwidth 5.0in
+%\headheight 1.0in
+\topmargin 0in
+
+\begin{document}
+
+\textbf{As is}
+
+
+  Now let us solve the linear population growth model in equation \ref{eq:linear_ode}: $\dot x = rx$. The equation can be solved by  first dividing  both sides by $x$ and then integrating:
+  $$ \int \frac{1}{x} \frac{d x}{dt}  dt = \int \frac{dx}{x} = \int r dt \Longrightarrow \log |x| = rt + C  \Longrightarrow  x =  e^{rt+C} = Ae^{rt}$$
+
+
+\textbf{Easier to follow}
+
+
+\begin{align*}
+  \dot x &= rx \\
+  \int \left(\frac{1}{x}\right) \frac{dx}{dt} dt &= \int \left(\frac{1}{x}\right) xr\ dt  \\
+  \int \frac{1}{x} dx &= \int r\ dt \\
+  \log |x| &= rt + C \\
+  x &= e^{rt + C} \\
+  &= Ae^{rt} \qed
+\end{align*}
+
+\end{document}

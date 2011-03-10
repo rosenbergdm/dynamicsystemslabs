@@ -1,0 +1,81 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+oldRout <- .Rout <- getSweaveListingOption('Rout')
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<aa_-}{<<aa_-}2"
+.myRset$basicstyle <- "{\\footnotesize\\color{Rcommentcolor}}"
+.myRset[['keywordstyle']] <- "{\\footnotesize\\bf\\color{red}}"
+.myRset$numbers <- 'left'
+.myRset$commentstyle <- "{\\color{black}\\ttfamily\\itshape}"
+.myRset$numberstyle="\\tiny"
+.Rout$fancyvrb <- 'true'
+.Rout$keywordstyle <- "{\\color{Routcolor}}"
+.Rout$breaklines <- 'true'
+.Rout$linewidth <- "{0.5\\textwidth}"
+.myRset$extendedchars <- 'true'
+.myRset$breaklines <- 'true'
+.myRset$linewidth="{0.5\\textwidth}"
+.myRset$otherkeywords <- "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<aa_-,/, \\%in\\%}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{red}")
+SweaveListingoptions(Rset=.myRset, Rout=.Rout, intermediate = FALSE)
+#SweaveListingPreparations()
+setCacheDir('cache2')
+options(device=quartz);
+par(mar=c(2,2,2,2))
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Introductory Exercise\\\smaller Loops and flow control \R}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+
+\end{document}

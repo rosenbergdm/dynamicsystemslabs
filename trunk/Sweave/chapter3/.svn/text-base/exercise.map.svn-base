@@ -1,0 +1,24 @@
+chunk: aa_SweaveListingsPreparations
+chunkprefix: exercise-aa_SweaveListingsPreparations
+fig:
+cacheDB:
+time: 2009-10-30 13:36:06
+
+chunk: dirfieldex1text
+chunkprefix: exercise-dirfieldex1text
+fig:
+cacheDB: cache2/dirfieldex1text_9ea41c7767d6b23efe66586f4761ab8f
+time: 2009-10-30 13:36:06
+
+chunk: dirfieldex1field
+chunkprefix: exercise-dirfieldex1field
+fig: exercise-dirfieldex1field.pgf
+cacheDB: cache2/dirfieldex1field_3699dfd34e506934b1c9d15c18ccede4
+time: 2009-10-30 13:36:06
+
+chunk: dirfieldex2
+chunkprefix: exercise-dirfieldex2
+fig: exercise-dirfieldex2.pgf
+cacheDB: cache2/dirfieldex2_5a86d1bf27e3d3ac014fd388d4879e30
+time: 2009-10-30 13:36:09
+

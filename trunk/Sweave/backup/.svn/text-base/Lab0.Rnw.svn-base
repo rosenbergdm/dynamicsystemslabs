@@ -1,0 +1,1125 @@
+%!TEX TS-program = xelatex
+%  untitled
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage{relsize,setspace}  % used by latex(describe( ))
+\usepackage{hyperref,url}               % used in bibliography
+\usepackage[superscript,nomove]{cite}
+\usepackage{geometry}
+\usepackage{svn-multi}
+\usepackage{pgf}
+\usepackage{amsmath,amsthm,amssymb}
+
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{root}{David M. Rosenberg}
+
+
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\emph{R} }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\newcommand{\TODO}[1]{\textcolor{simpleRed}{TODO: #1}}
+\newcommand{\MenuC}[1]{\fbox{\texttt{#1}}}
+\newcommand{\Com}[1]{\texttt{#1}}
+
+
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\textwidth 6.5in
+\pagestyle{fancy}
+\newcommand{\bc}{\begin{center}}  % abbreviate
+\newcommand{\ec}{\end{center}}
+\newcommand{\code}[1]{{\smaller\texttt{#1}}}
+
+\usepackage{ifpdf}
+
+% ----------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+% \usepackage{Sweave}
+%
+%----------------------------------------------------------------------------
+\SweaveOpts{keep.source=TRUE}
+%------------------------------------------------------------------------------
+<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<-}{<<-}2"
+.myRset[['keywordstyle']] <- "{\\bf\\color{RRecomdcolor}}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{RRecomdcolor}")
+SweaveListingoptions(Rset=.myRset, intermediate = FALSE)
+SweaveListingPreparations()
+setCacheDir('cache')
+@
+% -------------------------------------------------------------------------------
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                      basicstyle={\color{black}\small},%
+                      keywordstyle={\bf\color{black}},%
+                      commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                      literate={<-}{<-}2{<<-}{<<-}2}
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+\definecolor{simpleRed}{rgb}{1,0,0}
+\definecolor{simpleGreen}{rgb}{0,1,0}
+\definecolor{simpleBlue}{rgb}{0,0,1}
+
+
+
+\lstset{commentstyle=\color{red},keywordstyle=\color{black},showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{language=R}}{}
+% \newenvironment{rc} {\begin{alltt}\small} {\end{alltt}}
+
+\newcommand{\adv}{{\tiny (Advanced)}}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstnewenvironment{rc.out}[1][]{\lstset{language=R,%%
+morecomment=[is]{/*}{*/},%
+moredelim=[is][\itshape]{(-}{-)},frame=single}}{}
+
+
+
+% \usepackage{Sweave}
+\SweaveOpts{keep.source=TRUE}
+% To produce both postscript and pdf graphics, remove the eps and pdf
+% parameters in the next line.  Set default plot size to 5 x 3.5 in.
+\SweaveOpts{width=3.5, height=3.5}
+
+\title{Introduction to computational programming\\\smaller Using \emph{R}}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\small \parbox[t]{5cm} {
+\tiny Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> \svnFullAuthor*{\svnauthor}\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+
+\maketitle
+% Use the following 3 lines for long reports needing navigation
+% \tableofcontents
+%\listoftables
+%\listoffigures     % not used unless figure environments used
+
+\section*{Overview}
+
+This exercise is designed to serve as a practical introduction to the computational tools that will be used throughout this course.  It assumes no previous knowledge of numerical analysis nor experience in computer programming.
+
+In order to help distinguish between \emph{code}, example output, computer commands and textual information, the following conventions will be used (both here and in later computational exercises).
+
+\subsubsection*{\emph{R} input}
+
+Commands to be entered into the \emph{R} interpreter will be presented in \emph{syntax-highlighted} typewriter font, with the ``>'' character marking the beginning of each line.  Here is an example:
+
+<<input_ex,eval=f,echo=t>>=
+3 + 5
+help.start()
+load('myData.RData')
+@
+
+\subsubsection*{\emph{R} output}
+
+Output from the \emph{R} interpreter when shown, will be displayed directly after the corresponding input lines using the same font but in a different color and without the leading ``>''.
+
+<<output_ex,eval=t,echo=t>>=
+3 + 5
+randomData <- rnorm(n=100)
+summary(randomData)
+@
+
+\subsubsection*{Computer commands / keyboard keys}
+
+Following standard conventions, keyboard commands/shortcuts will be printed inline with the text in black typewriter font.  Combinations of keys which must be pressed simultaneously are separated by hyphens.  Keys to be pressed sequentially are separated by spaces.  ``Modifier keys'' (which vary in name from keyboard to keyboard) are denoted using a capital \texttt{C} or \texttt{M}.  Keyboard notation is summarized below:
+
+
+\begin{itemize}
+  \item \emph{Control:} Typically the ``control'' key abbreviated as \texttt{C-}
+  \item \emph{Meta:} Usually the ``alt'' on standard keyboards and the ``command'' on apple keyboards, abbreviated as \texttt{M-}
+  \item \emph{Enter:} Variously termed ``enter'', ``return'', ``carriage return'', ``linefeed'', and ``newline'', abbreviated as \texttt{[CR]}
+  \item \emph{Directional arrows:} the arrow keys are represented by \texttt{[LEFT]}, \texttt{[RIGHT]}, \texttt{[UP]}, and \texttt{[DOWN]} respectively.
+  \item \emph{Other keys:} Other keys are represented similarly, such as \texttt{[Esc]}, \texttt{[F1]} and \texttt{[TAB]}.
+\end{itemize}
+
+
+For example \texttt{C-c} means to simultaneously press the ``Control key'' and the letter ``c''.  \texttt{C-x C-c} means to first simultaneously press the ``Control'' key and the letter ``x'', then to simultaneously press the ``Control'' key and the letter ``c'', and \texttt{[Esc] : q !} means to sequentially press ``escape'', the ``colon'' (requires \texttt{[shift]}), ``q'' and the exclamation point (requires \texttt{[shift]}).
+
+
+Make sure to pay special to similar looking characters such as
+\begin{itemize}
+  \item Single- (\textcolor{simpleRed}{\textbf{\'}}), double- (\textcolor{simpleRed}{\textbf{\"}}) and ``back-'' (\textcolor{simpleRed}{\textbf{\`}}) quotes
+  \item Parentheses (\textcolor{simpleRed}{\textbf{ ( ) }}), brackets (\textcolor{simpleRed}{\textbf{ [ ] }}) and braces (\textcolor{simpleRed}{\textbf{ \{ \} }})
+\end{itemize}
+
+Graphical menus navigation is represented by placing boxes around menu and button names, such as \fbox{\texttt{File}} - \fbox{\texttt{Quit}}.
+
+\section{Getting Started}
+
+While not strictly necessary, many students find it helpful to have access to \emph{R} and associated tools on their own computers.  Fortunately, \emph{R} is \emph{free software}\footnote{By calling \emph{R free software}, we are saying both that: \begin{enumerate} \item You don't have to pay to use \emph{R} (free as in beer) \item You are free to examine and improve \emph{R} as you like (free as in speech)\end{enumerate}.}, and available for most computing platforms.
+
+\subsection{GNU \emph{R}}
+
+The R homepage \url{http://r-project.org} provides compiled binaries for Windows, OS X, and linux platforms as well as the source distributions (for other platforms).  The following are platform specific installation instructions for the most common scenarios.
+
+\subsubsection{Mac OSX} % (fold)
+\label{ssub:mac_osx}
+
+The Mac OSX binary distribution of \emph{R} can be downloaded from  \url{http://streaming.stat.iastate.edu/CRAN/bin/macosx/} as a \texttt{.dmg} file.  After downloading the image, simply open the \texttt{.dmg} file and drag the \texttt{R.app} icon into your \texttt{Applications} folder.
+
+Once you have done this, starting \emph{R} is as easy as double-clicking the \texttt{R.app} icon in your \texttt{Applications} folder.  Alternatively, you may run \emph{R} in a console window by opening \texttt{Terminal.app} (located in the \texttt{Utilities} subfolder of \texttt{Applications}) and typing \texttt{R}\footnote{If you have trouble with this, it may be due to having the default \texttt{PATH} set incorrectly.  See me for details.}.
+
+Running \texttt{R.app} provides you with some additional GUI functionality,
+provided through the menu interface, such as a \emph{R} source editor
+(\MenuC{File} - \MenuC{New Document}), a package installer (\MenuC{Packages \& Data} - \MenuC{Package Installer}) and easy access to package guides (\MenuC{Help} - \MenuC{Vignettes}).
+
+% subsubsection mac_osx (end)
+
+\subsubsection{Windows} % (fold)
+\label{ssub:windows}
+
+Installing \emph{R} under windows is accomplished by downloading the windows binary installer from \url{http://streaming.stat.iastate.edu/CRAN/bin/windows/base/}, opening the installer and following the on-screen directions.  Upon completion of the installer (and possibly rebooting), you should have an icon labelled \texttt{R 2.9.2} on your desktop (and possibly in the \texttt{Start} menu as well).
+
+To start a new \emph{R} session, simply double-click on the \texttt{R 2.9.2} icon.
+% subsubsection windows (end)
+
+\subsubsection{Linux} % (fold)
+\label{ssub:linux}
+
+Installing \emph{R} on a linux system can generally be performed using your distribution-specific package manager (\texttt{rpm/yum} for RedHat-type distributions, \texttt{apt} for Debian based distributions such as Ubuntu).
+
+If your distribution does not provide \emph{R} packages, you can download the compressed sources from \url{http://streaming.stat.iastate.edu/CRAN/bin/linux/ubuntu/} and compile them yourself\footnote{If you need help with this, see me.}.
+
+
+\TODO{Dependency issues}
+% TODO Linux dependency issues
+
+% subsubsection linux (end)
+
+\subsubsection{Other options} % (fold)
+\label{ssub:other_options}
+
+Should none of the above options prove successful for you, alternative methods of running \emph{R} do exist.
+
+\TODO{other methods}
+% TODO other methods.
+
+\begin{itemize}
+    \item Java i.e. Biocep
+    \item remote (ssh)
+\end{itemize}
+% subsubsection other_options (end)
+
+\subsection{Text Editor}
+
+A \emph{Text editor} is a program that lets you edit \emph{plain text} documents (such as \emph{R} source code) without inserting any formatting or other markup (as you would find in a document edited by Microsoft Word.)  Additionally, all of the text editors described below provide additional capabilities to aid in the writing of \emph{R} source code.
+
+At first glance, the use of a text editor may seem superfluous; why edit your code elsewhere instead of typing it directly into \emph{R}.  The answer to this is threefold:
+\begin{enumerate}
+  \item \textbf{Repeatability:} The act of typing code directly into an interpreter is innately error prone.  Additionally, you will often find ``chunks'' of code which you find yourself using over and over.  In order to speed up this process and ensure that the same code is used every time, it is beneficial to save the ``chunk'' in a code file.  A text editor is the proper tool for this.
+  \item \textbf{Communication:} Having code stored in a text file makes it easy to share between users.
+  \item \textbf{Analysis:} Having code stored in a text file enables easy post-hoc analysis and modification.
+\end{enumerate}
+
+With these benefits in mind, I recommend that each student find a text editor that they become comfortable with.  The following are some suggestions:
+
+\subsubsection{Cross-platform} % (fold)
+\label{ssub:cross_platform}
+
+\emph{Cross-platform} tools are tools which are available on multiple operating systems (i.e. Mac OSX, Windows, etc).  Of the three cross-platform text editors listed below, two deserve special mention.  \emph{Vi(m)} and \emph{Emacs} are the two most popular text editors in the world.  They can be found on most modern operating systems without installing any software (with the exception of windows).  They are both very mature tools with a lot of features, but both carry a significant learning curve.  If you use Mac OSX or Linux, I would highly encourage you to take a look at one (or both) of them even if you don't end up using it as your ``primary'' text editing tool.
+
+\begin{itemize}
+    \item \textbf{vi(m)} is (arguably) easier to use and learn than \emph{Emacs}, and is available (as a source package) at  \url{ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2}.
+    \item \textbf{Emacs}, though somewhat more difficult to get started with, is a more full-featured tool and has a special add-on package called \emph{ESS (Emacs Speaks Statistics)} which provides high-level integration with \emph{R}.
+    \item \textbf{jedit} is a relatively new Java-based cross-platform editor which can be downloaded (all platforms) from  \url{http://prdownloads.sourceforge.net/jedit/jedit42install.jar}.
+\end{itemize}
+% subsubsection cross_platform (end)
+
+\subsubsection{Mac OSX} % (fold)
+\label{ssub:mac_osx2}
+
+The following \emph{OS X} specific text-editors deserve special mention.
+
+\begin{itemize}
+    \item \textbf{TextMate}, available at \url{http://macromates.com/} is a very easy-to-use and powerful text editor that I \emph{highly} recommend to anyone running \emph{OS X}.
+    \item \textbf{MacVim}, available at \url{http://code.google.com/p/macvim/} is an enhanced version of \emph{Vi(m)} which provides additional GUI capabilities and ease-of-use enhancements.
+    \item \textbf{Aquamacs}, available at \url{http://aquamacs.org/} is an enhanced version of \emph{Emacs} which provides GUI integration, ease-of-use enahancements, and includes many add-on packages such as \emph{ESS}.
+\end{itemize}
+% subsubsection mac_osx2 (end)
+
+\subsubsection{Windows} % (fold)
+\label{ssub:windows2}
+
+The default windows text editor, \emph{Notepad}, provides only the bare minimum of features.  Recommended alternatives include:
+
+\begin{itemize}
+    \item \textbf{Gvim}, available at \url{ftp://ftp.vim.org/pub/vim/pc/gvim72.exe}, provides the power of the \emph{vi} editor to windows users as well as an easier to use GUI.
+    \item \textbf{Emacs} for windows can be downloaded from  \url{http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip}.  I have no experience using \emph{emacs} under windows.
+    \item \textbf{e-texteditor} is a \emph{TextMate} clone (see  \ref{ssub:mac_osx2}), providing many of the same features and the ability to use \emph{TextMate} extensions.  It is available from  \url{http://www.e-texteditor.com/}.
+    \item \textbf{notepad++} is another popular Windows text-editor with which I have no experience.  It can be downloaded from  \url{http://notepad-plus.sourceforge.net/uk/site.htm}.
+\end{itemize}
+% subsubsection windows2 (end)
+
+\section{Your first \emph{R} session}
+
+Lets dive right into your first \emph{R} session.  If you are in the lab, Click on the \texttt{Finder} icon, click \texttt{Applications} in the left sidebar, find the Open \texttt{R.app} icon, and double-click it.  You should be greeted by a message similar to
+
+<<startupmessage,echo=f>>=
+startuptext <- "
+R version 2.10.0 Under development (unstable) (2009-06-03 r48708)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+>
+";
+cat(startuptext);
+@
+
+\subsection{Interpreter}
+
+Try entering the following commands into the \emph{R} interpreter.
+
+<<firstsession_0,echo=t,eval=f>>=
+3
+3 + 5
+1:50
+x <- 1:5
+x / 2
+@
+
+You should see the following result:
+
+<<firstsession_1,echo=t,eval=t>>=
+3
+3 + 5
+1:50
+x <- 1:50
+x / 2
+@
+
+Lets go through this one line at a time.
+
+<<firstsession_1_1,echo=t,eval=t>>=
+3
+@
+
+The \emph{R} interpreter runs in what is called a \emph{Read-Evaluate-Print} loop.  It \emph{reads} in commands as you type them, \emph{evaluates} those commands, and finally \emph{prints} the result to the screen.  Here, you entered the number \texttt{3}, which was evaluated to \texttt{3}, and printed to the screen.  The \texttt{[1]} preceding the \texttt{3} in the output indicates that there is only one result.
+
+<<firstsession_1_2,echo=t,eval=t>>=
+3 + 5
+@
+
+Here, the \emph{R} interpreter evaluated the expression \texttt{3 + 5} and printed the result, \texttt{8}.
+
+<<firstsession_1_3,echo=t,eval=t>>=
+1:50
+@
+
+This expression introduces an important concept in \emph{R}.  The expression \texttt{1:5} means (to \emph{R}) ``all whole numbers between 1 and 50, inclusive'' and represents a \emph{vector}\footnote{This will be elaborated on \ref{REFHERE}.} or collection of values.  In order to display this result on the screen, the numbers from 1 to 50 are split over several lines.  Each line begins with a number in brackets, which denotes the ``number'' of each result.
+
+<<firstsession_1_4,echo=t,eval=t>>=
+x <- 1:50
+@
+
+This expression introduces two additional important concepts.  The first is that of a \emph{variable}.  A \emph{variable} is a symbol which has a value assigned to it.  Here \texttt{x} is a variable.  The second concept is that of \emph{assignment}\footnote{If you have used other programming languages before, this may seem strange (traditionally, \texttt{=} was used for assignment).  Although \emph{R} will generally permit you to use \texttt{=} instead of \texttt{<-} for assignment, this practice is strongly discouraged.}.  It is the most basic of of variable operations, and is represented by the characters \texttt{<-}.  The assignment operator works by taking the expression to its right (\texttt{1:50}), and assigning it to the variable to its left (\texttt{x}).  From this point forward, typing \texttt{x} by itself is \emph{exactly} the same as typing \texttt{1:50}.  Try it.  enter the following:
+<<firstsession_1_4_1,echo=t,eval=t>>=
+x
+@
+The result such be exactly the same as when you typed \texttt{1:50}.
+
+<<firstsession_1_5,echo=t,eval=t>>=
+x / 2
+@
+
+Here we show that the variable \texttt{x} can be used just like a number, and that basic operations (such as division) operate on all elements of a vector.
+
+\subsubsection{Example 1} % (fold)
+\label{ssub:example_1}
+
+Here is another example session for you to try, exploring further features of the \emph{R} interpreter.
+
+<<firstsession,echo=t,eval=t>>=
+x <- rnorm(50, mean=4)
+x
+mean(x)
+range(x)
+hist(x)
+## check help -- how to change title?
+@
+<<echo=t,eval=f>>=
+?hist
+@
+\begin{center}
+<<firstsessionplot,fig=t,echo=t>>=
+hist(x, main='my first plot')
+@
+\end{center}
+
+% subsubsection example_1 (end)
+
+The \emph{R} interpreter includes several useful features.
+
+\subsubsection{Tab completion} % (fold)
+\label{ssub:tab_completion}
+
+
+\emph{Tab completion} is a process where a partially entered command is completed by the interpreter by looking for any possible command containing the text you have typed.  Tab completion is performed by pressing the \texttt{[TAB]} key after typing part of a command.  Try it.  Suppose you couldn\'t remember the name of the command for finding square roots.  Type into the interpreter \texttt{sq} and, without typing anything else, press the \texttt{[TAB]} key.  You should find that \texttt{sq} has been expanded to \texttt{sqrt}!  If there is more than one possible completion for the text you have entered, tab-completion will list all possible completions if you press \texttt{[TAB]} twice.  Try getting all completions of \texttt{exp}.  The result should look something like this.
+
+<<tabcompletion_1,echo=t,eval=f>>=
+exp
+@
+<<tabcompletion_2,echo=f,eval=t>>=
+cat('\nexp\nexp\texpand.grid\texpand.model.frame\texpm1\texpression\n');
+@
+
+Tab-completion can also be used to find the arguments to a function.  Consider the \texttt{plot} function.  It has far too many options to remember.  But, but typing \texttt{plot(} and pressing the \texttt{TAB} key, \emph{R} will show you all possible arguments to the function \texttt{plot}.
+
+<<tabcompletion_3,echo=f,eval=t>>=
+cat('> plot(\n')
+@
+<<tabcompletion_4,echo=f,eval=t>>=
+plotCompletions <- "
+...=               ci.lty=            do.points=         log=               panel.last=        x=
+absVal=            ci.type=           edge.root=         lty.intervals=     panel=             xaxt=
+add.smooth=        ci=                edgePar=           lty.predicted=     par.fit=           xlab=
+add=               col.01line=        formula=           lty.separator=     pch=               xlim=
+angle=             col.hor=           frame.plot=        lty=               plot.type=         xpd=
+ann=               col.intervals=     freq=              lwd=               predicted.values=  xval=
+ask=               col.points=        grid=              main2=             qqline=            xy.labels=
+asp=               col.predicted=     hang=              main=              range.bars=        xy.lines=
+axes=              col.range=         horiz=             mar.multi=         separator=         y=
+border=            col.separator=     id.n=              mar=               set.pars=          yax.flip=
+caption=           col.vert=          intervals=         max.mfrow=         sub.caption=       yaxt=
+center=            col=               label.pos=         mgp=               sub=               ylab=
+cex.caption=       conf=              labels.id=         nc=                subset=            ylim=
+cex.id=            cook.levels=       labels=            nodePar=           type=              zero.line=
+cex.main=          dLeaf=             leaflab=           oma.multi=         verbose=
+cex.points=        data=              legend.text=       oma=               verticals=
+ci.col=            density=           levels=            panel.first=       which=
+";
+plotCompletions <- gsub("\n", "\t", gsub(" +", "\t", plotCompletions));
+plotCompletions <- strsplit(plotCompletions, '\t')[[1]]
+print(plotCompletions);
+@
+
+Finally, tab-completion can be used to complete filenames when used inside single or double quotation marks.
+
+% subsubsection tab_completion (end)
+
+\subsubsection{History} % (fold)
+\label{ssub:history}
+
+A second useful feature of the \emph{R} interpreter is the \emph{command history}.  \emph{R} keeps a record of every command you have entered since opening the \emph{R} interpreter.  At the \texttt{>} prompt, you can use the \texttt{[UP]} and \texttt{[DOWN]} arrows to move backwards and forwards through your command history.  Try it.
+
+You can view your full command history by using the command \texttt{history()} (press texttt{q} to quit the history browser).  Finally, you can use the command \texttt{savehistory()} to write your history to a text file for later inspection (default name is \texttt{.Rhistory}).
+
+% subsubsection history (end)
+
+\subsubsection{Comments} % (fold)
+\label{ssub:comments}
+
+In \emph{R}, the pound character (\texttt{\#}) is used to denote comments.  In general anything after between a \texttt{\#} and the end of a line is ignored.  This allows explanations and textual notes to be included directly in \emph{R} source code.  The only time that a \texttt{\#} does not indicate a comment is when it is surrounded by single- or double- quotation marks.
+
+<<comment_ex,eval=t,echo=t>>=
+# This is a comment
+'# This is not a comment'
+@
+
+% subsubsection comments (end)
+
+\subsubsection{Prompt} % (fold)
+\label{ssub:prompt}
+
+As you have seen, the standard \emph{R} prompt is the \texttt{>} character.  Occasionally, you will see the plus sign (\texttt{+}) shown as a prompt instead.  This is a \emph{continuation prompt} and signifies that the command entered on the previous line is not complete.  This allows you to break long commands over multiple lines.
+
+<<continuation_prompt,eval=t,echo=t>>=
+3 + 5 +
+2
+
+sqrt(
+  3.141)
+
+@
+
+Occasionally, other (self-explanatory) prompts will be shown, such as
+<<example_prompt,eval=f,echo=t>>=
+cat('\nHit <Return> to see the next plot: \n')
+@
+% subsubsection prompt (end)
+
+
+\subsubsection{Getting help}
+
+One of \R \'s greatest strengths is the availability of online help inside the interpreter.  When inside the \R help system, you can move up and down with the arrow keys, and return to the interpreter by pressing \texttt{q}.
+
+\subsubsection{Help browser} % (fold)
+
+There are two general ways to invoke the \R help system (described below).
+
+\begin{itemize}
+  \item Using the \texttt{help} command:
+\end{itemize}
+
+<<help_ex_1,eval=f,echo=t>>=
+help('plot')
+@
+<<help_ex1_1,eval=t,echo=f>>=
+plot_help <- help('plot')
+plot_help_text <- paste(readLines(plot_help), collapse="\n");
+plot_help_text <- gsub('_\\\b(.{1})', '\\1', plot_help_text);
+cat(plot_help_text);
+@
+
+
+\begin{itemize}
+  \item Using the \texttt{?} shortcut:
+\end{itemize}
+
+<<help_ex_2,eval=f,echo=t>>=
+?plot
+@
+<<help_ex2_1,eval=t,echo=f>>=
+plot_help <- help('plot')
+plot_help_text <- paste(readLines(plot_help), collapse="\n");
+plot_help_text <- gsub('_\\\b(.{1})', '\\1', plot_help_text);
+cat(plot_help_text);
+@
+
+In general, you can receive help for any command \emph{\texttt{thisCommand}} using either \texttt{help('\emph{thisCommand}')}\footnote{Note the use of quotation marks.} or with \texttt{?\emph{thisCommand}}.
+
+In increase the scope of your search of the help system, try
+
+<<help_ex3,eval=f,echo=t>>=
+help.search('plot')
+??plot
+@
+
+Finally, you can invoke the \emph{HTML} help browser (if available) using the command \texttt{help.start()}.
+
+% subsubsection help_browser (end)
+
+\subsubsection{Examples} % (fold)
+\label{ssub:examples}
+
+\begin{itemize}
+    \item \texttt{example(\emph{function})}
+    \item \texttt{data}
+\end{itemize}
+
+% subsubsection examples (end)
+
+\subsection{Session} % (fold)
+\label{sub:session}
+
+\subsubsection{Saving} % (fold)
+\label{ssub:saving}
+
+\begin{itemize}
+    \item \texttt{save.image}
+    \item \texttt{save}
+    \item \texttt{load}
+    \item \texttt{history}
+\end{itemize}
+
+
+% subsubsection saving (end)
+
+\subsubsection{Quitting} % (fold)
+\label{ssub:quitting}
+
+\begin{itemize}
+    \item \texttt{q()}
+    \item saving/restoring session
+    \item dumping
+\end{itemize}
+
+% subsubsection quitting (end)
+
+\subsubsection{Aborting} % (fold)
+\label{ssub:aborting}
+
+\begin{itemize}
+    \item C-c
+    \item Esc
+    \item kill
+\end{itemize}
+
+% subsubsection aborting (end)
+
+% subsection session (end)
+
+\section{Exploring \emph{R}} % (fold)
+\label{sec:exploring_r}
+
+\subsection{Example 2: Calculator} % (fold)
+\label{sub:example_2_calculator}
+
+<<example_2_calculator,eval=t,echo=t>>=
+# Arithmetic
+3 / 5
+301 + 50000003
+0.0005 * 0.0001
+-0.0001 ** 9
+-0.0001 ^ 9
+## exponentiation can be represented with either ** or ^
+3 + 5 * 2
+(3 + 5) * 2
+## special operations are called by name
+sin(3)
+sqrt(5)
+## complex numbers are supported when written as x + yi
+-1 + 0i
+sqrt(-1 + 0i)
+## constants can be called by name or expression (varies)
+pi
+exp(1)
+@
+
+
+% subsection example_2_calculator (end)
+
+\subsection{Example 3: Variables} % (fold)
+\label{sub:example_3_variables}
+\begin{itemize}
+    \item letters, numbers, underscores, `.'
+    \item convention
+    \item reserved
+\end{itemize}
+\begin{center}
+    \begin{tabular}{c|c}
+        if & TRUE \\
+        else & FALSE \\
+        repeat & NULL \\
+        while & Inf \\
+        function & NaN \\
+        for & NA \\
+        in & NA\_integer\_ \\
+        next & NA\_real\_ \\
+        break & NA\_complex\_ \\
+    \end{tabular}
+\end{center}
+% subsection example_3_variables (end)
+<<example_3_vars,eval=t,echo=t>>=
+x <- 1:20
+y <-  x + (x/4 - 2)^3 + rnorm(20, sd=3)
+names(y) <- paste("O",x,sep=".")
+ww <- rep(1,20); ww[13] <- 0
+summary(lmxy <- lm(y ~ x + I(x^2)+I(x^3) + I((x-10)^2), weights = ww), cor = TRUE)
+variable.names(lmxy)
+variable.names(lmxy, full= TRUE)# includes the last
+case.names(lmxy)
+case.names(lmxy, full = TRUE)# includes the 0-weight case
+@
+
+\subsubsection{Types} % (fold)
+\label{ssub:types}
+\begin{tabular}{r l l l}
+    type & is a  & description  &  notes \\
+    \hline
+    integer & numeric & whole number  &       \\
+    double  & numeric & floating point number       &       \\
+    numeric &       &   any number    & base type       \\
+    logical &        & TRUE or FALSE   & base type \\
+    complex &       & complex number &       \\
+    raw     &       & unparsed input string  &       \\
+    character &       & letters and other characters &       \\
+    list &       & collection of other objects &       \\
+    expression &       & parsed but unevaluated input &       \\
+    name     &       & character string referencing an object &       \\
+    symbol &       & character string referencing an object  &       \\
+    function (closure) &   & a function  &       \\
+    pairlist &       & deprecated linked-list structure &       \\
+    promise &       & reference to an expression whose evaluation & \\
+    & & is delayed by \emph{lazy evaluation} but which is treated as being a value &       \\
+\end{tabular}
+
+% subsubsection types (end)
+
+\subsubsection{Vectors and Matrices} % (fold)
+\label{ssub:vectors}
+
+<<vectors,eval=t,echo=t>>=
+x <- 200
+half.x <- x/2
+threshold <- 95.0
+age <- c(15, 19, 30)
+age[2]      ## [] for accessing element.
+length(age) ## () for calling function.
+y <- c(10, 20, 40)
+y[2]
+length(y)
+x <- 5
+length(x)
+y <- c(20, 49, 16, 60, 100)
+min(y)
+range(y)
+sqrt(y)
+log(y)
+x <- seq(from=1, to=9, by=2)
+y <- seq(from=2, by=7, length=3)
+z <- 4:8
+a <- seq.int(5)                ## fast for integers
+b <- c(3, 9, 2)
+d <- c(a, 10, b)
+e <- rep( c(1,2), 3)
+f <- integer(7)
+@
+
+<<matrices,eval=t,echo=t>>=
+x <- 1:6
+is.matrix(x)
+dim(x) <- c(2,3)
+is.matrix(x)
+x
+dim(x)
+x[2,2]
+x[1,]                           ## extracting values.
+x[1:2, 2:3]
+x[,2]                           ## not column vector!
+x[,2,drop=F]                    ## gotcha!
+m <- matrix( floor(runif(6, max=50)), nrow=3) ##ncol=2
+x <- rbind( c(1,4,9), c(2,6,8), c(3,2,1))
+y <- cbind( c(1,2,3), 5, c(4,5,6))  # recycling again
+x <- matrix(1:4, 2,2)
+i <- diag(2) ## 2x2 identity matrix
+x %*% i      ## should be x
+x  *  i      ## not x!
+@
+% subsubsection vectors (end)
+
+\subsection{Boolean Logic} % (fold)
+\label{sub:boolean_logic}
+
+One of the fundamental concepts of computer programming, and one often unfamiliar to non-programmers, is the concept of \emph{boolean logic}.  Boolean algebra is a simple mathematical system containing two values (\textbf{True} and \textbf{False}) and three operations (\textbf{AND}, \textbf{OR} and \textbf{NOT}).  The following table outlines how boolean logic is represented in \R.
+
+\begin{center}
+  \begin{tabular}{r | l | l | l}
+    \hline
+    & \R representation & context & meaning \\
+    \hline
+    true & \texttt{TRUE} & \texttt{a} & \texttt{a} is true \\
+    false & \texttt{FALSE} & \texttt{b} & \texttt{b} is true \\
+    not & \texttt{!} & \texttt{!a} & inverse of \texttt{a} \\
+    and & \texttt{\&} and \texttt{\&\&} & \texttt{a \& b} & \texttt{a} and \texttt{b}\\
+    or & \texttt{|} and \texttt{||} & \texttt{a | b} & \texttt{a} or \texttt{b}\\
+    \hline
+  \end{tabular}
+\end{center}
+
+The conventions for using these operations are bit unusual.
+\begin{itemize}
+  \item \textbf{AND} (\texttt{\&}) takes two arguments, \texttt{a} and \texttt{b}.  One is placed before the \texttt{\&} and one after.  The expression \texttt{a \& b} evaluates to \texttt{TRUE} if and only if \texttt{a} evaluates to \texttt{TRUE} and \texttt{b} evaluates to \texttt{TRUE}.
+  \item \textbf{OR} (\texttt{|}) takes two arguments, \texttt{a} and \texttt{b}.  One is placed before the \texttt{|} and one after.  The expression \texttt{a | b} evaluates to \texttt{TRUE} if \texttt{a} evaluates to \texttt{TRUE}, if \texttt{b} evaluates to \texttt{TRUE}, or if both \texttt{a} and \texttt{b} evaluate to \texttt{TRUE}.
+  \item \textbf{NOT} (\texttt{!}) takes one argument, \texttt{a}, placed directly after the \texttt{!}.  The expression \texttt{!a} evaluates to \texttt{TRUE} if and only if \texttt{a} evaluates to \texttt{FALSE}.
+\end{itemize}
+
+Boolean logic is extremely important for \emph{conditionals}, which we will explore below.
+
+One final aspect of \emph{boolean logic} which we must consider is that of \emph{boolean indexing}.  Recall that we can extract a subset of a vector by putting a vector of integer indexes in brackets.
+
+<<bool_index_0,eval=t,echo=t>>=
+myVec <- letters
+myVec
+myVec[1:5]          # First five letters
+@
+
+You can also use a \emph{logical vector} (a vector of only \texttt{TRUE} or \texttt{FALSE} members) to index a vector as well.  The result of such an operation is a vector composed of all the members of the original vector which were indexed by \texttt{TRUE}.  An example may help to clarify this
+
+<<bool_index_1,eval=t,echo=t>>=
+myVec <- letters
+myVec
+idx <- 1:26
+bool_idx <- idx < 10              # logical vector
+bool_idx
+myVec[bool_idx]                   # the first 10 letters of the alphabet
+@
+
+% subsection boolean_logic (end)
+
+\subsubsection{Conditionals} % (fold)
+\label{ssub:conditionals}
+
+Conditionals are ``tests'' which return either \texttt{TRUE} or \texttt{FALSE} with respect to a particular variable.  The most familiar conditionals are likely the \emph{comparison operators}
+
+\bc
+  \begin{tabular}{r | c | c | l }
+  comparison & \R representation & context & notes \\
+  \hline
+  equality & \texttt{==} & \texttt{a == b} & True if \texttt{a} and \texttt{b} have the same value \\
+  inequality & \texttt{!=} & \texttt{a != b} & synonomous with \texttt{!(a == b)} \\
+  less than, greater than & \texttt{<}, \texttt{>} & \texttt{a < b} & true if \texttt{a} is less than \texttt{b} \\
+  less than or equal to & \texttt{<=}, \texttt{>=} & \texttt{a <= b} & synonomous with \texttt{(a < b) | (a == b)} \\
+  set-theoretic inclusion & \texttt{\%in\%} & \texttt{a \%in\% b} & true if vector \texttt{b} contains \texttt{a} as one of its members \\
+  vector union & \texttt{all()} & \texttt{all(a)} & true if every member of vector \texttt{a} is true \\
+  vector intersection & \texttt{any()} & \texttt{any(a)} & true if any member of vector \texttt{a} is true \\
+  \hline
+  \end{tabular}
+\ec
+
+The most basic use of conditionals involves the \R \texttt{if} command, which has the following syntax:
+
+<<if_usage,eval=f,echo=t>>=
+if (CONDITION) {
+  BLOCK_1
+} else if (CONDITION_2) {
+  BLOCK_2
+} else {
+  ELSE_BLOCK
+}
+@
+The capitalized expressions represent code which may be changed:
+\bc
+\begin{tabular}{r | l}
+expression & meaning \\
+\hline
+\texttt{CONDITION} & a condition which evaluates to \texttt{TRUE} or \texttt{FALSE} \\
+\texttt{BLOCK\_1} & a sequence of commands evaluated if \texttt{CONDITION} \\
+                  &  evaluates to \texttt{TRUE} \\
+\texttt{CONDITION\_2} (optional) & a second condition which is evaluated only if \texttt{CONDITION} \\
+                  & evaluates to \texttt{FALSE}.  Note that as many \texttt{else if() } \\
+                  & clauses may be used as one chooses. \\
+\texttt{BLOCK\_2} (optional) & sequence of commands to be evaluated if \texttt{CONDITION\_2} \\
+                  & is evaluated and \texttt{TRUE} \\
+\texttt{ELSE\_BLOCK} (optional) & sequence of commands to be evaluated if none \\
+                  & of the \texttt{CONDITION} blocks evaluate to be true.\\
+\hline
+\end{tabular}
+\ec
+
+An example may help to clarify this syntax.
+
+<<if_example,eval=f,echo=t>>=
+x1 <- 2
+
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+
+x1 <- 16
+
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+
+x1 <- 128
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+x1 <- 1024
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+@
+
+This example should produce the following output:
+<<if_example,eval=t,echo=f>>=
+x1 <- 2
+
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+
+x1 <- 16
+
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+
+x1 <- 128
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+
+x1 <- 1024
+if (x1 < 10) {
+  cat(x1, " has only 1 digit.")
+} else if (x1 < 100) {
+  cat(x1, " has two digits.")
+} else if (x1 < 1000) {
+  cat(x1, " has three digits.")
+} else {
+  cat(x1, " has more than three digits.")
+}
+@
+% subsubsection conditionals (end)
+
+
+\subsubsection{Flow control / loops} % (fold)
+\label{ssub:flow_control_loops}
+
+\emph{Flow control}, the process by which commands are ``selected'' and evaluated is defined by two major constructs: \emph{conditionals} (seen in the previous section) and \emph{Loops}.  A \emph{loop} is a section of code which is repeatedly evaluated (often with variables assuming different values).  In \R, there are two main types of loops which we will consider.
+
+\emph{While} loops are used to evaluate a set of commands based on the result of a \emph{conditional} test.  The syntax for a \texttt{while} loop is as follows:
+
+<<while_syntax,eval=f,echo=t>>=
+while(CONDITION) {
+  BLOCK
+}
+@
+Here, \texttt{\emph{CONDITION}} is a conditional statement (see above), and \texttt{\emph{BLOCK}} is a series of commands which are evaluated, in sequence, until \texttt{\emph{CONDITION}} evaluates to \texttt{FALSE}.  As an example, consider the fibonacci sequence $f_n=0, 1, 1, 2, 3, 5, \ldots$, defined by:
+\begin{equation}
+  f_n = \begin{cases}
+  0 & \text{ if  $n=1$, }\\
+  1, & \text{ if  $n=2$, }\\
+  f_{n-1} + f_{n-2}, & \text{ if  $n > 2$}\\
+\end{cases}
+\end{equation}
+Suppose that we wanted to find the first number in the fibonacci sequence greater than 1000.
+
+<<while_ex1,eval=t,echo=t>>=
+x0 <- 0
+x1 <- 1
+while(x1 < 1000) {      # x1 < 1000 is the condition
+  newX1 <- x0 + x1      # -\
+  x0 <- x1              # --+ -- these three lines make up the BLOCK
+  x1 <- newX1           # -/
+}
+x1
+@
+
+The second of our looping constructs, the \texttt{for} loop, is used to repeat a sequence of commands a predetermined number of times.
+
+<<for_syntax,eval=f,echo=t>>=
+for (COUNTER in VECTOR) {
+  BLOCK
+}
+@
+
+Here \texttt{\emph{COUNTER}} is a variable which changes from one iteration of the loop to the next and \texttt{\emph{VECTOR}} is a vector of values.  \texttt{\emph{BLOCK}} is evaluated once for each value in \texttt{\emph{VECTOR}}.  In each iteration, \texttt{\emph{COUNTER}} is assigned a new value, taken from the members of \texttt{\emph{VECTOR}}.
+
+Continuing with the previous example, suppose now you wanted to know the first 20 values of the fibonacci sequence.  Then:
+
+<<for_ex1,eval=t,echo=t>>=
+xVec <- c(0, 1)
+for (ii in 3:20){
+  xminus1 <- xVec[ii-1]
+  xminus2 <- xVec[ii-2]
+  newVal <- xminus1 + xminus2
+  xVec <- c(xVec, newVal)
+}
+xVec
+@
+
+There are two special commands for dealing with loops
+\begin{itemize}
+  \item \texttt{break} immediately terminates the loop and continues evaluation at the first command following the end brace of the loop.
+  \item \texttt{next} ends the current loop iteration and starts the next one.
+\end{itemize}
+
+% subsubsection flow_control_loops (end)
+
+
+\subsection{Example 4: Functions} % (fold)
+\label{sub:example_4_functions}
+
+One of the most fundamental of programming concepts is that of the \emph{function}, a series of commands which take several values (variables) as input and return the result of computations on that input.  It is generally helpful (and frequently necessary) to place a series of related commands in a function.  \R lets you define functions using the following syntax
+
+<<func_syntax,eval=f,echo=t>>=
+functionName <- function(argumentList) {
+  codeBlock
+  {return(returnValue)}
+}
+@
+
+Breaking the components down, we have
+\begin{enumerate}
+  \item \texttt{\emph{functionName}} is the name you would like to assign the new function to.\footnote{\TODO{MORE ABOUT FUNCTION NAMES}}.
+  \item \texttt{\emph{argumentList}} the inputs to the function
+  \item \texttt{\emph{codeBlock}} the commands to be evaluated
+  \item \texttt{\emph{returnValue}} (optional) the output value that is ``returned'' by the function
+\end{enumerate}
+
+As an example, let us define a function which takes as input an integer, \texttt{k} and returns the first number in the fibonacci sequence equal to or greater than that number.
+
+<<fun_ex_1,eval=t,echo=t>>=
+fibLargerThan <- function(k) {
+  x0 <- 0
+  x1 <- 1
+  while(x1 < k) {
+    newX1 <- x0 + x1
+    x0 <- x1
+    x1 <- newX1
+  }
+  return(x1);
+}
+fibLargerThan(100)
+fibLargerThan(1000)
+fibLargerThan(10000)
+@
+
+\begin{itemize}
+  \item Parts \begin{enumerate}
+    \item name
+    \item args
+    \item body
+    \item return
+  \end{enumerate}
+  \item scope
+  \item calling
+\end{itemize}
+
+% subsection example_4_functions (end)
+
+\subsection{Miscellany} % (fold)
+\label{sub:miscellany}
+
+% subsection miscellany (end)
+
+
+
+% section exploring_r (end)
+
+\section{Source files} % (fold)
+\label{sec:source_files}
+
+\subsection{Overview} % (fold)
+\label{sub:overview_s}
+
+% subsection overview_s (end)
+
+\subsection{Functions} % (fold)
+\label{sub:functions}
+
+% subsection functions (end)
+
+\subsection{Scripts} % (fold)
+\label{sub:scripts}
+
+% subsection scripts (end)
+
+\subsection{Style} % (fold)
+\label{sub:style}
+
+\subsubsection{Conventions} % (fold)
+\label{ssub:conventions}
+
+% subsubsection conventions (end)
+
+\subsubsection{Comments} % (fold)
+\label{ssub:comments}
+
+% subsubsection comments (end)
+
+\subsubsection{White space} % (fold)
+\label{ssub:white_space}
+
+% subsubsection white_space (end)
+
+% subsection style (end)
+
+% section source_files (end)
+
+\section{Plotting} % (fold)
+\label{sec:plotting}
+
+\begin{center}
+<<plotting_1,eval=t,echo=t,fig=t>>=
+x <- seq(from=0, to=2*pi, len=1000)
+y <- cos(2*x)
+## just provide data; sensible labelling
+plot(x,y)
+@
+\end{center}
+
+\begin{center}
+<<plotting_2,eval=t,echo=t,fig=t>>=
+## Expand on previous plot ...
+plot(x,y, main='cos(2x)', type='l', lty=1, bty='n')
+y2 <- sin(2*x)
+lines(x,y2, main='sin(2x)', type='l', lty=2)
+same <- which( abs(y - y2) < 0.01)
+points(x[same], y[same], pch=19, col='red', cex=3)
+legend('bottomright', c("cos(2x)", "sin(2x)"),
+       lty=c(1,2))
+@
+\end{center}
+% section plotting (end)
+
+
+\bibliographystyle{plain}
+\bibliography{}
+\end{document}

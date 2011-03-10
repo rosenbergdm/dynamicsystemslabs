@@ -1,0 +1,627 @@
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+\pgfrealjobname{solution}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+%\usepackage{Sweave}
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+source('./listingPreps.R');
+# library('pgfSweave');
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5,pgf=T,compile.tex=TRUE,pdf=FALSE,pgf=TRUE,eps=FALSE,external=TRUE}
+
+\title{Introduction to computational programming\\\smaller Chapter 2 Lab Exercise \\\smaller Cobweb plots and stability}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+
+%\tracingonline=1
+%\tracingmacros=2
+
+
+\maketitle
+
+\part{Exercise} % (fold)
+\label{prt:exercise}
+
+\begin{enumerate}
+  \item Find the equilibrium values of populations governed by the following equations, and determine their stability analytically. Is there is a stable nonzero equilibrium  (carrying capacity) that the population may approach in the long run?
+  \begin{enumerate}
+    \item $N_{t+1} = 41N_t -10N_t^2$
+    \item $N_{t+1} = 41N_t +2N_t^2$
+  \end{enumerate}
+\end{enumerate}
+
+% \newcommand{\RBenumi}{\theenumi}
+% \renewcommand{\theenumi}{\theenumii}
+
+\begin{Solution}
+  \begin{enumerate}
+    \begin{enumerate}
+\item
+    \begin{align*}
+        N_{t+1} &= 41 N_t - 10 N_t^2 \\
+        \text{Let } x &= N_{t+1} = N_t \\
+        x &= 41 x - 10 x^2 \\
+        0 &= 10 x (4 - x) \\
+        x &\in \{ 0, 4 \} 
+      \end{align*}
+\item
+    \begin{align*}
+        N_{t+1} &= 41 N_t - 2 N_t^2\\
+        \text{Let } x &= N_{t+1} = N_t \\
+        x &= 41 x - 2 x^2 \\
+        0 &= 2 x (20 - x) \\
+        x  &\in \{ 0, 20 \}
+    \end{align*}
+\end{enumerate}
+\end{enumerate}
+\end{Solution}
+
+% \renewcommand{\theenumi}{\RBenumi}
+%
+      
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item Generate cobweb plots for the following logistic models.  Graphically identify all fixed points, and state whether they are ``stable.''
+  \begin{enumerate}
+    \item $f(x) = 3x - \frac{3x^2}{4} + 1$
+    \item $f(x) = 100x -2x^2$
+    \item $f(x) = -100 x + \frac{x^2}{2}$
+  \end{enumerate}
+  \item Write a \emph{functor} which takes as an argument a function describing a logistic model and generates a cobweb plot.
+\end{enumerate}
+
+<<noprompt,eval=t,echo=f>>=
+options(prompt=' ', continue=' ')
+@
+
+\begin{Solution}
+<<functor_def,eval=f,echo=t>>=
+f1 <- function (x) 
+  x * (5 - 4 * x)
+f2 <- function (x) 
+  2 * x * (1 - 3 * x / 2)
+f3 <- function (x)
+  x / 2 - x^2 / 5
+f4 <- function (x)
+  x * (5/2 - 7 * x)
+# source('./maxima_utilities.R');
+@
+\end{Solution}
+\begin{Solution}
+<<functor_def2,eval=f,echo=t>>=
+plotCobWeb <- function (f, max_iter=50) {
+  ## initialize variables
+  f_exp <- deparse(body(f))
+  df <- mDeriv(f);
+  df_exp <- deparse(body(df))
+  fixed_pts <- sort(mSolve.RServe(paste(f_exp, 'x', sep='=')));
+  zeros <- sort(mSolve.RServe(paste(f_exp, '0', sep='=')));
+
+  rate <- df(0);
+  carrying_cap <- max(zeros);
+  
+  init_value <- min(zeros) + diff(zeros) / 4;
+  y <- x <- numeric(length=max_iter*2);
+  x[1] <- init_value;
+  y[1] <- 0;
+
+  ## Loop over iterations
+
+  for (ii in seq(along=1:max_iter)) {
+    y[2 * ii + c(0,1)] <- f(x[2 * ii - 1]);
+    x[2 * ii + c(0,1)] <- c(x[2 * ii - 1], y[2 * ii + 1]);
+  }
+
+  ## Determine plot limits
+  if (all(is.finite(x) & is.finite(y))) {
+    xlim <- c(min(floor(zeros)), max(ceiling(zeros)));
+    ylim <- c(  max(c(0, min(f(c(zeros, fixed_pts, mean(zeros)))))),
+                max(f(c(zeros, fixed_pts, mean(zeros)))))
+  } else {
+    yranges <- xranges <- c(1);
+    for (ii in 2:length(x)) {
+      xranges <- c(xranges, diff(range(x[1:ii])));
+      yranges <- c(yranges, diff(range(y[1:ii])));
+    }
+    xlim <- c(min(floor(zeros)), max(ceiling(zeros)));
+    ymagnitudes <- na.omit(yranges[-1] /  yranges[-length(yranges)])
+    first_runaway <- min( (1:length(ymagnitudes) )[ymagnitudes > 100])
+    
+    ylim <- c(0, max(c(y[1:(first_runaway - 1)], f(mean(zeros)), f(zeros), 
+              f(fixed_pts))));
+  }
+
+  ## Draw plot elements
+  curve(f, from=xlim[1], to=xlim[2], ylim=ylim, xlim=c(min(zeros), 
+        max(zeros)), fg=gray(0.6), bty='n',col='red', xlab="$t$", 
+        ylab="$f(t)$");
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  abline(0, 1, col='blue', lwd=1);
+  lines(x, y, col='darkgreen', lwd=1);
+
+  ########################################################
+  ##  Page break only: Function continues on next page  ##
+  ########################################################
+}
+@
+\end{Solution}
+\begin{Solution}
+<<functor_def3,eval=f,echo=t>>=
+{
+  ##########################################################
+  ##  Page break only: Function continues from last page  ##
+  ##########################################################
+
+  ## Calculate label positions
+  typ <- text_y_positions <- mean(ylim) - diff(ylim) / 15 * c(4, 5, 6, 7, 8);
+  txp <- mean(zeros)
+
+  ## Add plot description
+  title(main=paste("{\\larger\\bf Cobweb plot of $ f(x) = ",
+        gsub("\\*", "", f_exp),"$ }"));
+  text(   x=mean(zeros), y=typ[1], 
+          paste(  "Fixed points: $ \\{ ", paste(as.character(fixed_pts), 
+                collapse=", "), " $ \\} \nCarrying capacity $ k=", 
+                carrying_cap, " $"));
+  if(rate < 3 && rate > 1) {
+    text(x=txp, y=typ[3], paste('Rate: $ r= ', rate,
+                                "\\quad \\rightarrow 1 < r < 3$"));
+    text(x=txp, y=typ[4], "{\\bf $\\therefore $ the fixed point is stable }");
+
+  } else {
+    text(x=txp, y=typ[3], 
+         paste('Rate: $r = ', rate, "\\quad \\rightarrow r > 3$") );
+    text(x=txp, y=typ[4], 
+         "{\\bf $\\therefore $ the fixed point is unstable }");
+  }
+}
+@
+\end{Solution}
+\begin{Solution}
+
+<<functor_def3,eval=t,echo=f>>=
+f1 <- function (x) 
+  x * (5 - 4 * x)
+f2 <- function (x) 
+  2 * x * (1 - 3 * x / 2)
+f3 <- function (x)
+  x / 2 - x^2 / 5
+f4 <- function (x)
+  x * (5/2 - 7 * x)
+
+plotCobWeb <- function (f, max_iter=50) {
+  ## initialize variables
+  f_exp <- deparse(body(f))
+  df <- mDeriv(f);
+  df_exp <- deparse(body(df))
+  fixed_pts <- sort(mSolve.RServe(paste(f_exp, 'x', sep='=')));
+  zeros <- sort(mSolve.RServe(paste(f_exp, '0', sep='=')));
+
+  rate <- df(0);
+  carrying_cap <- max(zeros);
+  
+  init_value <- min(zeros) + diff(zeros) / 4;
+  y <- x <- numeric(length=max_iter*2);
+  x[1] <- init_value;
+  y[1] <- 0;
+
+  ## Loop over iterations
+
+  for (ii in seq(along=1:max_iter)) {
+    y[2 * ii + c(0,1)] <- f(x[2 * ii - 1]);
+    x[2 * ii + c(0,1)] <- c(x[2 * ii - 1], y[2 * ii + 1]);
+  }
+
+  ## Determine plot limits
+  if (all(is.finite(x) & is.finite(y))) {
+    xlim <- c(min(floor(zeros)), max(ceiling(zeros)));
+    ylim <- c(  max(c(0, min(f(c(zeros, fixed_pts, mean(zeros)))))),
+                max(f(c(zeros, fixed_pts, mean(zeros)))))
+  } else {
+    yranges <- xranges <- c(1);
+    for (ii in 2:length(x)) {
+      xranges <- c(xranges, diff(range(x[1:ii])));
+      yranges <- c(yranges, diff(range(y[1:ii])));
+    }
+    xlim <- c(min(floor(zeros)), max(ceiling(zeros)));
+    ymagnitudes <- na.omit(yranges[-1] /  yranges[-length(yranges)])
+    first_runaway <- min( (1:length(ymagnitudes) )[ymagnitudes > 100])
+    
+    ylim <- c(0, max(c(y[1:(first_runaway - 1)], f(mean(zeros)), f(zeros), 
+              f(fixed_pts))));
+  }
+
+  ## Draw plot elements
+  curve(f, from=xlim[1], to=xlim[2], ylim=ylim, xlim=c(min(zeros), 
+        max(zeros)), fg=gray(0.6), bty='n',col='red', xlab="$t$", 
+        ylab="$f(t)$");
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  abline(0, 1, col='blue', lwd=1);
+  lines(x, y, col='darkgreen', lwd=1);
+
+  ## Calculate label positions
+  typ <- text_y_positions <- mean(ylim) - diff(ylim) / 15 * c(4, 5, 6, 7, 8);
+  txp <- mean(zeros)
+
+  ## Add plot description
+  title(main=paste("{\\larger\\bf Cobweb plot of $ f(x) = ",
+        gsub("\\*", "", f_exp),"$ }"));
+  text(   x=mean(zeros), y=typ[1], 
+          paste(  "Fixed points: $ \\{ ", paste(as.character(fixed_pts), 
+                collapse=", "), " $ \\} \nCarrying capacity $ k=", 
+                carrying_cap, " $"));
+  if(rate < 3 && rate > 1) {
+    text(x=txp, y=typ[3], paste('Rate: $ r= ', rate,
+                                "\\quad \\rightarrow 1 < r < 3$"));
+    text(x=txp, y=typ[4], "{\\bf $\\therefore $ the fixed point is stable }");
+
+  } else {
+    text(x=txp, y=typ[3], 
+         paste('Rate: $r = ', rate, "\\quad \\rightarrow r > 3$") );
+    text(x=txp, y=typ[4], 
+         "{\\bf $\\therefore $ the fixed point is unstable }");
+  }
+}
+@
+\end{Solution}
+\begin{center}
+<<functor_def11,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t,width=5,height=5>>=
+f <- f1;
+plotCobWeb(f)
+@
+<<functor_def12,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t,width=5,height=5>>=
+f <- f2
+plotCobWeb(f2)
+@
+
+<<functor_def13,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t,width=5,height=5>>=
+f <- f3
+plotCobWeb(f)
+@
+<<functor_def14,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t,width=5,height=5>>=
+f <- f4
+plotCobWeb(f)
+@
+\end{center}
+
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  
+  \item In physiology, maintaining a steady level of glucose in the bloodstream is necessary for the proper functioning of all organs. To study
+  this process, define $G(t)$ to be the amount of glucose in the bloodstream of a person at time $t$. Assume that glucose is absorbed from the bloodstream at a rate proportional to the concentration $G(t)$, with rate parameter $k$.
+  \begin{enumerate}
+    \item Write down a differential equation to describe this situation. What kind of ODE is it?
+    
+    \begin{Solution}
+      $\dot G = k G(t) $, a homogenous linear differential equation.
+    \end{Solution}
+    
+    \item Find the analytical solution for this equation, in terms of an initial value $G_0$ and the rate parameter $k$.
+    
+    \begin{Solution}
+      \begin{align*}
+        \frac{d G}{d t} &= k * G(t) \\
+        \frac{d G}{d t} \cdot \frac{1}{G(t)} &= k \\
+        \int \left( \frac{d G}{d t} \cdot \frac{1}{G(t)} \right) d t &= \int k \ d t \\
+        \int \frac{1}{G(t)} dG &= \int k \ dt \\
+        \log G(t) &= k t + C \\
+        G(t) &= e^{k t + C} \\
+      \end{align*}
+    \end{Solution}
+        
+    \item Let the initial glucose concentration be $G_0 = 100 mg/dl$, and the glucose removal rate be $k = 0.01 / min$. Use R to plot the solution as a graph over a reasonable time interval, with properly labeled axes.
+    
+    \begin{Solution}
+      \begin{eqnarray*}
+        G(t) &= e^{k t +  C} \\
+        G(0) &= e^{C} &= 100 \text{mg/dl} \\
+        G(t) &= e^{0.01 \text{ min$^{-1}$} \cdot t \text{ min} + 100 \text{ mg/dl} } \\
+        G(t) &= e^{100 - t / 100}
+      \end{eqnarray*}
+      
+      
+    \end{Solution}
+    \item What is the equilibrium concentration of blood sugar in this model? Is the equilibrium stable or unstable?
+    
+    \begin{Solution}
+      Under the assumption that $k$ is negative (inferred from the text), the equilibrium concentration is $0$ mg/dl.
+    \end{Solution}
+    
+    
+    \end{enumerate}
+  \item Now let us assume that glucose is added to to bloodstream at a constant rate $a$, independent of glucose concentration.
+  \begin{enumerate}
+    \item Write down a differential equation to describe this situation. What kind of ODE is it?
+    
+    \begin{Solution}
+      $$ \dot G = k G(t) + a $$
+    \end{Solution}
+    
+    \item Find the analytical solution for this equation, in terms of an initial value $G_0$ and the parameters $k$ and $a$.
+    \begin{Solution}
+      \begin{align*}
+        \dot G &= k G(t) + a \\
+        \frac{d G}{d t} &= k G(t) + a \\
+        G'(t) - k G(t) &= a \\
+        \\
+        \text{Let } \mu &= e^{\int -k dt} \tag{integrating factor} \\
+        &= e^{-kt} \\
+        \frac{d \mu}{d t} &= -k e^{-kt} \\
+        \\
+        \mu \left( G'(t) - k G(t) \right) &= \mu \, a \\
+        = e^{-kt} G'(t) - k e^{-kt} G(t) &= a e^{\int k dt}\\
+        = \mu G'(t) + \mu' G(t) & \\
+        = (G(t) \cdot \mu)'& \tag{product rule} \\
+         \\
+        \int \left(G(t) \cdot \mu \right)' dt &= \int {a e^{-kt} } dt \\
+        G(t) \cdot \mu + C &=\int {a e^{-kt} } dt \\
+        G(t) \cdot \mu &= - \frac{a}{k} e^{-kt} + C \\
+        G(t) &= - \frac{1}{e^{-kt}} \left(\frac{a}{k}  e^{-kt} + C \right) \\
+        &= e^{k t} \left(C - \frac{a}{k}\right) \\
+        G(0) &= C - \frac{a}{k}
+      \end{align*}
+    \end{Solution}
+    \item Let the initial glucose concentration be $G_0 = 100 mg/dl$, the glucose removal rate be $k = 0.01 / min$, and $a = 4 mg/dl/min$. Use R to plot the solution as a graph over a reasonable time interval, with properly labeled axes.
+    \begin{Solution}
+      \begin{align}
+        G(0) &= C - \frac{\mbox{a}}{k} \\
+        100 &= C - \frac{4}{-0.01} \\
+        C &= -300 \\
+        100 \, {(4 \, e^{\frac{1}{100} \, t} - 3)} e^{-\frac{1}{100} \, t}
+      \end{align}
+
+<<nonhomogenous_part2,eval=f,echo=t,fig=t,pgf=t,external=t,cache=t,width=3.5,height=3.5>>=
+glucose <- function(t) {
+  100 *  exp(-1 * t / 100) * (4 * exp(t / 100) - 3)
+}
+
+xlab <- "time $(t)$ {\\smaller (minutes)}"
+ylab <- "Blood glucose concentration $G(t)$ {\\smaller(mg / dl)}"
+main <- "$100 \\, {(4 \\, e^{\\frac{1}{100} \\, t} - 3)} e^{-\\frac{1}{100} \\, t}$"
+plot(glucose, from=0, to=800, xlab=xlab, ylab=ylab, main=main);
+@
+\end{Solution}
+\bc
+<<nonhomogenous_part3,eval=t,echo=f,fig=t,pgf=t,external=t,cache=t,width=3.5,height=3.5>>=
+glucose <- function(t) {
+  100 *  exp(-1 * t / 100) * (4 * exp(t / 100) - 3)
+}
+
+xlab <- "time $(t)$ {\\smaller (minutes)}"
+ylab <- "Blood glucose concentration $G(t)$ {\\smaller(mg / dl)}"
+main <- "$100 \\, {(4 \\, e^{\\frac{1}{100} \\, t} - 3)} e^{-\\frac{1}{100} \\, t}$"
+plot(glucose, from=0, to=800, xlab=xlab, ylab=ylab, main=main);
+@
+\ec    
+    \item What is the equilibrium concentration of blood sugar in the model with glucose infusion? Is the equilibrium stable or unstable?
+    \begin{Solution}
+      \begin{align}
+        G(t) &= 400 - 300 e^{\frac{-t}{100}} \\
+        \frac{dG}{dt} &= 3 e^{\frac{-t}{100}} \\
+        \lim_{t \rightarrow \infty} e^{\frac{-t}{100}} = 0 \\
+        \lim_{t \rightarrow \infty} G(t) &= 400 - 300 \cdot 0 \\
+          &= 100 \\
+        \lim_{t \rightarrow \infty} G'(t) &= 0 \\
+      \end{align}
+      Thus equilibrium is reached and stable at 400 mg / dl.
+    \end{Solution}
+  \end{enumerate}
+%  \item \emph{Analytically} find all fixed points for the following logistic models.  You may use a pencil and paper to solve these problems (hand in for credit).
+
+
+%   \item \emph{Enzyme kinetics.}  Consider the following reaction and observations.
+%   \begin{center}
+%     \ce{A + 2B <=> AB2}
+%   \end{center}
+%   \bc
+%     \begin{tabular}{c c c c c c c c}
+%     \toprule
+%     & & \multicolumn{6}{c}{Concentration (mM)} \\
+%     \multicolumn{2}{c}{\hspace{0.8cm}Time (ms)}\hspace{1.6cm} & \multicolumn{3}{c}{Before} & \multicolumn{3}{c}{After} \\
+%     & & [\ce{A}] & [\ce{B}] & [\ce{AB2}] & [\ce{A}] & [\ce{B}] & [\ce{AB2}] \\
+%     \midrule
+%     1.177 & 1.253 & 1.021 & 1.011 & 0.014 & 1.012 & 0.992 & 0.023 \\ 
+%     2.662 & 2.820 & 1.012 & 2.015 & 0.006 & 0.943 & 1.879 & 0.074 \\ 
+%     3.184 & 3.670 & 1.023 & 3.015 & 0.018 & 0.918 & 2.805 & 0.123 \\ 
+%     4.495 & 4.586 & 2.040 & 1.003 & 0.016 & 1.937 & 0.797 & 0.119 \\ 
+%     5.492 & 5.827 & 2.019 & 2.018 & 0.012 & 1.679 & 1.339 & 0.351 \\ 
+%     6.678 & 6.769 & 2.026 & 3.009 & 0.016 & 1.608 & 2.174 & 0.434 \\ 
+%     7.221 & 7.805 & 0.021 & 1.008 & 1.005 & 0.061 & 1.089 & 0.965 \\ 
+%     8.220 & 8.256 & 0.014 & 2.016 & 2.018 & 0.040 & 2.068 & 1.992 \\ 
+%     9.260 & 9.802 & 0.032 & 3.014 & 3.002 & 0.071 & 3.092 & 2.962 \\ 
+%     10.380 & 10.698 & 0.015 & 1.018 & 4.013 & 0.091 & 1.170 & 3.937 \\ 
+%     \bottomrule
+%   \end{tabular}
+%   \ec
+%   \begin{enumerate}
+%     \item Calculate the rate law for the forward and reverse reactions. (\emph{Hint: the file c3e4.R on the website contains this raw data}).
+%     \item Calculate $K_1$ and $K_{-1}$, the forward and backwards rate coefficients.
+%   \end{enumerate}
+%   \item \emph{Goldman equation and Action potentials}.  The \emph{Nernst potential} of a single ion \ce{A^z} with charge $z$ across a cell membrane is given by
+%   \begin{align}
+%     E_{\ce{A}} &= \frac{RT}{zF} \log \frac{[\ce{A^z}_o]}{[\ce{A^z}_i]} \\
+%     R &= 8.314 J K^{-1} mol^{-1} \text{(Universal gas constant)} \\
+%     T &= \text{Temperature in kelvins.  Assume $T=298$} \\
+%     F &= 9.648 \times 10^4 C mol^{-1} \text{(Faraday constant; i.e. charge per mole of electrons)} \\
+%     [\ce{A^z_o}] &= \text{Extracellular concentration} \\
+%     [\ce{A^z_i}] &= \text{Intracellular concentration}
+%   \end{align}
+%   Thus for sodium (\ce{NA+}), the Nernst potential, given $[\ce{NA+}_o] = 100$ mM and $[\ce{NA+}_i] = 10$ mM is
+%   \begin{align*}
+%     E_{\ce{NA+}} &= \frac{RT}{zF} \log \frac{[\ce{NA+}_o]}{[\ce{NA+}_i]} \\
+%     &= \frac{8.314 J K^{-1} mol^{-1} \cdot 298 K}{1 \cdot 9.68 \times 10^4 C mol^{-1}} * \log{\frac{100}{10}} \\
+%     &= 25.3 mV \log 10 \\
+%     &= 58 mV
+%   \end{align*}
+%   Furthermore, the total potential across a membrane by combining the products of the individual ionic Nernst potentials and ionic conductances.
+%   \begin{equation}
+%     E_{m} = \frac{RT}{F} \ln{ \left( \frac{ \sum_{i}^{N} P_{M^{+}_{i}}[M^{+}_{i}]_\text{out} + \sum_{j}^{M} P_{A^{-}_{j}}[A^{-}_{j}]_\text{in}}{ \sum_{i}^{N} P_{M^{+}_{i}}[M^{+}_{i}]_\text{in} + \sum_{j}^{M} P_{A^{-}_{j}}[A^{-}_{j}]_\text{out}} \right) }
+%     \end{equation} 
+  \item \emph{Not required.  A good exercise which relates to numerical approximation.} \begin{enumerate}
+    \item \emph{Binary Search.} Write a function which, given a sorted vector $X$ of $n$ unique integers, and an integer $k$, returns the index of $k$ in vector $X$ if $k \in X$ and $-1$ otherwise.  Your solution should perform approximately $\log n$ comparisons in the ``worst case'' scenario. \emph{Hint:}  one example of a ``worst case'' is when the $X_0 = k$.
+  \end{enumerate}
+  \end{enumerate}
+\begin{Solution}
+<<binsearch1,eval=t,echo=t>>=
+bSearch1 <- function(intVec, value) {
+  nIter <- 0;
+  bottom <- 1;
+  top <- length(intVec);
+  testVal <- intVec[floor(mean(c(top, bottom)))];
+  while (testVal != value) {
+    nIter <- nIter + 1;   # Just to count steps
+  if (testVal < value) {
+    bottom <- ceiling(mean(c(top, bottom)));
+  } else {
+    top <- floor(mean(c(top, bottom)));
+  }
+  testVal <- intVec[floor(mean(c(top, bottom)))];
+  }
+  cat(sprintf("Match found in %d steps\n", nIter));
+  return(floor(mean(c(top, bottom))));
+}
+iVec <- sort(sample(1:1000, 10));
+for (value in iVec) {
+  print(bSearch1(iVec, value));
+}
+@
+\end{Solution}
+
+\begin{enumerate}
+\begin{enumerate}
+\setcounter{enumii}{1}
+
+  \item Modify the previous solution so that the requirement of \emph{unique} integers may be relaxed.  In the case that multiple solutions exist return a vector of all such solutions.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{boxedminipage}{\textwidth}
+<<bsearch2,eval=t,echo=t>>=
+bSearch2 <- function(intVals, value) {
+  ## Sanity Check, bail if unsure 
+  if (!(is.numeric(c(intVals, value)))) {
+    stop('Error: parameters must be numeric!\n');
+  } else if (length(value) != 1) {
+    stop('Error: value must be a vector of length 1!\n');
+  } else if (is.unsorted(intVals)) {
+    stop('Error: intVals must be sorted!\n');
+  } else if (!(all(is.finite(c(intVals, value))))) {
+    stop('Error: parameters may not contain infinite or undefined values.\n');
+  }
+
+  ## Cheating, a bit - ensure value is in vector
+  if (!(value %in% intVals)) {
+    return(numeric(length=0));
+    #TODO: Remove this hack and code the case loop properly 10/13/2009 DMR
+  }
+  
+  ## There are two 'breakpoints' - consecutive pairs (a,b) in 
+  ##   intVals to find such that exactly one of a or b == value
+
+  vRange <- numeric(length=2);
+
+  ## Find top breakpoint
+  bottom <- 1; top <- length(intVals);
+  idx1 <- floor(mean(c(top, bottom)));
+  idx2 <- min(c(idx1 + 1, top));
+  while (TRUE) {          ## Infinite; use 'break' to escape
+    if(intVals[idx1] < value) {
+      bottom <- idx1;
+    } else if (intVals[idx1] > value) {
+      top <- idx1;
+    ## All remaining cases must have intVals[idx1] == value
+    } else if (idx2 == top) {   ## Can't go any higher
+      vRange[2] <- top;         ##   must have found it!
+    ## Note: vRange is referenced by lexical scope
+      break;                    ## Breaks the while loop
+    } else if (intVals[idx2] == value) {  ## 'in' range but not at top
+      bottom <- idx1
+    } else {                    ## Found it
+      vRange[2] <- idx1;
+      break;                    ## Break the while loop
+    }
+    idx1 <- floor(mean(c(top, bottom)));  ## Refine the interval
+    idx2 <- min(c(idx1 + 1, top));
+  }
+
+  ## Find bottom breakpoint - similar to above;
+  bottom <- 1; top <- length(intVals);
+  idx1 <- ceiling(mean(c(top, bottom)));
+  idx2 <- max(c(idx1 - 1, 1));
+  while (TRUE) {
+    if(intVals[idx1] < value) {
+      bottom <- idx1;
+    } else if (intVals[idx1] > value) {
+      top <- idx1;
+    } else if (idx2 == 1) {
+      vRange[1] <- 1;
+      return(vRange[1]:vRange[2])
+    } else if (intVals[idx2] == value){
+      top <- idx1
+    } else {
+      vRange[1] <- idx1;
+      return(vRange[1]:vRange[2]);
+    }
+    idx1 <- ceiling(mean(c(top, bottom)));
+    idx2 <- max(c(idx1 -1, 1));
+  }
+}
+@
+\end{boxedminipage}
+\begin{Solution}
+<<bsearch3,eval=t,echo=t>>=
+iVec2 <- c();
+iVec <- sort(sample(unique(floor(runif(n=50, min=-250, max=250))), 25));
+for (i in 1:5) { 
+  bnds <- sort(sample(1:25, 2));
+  iVec2 <- c(iVec2, iVec[bnds[1]:bnds[2]])
+}
+
+iVec2 <- sort(iVec2)
+iVec2
+
+for(i in 1:5) {
+  value <- sample(iVec2[-1], 1);
+  cat(sprintf('Iteration %d of %d: searching for value %s ...\n', 
+              i, 5, as.character(value)));
+  print(bSearch2(iVec2, value));
+}
+@
+\end{Solution}
+
+\end{document}

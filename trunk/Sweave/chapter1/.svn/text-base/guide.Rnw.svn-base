@@ -1,0 +1,264 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+\usepackage{tikz}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+#require(base)
+require(SweaveListingUtils)
+require(pgfSweave)
+oldRset <- .myRset <- getSweaveListingOption("Rset")
+oldRout <- .Rout <- getSweaveListingOption('Rout')
+#options(warn=3)
+#options(error=recover)
+.myRset[['literate']]<-"{<-}{<-}2{<<aa_-}{<<aa_-}2"
+.myRset$basicstyle <- "{\\footnotesize\\color{Rcommentcolor}}"
+.myRset[['keywordstyle']] <- "{\\footnotesize\\bf\\color{red}}"
+.myRset$numbers <- 'left'
+.myRset$commentstyle <- "{\\color{black}\\ttfamily\\itshape}"
+.myRset$numberstyle="\\tiny"
+.Rout$fancyvrb <- 'true'
+.Rout$keywordstyle <- "{\\color{Routcolor}}"
+.Rout$breaklines <- 'true'
+.Rout$linewidth <- "{0.5\\textwidth}"
+.myRset$extendedchars <- 'true'
+.myRset$breaklines <- 'true'
+.myRset$linewidth="{0.5\\textwidth}"
+.myRset$otherkeywords <- "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<aa_-,/, \\%in\\%}"
+setToBeDefinedPkgs(pkgs = c("base"), keywordstyle="\\bf\\color{red}")
+SweaveListingoptions(Rset=.myRset, Rout=.Rout, intermediate = FALSE)
+#SweaveListingPreparations()
+setCacheDir('cache2')
+options(device=quartz);
+par(mar=c(2,2,2,2))
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Appendix 2\\\smaller Plotting in \R}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing}
+}
+}}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+
+\part{Tutorial}
+
+\section{Plotting in \R} % (fold)
+\label{sec:plotting_in_r}
+
+One of the greatest strengths of \R is it's ability to produce ``presentation quality'' plots and graphs.  Unfortunately, this strength comes at a cost: the number of options controlling plotting output can be overwhelming at first.  Here we demonstrate how to use \Rs \emph{high-level} plotting functions to produce and save simple plots.  Several tables of options and parameters are provided; refer to them as frequently as needed.
+
+The most basic (and most frequently used) \R command for plotting is \Com{plot()}, which takes as arguments numeric vectors \Com{x} and \Com{y}.  Using the default settings, \Com{plot()} produces a scatterplot of ``circles'' at each point \Com{x[i], y[i]}.
+
+
+\begin{Rlistfloat}[h!]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<sec_plot_first_plot,echo=t,eval=t>>=
+x <- 1:20
+x
+y <- (1:20) ^ (0.5)
+y
+plot(x, y)
+@
+  \end{minipage}
+  \begin{minipage}{0.56\textwidth}
+\bc
+<<sec_plot_first_plot_1,fig=t,echo=f,eval=t,height=3.5,width=4.5,pgf=t,external=t,cache=t>>=
+x <- 1:20
+y <- (1:20) ^ (0.5)
+plot(x, y)
+@
+\ec
+\end{minipage}
+\end{multicols}
+\end{Rlistfloat}
+
+
+This output may not be the prettiest you've ever seen, but it works!  Later, we will discuss plot parameters which allow you to customize (beautify) your plots.
+
+Along with the \Com{plot()} command there are a family of commands for producing individual ``parts'' of a plot.  All four of these plotting commands are summarized in Table~\ref{tab:plot_commands} (page \pageref{tab:plot_commands}) and Figure~\ref{fig:basic_plots} (page \pageref{fig:basic_plots})\label{ref:plots1}.
+
+\begin{table}
+  \bc
+  \begin{tabular}{c p{5cm} c c}
+    \toprule
+    Command & Required arguments & Example & Clears display\protect\footnotemark[1] \\
+    \midrule
+    \Com{plot()} & \Com{x} and \Com{y} (numeric vectors) & \Com{plot(x,y)} & Yes \\
+    \Com{lines()} & \Com{x} and \Com{y} (numeric vectors) & \Com{lines(x,y)} & No \\
+    \Com{segments()} & \Com{x0}, \Com{y0}, \Com{x1} and \Com{y1} (all numeric vectors) & \Com{segments(x0, y0, x1, y1)} & No \\
+    \Com{arrows()} & \Com{x0}, \Com{y0}, \Com{x1} and \Com{y1} (all numeric vectors) & \Com{arrows(x0, y0, x1, y1)} & No \\
+    \Com{points()} & \Com{x} and \Com{y} (numeric vectors) & \Com{points(x,y)} & No \\
+    \bottomrule
+  \end{tabular}
+  \caption{\label{tab:plot_commands} Basic plotting commands in \R as described on page~\pageref{ref:plots1}. Example output from these commands is in Figure~\ref{fig:basic_plots} (page \pageref{fig:basic_plots}).  Note that \Com{points()} was not shown, since its default output is identical to that shown for \Com{plot()}.\\\\\vspace{1cm}$^1$: This command clears the current plot and starts a new one.}
+  \ec
+\end{table}
+
+\begin{figure}[h!]
+  \bc
+<<sec_example_plots,fig=t,echo=f,eval=t,height=5,width=5,pgf=t,cache=t,external=t>>=
+lf <- layout(matrix(c(1:4), nrow=2));
+par(mar=c(2.0,2.0,2.0,2.0));
+#layout.show(lf);
+x <- 1:20
+y <- (1:20) ^ (0.5)
+x0 <- x[1:20 %% 2 == 1]
+x1 <- x[1:20 %% 2 == 0]
+y0 <- y[1:20 %% 2 == 1]
+y1 <- y[1:20 %% 2 == 0]
+plot(x, y, main='plot(x, y)')
+plot(x,y, type='n', main='lines(x, y)');
+lines(x, y);
+plot(x,y, type='n', main='segments(x0, y0, x1, y1)');
+segments(x0, y0, x1, y1);
+plot(x,y, type='n', main='arrows(x0, y0, x1, y1)');
+arrows(x0, y0, x1, y1, length=0.1);
+@
+  \ec
+  \caption{\label{fig:basic_plots} Basic plotting command output}
+\end{figure}
+
+In order to modify the plotting style, additional parameters can be specified as arguments to the plotting function using \Com{parameter=value} syntax.  Table~\ref{tab:plot_params} (page \pageref{tab:plot_params}) summarizes the plotting parameters and possible values that you are most likely to use.  Two more typical examples of the usage and output of the \Com{plot()} command are shown in Code Listing~\ref{fig:plot_example_1} (page \pageref{fig:plot_example_1}) and Code Listing~\ref{fig:plot_example_2} (page \pageref{fig:plot_example_2}).
+
+\begin{Rlistfloat}[htbp]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<sec_plot_first_plot2,echo=t,eval=t>>=
+x <- seq(from=0, to=2*pi, len=1000)
+y <- cos(2*x)
+## just provide data; sensible labelling
+plot(x,y)
+dev.new()
+@
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+\bc
+<<sec_plot_first_plot2_1,fig=t,echo=f,eval=t,height=3.5,width=4,pgf=t,external=t,cache=t>>=
+x <- seq(from=0, to=2*pi, len=1000)
+y <- cos(2*x)
+## just provide data; sensible labelling
+plot(x,y)
+@
+\ec
+\end{minipage}
+\end{multicols}
+\caption{\label{fig:plot_example_1}Typical simple example plot}
+\end{Rlistfloat}
+
+\begin{Rlistfloat}[htbp]
+\begin{multicols}{2}
+  \begin{minipage}{0.4\textwidth}
+<<sec_plot_first_plot3,echo=t,eval=f>>=
+## Expand on previous plot ...
+plot(x,y, main='cos(2x)', type='l',
+     lty=1, bty='n')
+y2 <- sin(2*x)
+lines(x,y2, main='sin(2x)', type='l',
+      lty=2)
+same <- which( abs(y - y2) < 0.01)
+points(x[same], y[same], pch=19,
+       col='red', cex=3)
+@
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+<<sec_plot_first_plot3_1,fig=t,echo=f,eval=t,height=3.5,width=4,pgf=t,external=t,cache=t>>=
+## Expand on previous plot ...
+plot(x,y, main='cos(2x)', type='l', lty=1, bty='n')
+y2 <- sin(2*x)
+lines(x,y2, main='sin(2x)', type='l', lty=2)
+same <- which( abs(y - y2) < 0.01)
+points(x[same], y[same], pch=19, col='red', cex=3)
+@
+\end{minipage}
+\end{multicols}
+\caption{\label{fig:plot_example_2}Typical layered example plot}
+\end{Rlistfloat}
+
+
+
+\begin{table}
+  \bc
+  \begin{tabular}{lcccp{5cm}}
+    \toprule
+    Parameter & Effect & Values & Default & Notes \\
+    \midrule
+    \Com{type} & \emph{what} is plotted & `p', `l', `n' & `p' & Type is only valid as an argument to \Com{plot}.  It determines what kind of plot is generated.  The default, \Com{`p'} gives ``points'' (scatterplot); \Com{`l'} gives ``lines'' (like \Com{lines()}); \Com{`n'} gives ``nothing'' \\ \addlinespace
+
+    \Com{xlab}, \Com{ylab} & axis labels & \Com{character()} & * & Defaults are the names of the first to arguments to \Com{plot()}. \\ \addlinespace
+    \Com{main} & Plot title & \Com{character()} & None & \\ \addlinespace
+    \Com{col} & color & Color name & \Com{`black'} & RGB values can be used instead and are denoted by strings of hexadecimal triples of the form \Com{`\#RRGGBB'}.  See \Com{colors()} for a list of named colors. \\ \addlinespace
+    \Com{xlim}, \Com{ylim} & x, y range & \cc{numeric} pairs & * & Default values are determined from the data \\ \addlinespace
+    \Com{lty} & line type & \cc{numeric} & \cc{1} & \cc{1} is a solid line, $\geq 2$ are dashed lines \\ \addlinespace
+%    \Com{bty} ?? & \\ \addlinespace
+    \Com{pch} & plot ``symbol'' & see \cc{example(points)} & \cc{1} & \Com{`.'} is most common \\ \addlinespace
+    \Com{log} & axes log scale? & \cc{`x'}, \cc{`y'}, \cc{`xy'} or \cc{`'} & \cc{`'} &   \\ \addlinespace
+    \bottomrule
+  \end{tabular}
+  \caption{\label{tab:plot_params} Common plotting parameters}
+  \ec
+\end{table}
+
+\subsubsection{Saving plots} % (fold)
+\label{ssub:saving_plots}
+
+The \R syntax for saving / printing plots is a little different than one might expect.  Rather than provide facilities for the printing / post-hoc manipulation of plots \R instead provides a pair of functions for ``saving'' plots to a file.  The two commands you should use for this are \Com{dev.copy2pdf(file=\ldots)} and \Com{dev.copy2eps(file=\ldots)}.  Both take a single argument (\Com{file}), designating the filename to save the plot to.  The first command, \Com{dev.copy2pdf()} produces a \emph{pdf} output file, which is likely a format you have encountered and used before.  The second command \Com{dev.copy2eps()} produces an \emph{encapsulated postscript file} suitable for use in \LaTeX\ documents and other postscript formats.  If in doubt, you should use \Com{dev.copy2pdf()}.
+
+
+% subsubsection saving_plots (end)
+
+\subsubsection{Building complex plots} % (fold)
+\label{ssub:building_complex_plots}
+
+\begin{itemize}
+  \item complex plots
+    \begin{enumerate}
+      \item building part at a time
+      \item be careful of clearing
+      \item axes, etc
+    \end{enumerate}
+\end{itemize}
+
+% subsubsection building_complex_plots (end)
+
+
+
+\end{document}

@@ -1,0 +1,10 @@
+assignment	submitted	graded	returned	files
+chapter0	Y	Y	N	Chapter0.R
+chapter1	
+chapter2	Y	Y	N	ksirianni.Chapter2HW.R
+chapter3	Y	N	N	ksirianni.Chapter3HW.R
+chapter4
+chapter5
+chapter6
+chapter7
+

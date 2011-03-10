@@ -1,0 +1,309 @@
+\documentclass[11pt]{book}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{setspace}
+\doublespacing
+\oddsidemargin 0in
+\evensidemargin 0in
+\textwidth 6.5in
+%\headheight 1.0in
+\topmargin 0in
+
+
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                        \if@mainmatter
+                            \refstepcounter{chapter}%
+                            \typeout{\@chapapp\space\thechapter.}%
+                            \addcontentsline{toc}{chapter}%
+                            {\protect\numberline{\thechapter}#2}%
+                        \else
+                            \addcontentsline{toc}{chapter}{#2}%
+                         \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#2}%
+                    \fi
+
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                        \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                        \@makechapterhead{#2}%
+                        \@afterheading
+                    \fi}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+%\author{Dmitry Kondrashov}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+%\maketitle
+\chapter[One variable in discrete time]{Models with one variable in discrete time: population growth and decay}
+
+\doublespacing
+
+
+\section{Introduction}
+All living things change over time, and this evolution can be quantitatively measured and analyzed. Mathematics makes use of equations to define models that change with time, known as \emph{dynamical systems}. In this unit we will learn how to construct models that describe the time-dependent behavior of some measurable quantity in life sciences. Numerous fields of biology use such models, and in particular we will consider changes in population size, the progress of biochemical reactions, the spread of infectious disease, and the spikes of membrane potentials in neurons, as some of the main examples of biological dynamical systems.
+
+Many processes in living things happen regularly, repeating with a fairly constant time period. One common example is the reproductive cycle in species that reproduce periodically, whether once a year, or once an hour, like certain bacteria that divide at a relatively constant rate under favorable conditions. Other periodic phenomena include circadian (daily) cycles in physiology, contractions of the heart muscle, and waves of neural activity. For these processes, theoretical biologists use models with \emph{discrete time}, in which the time variable is restricted to the integers. For instance, it is natural to count the generations in whole numbers when modeling population growth.
+
+This chapter will be devoted to analyzing dynamical systems in which time is measured in discrete steps. In the first section, we will show how to write down simple mathematical models, and introduce terminology that will be used throughout the unit. In the analytical section, we will describe what it means to solve a model, and describe special kinds of solutions that don't change with time. Then in the computational section we will learn how to solve a discrete-time model using a computer, and how to plot its progress graphically. We will close with a detailed analysis of the logistic model of population growth with a limited carrying capacity.
+
+\section[Models of population growth]{Modeling: population growth, birth and death rates}
+Let us construct our first models of biological systems. We will start by considering a population of some species, with the goal of tracking its growth or decay over time. The variable of interest is the number of individuals in the population, which we will call $N$. This is called the dependent variable, since its value changes depending on time; it would make no sense to say that time changes depending on the population size. Throughout the study of dynamical systems, we will denote the independent variable of time by $t$. To denote the population size at time $t$, we can write $N(t)$, but we will more commonly use $N_t$.
+
+\subsection{Static population}
+In order to describe the dynamics, we need to write down a rule for how the population changes. Consider the simplest case, in which the population stays the same for all time. (Maybe it is a pile of rocks?) Then the following equation describes this situation:
+$$N_{t+1} = N_t $$
+This equation mandates that the population at the next time step be the same as at the present time $t$. This type of equation is generally called a \emph{difference equation}, because it can be written as a difference between the values at the two different times:
+$$N_{t+1} - N_t = 0$$
+This version of the model illustrates that a difference equation at its core describes the \emph{increments} of $N$ from one time step to the next. In this case, the increments are always 0, which makes it plain that the population does not change from one time step to the next.
+\subsection{Exponential growth}
+Let us consider a more interesting situation, such as a colony of dividing bacteria. We will assume that each bacterial cell divides and produces two daughter cells at fixed intervals of time. Let us further suppose that bacteria never die. This means that after each cell division the population size doubles. As before,  we denote the number of cells in each generation by $N_t$, and obtain the equation describing each successive generation:
+$$ N_{t+1} = 2N_t $$
+It can also be written in the difference form, as above:
+$$ N_{t+1} - N_t = N_t$$
+The increment in population size is determined by the current population size, so the population in this model is forever growing. This type of behavior is termed \emph{exponential growth}, for reasons that will be apparent in the analytical section of this chapter.
+
+\subsection{Example with birth and death} Suppose that a type of fish lives to reproduce only once after a period of maturation, after which the adults die. In this simple scenario, half of the population is female, a female always lays 1000 eggs, and of those, 1\% survive to maturity and reproduce. Let us set up the model for the population growth of this idealized fish population. The general idea, as before, is to relate the population size at the next time step ($N_{t+1}$) to the population at the present time ($N_t$).
+
+Let us tabulate both the increases and the decreases in the population size. We have $N_t$ fish at the present time, but we know they all die after reproducing, so there is a decrease of $N_t$ in the population. Since half of the population is female, the number of new offspring produced by $N_t$ fish is $500N_t$. Of those, only 1\% survive to maturity (the next time step), and the other 99\%  ($495N_t$) die. We can add all the terms together to obtain the following difference equation:
+$$ N_{t+1} = N_t - N_t + 500N_t - 495 N_t  = 5N_t  $$
+The number 500 in the expression is the \emph{birth rate} of the population per individual, and the negative terms add up to the \emph{death rate} of 496 per individual. We can re-write the equation in difference form:
+$$ N_{t+1} - N_t = 4N_t$$
+This expression again generates growth in the population, because the birth rate outweighs the death rate.
+
+\subsection{Units of birth and death rates}
+It is important to be precise with units of measurement when modeling real systems. The birth and death rates measure the number of individuals that are born (or die) within a reproductive cycle for every individual at the present time. The units of birth/death rates are individuals, divided by individuals, divided by the length of the reproductive cycle. Since the individuals cancel each other, the units of birth and death rates are inverse time, as can be seen in the following simple analysis:
+$$ [N_{t+1} - N_t] = \frac{[population]}{[time \ step]} = [r] [N_t] = [r] *[population] = \frac{1}{[time \ step] }* [population]$$
+The calculation of units of the variables and parameters is known as \emph{dimensional analysis}. The basic premise is that terms which are added or subtracted must have the same units, as do the different sides of an equation. This simple analysis is important for understanding the meaning of model parameters, and for simplifying expressions, as we will see in the chapter on bifurcations.
+
+We will now write a general difference equation for any population with constant birth and death rates. This will allow us to substitute arbitrary values of the birth and death rates to model different biological situations. Suppose that a population has the birth rate of $b$ per individual, and the death rate $d$ per individual. Then the general model of the population size is:
+\begin{equation}
+ N_{t+1} = (1 + b - d)N_t
+ \label{linear_pop}
+ \end{equation}
+The general equation also allows us to check the units of birth and death rates, especially as written in the incremental form: $ N_{t+1} - N_t = (b - d)N_t$. The change in population rate over one reproductive cycle is given by the current population size multiplied by the difference of birth and death rates, which are in the units of inverse time. The right hand side of the equation has the units of population size per reproductive cycle, matching the difference on the left hand side.
+
+\section[Solutions and fixed points]{Analytical: solutions and fixed points of difference equations}
+\subsection{Solutions of difference equations}
+Having set up the difference equation models, we would naturally like to solve them to find out how the dependent variable, such as  population size, varies over time. A solution may be \emph{analytical}, meaning that it can be written as a formula, or \emph{numerical}, in which case it is generated by a computer in the form of a sequence of values of the dependent variable over a period of time. In this section, we will find some simple analytical solutions and learn to analyze the behavior of difference equations which we cannot solve exactly.
+
+\textbf{Definition:} A function $N(t) = N_t$ is a solution (over some time period $a < t < b$) of a difference equation $N_{t+1} = f(N_t)$ if it satisfies that equation (over some time period $a < t < b$).
+
+For instance, let us take our first model of the static population, $ N_{t+1} = N_t$. Any constant function is a solution, for example, $N_t = 0$, or $N_t = 10$. There are actually as many solutions as there are numbers, that is, infinitely many! In order to specify exactly what happens in the model, we need to specify the size of the population at some point, usually, at the ``beginning of time'', $t = 0$. This is called  the \emph{initial condition} for the model, and for a well-behaved difference equation (we will not specify exactly what that means) it is enough to determine a unique solution. For the static model, specifying the initial condition is the same as specifying the population size for all time.
+
+Now let us look at the general model of population growth with constant birth and death rates. We saw in equation \ref{linear_pop} above that these can be written in the form $N_{t+1} = (1 + b - d) N_t$. To simplify, let us combine the numbers into one growth parameter $r = 1 + b - d$, and write down the general equation for population growth with constant growth rate:
+$$ N_{t+1} =  rN_t $$
+To find the solution, consider a specific example, where we start with the initial population size $N_0 = 1$, and the growth rate $r=2$. The sequence of population sizes is: 1, 2, 4, 8, 16, etc. This is described by the formula $N_t = 2^t$.
+
+%\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+%   \centering
+%   \includegraphics[width=3in]{ch1_exp_growth.png}
+%   \includegraphics[width=3in]{ch1_exp_decay.png}
+%   \caption{a) Growth of a colony of dividing bacteria over 6 generations; b) Decay of a population in which half the individuals die every time step over 6 generations.}
+%   \label{fig:exp_growth}
+%\end{figure}
+
+In the general case, each time step the solution is multiplied by $r$, so the solution has the same exponential form. The initial condition $N_0$ is a multiplicative constant in the solution, and one can verify that when $t=0$, the solution matches the initial value:
+\begin{equation}
+N_t  = r^t N_0
+\label{eq:lin_discrete_sol}
+\end{equation}
+I would like to reader to pause and consider this remarkable formula. No matter what the birth and death parameters are selected, this solution tells us  the population size at any point in time $t$.
+
+The parameter $r$ can assume different values, depending on the birth and death rates. If the birth rate is greater than the death rate, $r > 1$, and if it is the other way around, $r < 1$. Note that for a realistic biological population, the death rate is limited by the number of individuals present in the population. The maximum number of individuals at any time is $N_t  + bN_t$, so this means that $d \geq b +1$. Therefore, for a biological population, $r \geq 0$.
+
+The formula \ref{eq:lin_discrete_sol} allows us to classify what types of behaviors are possible for the linear population model. There are three qualitatively different behaviors, depending on the value of $r$. If $r > 1$, multiplication by $r$ increases the size of the population, so the solution $N_t$ will grow. If $r < 1$, multiplication by $r$ decreases the size of the population, so the solution $N_t$ will decay (see figure \ref{fig:exp_growth}). Finally, if $r=1$, multiplication by $r$ leaves the population size unchanged, like in the pile of rocks model. Here is the complete classification of the behavior of population models with constant birth and death rates:
+\begin{itemize}
+\item $|r| > 1$: $N_t$ grows without bound
+\item $|r| < 1$: $N_t$ decays to 0
+\item $|r| = 1 $: the absolute value  of $N_t$ remains constant
+\end{itemize}
+This type of growth or decay of the population size is called \emph{exponential} because of the mathematical form of the solution. As the solution demonstrates, it predicts either ever-faster growth or else decay to zero of the population. The exponential growth of populations is also known as \emph{Malthusian} after the early population modeler Thomas Malthus. He used a simple population model with constant growth rate to predict demographic disaster due to the exponentially increasing population outstripping the growth in food production. In fact, human population has not been growing with a constant birth rate, and food production has (so far) kept up pace with population size, illustrating yet again that mathematical models are only as good as the assumptions that underlie them.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=3in]{pop_double.png}
+   \includegraphics[width=3in]{pop_half.png}
+   \caption{Population growth and decay : a) with constant growth rate of 1 per unit time; b) with constant death rate of 0.5 per unit time}
+   \label{fig:exp_growth}
+\end{figure}
+
+\subsection{Equilibrium solutions or fixed points}
+We have seen that the solutions of difference equations depend on the initial value of the dependent variable. In the examples we have seen so far, the long-term behavior of the solution does not depend dramatically on the initial condition. In more complex systems that we will encounter, there are special values of the dependent variable for which the dynamical system is constant, like in the pile of rocks model.
+
+\textbf{Definition:} For a difference equation $x_{t+1} = f(x_t)$, a point $x^*$ which satisfies $f(x^*)=x^*$ is called a \emph{fixed point} or \emph{equilibrium}. If the initial condition is a fixed point, $x_0=x^*$, the solution will stay at the same value for all time, $x_t=x^*$.
+
+The reason these special points are also known as equilibria, is due to the precise balance between growth and decay that is mandated at a fixed point. In terms of population modeling, at an equilibrium the birth rates and the death rates are equal. Speaking analytically, in order to find the fixed points of a difference equation, one must solve the equation $f(x^*) = x^*$. It may have none, or one, or many solutions.
+
+For instance, the linear population models presented above all have the same mathematical form $N_{t+1}= r N_t$ (where $r$ can be any real number). Then the only fixed point of those models is $N^* = 0$, that is, a population with no individuals. If there are any individuals present, we know that the population will grow to infinity if $|r| > 1$, and decay to 0 if $|r| < 1$. This is true even for the smallest population size, as long as it is not exactly zero.
+
+This leads us to the following important consideration: what happens to the solution of a dynamical system if the initial condition is very close to equilibrium, but not precisely at it? Put another way, what happens if the equilibrium is \emph{perturbed}? To answer the question, we will no longer confine ourselves to the integers, to be interpreted as population sizes. We will instead consider, abstractly, what happens if the smallest perturbation is added to a fixed point. Will the solution tend to return to the fixed point or tend to move away from it? The answer to this question is formalized in the following definition:
+
+\textbf{Definition:} For a difference equation $x_{t+1} = f(x_t)$, a fixed point $x^*$ is \emph{stable} if for a sufficiently small number $\epsilon$, the solution $x_t$ with the initial condition $x_0 = x^* + \epsilon$ approaches the fixed point $x^*$ as $t \rightarrow \infty$. If the solution $x_t$ does not approach $x^*$ for any nonzero $\epsilon$, the fixed point is called \emph{unstable}.
+
+The notion of stability is central to the study of dynamical systems. Typically, models more complex than those we have seen cannot be solved analytically. Finding the fixed points and determining their stability can help us understand the general behavior of solutions without writing them down. For instance, we know that solutions never approach an unstable fixed point, whereas for a stable fixed point the solutions will tend to it, from some range of initial conditions.
+
+There is a mathematical test to determine the stability of a fixed point. Remember that Taylor's formula, reviewed in section 0.X, approximates the value of a function near a given point. Take a general difference equation written in terms of some function $x_{t+1} = f(x_t)$.  Let us define the \emph{deviation} from the fixed point $x^*$ at time $t$ to be $\epsilon_t = x_{t} - x^*$. Then we can apply Taylor's formula at the fixed point and write down the following expression:
+$$ x_{t+1} = f(x^*) + \epsilon_t f'(x^*) + ...$$
+The ellipsis means that the expression is approximate, with terms of order $\epsilon_t^2$ and higher swept under the rug. Since we take $ \epsilon_t$ to be small, those terms are very small and can be neglected. Since $x^*$ is a fixed point, $ f(x^*) = x^*$. Thus, we can write the following difference equation to describe the behavior of the deviation from the fixed point $x^*$:
+$$ x_{t+1} -  x^* =  \epsilon_{t+1}= \epsilon_t f'(x^*) $$
+
+We see that we started out with a general function defining the difference equation and transformed it into a linear equation for the deviation $\epsilon_t$. Note that the multiplicative constant here is the derivative of the function at the fixed point: $f'(x^*)$. This is our first view of the \emph{linearization} approach, or  approximating a dynamical system near a fixed point with a linear equation for the small perturbation. We already learned how to solve linear equations, so we can use the same classification we saw above to describe the behavior of the perturbation to the fixed point. The behavior depends on the value of the derivative $f'(x^*)$:
+\begin{itemize}
+\item $|f'(x^*)| > 1$: the deviation $\epsilon_t$ grows, and the solution moves away from the fixed point; fixed point is \emph{unstable}
+\item $|f'(x^*)| < 1$: the deviation $\epsilon_t$ decays, and the solution approaches the fixed point; fixed point is \emph{stable}
+\item $|f'(x^*)| = 1 $: the fixed point may be stable or unstable, and more information is needed
+\end{itemize}
+We have learned how to test the stability of a fixed point, and we will apply it to a more complex model of population growth in the synthesis section below.
+
+\section[Numerical solutions of difference equations]{Computational: numerical solutions and graphical methods}
+\subsection{Numerical solution of a discrete model}
+Difference equations, as we saw above, can be written in the form of $x_{t+1} = f(x_t)$. At every step, the model takes the current value of the dependent variable $x_t$, feeds it into the function $f(x)$, and takes the output as the next value $x_{t+1}$. The same process repeats every iteration, which is why difference equations written in this form are called \emph{iterated maps}.
+
+Computers are naturally suited for precise, repetitive operations. In our first example of a computational algorithm, we will iterate a given function to produce a sequence of values of the dependent variable $x$. We only need two things: to specify a computer function $f(x)$, which returns the value of the iterated map for any input value $x$, and the initial value $x_0$. Then it is a matter of repeating the operation of evaluating $f(x_t)$ and storing it as the next value $x_{t+1}$. Here is the pseudocode, or algorithm description: \\
+\textbf{Pseudocode for numerical solution of difference equations}
+\begin{enumerate}
+\item Define the iterated map function \texttt{F(x)}
+\item Choose an initial condition $x_0$ and store it as the first element of the array $x$ (we will use $x[0]$, but in some languages it has to be $x[1]$)
+\item For $i$ starting at 1, repeat until $i$ exceeds the specified number of iterations
+\begin{enumerate}
+\item  Assign $x[i] $ the value of \texttt{F(x[i-1])}
+\item increment $i$ by 1
+\end{enumerate}
+\end{enumerate}
+The resulting sequence of values $x_0, x_1, x_2, ... , x_N$ is called a \emph{numerical solution} of the given difference equation. It has two disadvantages compared to an analytic solution: first, the solution can only be obtained for a specific initial value and number of iterations, and second, any computer simulation inevitably introduces some errors, for instance from round-off. In practice, however, most complex dynamical systems have to solved numerically, as analytical solutions are difficult or impossible to find.
+
+
+\subsection{Cobweb plots}
+In addition to calculating numerical solutions, computational tools can be used to analyze dynamical systems graphically. A lot of information can be gleaned by plotting the graph of the defining function of an iterated map $X_{t+1} = f(X_t)$. We have already seen some of the concepts in the previous analytical section. Here is a summary of what we can learn from the graph of the function
+$f(x)$:
+
+\begin{enumerate}
+
+\item The location of the fixed points of the iterated map. Since the condition for a fixed point is $f(x) = x$, they can be found at the intersections of the graph of $y=f(x)$ and $y=x$ (the identity straight line).
+
+\item The stability of fixed points. We learned that the derivative of $f(x)$ at a fixed point determines its stability. Graphically, this means that the slope of $f(x)$ at the point of intersection with $y=x$ can be used for this purpose; if it is steeper (in absolute value) than the straight line $y=x$, then the fixed point is unstable, but if its slope is less than one in absolute value, the equilibrium is stable.
+
+\item Graphical iteration of the difference equation. The value of the function $f(x)$ gives the value of $x$ at the next time step, and this fact can be used to produce a graph of successive values of the dependent variable: $x_0, x_1, x_2, ...$
+
+\end{enumerate}
+
+Let us exploit the idea in the third point for graphical analysis of an iterated map. Starting with some initial condition $x_0$, the value of $x_1$ is given by $f(x_0)$. To show this graphically, starting the point $x_0$ on the x-axis, draw a vertical line to $y=f(x_0)$. Next, draw a horizontal line to the graph of $y=x$. Since the $y$ and $x$ coordinates are equal, we now have the value of $x_1 = f(x_0)$ as the x coordinate. Then, repeat the process by drawing a vertical line to $y=f(x_1)$, and the a horizontal line $y=x$, etc. The resulting sequence of x coordinates is a quick way of assessing the dynamics of the iterated map.  For instance, the values may converge to a fixed point, or grow to infinity, or bounce around without settling down. The resulting graph of alternating vertical and horizontal line segments is called a cobweb plot, and we will see its usefulness in the synthesis section.
+
+\textbf{Pseudocode for producing a cobweb plot for an iterated map:}
+\begin{enumerate}
+\item Define the iterated map function \texttt{F(x)}
+\item Choose an initial condition $x_0$ and store it as the first element of the array $x$ (we will start at $x[0]$, but in some languages the first index has to be 1)
+\item Store in \texttt{y[0]} the value 0 (start the graph on the x-axis)
+\item For $i$ starting at 1, repeat until $i$ exceeds the specified number of iterations
+\begin{enumerate}
+\item store in \texttt{y[2i-1]} the value of \texttt{F(x[2i-2])}  (draw a vertical line to the graph of $y=f(x)$)
+\item store in \texttt{y[2i]} the value of \texttt{y[2i-1]}  (draw a horizontal line to the graph of $y=x$)
+\item store in \texttt{x[2i-1]} the value \texttt{x[2i-2]} (draw a vertical line to the graph of $y=f(x)$)
+\item store in \texttt{x[2i]} the value of \texttt{y[2i]} (draw a horizontal line to the graph of $y=x$)
+\item increment $i$ by 1
+\end{enumerate}
+\item plot the graph of $F(x)$
+\item plot the graph of $y=x$
+\item plot the array $y$ versus the array $x$
+\end{enumerate}
+We now have at our disposal analytical, numerical, and graphical tools to analyze and predict the behavior of a dynamical system. In the next section we will use all three to analyze a more complex model of population growth.
+
+\section[Logistic model]{Synthesis: Model with a population-limited growth}
+In this section we will encounter our first nonlinear dynamical system. We will build a new model of population growth which is more realistic than the linear models we have seen thus far, and analyze the behavior of the solutions.
+\subsection{Logistic growth}
+We have seen models of population growth that assume that the birth and death rates are constant, that is, they stay the same regardless of population size. The solutions for these models either grow or decay exponentially, but in reality, populations do not grow without bounds. As a rule, the larger a population grows, the more scarce the resources, and survival becomes more difficult. For larger populations, this could lead to higher death rates, or lower birth rates, or both.
+
+How can we incorporate this effect into a quantitative model? We arbitrarily choose a simple non-constant relationship between the birth and death rates and the size of the population:
+$$ b =  b_1 - b_2 N_t ; \;   d = d_1 + d_2 N_t  $$
+We model both the birth and death rates as linear functions of population size, but with the birth rate declining and the death rate increasing with larger population size. We can now substitute these birth rates into the difference equation for population size:
+$$N_{t+1} - N_t = (b -d)N_t = [(b_1 - d_1) - (b_2 + d_2)N_t] N_t $$
+A simpler way of writing this equation is to let $r = 1 + b_1 - d_1$ and $k = b_2 + d_2$, leading to the following iterated map:
+\begin{equation}
+N_{t+1} = (r - k N_t) N_t
+\label{discrete_logistic}
+\end{equation}
+This is called the \emph{logistic model} of population growth. As you see, it has two different parameters, $r$ and $k$. If $k = 0$, the equation reduces to the old linear model we have seen. Intuitively, $k$ is the parameter describing the effect of  increasing population on the population growth rate. Let us analyze the units of the two parameters, by writing down the dimensions of the variables of the difference equation. Let us use the increment form: $ N_{t+1} - N_t = (r-1)N_t - k N_t^2$. The units can then be written as follows:
+$$ N_{t+1} - N_t = [population]/[time \ step] = (r-1) N_t - k N_t^2 = [r] *[population]  - [k] *[population]^2$$
+Matching the units on the two sides of the equation leads us to conclude that the units of $r$ and $k$ are different:
+$$ [r] = \frac{1}{[time \ step]} ; \; [k] =  \frac{1}{[time \ step] [population]} $$
+
+The difference equation for the logistic model is \emph{nonlinear}, because it includes a second power of the dependent variable. In general, it is difficult to solve nonlinear equations, but we can still say a lot about this model's behavior without knowing its explicit solution. The first step with our analysis of a nonlinear model is to find the fixed points. We set the right-hand side function equal to the value of the special values $N^*$ (fixed points):
+$$  (r - kN^*) N^* = N^*$$
+There are two solutions to this equation, $N^* = 0$ and $N^* = (r-1)/k$. These are the fixed points or the equilibrium population sizes for the model, the first being the obvious case when the population is extinct. The second equilibrium is more interesting, as it describes the \emph{carrying capacity} of a population in a particular environment. It is determined by the ratio of the intrinsic growth rate $r-1$ and the parameter $k$, which we can tell by the dimensional analysis above is in the units of population.
+
+We have seen in the analytical section that the stability of fixed points is determined by the derivative of the defining function at the fixed points. The derivative of $f(N) = (r-kN)N$ is $f'(N) = r-2kN$, and we evaluate it at the two fixed points:
+$$f'(0) = r; \; \; f'((r-1)/k) = r-2(r-1) = 2-r$$
+Because the intrinsic death rate cannot be greater than the birth rate, we know that $r>0$. Therefore, we have the following stability conditions for the two fixed points:
+\begin{itemize}
+\item the fixed point $N^*=0$ is stable for $r<1$, and unstable for $r>1$;
+\item the fixed point $N^*= (r-1)/k$ is stable for $1<r<3$, and unstable otherwise.
+\end{itemize}
+We can plot the solution for the population size of the logistic model population over time. We see that, depending on the value of the parameter $r$ (but not on $k$), the behavior is dramatically different:
+\begin{itemize}
+\item If $r < 1$, the fixed point at $N = 0$ is stable and the other fixed point is unstable. We can surmise (correctly) that the solution will tend to 0, or extinction, regardless of the initial condition (see figure \ref{fig:whatev}).
+
+\item If $1 < r < 3$, the extinction fixed point is unstable, but the second fixed point is stable. Once again, we can make an educated guess that the solution will approach the carrying capacity, given by $C = (r-1)/k$. If the initial condition is smaller than $C$, the population will grow and asymptotically approach $C$, in what is called a logistic curve. If the initial population is larger than $C$, it will decrease and asymptotically approach $C$ from above (see figure \ref{fig:whatev}).
+
+\item If $ r > 3$, strange things happen. There is no stable fixed point, so there is no value for the solution to approach. Instead, we get unpredictable bouncing around in the solution (see figure \ref{fig:whatev}). This behavior will be explored in greater depth in Chapter 3.
+\end{itemize}
+
+\subsection{Graphical analysis of the logistic model}
+As we saw in section 1.4, we can learn a lot about the behavior of a dynamical system from analyzing the graph of the defining function. Let us consider two quadratic functions for the logistic model: $ f(x) = x(2-0.5x)$ and $f(x) = x(4-x)$.
+
+First, plotting the graphs of $y=f(x)$ and $y=x$, allows us to find the fixed points of the logistic model. Looking at figure \ref{fig:logistic_cobweb}, we see that there are fixed points at $x = 0$ for both functions, and carrying capacity sizes at $x=2$ and $x=3$, respectively. The reader should check that this is in agreement with the analytic prediction of $x^* = (r-1)/k$.
+
+Second, we can obtain information about stability of the two fixed points by considering the slope of the curve $y=f(x)$ at the points where it crosses $y=x$. On the graph of the first function, the slope is clearly 0, which indicates that the fixed point is stable, in agreement with the analytical prediction. On the graph of the second function, the slope is negative and steeper than -1. This indicates that the fixed point is unstable, again consistent with our analysis above.
+
+Third, we graph a few iterations of the cobweb plot to obtain an idea about the dynamics of the population over time. As expected, for the first function with $r=2$, the solution quickly approaches the carrying capacity (figure \ref{fig:cobweb}a). In the second function, however, $r = 4$ and the carrying capacity is unstable. In figure \ref{fig:cobweb}b we observe a wild pattern of jumps that never approach any particular value.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=4in]{ch1_cobweb_1.png}
+   \includegraphics[width=4in]{ch1_cobweb_2.png}
+   \caption{Examples of two cobweb plots: a) solution converges to the stable fixed point at the intersection of the graphs of the function and the identity line; b) solution bounces around the unstable fixed point, producing a cobweb-like plot}
+   \label{fig:logistic_cobweb}
+\end{figure}
+
+We have seen how graphical tools can be used to analyze and predict the behavior of a dynamical system. In the case of the logistic model, we never found the analytic solution, because it frequently does not exist as a formula. Finding the fixed points and analyzing their stability, in conjunction with looking at the behavior of a cobweb plot, allowed us to describe the dynamics of population growth in the logistic model, without doing any ``mathematics''. Together, the analytical and graphical analysis provide complementary  tools for biological modelers.
+
+%\section{Assignments}
+
+
+%\subsection{Example of perturbation analysis (from Allman and Rhodes, section 1.3)}
+%Let us analyze the logistic model $N_{t+1} = N_t [1+0.7(1-N_t/10)]$. It has two fixed points, $N^* = 0$ and $N^* = 10$ (check for yourself if you don't see it). Let us consider what happens if $N_t = N^* + \epsilon_t$, where $\epsilon_t$ is a small number, a small distance from the fixed point $N^*$; similarly, $N_{t+1} = 10 + \epsilon_{t+1}$. Near $N^* = 10$, we have the following expression for the evolution of the dependent variable:
+
+%$$ 10 + \epsilon_{t+1} = (10 + \epsilon_t)[1+0.7(1-(10 + \epsilon_t)/10)] = 10 - 0.7 \epsilon_t  + \epsilon_t  - 0.07 \epsilon_t^2 \Longrightarrow  \epsilon_{t+1} = 0.3 \epsilon_t - 0.07 \epsilon_t^2 $$
+%Because we assume $\epsilon_t$ is a small number ($N_t$ is close to the fixed point 10), the square of the number is very small, and that term can be neglected. Then we end up with a linear equation for the evolution of the small perturbation $\epsilon$: $\epsilon_{t+1} = 0.3 \epsilon_t $. Using the classification of linear behavior that we developed above, we see that the perturbation $\epsilon$ will decay to 0, returning the solution $N_t$ to the fixed point $N^* = 10$.
+
+
+%Going back to the example above, let us take the derivative of the function $f(N) = N [1+0.7(1-N/10)]$; $f'(N) = 1.7 - 0.14N $. Then at $N^* = 10$, the value of the derivative is $f'(10) = 0.3$, just as we found by the more arduous perturbation analysis. Again, we come to the conclusion that the fixed point $N^* = 10$ is stable, which means that population numbers $N_t$ near that value approach the number 10. On the other hand, at $N^* = 0$, we have $f'(0) = 1.7$, therefore the extinction fixed point is unstable - small population numbers grow rather than become extinct.
+
+
+
+
+%\section{References}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+pdflatex --jobname=exercise-dirfieldex1field exercise.tex
+pdflatex --jobname=exercise-dirfieldex2 exercise.tex

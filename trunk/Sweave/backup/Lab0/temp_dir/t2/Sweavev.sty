@@ -1,0 +1,79 @@
+% Usage: \usepackage[gin,bw]{Sweavev}
+% To change size of R code and output, use e.g.: \def\Sweavesize{\large}
+% If used after the first code chunk will only apply to the next chunk
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Sweavev}{}
+
+\RequirePackage{ifthen,graphicx,relsize,fancyvrb,alltt}
+\newboolean{Sweave@gin}
+\setboolean{Sweave@gin}{true}
+\newboolean{Sweave@ae}
+\setboolean{Sweave@ae}{true}
+\newboolean{Sweave@bw}
+\setboolean{Sweave@bw}{false}
+
+\DeclareOption{nogin}{\setboolean{Sweave@gin}{false}}
+\DeclareOption{noae}{\setboolean{Sweave@ae}{false}}
+\DeclareOption{bw}{\setboolean{Sweave@bw}{true}}
+\ProcessOptions
+
+\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}
+
+\providecommand{\Sweavesize}{\normalsize}
+
+\ifthenelse{\boolean{Sweave@gin}}{\setkeys{Gin}{width=0.8\textwidth}}{}%
+\ifthenelse{\boolean{Sweave@ae}}{%
+  \RequirePackage[T1]{fontenc}  
+  \RequirePackage{ae}
+}{}%
+
+\ifthenelse{\boolean{Sweave@bw}}{%
+ \DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\Sweavesize,%
+  frame=single,framerule=0.01pt,xleftmargin=2ex}}{%
+ \RequirePackage{color}%
+ \definecolor{Rcolor}{rgb}{0, 0.5, 0.5}% colors from SweaveListingUtils
+ \definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}%
+ \definecolor{Rout}{rgb}{0.461, 0.039, 0.102}%
+ \definecolor{Rcomment}{rgb}{0.101, 0.043, 0.432}%
+ \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{Rout},%
+  fontsize=\Sweavesize,frame=single,framerule=0.01pt,xleftmargin=3ex}%
+}
+
+\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl}
+
+\newenvironment{Schunk}{}{}
+
+\newcommand{\Sconcordance}[1]{%
+  \ifx\pdfoutput\undefined%
+  \csname newcount\endcsname\pdfoutput\fi%
+  \ifcase\pdfoutput\special{#1}%
+  \else\immediate\pdfobj{#1}\fi}
+
+% Run latex or pdflatex with --shell-escape myfile
+% Thanks to Terry Cox <TAC@nei.nih.gov>
+
+\providecommand{\Gets}{\(\leftarrow\)}
+\providecommand{\Twiddle}{\mbox{\(\tt\sim\)}}
+\providecommand{\Hat}{\mbox{\boldmath\({}^{\wedge}\)}}
+
+\ifthenelse{\boolean{Sweave@bw}}{%
+ \providecommand{\scom}[1]{{\rm\smaller \# #1}}}{%
+ \providecommand{\scom}[1]{{\color{Rcomment}\rm\smaller \# #1}}}
+
+\newenvironment{Sinput}{\VerbatimEnvironment\begin{VerbatimOut}{__out}}{%
+ \end{VerbatimOut}%
+ \immediate\write18{s2latx.pl __out.tex /tmp/_s2latx.tmp}
+ \begin{list}{}{\setlength{\leftmargin}{\parindent}}%
+ \item%
+ \begin{alltt}%
+ \ifthenelse{\boolean{Sweave@bw}}{}{\color{Rcolor}}
+ \Sweavesize%
+ \input{/tmp/_s2latx.tmp}%
+ \end{alltt}%
+ \end{list}%
+ %\immediate\write18{rm -f /tmp/_s2latx.tmp}%
+}
+
+\endinput
+% End of file 'Sweavev.sty'

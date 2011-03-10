@@ -1,0 +1,237 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+
+\svnidlong
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+<<aa_SweaveListingsPreparations, results=tex, echo=FALSE>>=
+source('listingPreps.R');
+@
+
+\SweaveOpts{keep.source=TRUE,height=5,width=5}
+
+\title{Introduction to computational programming\\\smaller Chapter 1 Exercise\\\smaller Functions and Algorithms\\\larger Solutions}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing} 
+}
+}}
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+  \item Write a function that takes as input a polynomial\footnote{Helper functions are included at the end of the exercise.} and returns the polynomial representing the first derivative of the input polynomial.  You will be provided two functions, \texttt{parsePolynomial()} and \texttt{deparsePolynomial} to help you in this task.  The function \Com{parsePolynomial()} takes as input a polynomial in $x$ and returns a vector of exponents and a vector of coefficients.  The function \Com{deparsePolynomial()} takes as input a vector of exponents and a vector of coefficients and returns a polynomial in $x$.
+  \begin{Solution}
+<<parse_deparse,eval=t,echo=t>>=
+.calcFirstDerivative <- function(coefs, expons) {
+  new_expons <- expons - 1;
+  new_expons <- new_expons[new_expons != -1]
+  new_coefs <- coefs * expons;
+  new_coefs <- new_coefs[new_expons != -1];
+  new_coefs <- new_coefs[1:length(new_expons)]
+  result <- list(coefs=new_coefs, expons=new_expons);
+}
+@
+\end{Solution}
+\begin{Solution}
+<<parse_deparse1,eval=t,echo=t>>=
+deparsePolynomial <- function(coefficients, exponents) {
+  if (length(exponents) != length(coefficients)) {
+    stop('Exponent vector and coefficient vector must be of equal length.\n')
+  }
+  out_string <- '';
+  for (ii in seq(along=exponents)) {
+    out_string <- paste(out_string, ' + ', as.character(coefficients[ii]),
+                        'x^', as.character(exponents[ii]), sep='');
+  }
+  out_string <- gsub('\\+ -', '- ', out_string);
+  out_string <- gsub('1x', 'x', out_string);
+  out_string <- gsub(' x\\^0', ' 1', out_string);
+  out_string <- gsub('x\\^0', '', out_string);
+  out_string <- gsub('^ [\\+|-] ', '', out_string);
+  out_string <- gsub('x\\^1', 'x', out_string);
+  return(out_string);
+}
+@
+\end{Solution}
+\begin{Solution}
+<<parse_deparse2,eval=t,echo=t>>=
+parsePolynomial <- function(inputExpression) {
+  numberTerms <- nchar(gsub("[^x]", "", inputExpression));
+  coefficients <- numeric(length=(numberTerms)+1);
+  exponents <- numeric((length=numberTerms)+1);
+  splitTerms <- strsplit(gsub('-', '+ -', inputExpression), '\\+')[[1]]
+  for (ii in seq(along=splitTerms)) {
+    term <- gsub(' ', '', splitTerms[ii]);
+    if(gsub("[^x]", "", term) == '') {
+      term <- paste(term, 'x^0', sep='');
+    }
+    if (gsub("([\\+|-]*)(.*)x.*", "\\2", term) == '') {
+      term <- gsub('x', '1x', term);
+    }
+    if (gsub(".*x", "", term) == '') {
+      term <- paste(term, '^1', sep='');
+    }
+    coef <- eval(as.integer(gsub('x.*', '', term)));
+    coefficients[ii] <- coef;
+    exponent <- eval(as.integer(gsub('.*\\^(.*)', '\\1', term)));
+    exponents[ii] <- exponent;
+  }
+  o <- -(order(exponents)) + length(exponents) + 1;
+  exponents <- exponents[o];
+  coefficients <- coefficients[o];
+  result <- list(exponents=exponents, coefficients=coefficients);
+  return(result);
+}
+@
+\end{Solution}
+\begin{Solution}
+<<parse_deparse3,eval=t,echo=t>>=
+calcPolyDeriv <- function(input_exp) {
+  parsed <- parsePolynomial(input_exp);
+  converted <- .calcFirstDerivative(parsed$coefficients, parsed$exponents);
+  result <- deparsePolynomial(converted$coefs, converted$expons);
+  return(result);
+}
+calcPolyDeriv('3x^3 + 2x + 1');
+calcPolyDeriv('5x^4 - 3x^3 + x^2 - 1');
+@
+  \end{Solution}
+%  \item \emph{Logistic Model.} \begin{enumerate}
+%    \item Consider the logistic model $ f(x) = 2x \left(2-\frac{x}{2}\right) %$. Calculate and plot the numerical solution and fixed points of this %difference equation.
+%  \begin{Solution}
+%  See below
+%  \end{Solution}
+    \item Write a \emph{functor} which takes as an argument a function which is a logistic difference equation.  Your functor should find the fixed points of the difference equation and plot its solution as an iterated map.
+    \begin{Solution}
+%<<functor_logit,eval=t,echo=t>>=
+%getLogisticRoots <- function(f) {
+%  roots <- c(0);    # Logistic model
+%  carrying_cap <- uniroot(D(body(f), 'x'), c(0.001, 1e9))$root
+%  roots <- c(roots, carrying_cap)
+%  return(roots)
+%}
+<<functor_logit,eval=t,echo=t>>=
+source('http://rosenbergdm.uchicago.edu/maxima_utilities.R');
+plotImap <- function(f) {
+  f_zeros <- mSolve(paste(deparse(body(f)), " = 0", sep=''));
+  max_iter <- 10;
+  init_value <- f_zeros[1] + diff(f_zeros) / 4;
+  x_array <- numeric(length=max_iter);
+  x_array[1] <- init_value;
+  for (ii in 2:max_iter) {
+    x_array[ii] <- do.call(f, list(x_array[ii-1]));
+  }
+  fixed_points <- mSolve(paste(deparse(body(f)),
+    " = x", sep=''));
+  plot(1:max_iter, x_array, main=paste('Iterated map of f(x)=\n', 
+       deparse( body(f) ), sep=''), type='l', xaxs='i',
+       xlim=c(0, max_iter), xlab='', ylab=expression(f(t)), 
+       sub=paste(c("fixed points: \nx = [", fixed_points[1], ",",
+       fixed_points[2], "]"), collapse=" ") );  
+}
+f <- function(x) 
+  x * (2 - x / 2)
+@
+\end{Solution}
+<<functor_logit_plot,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t>>=
+plotImap(f)
+@
+  \item \textbf{This exercise was not assigned.  The solution is included here for you to read if you like}.  \emph{Quicksort.} Recall exercise 2 from the previous section.  There you sorted a list of integers using a method called a \emph{bubble sort}.  A more efficient method for sorting is the \emph{quicksort}, given below in pseudocode.
+  \begin{pcode}[Quicksort pseudocode.][lst:qsort]
+    function qsort (int array x[n])
+        if n == 0 do
+            return
+        else if n == 1 do
+            return x
+        else 
+            int pivot
+            int array head
+            int array tail
+            pivot :=  x[0]
+            head := [k] in x with k < pivot
+            head := qsort (head)
+            tail := [k] in x with k >= pivot
+            tail := qsort (tail)
+            x := join(head, pivot, tail)
+        return x
+  \end{pcode}
+\begin{Solution}
+<<qsort_solution,eval=t,echo=t>>=
+options(width=60);    # To make it fit on the page
+qSort <- function (x) {
+  if (length(x) < 2) {
+    return(x);
+  } else {
+    pivot <- x[1];
+    x <- x[-1];
+    head <- qSort(x[x < pivot]);
+    tail <- qSort(x[x >= pivot]);
+    return(c(head, pivot, tail));
+  }
+}
+input_vector <- rnorm(n=20) * 100;
+sorted_vector <- qSort(input_vector);
+input_vector
+sorted_vector
+@
+\end{Solution}
+
+  \item \textbf{This exercise was not assigned.  The solution is included here for you to read if you like}.  \emph{Efficiency.}  Under ideal conditions, \emph{quicksorting} a list of $n$ integers involves calling \cc{qsort} approximately $n \log n$  times.  Under the worst conditions, \cc{qsort} is called approximately $n^2$ times.  What do these conditions look like?
+
+\begin{Solution}
+  Although it may seem counterintuitive, the \emph{quicksort} is most efficient when its input is ``disorganized'' and is least efficient when operating on an already sorted array.  The command \cc{system.time()}, which measures how long a computation takes, is used in the following code snippet to demonstrate this difference in efficiency.  The \cc{options(expression=\ldots)} command is necessary to keep \R from crashing in the ``worst case'' scenario.
+
+<<qsort_efficiency,eval=t,echo=t>>=
+options(expressions=500000);  # Can cause stack overflow
+inVec <- rnorm(n=1000);
+inVec2 <- qSort(inVec);
+system.time(qSort(inVec));
+system.time(qSort(inVec2));   # Might crash on some systems
+@
+\end{Solution}
+
+\item Using the functor from the previous exercise, plot iterated logistic of the following models and analytically find the fixed points of the models.  State whether the solution found computationally approaches the analytically calculated fixed points.
+\begin{enumerate}
+  \item $f(x) = 2x (1-x)$
+  \item $f(x) = 4x (1-x)$
+\end{enumerate}
+\end{enumerate}
+
+\begin{boxedminipage}{\textwidth}
+<<functor_logit_plot2,eval=t,echo=t,fig=t,cache=t,external=t,pgf=t,width=6.5,height=3.5>>=
+options(width=78)
+layout(matrix(c(1,2), nrow=1));         # Side-by-side plots
+plotImap(function(x) 2 * x * (1 - x));  # implicit function definition
+plotImap(function(x) 4 * x * (1 - x));
+@
+\end{boxedminipage}
+\end{document}

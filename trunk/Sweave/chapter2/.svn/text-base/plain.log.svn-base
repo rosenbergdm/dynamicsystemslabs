@@ -1,0 +1,130 @@
+This is LuaTeX, Version beta-0.40.6-2009091210 (TeX Live 2009) (format=luatex 2009.9.12)  15 OCT 2009 15:00
+ restricted \write18 enabled.
+**\input plain
+(/usr/local/texlive/2009/texmf-dist/tex/plain/base/plain.tex
+Preloading the plain format: codes, registers,
+\maxdimen=\dimen10
+\hideskip=\skip10
+\centering=\skip11
+\p@=\dimen11
+\z@=\dimen12
+\z@skip=\skip12
+\voidb@x=\box10
+ parameters,
+\smallskipamount=\skip13
+\medskipamount=\skip14
+\bigskipamount=\skip15
+\normalbaselineskip=\skip16
+\normallineskip=\skip17
+\normallineskiplimit=\dimen13
+\jot=\dimen14
+\interdisplaylinepenalty=\count23
+\interfootnotelinepenalty=\count24
+ fonts, more fonts,
+\itfam=\fam4
+\slfam=\fam5
+\bffam=\fam6
+\ttfam=\fam7
+
+macros,
+\strutbox=\box11
+\mscount=\count25
+\tabs=\box12
+\tabsyet=\box13
+\tabsdone=\box14
+ math definitions,
+\rootbox=\box15
+\p@renwd=\dimen15
+ output routines,
+\headline=\toks10
+\footline=\toks11
+\footins=\insert254
+\topins=\insert253
+ hyphenation
+(/usr/local/texlive/2009/texmf/tex/generic/hyphen/hyphen.tex))
+*\directlua {tex.enableprimitives('', tex.extraprimitives())}
+
+*\pdfoutput=1
+
+*\everyjob \expandafter {%
+
+*\the\everyjob
+
+*\input luatex-basics\relax
+
+*\input luatex-fonts\relax
+
+*\input luatex-mplib\relax
+
+*}
+
+*\edef\fmtversion{\fmtversion+luatex}
+
+*\documentclass{article}
+! Undefined control sequence.
+<*> \documentclass
+                  {article}
+? ?
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? H
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+? E
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? E
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? 1
+<*> \documentclass{
+                   article}
+? }
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? 
+! Too many }'s.
+<*> \documentclass{article}
+                           
+? 
+
+*}
+! Too many }'s.
+<*> }
+     
+? \begin{document}
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? 
+
+*\begin{document}
+! Undefined control sequence.
+<*> \begin
+          {document}
+? q
+OK, entering \batchmode...
+! Emergency stop.
+<*> \begin{document}
+                    
+*** (job aborted, no legal \end found)
+
+!  ==> Fatal error occurred, no output PDF file produced!

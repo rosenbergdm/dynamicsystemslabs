@@ -1,0 +1,50 @@
+#!/bin/zsh
+# Dynamic Systems Lab Generic Makefile
+
+RCMD = $(shell which R64)
+TEXCMD = $(shell which lualatex)
+### Changed to pgfsweave shell script for pgf externalization
+###
+# SWEAVECMD = $(RCMD) CMD Sweave
+# SWEAVECMD = $(shell which pgfsweave) --pgfsweave-only
+SWEAVECMD = $(RCMD) CMD pgfsweave --pgfsweave-only
+STANGLECMD = $(RCMD) CMD Stangle
+OPENCMD = open
+# RNW := $(shell egrep -l '^[^%]*\\begin\{document\}' *.Rnw)
+# TEX = $(RNW:%.Rnw=%.tex)
+# PDF = $(RNW:%.Rnw=%.pdf)
+PDF = exercise.pdf guide.pdf solution.pdf lecture_slides.pdf
+TEX = exercise.tex guide.tex solution.tex lecture_slides.tex
+RNW = exercise.Rnw guide.Rnw solution.Rnw letcure_slides.Rnw
+R = exercise.R guide.R solution.R lecture_slides.R
+
+all: guide exercise source solution lecture_slides
+
+.PHONY:  all guide exercise source
+
+solution: solution.pdf
+	$(OPENCMD) solution.pdf
+
+guide: guide.pdf
+	$(OPENCMD) guide.pdf
+
+exercise: exercise.pdf
+	$(OPENCMD) exercise.pdf
+
+lecture_slides: lecture_slides.pdf
+	$(OPENCMD) lecture_slides.pdf
+
+source: $(R)
+
+%.R: %.Rnw
+	$(STANGLECMD) $< -o $@
+
+%.tex: %.Rnw
+	$(SWEAVECMD) $<
+
+%.pdf: %.tex
+	$(TEXCMD) $< -o $@
+
+clean:
+	rm -Rf *.pdf; rm -Rf *.aux; rm -Rf *.log
+

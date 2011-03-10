@@ -1,0 +1,40 @@
+\BOOKMARK [1][-]{section.1}{Overview}{}
+\BOOKMARK [2][-]{subsubsection.1.0.1}{R input}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.0.2}{R output}{subsubsection.1.0.1}
+\BOOKMARK [3][-]{subsubsection.1.0.3}{Computer commands / keyboard keys}{subsubsection.1.0.1}
+\BOOKMARK [2][-]{subsection.1.1}{Source text}{section.1}
+\BOOKMARK [0][-]{part.1}{I Tutorial}{}
+\BOOKMARK [1][-]{section.2}{Getting Started}{part.1}
+\BOOKMARK [2][-]{subsection.2.1}{GNU R}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Mac OSX}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Windows}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Linux}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Other options}{subsection.2.1}
+\BOOKMARK [2][-]{subsection.2.2}{Text Editor}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Cross-platform}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Mac OSX}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Windows}{subsection.2.2}
+\BOOKMARK [1][-]{section.3}{Your first R session}{part.1}
+\BOOKMARK [2][-]{subsection.3.1}{Interpreter}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Example 1}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Tab completion}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.3}{History}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Comments}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Prompt}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Exploring the current environment}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.7}{Getting help}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.8}{Help browser}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.9}{Examples}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.10}{Session}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.11}{Quitting}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.12}{Aborting}{subsection.3.1}
+\BOOKMARK [1][-]{section.4}{Exploring R}{part.1}
+\BOOKMARK [2][-]{subsection.4.1}{Example 2: Calculator}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Example 3: Variables}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Names}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Types}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Attributes and coercion}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Vectors and Matrices}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.5}{Lists and data.frames}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.6}{Special values}{subsection.4.2}
+\BOOKMARK [2][-]{subsection.4.3}{Style}{section.4}

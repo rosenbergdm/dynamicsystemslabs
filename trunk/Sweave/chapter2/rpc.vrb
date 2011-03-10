@@ -1,0 +1,27 @@
+\frametitle {CRAN: Comprehensive R Archive Network}
+
+  CRAN: Site(s) for downloading R, and also its many contributed
+  *packages*.
+
+
+  Mac/Win have a GUI for installing packages, or it can be done on the
+command line:
+
+\begin{rc}
+library(stats)
+library(help=stats)
+install.packages(c("splancs", "sp"))
+$ R CMD INSTALL mypackage.tar.gz  ## from shell
+\end{rc}
+
+If asked to selected a CRAN mirror, in UK use:
+\url{http://www.stats.bris.ac.uk/R}.
+
+If installing on a machine where you do not have root access (e.g. PWF
+linux), you should add the following to your .bashrc file:
+\begin{verbatim}
+export R_LIBS=$HOME/NOBACKUP/RLIB
+\end{verbatim}
+
+(Be careful! Check that you are not overwriting an existing
+\ri{R_LIBS} setting.)

@@ -1,0 +1,39 @@
+This is LuaTeX, Version snapshot-0.25.4-2008081220 (Web2C 7.5.7) (format=pdflualatex 2008.12.28)  15 OCT 2009 23:22
+**\input test_slides.nav
+(test_slides.nav
+! Undefined control sequence.
+l.1 \beamer
+           @endinputifotherversion {3.07pt}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \beamer@
+            endinputifotherversion {3.07pt}
+? 
+! Undefined control sequence.
+l.2 \headcommand
+                 {\slideentry {0}{0}{1}{1/1}{}{0}}
+? x
+ 
+Here is how much of TeX's memory you used:
+ 6 strings out of 256980
+ 160 string characters out of 1164846
+ 100000,552014 words of node,token memory allocated
+node memory in use: 361 words out of 100000
+rapidly available: 2:11 nodes
+current usage: 1 hlist, 2 glue, 29 glyph, 31 glue_spec, 1 temp, 2 local_par, 2 
+dir nodes
+ 3614 multiletter control sequences out of 65536+50000
+ 14 fonts using 119601 bytes
+ 5i,0n,4p,73b,14s stack positions out of 5000i,500n,6000p,200000b,50000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

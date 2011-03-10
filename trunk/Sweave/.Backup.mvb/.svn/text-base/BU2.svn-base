@@ -1,0 +1,152 @@
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256003359.52984
+structure( function(expr, var='x', degree=1) {
+  mc <- as.list(match.call(expand.dots=TRUE));
+  p1 <- normExpArg('expr', mc);
+#   if (is.language(mc$expr)) {
+#     if (is.function(mc$expr)) {
+#       raw <- deparse(body(expr))
+#       safe_lines <- raw[grep('\\{|\\}', raw, invert=TRUE)];
+#       p1 <- gsub("^return\\((.*)\\)(;)?$", "\\1", 
+#                  gsub(" ", '', paste(safe_lines, collapse="")));
+#     } else if (class(trySilent(is.function(expr))) == 'try-error') {
+#       p1 <- as.character(as.expression(mc$expr));
+#     } else if (is.function(expr)) {
+#       raw <- deparse(body(expr))
+#       safe_lines <- raw[grep('\\{|\\}', raw, invert=TRUE)];
+#       p1 <- gsub("^return\\((.*)\\)(;)?$", "\\1", 
+#                  gsub(" ", '', paste(safe_lines, collapse="")));
+#     } else if (is.character(expr)) {
+#       safe_lines <- expr[grep('\\{|\\}', expr, invert=TRUE)];
+#       p1 <- gsub("^return\\((.*)\\)(;)?$", "\\1", 
+#                  gsub(" ", '', paste(safe_lines, collapse="")));
+#     } else {
+#       p1 <- as.character(as.expression(mc$expr));
+#     }
+#   } else if (is.expression(expr)) {
+#     p1 <- as.character(expr);
+#   } else if (is.character(expr)) {
+#     p1 <- expr;
+#   } else {
+#     stop('This should not happen.')
+#   }
+
+  cmd <- paste('display2d:false; stardisp:true; print(diff(', p1, ',', var, 
+               ',', as.character(degree), '));');
+  # cmd2 <- paste("echo 'echo \"", cmd, '" | ', # "/usr/bin/maxima'", ' | ',
+            # maxima_bin);
+  cmd2 <- sprintf("echo '%s' | /usr/local/bin/rmaxima", cmd);
+  res <- system(cmd2, intern=TRUE, ignore.stderr=TRUE)[9];
+  f <- function() {};
+  chars <- strsplit(res, "")[[1]];
+  argnames <- chars[ chars %in% letters ]
+  
+  args <- vector(mode='list', length=length(argnames));
+  names(args) <- argnames;
+  formals(f) <- args;
+  body(f) <- parse(text=res);
+  return(f);
+}
+,doc=flatdoc( EOF="<<end of doc>>"))
+mDeriv    package:
+
+
+Do something-or-other
+
+DESCRIPTION
+
+A splendid function that does something jolly useful
+
+
+USAGE
+
+mDeriv(expr, var = "x", degree = 1) 
+
+
+ARGUMENTS
+
+You can put normal text in ARGUMENTS, too, like this. Remember to indent all arguments, as below.
+
+ expr: (mDeriv)
+ var: (mDeriv)
+ degree: (mDeriv)
+
+
+DETAILS
+
+Not compulsory, but details and other section headings, e.g. AUTHOR, should go in here. Use *single* quotes around object names and code fragments, e.g. 'bit.of.code()'. Use *double* quotes for "text" or "file.name". See 'doc2Rd' for full details of format.
+
+
+SEE.ALSO
+
+'doc2Rd', 'flatdoc'
+
+
+EXAMPLES 
+
+# Not compulsory to have an EXAMPLES -- you can put examples into other sections.
+# Here's how to make a "don't run" example:
+
+## Don't run
+reformat.my.hard.drive()
+## End don't run
+
+
+KEYWORDS
+
+%% You can delete the KEYWORDS section-- it will be auto-added by 'doc2Rd'
+%% These lines starting with "%%" won't appear in user-visible help.
+
+internal
+<<end of doc>>
+
+
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256269215.20064
+function(expr, var='x', degree=1) {
+  mc <- as.list(match.call(expand.dots=TRUE));
+  p1 <- normExpArg('expr', mc);
+
+  maxima_cmd <- sprintf('print(diff(%s,%s,%d));', p1, var, degree)
+  res2 <- res <- .performMaximaCall(maxima_cmd);
+  f <- function() {};
+  reserved <- .RMaximaEnv$translation_table;
+  for (ii in 1:length(reserved$R)) {
+    res2 <- gsub(reserved$maxima[ii], reserved$R[ii], res2);
+    res <- gsub(reserved$maxima[ii], '', res)
+  }
+  chars <- strsplit(res, "")[[1]];
+  argnames <- unique(chars[ chars %in% letters ])
+  
+  args <- vector(mode='list', length=length(argnames));
+  names(args) <- argnames;
+  formals(f) <- args;
+  body(f) <- parse(text=res2);
+  return(f);
+}
+
+'"@"@'@ START OF BACKUP @'@"@"'
+SESSION=1256269215.20064
+function(expr, var='x', degree=1) {
+  mc <- as.list(match.call(expand.dots=TRUE));
+  mc$var <- var;
+  p1 <- normExpArg('expr', mc);
+
+  maxima_cmd <- sprintf('print(diff(%s,%s,%d));', p1, var, degree)
+  res2 <- res <- .performMaximaCall(maxima_cmd);
+  f <- function() {};
+  reserved <- .RMaximaEnv$translation_table;
+  for (ii in 1:length(reserved$R)) {
+    res2 <- gsub(reserved$maxima[ii], reserved$R[ii], res2);
+    res <- gsub(reserved$maxima[ii], '', res)
+  }
+  chars <- strsplit(res, "")[[1]];
+  argnames <- unique(chars[ chars %in% letters ])
+  
+  args <- vector(mode='list', length=length(argnames));
+  names(args) <- argnames;
+  formals(f) <- args;
+  body(f) <- parse(text=res2);
+  return(f);
+}
+

@@ -1,0 +1,332 @@
+options(width=110)
+ls()
+mDeriv(x^2 + x - 1)
+max_iter <- 50
+2:max_iter
+fun <- function(x) x * (1 - x)
+fun <- function(x) {
+  return(2 * x * (1 - x/2))
+}
+fun
+max_iter <- 50;
+init_value <- 0.1;
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  y_vector[1] <- init_val;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+init_val <- 0.1;
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  y_vector[1] <- init_val;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  curve(fun, 0, max_iter, bty='i', fg=grey(0.6));
+  curve(fun, 0, max_iter, bty='n', fg=grey(0.6));
+fun
+fun <- function(x) x * (5/2 - 7 * x)
+  curve(fun, 0, max_iter, bty='n', fg=grey(0.6));
+quartz()
+  curve(fun, 0, max_iter, bty='n', fg=grey(0.6));
+fun
+  curve(fun, 0, 10, bty='n', fg=grey(0.6));
+  curve(fun, 0, 1, bty='n', fg=grey(0.6));
+  curve(fun, 0, 0.5, bty='n', fg=grey(0.6));
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  y_vector[1] <- init_val;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+x_vector
+y_vector
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+plotGenericImap <- function(fun, max_iter=50, init_val=3/14) {
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  y_vector[1] <- init_val;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 0.6, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+plotGenericImap(fun, max_iter=20, init_val=0.01)
+plotGenericImap(fun, 20, 0.01)
+polyroot(fun)
+uniroot(fun)
+fun
+mSolve2(x * (5/2 - 7 * x) ==0, x)
+mSolve2(x * (5/2 - 7 * x) ==0, 'x')
+mSolve2(eval(body(fun)) == 0, 'x')
+body(fun)
+as.character(body(fun))
+as.character(as.expression(body(fun))
+)
+paste(as.character(as.expression(body(fun))), ' == 0')
+mSolve2(paste(as.character(as.expression(body(fun))), ' == 0'), 'x')
+mSolve2(deparse(paste(as.character(as.expression(body(fun))), ' == 0'))
+mSolve.RServe(fun = 0)
+mSolve.RServe(fun, 0)
+mSolve
+?uniroot
+mSolve2(x * (5/2 - 7 * x) == 0, 'x')
+mSolve2(x * (5/2 - 7 * x) == 0, 'x')[[1]]()
+mm <- mSolve2(x * (5/2 - 7 * x) == 0, 'x')
+mm
+c(mm[[1]]()
+mSolve.RServe(paste(fun, ' = 0'))
+mSolve.RServe(paste(deparse(body(fun)), ' = 0'))
+plotGenericImap <- function(fun, max_iter) {
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  
+  x_vector[1] <- init_val;
+  y_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 0.6, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  
+  x_vector[1] <- init_val;
+  y_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 0.6, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  x_vector[1] <- 0;
+  
+  x_vector[1] <- init_val;
+  y_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 0.6, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+  
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  
+  y_vector[1] <- init_val;
+  x_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 0.6, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+fun
+fun <- function(x) x * (5/2 - 14 * x)
+plotGenericImap(fun)
+fun <- function(x) x * (5/2 - 2 * x)
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  
+  y_vector[1] <- init_val;
+  x_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 5, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  
+  y_vector[1] <- init_val;
+  x_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, 5, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+quartz()
+plotGenericImap(fun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  
+  target_val <- init_val;
+  while (fun(target_val) > 0) {
+    target_val <- 2 * target_val;
+  }
+  
+  y_vector[1] <- init_val;
+  x_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, target_val, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(fun)
+fun
+ffun(x) <- function(x) x * (5 / 2 - 15 * x)
+ffun <- function(x) x * (5 / 2 - 15 * x)
+plotGenericImap(ffun)
+ffun <- function(x) x * (5 / 2 - 1 * x)
+plotGenericImap(ffun)
+ffun <- function(x) x * (5 / 2 - 10 * x)
+plotGenericImap(ffun)
+plotGenericImap <- function(fun, max_iter=20) {
+  init_val <- 0.1;
+  while(fun(init_val) <= 0) {
+    init_val <- init_val / 10;
+  }
+  init_val <- mean(c(init_val, 0))
+  x_vector <- y_vector <- numeric(length=max_iter*2);
+  
+  target_val <- init_val;
+  while (fun(target_val) > 0) {
+    target_val <- 2 * target_val;
+  }
+  
+  y_vector[1] <- init_val;
+  x_vector[1] <- 0;
+  
+  for (ii in 1:max_iter) {
+    x_vector[2 * ii + 1] <- y_vector[2 * ii + 1] <- 
+                            y_vector[2 * ii] <- 
+                            fun(y_vector[2 * ii - 1]);
+    x_vector[2 * ii] <- x_vector[2 * ii - 1];
+  }
+  
+  curve(fun, 0, target_val, bty='n', fg=grey(0.6));
+  abline(h=0, lwd=1.5);
+  abline(v=0, lwd=1.5);
+  lines(c(-1, 51), c(-1, 51), col='blue');
+  lines(x_vector, y_vector, col='red');
+}  
+plotGenericImap(ffun)
+ffun <- function(x) x * (5 / 2 - 100 * x)
+plotGenericImap(ffun)
+ffun <- function(x) x * (5 / 2 - 0.1 * x)
+plotGenericImap(ffun)
+savehistory(file='melissa.Rhistory')

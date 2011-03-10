@@ -1,0 +1,273 @@
+%!TEX TS-program = xelatex
+%  Lab0.Rnw
+%
+%  Created by David Rosenberg on 2009-09-10.
+%  Copyright (c) 2009 University of Chicago. All rights reserved.
+%
+\documentclass[10pt,letterpaper]{article}
+\usepackage[Rpdflatex]{Rosenberg}
+\usepackage{svn-multi}
+
+\svnidlong
+{$LastChangedDate: 2009-10-05 15:42:55 -0500 (Mon, 05 Oct 2009) $}
+{$LastChangedRevision: 80 $}
+{$LastChangedBy: root $}
+% \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+%
+\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+\svnRegisterAuthor{davidrosenberg}{David M. Rosenberg}
+
+
+%\usepackage{Sweave}
+
+
+
+
+
+\title{Introduction to computational programming\\\smaller Introductory Exercise\\\smaller Loops and flow control \R\\\larger Solutions}
+\author{David M. Rosenberg\\\small University of Chicago\\\small Committee on Neurobiology\medskip\\
+{\footnotesize \parbox[t]{10cm} {
+Version control information:
+\begin{tabbing}
+\footnotesize\sffamily
+ Last changes revision: \= \kill
+ Last changed date: \> \svndate\\
+ Last changes revision: \> \svnrev\\
+ Version: \> \svnFullRevision*{\svnrev}\\
+ Last changed by: \> David M. Rosenberg\\
+\end{tabbing} 
+}
+}}
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item \begin{enumerate}
+    \item  Starting with the fibonacci sequence examples from the tutorial, write a code chunk which takes as input a number \Com{k} and finds the largest fibonacci number less than or equal to \Com{k}
+
+\bc
+\begin{boxedminipage}{0.7\textwidth}
+The intent of this exercise was for you to see how more complex computations can be built up from simpler ones.
+
+\begin{Schunk}
+\begin{Sinput}
+> x0 <- 0;
+> x1 <- 1;
+> while(x1 < k){
++   next_value <- x0 + x1;
++   x0 <- x1;
++   x1 <- next_value;
++ }
+> if (x1 == k) {
++   cat(k, ' is a fibonnaci number')
++ } else {
++   cat(x0, ' is the largest fibonnaci number <= ', k)
++ }
+\end{Sinput}
+\end{Schunk}
+\end{boxedminipage}
+\ec
+    \item Write a code chunk which takes as input three numbers (say, \Com{k}, \Com{x}, and \Com{y}) and prints either the second number (\Com{x}) or the third number (\Com{y}) depending on which is closer to \Com{k}.  (\emph{Hint:} the functions \Com{min()}, \Com{max()}, and \Com{abs()} may be helpful.  See the online documentation for their usage.)
+
+\bc
+\begin{boxedminipage}{0.7\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+> if(abs(x-k) < abs(y-k)) {
++   cat(x, ' is closer to ', k, '\n');
++ } else if (abs(x-k) == abs(y-k)) {
++   cat(x, ' and ', y, ' are equidistant from ', k, '\n')
++ } else {
++   cat(y, ' is closer to ', k, '\n')
++ }
+\end{Sinput}
+\end{Schunk}
+\end{boxedminipage}
+\ec
+
+    \item Write a code chunk which takes as input a number \Com{k} and returns the fibonacci number with is closest to \Com{k}.
+
+\bc
+\begin{boxedminipage}{0.7\textwidth}
+  Combining the previous parts
+\begin{Schunk}
+\begin{Sinput}
+> x0 <- 0;
+> x1 <- 1;
+> while(x1 < k){
++   next_value <- x0 + x1;
++   x0 <- x1;
++   x1 <- next_value;
++ }
+> if (x1 == k) {
++   cat(k, ' is a fibonnaci number')
++ } else if(abs(x0-k) < abs(x1-k)){
++   cat(x0, ' is the fibonnaci number closest to ', k)
++ } else {
++   cat(x1, ' is the fibonnaci number closest to ', k)
++ }
+\end{Sinput}
+\end{Schunk}
+\end{boxedminipage}
+\ec
+
+\end{enumerate}
+  \item \begin{enumerate}
+    \item Write a code chunk which takes a ``sorted'' numeric vector of length 2 and another numeric vector of length 1 and prints a single ``sorted'' vector of length 3.
+
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> ## Given these two 'inputs'
+> sorted <- c(a, b) ## a < b
+> to_add <- d       ## new value
+> if(d < a) {
++   c(d, a, b)
++ } else if (d < b) {
++   c(a, d, b)
++ } else {
++   c(a, b, d)
++ }
+\end{Sinput}
+\end{Schunk}
+\end{solution}
+
+    \item Write a code chunk which takes an ``unsorted'' numeric vector of length 2 and prints the values of that vector, ``sorted.''
+
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> ## unsorted input
+> unsorted <- c(a, b)
+> if (a <= b) {
++   c(a, b)
++ } else {
++   c(b, a)
++ }
+\end{Sinput}
+\end{Schunk}
+\end{solution}
+
+    \item Write a code chunk that takes an ``unsorted'' numeric vector of length 10 and prints the sorted values to the screen.
+  \end{enumerate}
+
+\begin{solution}
+  Don't worry about the first line of code.  I just use it here to generate an arbitrary unsorted vector of length 10 to demonstrate the validity of this code.
+\begin{Schunk}
+\begin{Sinput}
+> ## input
+> unsorted <- floor(runif(n=10, min=1, max=100))
+> unsorted
+\end{Sinput}
+\begin{Soutput}
+ [1]  5 19 36 62 88 28 85 67 76 25
+\end{Soutput}
+\begin{Sinput}
+> sorted <- numeric(length=length(unsorted))
+> for (ii in 1:9) {
++   smallest <- unsorted[1]
++   unsorted <- unsorted[-1]
++   for (jj in 1:length(unsorted)) {
++     if (unsorted[jj] < smallest) {
++       temp <- unsorted[jj]
++       unsorted[jj] <- smallest
++       smallest <- temp
++     }
++   }
++   sorted[ii] <- smallest;
++ }
+> sorted[10] <- unsorted
+> sorted
+\end{Sinput}
+\begin{Soutput}
+ [1]  5 19 25 28 36 62 67 76 85 88
+\end{Soutput}
+\end{Schunk}
+\end{solution}
+
+  \item Consider the equation
+  \begin{equation}
+    x ^ k - 1 = 0, \quad x \in \mathbb{C}, \, k \in \mathbb{N}
+  \end{equation}
+  Write a code chunk that takes in integer ($k$) as input and prints all values $x$ which satisfy the above equation.
+\end{enumerate}
+
+\bc
+\begin{boxedminipage}{0.7\textwidth}
+\begin{displaymath}
+\begin{aligned}
+  (a_k) &= a_1, a_2, \ldots \\
+  \text{ and } a_k &= b_k + c_k \, i,\quad b_k, c_k \in \mathbb{Q}\\
+  &= \sqrt{b_k^2 + c_k^2} e^{i\ \left( \arctan \left( \dfrac{b_k}{c_l} \right) \right) } \\
+  \text{Let } r_k &= \sqrt{b_k^2 + c_k^2} \text{ and } \psi_k = \arctan \left( \dfrac{b_i}{c_i} \right) \\
+  \text{Then } a_k &= r_k e^{\psi_k i} \\
+  a_k^n &= \left(r_k e^{\psi_k i}\right) ^n \\
+  &=r_k {}^n e^{n i \psi_k} \\
+\end{aligned}
+\end{displaymath}
+Since $x^n - 1, r_k {}^n = 1$ and $e^{n i \psi_k} = 0 \pm 2c \pi$, where $c \in \mathbb{Z}$, we know that \( r_k {}^n = 1 \) and further, \( r_k = 1 \).  We know that \( 0 \leq \psi_k \leq 2\pi \).  A first two solutions are found by solving
+\begin{displaymath}
+\begin{aligned}
+	n \psi_k &= 2 \pi \quad &n \psi_k &= 0 \\
+	\psi_k &= \dfrac{2 \pi}{n} \quad &\psi_k &= 0 \\
+\end{aligned}
+\end{displaymath}
+We can then begin to generate solutions by sequentially adding the second solution to the first until we no longer get unique solutions modulo \( 2 \pi \).
+\end{boxedminipage}
+\begin{boxedminipage}{0.7\textwidth}
+\begin{displaymath}
+\begin{aligned}
+	\psi_0 &= 0 \\
+	\psi_1 &= \dfrac{2 \pi}{n} \\
+	\psi_2 &= 2 \left( \dfrac{2 \pi}{n} \right) \\
+	\vdots \\
+	\psi_n &= n \left( \dfrac{2 \pi}{n} \right) = 2 \pi \equiv 0 \\
+\end{aligned}
+\end{displaymath}
+Therefore \( \forall n \in \mathbf{Z}: 0 \leq n \leq k \), the complex number \( e^{\frac{2 n i \pi}{n}} \) is a solution for \( x^k - 1 = 0 \).  In code
+\begin{Schunk}
+\begin{Sinput}
+> ## As an example
+> complexRootsOfUnity <- function(k) {
++   args <- seq(from=0, to=k-1, by=1) * 2 * pi / k
++   mods <- 1;
++   solutions <- complex(modulus=mods, argument=args)
++ }
+> roots_15 <- complexRootsOfUnity(15)
+> roots_15
+\end{Sinput}
+\begin{Soutput}
+ [1]  1.0000000+0.0000000i  0.9135455+0.4067366i  0.6691306+0.7431448i
+ [4]  0.3090170+0.9510565i -0.1045285+0.9945219i -0.5000000+0.8660254i
+ [7] -0.8090170+0.5877853i -0.9781476+0.2079117i -0.9781476-0.2079117i
+[10] -0.8090170-0.5877853i -0.5000000-0.8660254i -0.1045285-0.9945219i
+[13]  0.3090170-0.9510565i  0.6691306-0.7431448i  0.9135455-0.4067366i
+\end{Soutput}
+\begin{Sinput}
+> roots_15^15
+\end{Sinput}
+\begin{Soutput}
+ [1] 1+0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1-0i 1+0i 1+0i
+\end{Soutput}
+\begin{Sinput}
+> roots_3 <- complexRootsOfUnity(3)
+> roots_3
+\end{Sinput}
+\begin{Soutput}
+[1]  1.0+0.0000000i -0.5+0.8660254i -0.5-0.8660254i
+\end{Soutput}
+\begin{Sinput}
+> roots_3^3
+\end{Sinput}
+\begin{Soutput}
+[1] 1+0i 1-0i 1-0i
+\end{Soutput}
+\end{Schunk}
+\end{boxedminipage}
+\ec
+
+\end{document}

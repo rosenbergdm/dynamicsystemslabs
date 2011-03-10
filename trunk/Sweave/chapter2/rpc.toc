@@ -1,0 +1,17 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Vectors}{15}{0}{1}
+\beamer@sectionintoc {2}{Calling functions}{22}{0}{2}
+\beamer@sectionintoc {3}{Scripts}{35}{0}{3}
+\beamer@sectionintoc {4}{Matrices}{41}{0}{4}
+\beamer@sectionintoc {5}{Boolean logic}{45}{0}{5}
+\beamer@sectionintoc {6}{Lists}{48}{0}{6}
+\beamer@sectionintoc {7}{Factors}{52}{0}{7}
+\beamer@sectionintoc {8}{Character arrays}{54}{0}{8}
+\beamer@sectionintoc {9}{Objects in your environment}{57}{0}{9}
+\beamer@sectionintoc {10}{Basic plotting}{60}{0}{10}
+\beamer@sectionintoc {11}{Reading/writing data to file system}{68}{0}{11}
+\beamer@sectionintoc {12}{Writing functions}{76}{0}{12}
+\beamer@sectionintoc {13}{Conditionals and looping}{85}{0}{13}
+\beamer@sectionintoc {14}{Vectorization}{96}{0}{14}
+\beamer@sectionintoc {15}{Random number generation}{108}{0}{15}
+\beamer@sectionintoc {16}{Debugging}{110}{0}{16}
